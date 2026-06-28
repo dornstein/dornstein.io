@@ -310,6 +310,35 @@ ul {
   gap: 24px;
 }
 
+.about-side {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.about-portrait {
+  margin: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  box-shadow: 0 12px 30px rgba(28, 25, 23, 0.14);
+  background: var(--color-bg-alt);
+}
+
+.about-portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1065 / 1332;
+  object-fit: cover;
+}
+
+/* In the narrow side column, stats read best as a tidy 2-up grid. */
+.about-side .about-stats {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
 .stat {
   background: var(--color-card-bg);
   border: 1px solid var(--color-border);
@@ -1938,8 +1967,20 @@ footer p {
     gap: 40px;
   }
 
-  .about-stats {
-    grid-template-columns: repeat(4, 1fr);
+  /* Full width now: portrait beside the stats (kept 2-up so the row fits). */
+  .about-side {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .about-portrait {
+    flex: 0 0 240px;
+  }
+
+  .about-side .about-stats {
+    flex: 1;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .value-grid {
@@ -2010,6 +2051,22 @@ footer p {
   }
 
   .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Stack again on phones: centered portrait, then 2-up stats. */
+  .about-side {
+    flex-direction: column;
+  }
+
+  .about-portrait {
+    flex: none;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .about-side .about-stats {
     grid-template-columns: repeat(2, 1fr);
   }
 
