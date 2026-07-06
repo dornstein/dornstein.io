@@ -35,16 +35,25 @@
 - **Patent**: Bank switching memory system.
 
 ### Multimate International Corp. — 1984–1985
-- **Title**: Project Manager
+- **Title**: Project Manager; Software Developer
 - **Location**: E. Hartford, CT
 - **Project**: Word Processor OEM & Porting
 - **Details**: Managed the OEM/International group for Multimate's word-processing system. Ported the product to the Zenith Z-100 (for a US Air Force contract at the Pentagon) and the HP Portable Plus, making it run from ROM cartridges. Contributed to architectural design for next-generation products.
+- **Note**: David's existing LinkedIn profile lists this role as "Project Manager; Software Developer" — the hands-on software development component (beyond OEM/porting project management) was confirmed by David during a 2026 LinkedIn sync and is preserved here as source of truth.
 
 ### Access Technology Inc. — 1986–1987
 - **Title**: Member of Technical Staff
 - **Location**: S. Natick, MA
 - **Project**: Multi-User Software R&D
 - **Details**: Developed functional specifications and prototypes for multi-user software products. Led research into text management systems, text databases, and archival systems. Involved in due diligence for multiple acquisitions.
+
+### Applied Intelligence — 1985–1986
+- **Title**: Consultant and Staff Programmer
+- **Details**: Not recalled in detail by David — this entry existed on LinkedIn but had no counterpart in the original career history document. Added here per the 2026 LinkedIn sync so LinkedIn remains the source of additional facts not otherwise documented; details TBD if David recalls more later.
+
+### Applied Systems Technologies — 1985–1986
+- **Title**: Consultant
+- **Details**: Not recalled in detail by David — this entry existed on LinkedIn but had no counterpart in the original career history document. Added here per the 2026 LinkedIn sync so LinkedIn remains the source of additional facts not otherwise documented; details TBD if David recalls more later.
 
 ### INTERSOLV / Sage Software — 1987–1993
 
@@ -134,20 +143,28 @@
 - **Details**: Coordinated security initiatives and cross-team programs aimed at improving Microsoft's product security and privacy practices. Key advisor and operations lead for TwC leadership. Aligned efforts in Security Engineering, security standards, compliance, and privacy across divisions. Helped "pull together all the assurance work" under TwC into a cohesive strategy. Shifted focus from pure compliance checklists to proactive security assurance. Managed executive communications and drove follow-ups on security reviews. Played pivotal role in TwC's reorganization when it moved into CELA in 2014.
 - **Impact**: Influenced SDL and internal security governance. TwC delivered SDL requirements integration and incident response improvements. Scott Charney commended David's contributions. By 2014, TwC's functions were being woven into the new Cloud & AI Security organization.
 
-### Microsoft — Building the "Liquid" Platform — 2015–Present
+### Microsoft — Building the "Liquid" Platform — 2015–2025
 
-#### Principal Engineering Manager / Senior Director, Assurance Engineering (2015–2023)
-- **Title**: Principal Engineering Manager (later Senior Director-level)
-- **Org**: CISO organization, later SIGMA (Standards, Insights, Governance, Monitoring & Assurance)
+#### Senior Director Engineering, Customer Security and Trust (Apr 2016 – Jul 2021)
+- **Title**: Senior Director Engineering, Customer Security and Trust (CST org)
 - **Project**: Liquid — Microsoft's internal platform for continuous security assurance and compliance
-- **Details**: Conceived and founded the effort around 2015. Assembled a Deep Engineering team. Automated the SDL and other compliance processes. Drove architecture and implementation of Liquid's services: automated policy scanners, code compliance pipelines, unified dashboard for security standards adherence. Integrated Liquid tooling with Azure DevOps across the company for real-time compliance checks (replacing yearly audits). Co-led incubation of CodeQL Central — a scalable code analysis service for security vulnerabilities. Established unified "Security Bugs S360 KPI" to track vulnerabilities across 1,200+ code repositories and ~18,000 services.
-- **Team**: 20+ person engineering team. In 2018, security leadership allocated 11 new FTE headcount to expand due to platform's success.
-- **Impact**: Liquid became core of Microsoft's Continuous SDL program. Automated compliance for 8,000+ services. Shifted from manual attestations to data-driven continuous monitoring. Manager wrote: "Liquid anchors the company-wide continuous SDL... shifting processes to automated coverage" and noted David's "incredible impact" on the security engineering ecosystem. By 2021–2023, fully integrated into SIGMA under the CISO.
+- **Details**: Conceived and founded the Liquid effort around 2015. Assembled a Deep Engineering team. Automated the SDL and other compliance processes. Drove architecture and implementation of Liquid's services: automated policy scanners, code compliance pipelines, unified dashboard for security standards adherence.
+- **Note**: This is the same team/role/mission (leading Liquid Engineering) as the following "Digital Security and Resilience" entry — only the surrounding org name changed. Confirmed by David during the 2026 LinkedIn sync.
 
-#### Principal Security Architect, SIGMA (2024–Present)
+#### Senior Director Engineering, Digital Security and Resilience (Aug 2021 – Dec 2025)
+- **Title**: Senior Director Engineering, Digital Security and Resilience (DSR org)
+- **Org history**: DSR org renamed to the CISO organization in 2024. David's team was renamed "Assurance Engineering" in 2024 (same team, same leadership role), then renamed again to "SIGMA" (Standards, Insights, Governance, Monitoring & Assurance) in 2025 — all while David continued leading the same team in the same Senior Director role.
+- **Project**: Liquid — Microsoft's internal platform for continuous security assurance and compliance
+- **Details**: Integrated Liquid tooling with Azure DevOps across the company for real-time compliance checks (replacing yearly audits). Co-led incubation of CodeQL Central — a scalable code analysis service for security vulnerabilities. Established unified "Security Bugs S360 KPI" to track vulnerabilities across 1,200+ code repositories and ~18,000 services.
+- **Team**: 20+ person engineering team. In 2018, security leadership allocated 11 new FTE headcount to expand due to platform's success.
+- **Impact**: Liquid became core of Microsoft's Continuous SDL program. Automated compliance for 8,000+ services. Shifted from manual attestations to data-driven continuous monitoring. Manager wrote: "Liquid anchors the company-wide continuous SDL... shifting processes to automated coverage" and noted David's "incredible impact" on the security engineering ecosystem.
+
+### Microsoft — SIGMA, Individual Contributor — 2026–Present
+
+#### Principal Security Architect, SIGMA (Jan 2026–Present)
 - **Title**: Principal Security Architect
 - **Org**: SIGMA (CISO)
-- **Transition**: Late 2025, moved from people-management to architecture role (note: the source doc says "2024–Present" for this role, with the transition noted in late 2025)
+- **Transition**: Start of 2026, moved from people-management (Senior Director) to an individual-contributor architecture role. This is the one genuine *role* change in this era — everything before it was an org/team rename with David continuing in the same Senior Director management role. Confirmed by David during the 2026 LinkedIn sync (supersedes the earlier "2024–Present" / "late 2025" note below).
 - **Details**: Remains deeply involved with Liquid platform and broader Standards & Compliance tooling. Mentoring new engineering leads. Reviewing design plans for next-generation security compliance tools. Guiding modernization of Liquid's architecture (AI-driven enhancements, Azure DevOps pipeline integration).
 - **Impact**: CISO leadership praised David's legacy, noting his move to architect role "reflects [his] commitment to continuous growth and deep technical expertise."
 
@@ -275,5 +292,5 @@
 
 - When David provides new facts, add them here FIRST, then update the website to match.
 - If the website says something not in this document, the website may be wrong — verify with David.
-- The Professional Career History source document says NuvoMedia dates are 1998–2001 but the timeline shows 1998–2000 (acquisition date). David provided both — the 2001 date may reflect his continued involvement post-acquisition.
+- The Professional Career History source document says NuvoMedia dates are 1998–2001 but the timeline shows 1998–2000 (acquisition date). David provided both — the 2001 date may reflect his continued involvement post-acquisition. **Resolved (2026 LinkedIn sync): David confirmed 2001 is correct** — LinkedIn updated to 1998–2001, title set to "Director of Software Development; CTO".
 - The source document lists the role transition to Principal Security Architect as "2024–Present" but notes the actual transition happened "in late 2025." Both are from David's document.
