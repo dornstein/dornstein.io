@@ -77,96 +77,198 @@
   window.addEventListener('scroll', updateActiveLink, { passive: true });
   updateActiveLink();
 
-  // --- Timeline filter by tags ---
-  var filterChips = document.querySelectorAll('.filter-chip');
-  var eras = document.querySelectorAll('.timeline-era[data-tags]');
+  // --- Timeline filter (multi-select, driven by skills taxonomy) ---
+  var eras = document.querySelectorAll('.timeline-era');
+  var cards = document.querySelectorAll('.timeline-card[data-skill-slugs]');
   var countNum = document.getElementById('filterCountNum');
   var filterSummary = document.getElementById('filterSummary');
-  var activeFilter = 'all';
+  var groupsEl = document.getElementById('filterGroups');
+  var clearBtn = document.getElementById('filterClearBtn');
 
-  var filterSummaries = {
-    leadership: '<strong>Leadership</strong> — Across four decades, I\'ve led organizations from 3-person startups to 20+ person enterprise teams, served as CEO of my own company, President of an international standards body, Chief of Staff to a Corporate VP, and Director-level engineering manager at Microsoft. I gravitate toward roles where vision, people, and strategy intersect.',
-    architecture: '<strong>Architecture</strong> — I\'ve been the chief architect on multiple large-scale systems: CASE tools, e-book platforms, the XPS document format, and Microsoft\'s Liquid compliance platform. My architectural instincts favor clean separation of concerns, extensibility, and designs that survive contact with real-world scale.',
-    security: '<strong>Security</strong> — For the past 20 years at Microsoft I\'ve been immersed in security assurance, from standing up compliance engineering and managing DOJ consent-decree tooling, to building the Liquid platform that automates the Security Development Lifecycle across 8,000+ services. Security isn\'t just a domain for me — it\'s been the throughline of my Microsoft career.',
-    engineering: '<strong>Engineering</strong> — I\'ve written production code in C++, C#, TypeScript, Smalltalk, Z80 assembly, and more. From building the Rocket eBook firmware to architecting Microsoft\'s Liquid platform, I\'m happiest when I\'m deep in the code — designing systems, reviewing pull requests, and mentoring engineers on craft.',
-    platform: '<strong>Platform</strong> — I\'ve built platforms that other teams build on: the Liquid compliance platform serving all of Microsoft, the Rocket eBook secure publishing system, and Excelerator II\'s CASE tool framework. I understand what it takes to ship reliable, extensible infrastructure that thousands of engineers depend on daily.',
-    startup: '<strong>Startup</strong> — I founded Pragmatica (internet publishing tools, ~5,000 customers), co-founded NuvoMedia (Rocket eBook, acquired for $200M), and built early consulting businesses. These experiences taught me to ship fast, stay scrappy, and make every engineering dollar count.',
-    standards: '<strong>Standards</strong> — I led the Open eBook Forum as President, driving the XML-based format that became EPUB. At Microsoft, I drove XPS document standards and built the compliance frameworks that enforce engineering standards across the company. I believe good standards multiply impact.',
-    publishing: '<strong>Publishing</strong> — Digital publishing has been a recurring theme: from the Rocket eBook (one of the first e-readers) to the Open eBook standard (precursor to EPUB) to Microsoft\'s XPS/Metro document format. I helped shape how the world reads digital content.',
-    patents: '<strong>Patents</strong> — I hold 12+ patents primarily in document formats, digital rights management, and security architecture, earned during my work on XPS, the Rocket eBook DRM system, and CASE tools. These patents reflect real inventions that shipped in products used by millions.',
-    compliance: '<strong>Compliance</strong> — I built Microsoft\'s compliance engineering function from the ground up — first ensuring DOJ consent-decree adherence with tools like APIScan, then creating the Liquid platform to automate SDL compliance continuously across every Microsoft service. I\'ve managed compliance programs with $10M+ annual budgets.',
-    'm-and-a': '<strong>Mergers &amp; Acquisitions</strong> — I\'ve been through significant M&amp;A from multiple angles: NuvoMedia\'s $200M acquisition by Gemstar (as CTO), INTERSOLV\'s merger with Micro Focus creating a $500M entity (as Director), and Access Technology\'s absorption into DCA. I understand due diligence, integration, and what happens after the deal closes.',
-    ai: '<strong>AI-Native Engineering</strong> — My current project, Indra, is an AI-first app platform I\'m building inside Microsoft\'s CISO organization as its sole human architect — working alongside a crew of eight specialized AI agents, each owning a distinct domain. In parallel, I drove the full Liquid compliance team toward AI-accelerated development practices. This work is proving out what I call the AI-native super-IC model: one experienced architect, a team of AI collaborators, and the throughput of a full engineering organization.'
-  };
+  // Load taxonomy from embedded JSON.
+  var taxonomy = { categories: [] };
+  var taxonomyEl = document.getElementById('skills-taxonomy');
+  if (taxonomyEl) {
+    try { taxonomy = JSON.parse(taxonomyEl.textContent); } catch (e) { /* ignore */ }
+  }
 
-  function applyFilter(tag) {
-    activeFilter = tag;
+  var categoryBySlug = {};
+  taxonomy.categories.forEach(function (c) { categoryBySlug[c.slug] = c; });
+
+  // Compute which skills are actually used on cards so we can hide empty ones.
+  var usedSkills = new Set();
+  var usedCategories = new Set();
+  cards.forEach(function (card) {
+    (card.getAttribute('data-skill-slugs') || '').split(/\s+/).forEach(function (s) {
+      if (s) usedSkills.add(s);
+    });
+    (card.getAttribute('data-skill-cat-slugs') || '').split(/\s+/).forEach(function (s) {
+      if (s) usedCategories.add(s);
+    });
+  });
+
+  // Selection state.
+  var selectedCategories = new Set();
+  var selectedSkills = new Set();
+
+  function renderGroups() {
+    if (!groupsEl) return;
+    groupsEl.innerHTML = '';
+    taxonomy.categories.forEach(function (cat) {
+      if (!usedCategories.has(cat.slug)) return;
+      var group = document.createElement('div');
+      group.className = 'filter-group';
+      group.setAttribute('data-cat-slug', cat.slug);
+
+      var head = document.createElement('button');
+      head.type = 'button';
+      head.className = 'filter-chip filter-chip-category';
+      head.setAttribute('data-filter-type', 'category');
+      head.setAttribute('data-filter-slug', cat.slug);
+      head.textContent = cat.name;
+      group.appendChild(head);
+
+      var skillList = document.createElement('div');
+      skillList.className = 'filter-group-skills';
+      cat.skills.forEach(function (s) {
+        if (!usedSkills.has(s.slug)) return;
+        var chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = 'filter-chip filter-chip-skill';
+        chip.setAttribute('data-filter-type', 'skill');
+        chip.setAttribute('data-filter-slug', s.slug);
+        chip.setAttribute('data-cat-slug', cat.slug);
+        chip.textContent = s.name;
+        skillList.appendChild(chip);
+      });
+      group.appendChild(skillList);
+      groupsEl.appendChild(group);
+    });
+  }
+
+  function updateChipStates() {
+    var chips = groupsEl.querySelectorAll('.filter-chip');
+    chips.forEach(function (chip) {
+      var type = chip.getAttribute('data-filter-type');
+      var slug = chip.getAttribute('data-filter-slug');
+      var active = false;
+      if (type === 'category') active = selectedCategories.has(slug);
+      else if (type === 'skill') active = selectedSkills.has(slug);
+      chip.classList.toggle('active', active);
+    });
+    if (clearBtn) clearBtn.hidden = selectedCategories.size === 0 && selectedSkills.size === 0;
+  }
+
+  function cardMatches(card) {
+    if (selectedCategories.size === 0 && selectedSkills.size === 0) return true;
+    var cats = (card.getAttribute('data-skill-cat-slugs') || '').split(/\s+/);
+    for (var i = 0; i < cats.length; i++) {
+      if (cats[i] && selectedCategories.has(cats[i])) return true;
+    }
+    var skills = (card.getAttribute('data-skill-slugs') || '').split(/\s+/);
+    for (var j = 0; j < skills.length; j++) {
+      if (skills[j] && selectedSkills.has(skills[j])) return true;
+    }
+    return false;
+  }
+
+  function applyFilter() {
     var visibleCount = 0;
-
-    // Update chip states
-    filterChips.forEach(function (chip) {
-      chip.classList.toggle('active', chip.getAttribute('data-filter') === tag);
+    cards.forEach(function (card) {
+      var matches = cardMatches(card);
+      card.classList.toggle('card-filtered-out', !matches);
+      if (matches) visibleCount++;
     });
 
     eras.forEach(function (era) {
-      var tags = (era.getAttribute('data-tags') || '').split(' ');
-      var matches = tag === 'all' || tags.indexOf(tag) !== -1;
-
-      if (matches) {
-        // Show
-        era.classList.remove('filtered-out');
-        era.classList.add('filtered-in');
-        visibleCount++;
-        // Remove animation class after it finishes to allow re-triggering
-        era.addEventListener('animationend', function handler() {
-          era.classList.remove('filtered-in');
-          era.removeEventListener('animationend', handler);
-        });
-      } else {
-        // Hide
-        era.classList.remove('filtered-in');
-        era.classList.add('filtered-out');
-      }
+      var visibleCards = era.querySelectorAll('.timeline-card:not(.card-filtered-out)');
+      var show = visibleCards.length > 0;
+      era.classList.toggle('filtered-out', !show);
+      era.classList.toggle('filtered-in', show && (selectedCategories.size > 0 || selectedSkills.size > 0));
     });
 
-    // Update count with bounce
+    updateChipStates();
+
     if (countNum) {
       countNum.textContent = visibleCount;
       countNum.classList.add('bounce');
-      setTimeout(function () {
-        countNum.classList.remove('bounce');
-      }, 350);
+      setTimeout(function () { countNum.classList.remove('bounce'); }, 350);
     }
 
-    // Handle no-results message
     var existing = document.querySelector('.filter-empty-msg');
     if (existing) existing.remove();
-
     if (visibleCount === 0) {
       var msg = document.createElement('div');
       msg.className = 'filter-empty-msg';
-      msg.innerHTML = '<span class="filter-empty-icon">🔍</span>No roles match this filter.';
+      msg.innerHTML = '<span class="filter-empty-icon">🔍</span>No roles match the selected filters.';
       document.querySelector('.timeline').appendChild(msg);
     }
 
-    // Show/hide filter summary
     if (filterSummary) {
-      if (tag !== 'all' && filterSummaries[tag]) {
-        filterSummary.setAttribute('data-active-filter', tag);
-        filterSummary.innerHTML = '<div class="filter-summary-inner">' + filterSummaries[tag] + '</div>';
-        // Force reflow then add visible class for transition
-        filterSummary.offsetHeight;
-        filterSummary.classList.add('visible');
-      } else {
+      var totalSelected = selectedCategories.size + selectedSkills.size;
+      if (totalSelected === 0) {
         filterSummary.classList.remove('visible');
         setTimeout(function () {
-          if (!filterSummary.classList.contains('visible')) {
-            filterSummary.innerHTML = '';
-          }
+          if (!filterSummary.classList.contains('visible')) filterSummary.innerHTML = '';
         }, 400);
+      } else {
+        var parts = [];
+        selectedCategories.forEach(function (slug) {
+          var c = categoryBySlug[slug];
+          parts.push('<span class="filter-summary-tag filter-summary-tag-cat">' + (c ? c.name : slug) + '</span>');
+        });
+        selectedSkills.forEach(function (slug) {
+          var name = slug;
+          for (var i = 0; i < taxonomy.categories.length; i++) {
+            var found = taxonomy.categories[i].skills.find(function (s) { return s.slug === slug; });
+            if (found) { name = found.name; break; }
+          }
+          parts.push('<span class="filter-summary-tag">' + name + '</span>');
+        });
+        var noun = visibleCount === 1 ? 'role' : 'roles';
+        filterSummary.innerHTML = '<div class="filter-summary-inner"><strong>' + visibleCount + '</strong> ' + noun + ' match: ' + parts.join(' ') + '</div>';
+        filterSummary.offsetHeight;
+        filterSummary.classList.add('visible');
       }
     }
   }
+
+  function toggleSelection(type, slug) {
+    var set = type === 'category' ? selectedCategories : selectedSkills;
+    if (set.has(slug)) set.delete(slug);
+    else set.add(slug);
+    applyFilter();
+  }
+
+  function clearAll() {
+    selectedCategories.clear();
+    selectedSkills.clear();
+    applyFilter();
+  }
+
+  function handleChipClick(e) {
+    var chip = e.target.closest('.filter-chip');
+    if (!chip || !groupsEl.contains(chip)) return;
+
+    var ripple = document.createElement('span');
+    ripple.className = 'ripple';
+    var rect = chip.getBoundingClientRect();
+    ripple.style.left = (e.clientX - rect.left - 20) + 'px';
+    ripple.style.top = (e.clientY - rect.top - 20) + 'px';
+    chip.appendChild(ripple);
+    setTimeout(function () { ripple.remove(); }, 500);
+
+    var type = chip.getAttribute('data-filter-type');
+    var slug = chip.getAttribute('data-filter-slug');
+    toggleSelection(type, slug);
+  }
+
+  if (groupsEl) {
+    renderGroups();
+    groupsEl.addEventListener('click', handleChipClick);
+  }
+  if (clearBtn) clearBtn.addEventListener('click', clearAll);
+  applyFilter();
 
   // --- Scroll-reveal for value cards ---
   var revealEls = document.querySelectorAll('.value-card, .value-cta');
@@ -186,23 +288,8 @@
     });
   }
 
-  // Chip click handler with ripple effect
-  filterChips.forEach(function (chip) {
-    chip.addEventListener('click', function (e) {
-      var tag = chip.getAttribute('data-filter');
-
-      // Create ripple
-      var ripple = document.createElement('span');
-      ripple.className = 'ripple';
-      var rect = chip.getBoundingClientRect();
-      ripple.style.left = (e.clientX - rect.left - 20) + 'px';
-      ripple.style.top = (e.clientY - rect.top - 20) + 'px';
-      chip.appendChild(ripple);
-      setTimeout(function () { ripple.remove(); }, 500);
-
-      applyFilter(tag);
-    });
-  });
+  // Chip click handling is wired above via delegated listeners on
+  // #filterCategoryChips and #filterSkillChips; nothing to do here.
 
   // --- Testimonial Carousel ---
   (function initCarousel() {

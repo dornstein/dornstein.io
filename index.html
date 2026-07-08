@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>David Ornstein</title>
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=6">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
@@ -177,90 +177,16 @@
       <!-- Filter bar -->
       <div class="filter-bar" id="filterBar">
         <div class="filter-bar-inner">
-          <span class="filter-label">Filter by:</span>
-          <div class="filter-chips" id="filterChips">
-            <button class="filter-chip active" data-filter="all">
-              <span class="filter-chip-icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="12" height="12" rx="2"/><path d="M5 8h6"/></svg>
-              </span>
-              All
-            </button>
-            <button class="filter-chip" data-filter="leadership">
-              <span class="filter-chip-icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2v4M6 4h4M4 8h8l-1 6H5L4 8z"/></svg>
-              </span>
-              Leadership
-            </button>
-            <button class="filter-chip" data-filter="architecture">
-              <span class="filter-chip-icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 14h12M4 14V8l4-4 4 4v6"/><rect x="6" y="10" width="4" height="4"/></svg>
-              </span>
-              Architecture
-            </button>
-            <button class="filter-chip" data-filter="security">
-              <span class="filter-chip-icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 1.5L2 4v4c0 3.5 2.5 6.2 6 7 3.5-.8 6-3.5 6-7V4L8 1.5z"/></svg>
-              </span>
-              Security
-            </button>
-            <button class="filter-chip" data-filter="engineering">
-              <span class="filter-chip-icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 3l-3 5 3 5M11 3l3 5-3 5M9 2l-2 12"/></svg>
-              </span>
-              Engineering
-            </button>
-            <button class="filter-chip" data-filter="platform">
-              <span class="filter-chip-icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="4" width="14" height="8" rx="1"/><path d="M4 8h8M8 6v4"/></svg>
-              </span>
-              Platform
-            </button>
-            <button class="filter-chip" data-filter="startup">
-              <span class="filter-chip-icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 2L4 6l4 2 4-2L8 2zM4 6v5l4 3 4-3V6"/></svg>
-              </span>
-              Startup
-            </button>
-            <button class="filter-chip" data-filter="standards">
-              <span class="filter-chip-icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 2h8v12H4zM6 5h4M6 8h4M6 11h2"/></svg>
-              </span>
-              Standards
-            </button>
-            <button class="filter-chip" data-filter="publishing">
-              <span class="filter-chip-icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 2h5a1 1 0 011 1v10a1 1 0 01-1 1H2zM14 2H9a1 1 0 00-1 1v10a1 1 0 001 1h5"/></svg>
-              </span>
-              Publishing
-            </button>
-            <button class="filter-chip" data-filter="patents">
-              <span class="filter-chip-icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="6" r="4"/><path d="M6 10v4M10 10v4M6 12h4"/></svg>
-              </span>
-              Patents
-            </button>
-            <button class="filter-chip" data-filter="compliance">
-              <span class="filter-chip-icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="1" width="10" height="14" rx="1"/><path d="M6 5l1.5 1.5L10 4M6 9h4M6 12h3"/></svg>
-              </span>
-              Compliance
-            </button>
-            <button class="filter-chip" data-filter="m-and-a">
-              <span class="filter-chip-icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5" cy="8" r="3"/><circle cx="11" cy="8" r="3"/></svg>
-              </span>
-              M&amp;A
-            </button>
-            <button class="filter-chip" data-filter="ai">
-              <span class="filter-chip-icon">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="3.5" cy="8" r="1.5"/><circle cx="12.5" cy="4" r="1.5"/><circle cx="12.5" cy="12" r="1.5"/><circle cx="8" cy="6.5" r="1.5"/><circle cx="8" cy="11" r="1.5"/><line x1="5" y1="8" x2="6.5" y2="7.2"/><line x1="5" y1="8" x2="6.5" y2="10.5"/><line x1="9.5" y1="6.5" x2="11" y2="5"/><line x1="9.5" y1="10.5" x2="11" y2="11.5"/><line x1="8" y1="8" x2="8" y2="9.5"/></svg>
-              </span>
-              AI
-            </button>
+          <div class="filter-bar-header">
+            <span class="filter-label">Filter by skill:</span>
+            <button class="filter-clear" id="filterClearBtn" type="button" hidden>Clear</button>
+            <div class="filter-count" id="filterCount">
+              <span class="filter-count-num" id="filterCountNum">21</span>
+              <span class="filter-count-label">roles shown</span>
+            </div>
           </div>
-          <div class="filter-count" id="filterCount">
-            <span class="filter-count-num" id="filterCountNum">13</span>
-            <span class="filter-count-label">roles shown</span>
+          <div class="filter-groups" id="filterGroups">
+            <!-- Populated from #skills-taxonomy JSON on load. -->
           </div>
         </div>
       </div>
@@ -280,7 +206,7 @@
           <p class="timeline-era-summary">Two decades leading security assurance, compliance engineering, and platform development at the heart of Microsoft's security organization.</p>
           <div class="timeline-cards">
 
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="ai-native-software-engineering ai-harness-engineering security-architecture complex-systems-architecture platform-engineering people-development-coaching technical-strategy net-framework-asp-net c-net typescript-javascript sql relational-databases windows node-js react azure-azure-devops protocol-design interoperability engineering-leadership cross-functional-team-leadership static-code-analysis cloud-security secure-development-lifecycle-sdl" data-skill-cat-slugs="ai-native-development security-compliance architecture-systems leadership-strategy platforms-frameworks-tools languages standards-intellectual-property">
               <div class="timeline-card-header">
                 <h4><span class="term" data-term="indra">Indra</span> &mdash; AI-First Security App Platform</h4>
                 <span class="timeline-card-dates">2025 &ndash; Present (1 yr)</span>
@@ -289,9 +215,18 @@
               <p>Conceived and built <span class="term" data-term="indra">Indra</span>, an AI-first app platform inside Microsoft&rsquo;s CISO organization. Indra solves a fundamental problem: security knowledge across dozens of CISO domains is fragmented across dashboards, Kusto queries, and engineers&rsquo; heads &mdash; inaccessible to leaders who need a cross-domain view, and invisible to AI. Indra gives <span class="term" data-term="sigma">SIGMA</span> engineers the building blocks to turn their security expertise into tools the whole organization can use, and gives deputy CISOs a unified view of posture across verticals.</p>
               <p>Lead Indra as its sole human architect, working daily alongside a team of eight specialized AI agents built as GitHub Copilot custom agents &mdash; each owning a distinct domain: engineering lifecycle, strategy, security review, narrative, builder advocacy, live demos, and editorial. The platform provides unified security reporting dashboards, a natural-language AI agent over security data, Kusto query integration under real user identity, Power BI embedding with pass-through permissions, an app hosting ecosystem for SIGMA engineers, and a full CI/CD pipeline with multi-environment promotion.</p>
               <p class="timeline-card-outcome">Deployed across dev, pre-production, and production environments. Unified Security Reporting dashboards ready for dCISO adoption. Proving the AI-native super-IC model: one architect sustaining a full platform ecosystem &mdash; architecture, code, documentation, strategy, and operations &mdash; with the throughput of a full engineering org.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="ai-native-development">AI-Native Development</span><div class="skill-badge-group-chips"><span class="skill-badge">AI-Native Software Engineering</span><span class="skill-badge">AI Harness Engineering</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="security-compliance">Security &amp; Compliance</span><div class="skill-badge-group-chips"><span class="skill-badge">Security Architecture</span><span class="skill-badge">Static Code Analysis</span><span class="skill-badge">Cloud Security</span><span class="skill-badge">Secure Development Lifecycle (SDL)</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="architecture-systems">Architecture &amp; Systems</span><div class="skill-badge-group-chips"><span class="skill-badge">Complex Systems Architecture</span><span class="skill-badge">Platform Engineering</span><span class="skill-badge">Interoperability</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">People Development &amp; Coaching</span><span class="skill-badge">Technical Strategy</span><span class="skill-badge">Engineering Leadership</span><span class="skill-badge">Cross-Functional Team Leadership</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="standards-intellectual-property">Standards &amp; Intellectual Property</span><div class="skill-badge-group-chips"><span class="skill-badge">Protocol Design</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">C# / .NET</span><span class="skill-badge">TypeScript / JavaScript</span><span class="skill-badge">SQL</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="platforms-frameworks-tools">Platforms, Frameworks &amp; Tools</span><div class="skill-badge-group-chips"><span class="skill-badge">.NET Framework / ASP.NET</span><span class="skill-badge">Relational Databases</span><span class="skill-badge">Windows</span><span class="skill-badge">Node.js</span><span class="skill-badge">React</span><span class="skill-badge">Azure / Azure DevOps</span></div></div>
+              </div>
             </div>
 
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="security-architecture secure-development-lifecycle-sdl compliance-automation-continuous-compliance platform-engineering devsecops engineering-leadership complex-systems-architecture c-net net-framework-asp-net azure-azure-devops github-codeql windows relational-databases sql typescript-javascript people-development-coaching technical-strategy interoperability static-code-analysis continuous-integration cloud-security" data-skill-cat-slugs="security-compliance architecture-systems leadership-strategy languages platforms-frameworks-tools">
               <div class="timeline-card-header">
                 <h4><span class="term" data-term="liquid">Liquid</span> Compliance Platform</h4>
                 <span class="timeline-card-dates">2015 &ndash; 2025 (10 yrs)</span>
@@ -299,9 +234,16 @@
               <p class="timeline-card-role">Principal Engineering Manager / Senior Director &middot; Assurance Engineering</p>
               <p>Conceived and led <span class="term" data-term="liquid">Liquid</span>, Microsoft's internal platform for continuous security assurance. Assembled a 20+ person Deep Engineering team to automate the <span class="term" data-term="sdl">SDL</span> and compliance processes. Architected automated policy scanners, code compliance pipelines, and a unified dashboard. Co-incubated <span class="term" data-term="codeql">CodeQL Central</span> for company-wide code analysis. Established the unified Security Bugs S360 KPI tracking vulnerabilities across 1,200+ repos and ~18,000 services. In parallel, drove the full Liquid team &mdash; PMs and engineers alike &mdash; toward AI-accelerated development practices, demonstrating AI-augmented workflows for design, coding, and analysis that became a model for the broader organization.</p>
               <p class="timeline-card-outcome">Automated SDL compliance for 8,000+ services company-wide. Transformed Microsoft's assurance from manual attestations to data-driven continuous monitoring. Executive acclaim for "incredible impact" on the security engineering ecosystem.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="security-compliance">Security &amp; Compliance</span><div class="skill-badge-group-chips"><span class="skill-badge">Security Architecture</span><span class="skill-badge">Secure Development Lifecycle (SDL)</span><span class="skill-badge">Compliance Automation &amp; Continuous Compliance</span><span class="skill-badge">DevSecOps</span><span class="skill-badge">Static Code Analysis</span><span class="skill-badge">Cloud Security</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="architecture-systems">Architecture &amp; Systems</span><div class="skill-badge-group-chips"><span class="skill-badge">Platform Engineering</span><span class="skill-badge">Complex Systems Architecture</span><span class="skill-badge">Interoperability</span><span class="skill-badge">Continuous Integration</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Engineering Leadership</span><span class="skill-badge">People Development &amp; Coaching</span><span class="skill-badge">Technical Strategy</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">C# / .NET</span><span class="skill-badge">SQL</span><span class="skill-badge">TypeScript / JavaScript</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="platforms-frameworks-tools">Platforms, Frameworks &amp; Tools</span><div class="skill-badge-group-chips"><span class="skill-badge">.NET Framework / ASP.NET</span><span class="skill-badge">Azure / Azure DevOps</span><span class="skill-badge">GitHub / CodeQL</span><span class="skill-badge">Windows</span><span class="skill-badge">Relational Databases</span></div></div>
+              </div>
             </div>
 
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="executive-communication cross-functional-team-leadership technical-strategy program-product-management security-architecture secure-development-lifecycle-sdl engineering-leadership people-development-coaching cloud-security threat-modeling public-key-cryptography c-net net-framework-asp-net azure-azure-devops relational-databases sql" data-skill-cat-slugs="leadership-strategy security-compliance languages platforms-frameworks-tools">
               <div class="timeline-card-header">
                 <h4>Security Strategy &amp; Assurance</h4>
                 <span class="timeline-card-dates">2008 &ndash; 2014 (6 yrs)</span>
@@ -309,9 +251,15 @@
               <p class="timeline-card-role">Chief of Staff &middot; <span class="term" data-term="twc">Trustworthy Computing</span> (TwC)</p>
               <p>Coordinated security initiatives across Microsoft as right-hand to CVP Scott Charney. Unified assurance programs spanning security reviews, <span class="term" data-term="sdl">SDL</span>, and privacy across divisions. Shifted focus from pure compliance checklists to proactive security assurance. Managed executive communications and security review follow-ups. Oversaw TwC's reorganization into CELA in 2014.</p>
               <p class="timeline-card-outcome">Drove SDL requirements integration and incident response improvements. Elevated Microsoft's overall security posture and helped evolve the culture from compliance to secure-by-design.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="security-compliance">Security &amp; Compliance</span><div class="skill-badge-group-chips"><span class="skill-badge">Security Architecture</span><span class="skill-badge">Secure Development Lifecycle (SDL)</span><span class="skill-badge">Cloud Security</span><span class="skill-badge">Threat Modeling</span><span class="skill-badge">Public Key Cryptography</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Executive Communication</span><span class="skill-badge">Cross-Functional Team Leadership</span><span class="skill-badge">Technical Strategy</span><span class="skill-badge">Program &amp; Product Management</span><span class="skill-badge">Engineering Leadership</span><span class="skill-badge">People Development &amp; Coaching</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">C# / .NET</span><span class="skill-badge">SQL</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="platforms-frameworks-tools">Platforms, Frameworks &amp; Tools</span><div class="skill-badge-group-chips"><span class="skill-badge">.NET Framework / ASP.NET</span><span class="skill-badge">Azure / Azure DevOps</span><span class="skill-badge">Relational Databases</span></div></div>
+              </div>
             </div>
 
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="compliance-automation-continuous-compliance engineering-leadership executive-communication program-product-management technical-strategy platform-engineering distributed-systems complex-systems-architecture protocol-design c-net relational-databases windows net-framework-asp-net" data-skill-cat-slugs="security-compliance leadership-strategy architecture-systems standards-intellectual-property languages platforms-frameworks-tools">
               <div class="timeline-card-header">
                 <h4>Engineering Policy Compliance</h4>
                 <span class="timeline-card-dates">2004 &ndash; 2008 (4 yrs)</span>
@@ -319,6 +267,14 @@
               <p class="timeline-card-role">Director, Compliance Engineering &middot; Engineering Excellence</p>
               <p>Ensured engineering teams complied with mandatory policies and <span class="term" data-term="consent-decree">DOJ antitrust consent decree</span> requirements. Developed <span class="term" data-term="apiscan">APIscan</span> and <span class="term" data-term="checkpoint-express">CheckPoint Express</span> to verify API compliance. Established company-wide governance processes for policy design, tracking, enforcement, and training. Managed program budget exceeding $10M annually.</p>
               <p class="timeline-card-outcome">Achieved full compliance with DOJ consent decree with no violations. Compliance frameworks became standard engineering workflow across the company.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="security-compliance">Security &amp; Compliance</span><div class="skill-badge-group-chips"><span class="skill-badge">Compliance Automation &amp; Continuous Compliance</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="architecture-systems">Architecture &amp; Systems</span><div class="skill-badge-group-chips"><span class="skill-badge">Platform Engineering</span><span class="skill-badge">Distributed Systems</span><span class="skill-badge">Complex Systems Architecture</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Engineering Leadership</span><span class="skill-badge">Executive Communication</span><span class="skill-badge">Program &amp; Product Management</span><span class="skill-badge">Technical Strategy</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="standards-intellectual-property">Standards &amp; Intellectual Property</span><div class="skill-badge-group-chips"><span class="skill-badge">Protocol Design</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">C# / .NET</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="platforms-frameworks-tools">Platforms, Frameworks &amp; Tools</span><div class="skill-badge-group-chips"><span class="skill-badge">Relational Databases</span><span class="skill-badge">Windows</span><span class="skill-badge">.NET Framework / ASP.NET</span></div></div>
+              </div>
             </div>
 
           </div>
@@ -334,7 +290,7 @@
           <p class="timeline-era-summary">Document technologies, digital publishing, and the cross-company format initiative that shaped Office and Windows.</p>
           <div class="timeline-cards">
 
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="standards-development file-format-design patents-intellectual-property xml-sgml cross-functional-team-leadership program-product-management complex-systems-architecture digital-rights-management-drm api-design interoperability scalability windows technical-strategy c-c c-net net-framework-asp-net" data-skill-cat-slugs="standards-intellectual-property languages leadership-strategy architecture-systems security-compliance platforms-frameworks-tools">
               <div class="timeline-card-header">
                 <h4><span class="term" data-term="metro">&ldquo;Metro&rdquo;</span> Document Format (XPS)</h4>
                 <span class="timeline-card-dates">2001 &ndash; 2004 (3 yrs)</span>
@@ -343,9 +299,17 @@
               <img class="timeline-img" src="media/office2007ribbon.png" alt="Office 2007 Ribbon interface — built on the Metro/Open XML format" loading="lazy">
               <p>Led the cross-team initiative to develop the XML Paper Specification &mdash; coordinating between Windows and Office teams. Architected and evangelized the format, championed document standards bridging internal and external efforts. Built and led the team that shipped <span class="term" data-term="drm">Rights Management</span> Add-on for IE. Filed 12+ patent applications as primary inventor.</p>
               <p class="timeline-card-outcome">Shipped XPS as a core document format in Windows and Office 2007. Strengthened Microsoft's IP portfolio with 12+ granted patents for document and security innovations.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="security-compliance">Security &amp; Compliance</span><div class="skill-badge-group-chips"><span class="skill-badge">Digital Rights Management (DRM)</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="architecture-systems">Architecture &amp; Systems</span><div class="skill-badge-group-chips"><span class="skill-badge">Complex Systems Architecture</span><span class="skill-badge">API Design</span><span class="skill-badge">Interoperability</span><span class="skill-badge">Scalability</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Cross-Functional Team Leadership</span><span class="skill-badge">Program &amp; Product Management</span><span class="skill-badge">Technical Strategy</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="standards-intellectual-property">Standards &amp; Intellectual Property</span><div class="skill-badge-group-chips"><span class="skill-badge">Standards Development</span><span class="skill-badge">File Format Design</span><span class="skill-badge">Patents &amp; Intellectual Property</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">XML / SGML</span><span class="skill-badge">C / C++</span><span class="skill-badge">C# / .NET</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="platforms-frameworks-tools">Platforms, Frameworks &amp; Tools</span><div class="skill-badge-group-chips"><span class="skill-badge">Windows</span><span class="skill-badge">.NET Framework / ASP.NET</span></div></div>
+              </div>
             </div>
 
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="c-net net-framework-asp-net digital-rights-management-drm complex-systems-architecture file-format-design platform-engineering xml-sgml windows standards-development patents-intellectual-property technical-strategy interoperability" data-skill-cat-slugs="languages platforms-frameworks-tools security-compliance architecture-systems standards-intellectual-property leadership-strategy">
               <div class="timeline-card-header">
                 <h4>eBooks &amp; <span class="term" data-term="flexwiki">FlexWiki</span></h4>
                 <span class="timeline-card-dates">1999 &ndash; 2001 (2 yrs)</span>
@@ -353,6 +317,14 @@
               <p class="timeline-card-role">Architect &middot; Emerging Technologies</p>
               <p>Applied startup e-book expertise to Microsoft's digital reading initiatives, contributing to Microsoft Reader architecture and <span class="term" data-term="drm">DRM</span> for e-books. Built <span class="term" data-term="flexwiki">FlexWiki</span>, a wiki engine in <span class="term" data-term="csharp">C#</span>/<span class="term" data-term="dotnet">.NET</span> that became one of the most widely used internal collaboration tools.</p>
               <p class="timeline-card-outcome">FlexWiki grew to 1,000+ instances inside Microsoft, fostering knowledge sharing years before tools like Confluence. Later released as open source.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="security-compliance">Security &amp; Compliance</span><div class="skill-badge-group-chips"><span class="skill-badge">Digital Rights Management (DRM)</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="architecture-systems">Architecture &amp; Systems</span><div class="skill-badge-group-chips"><span class="skill-badge">Complex Systems Architecture</span><span class="skill-badge">Platform Engineering</span><span class="skill-badge">Interoperability</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Technical Strategy</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="standards-intellectual-property">Standards &amp; Intellectual Property</span><div class="skill-badge-group-chips"><span class="skill-badge">File Format Design</span><span class="skill-badge">Standards Development</span><span class="skill-badge">Patents &amp; Intellectual Property</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">C# / .NET</span><span class="skill-badge">XML / SGML</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="platforms-frameworks-tools">Platforms, Frameworks &amp; Tools</span><div class="skill-badge-group-chips"><span class="skill-badge">.NET Framework / ASP.NET</span><span class="skill-badge">Windows</span></div></div>
+              </div>
             </div>
 
           </div>
@@ -366,7 +338,7 @@
             <span class="timeline-era-dates">2000 &ndash; 2003 (3 yrs)</span>
           </div>
           <div class="timeline-cards">
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="standards-development xml-sgml file-format-design digital-rights-management-drm executive-communication technical-strategy engineering-leadership" data-skill-cat-slugs="standards-intellectual-property languages security-compliance leadership-strategy">
               <div class="timeline-card-header">
                 <h4>Open eBook Standardization</h4>
                 <span class="timeline-card-dates">2000 &ndash; 2003 (3 yrs)</span>
@@ -374,6 +346,12 @@
               <p class="timeline-card-role">President &amp; Board Member</p>
               <p>Led a 100+ member international trade and standards organization. Facilitated collaboration among major tech companies and publishers to create <span class="term" data-term="oeb-pub-structure">Open eBook Publication Structure</span> &mdash; the XML-based standard for eBook content. Defined strategic plans, negotiated organizational partnerships, and managed frameworks for electronic publishing and <span class="term" data-term="drm">digital rights management</span>.</p>
               <p class="timeline-card-outcome">Published the first open eBook format specifications, laying groundwork for EPUB &mdash; now the dominant open standard for eBooks worldwide.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="security-compliance">Security &amp; Compliance</span><div class="skill-badge-group-chips"><span class="skill-badge">Digital Rights Management (DRM)</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Executive Communication</span><span class="skill-badge">Technical Strategy</span><span class="skill-badge">Engineering Leadership</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="standards-intellectual-property">Standards &amp; Intellectual Property</span><div class="skill-badge-group-chips"><span class="skill-badge">Standards Development</span><span class="skill-badge">File Format Design</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">XML / SGML</span></div></div>
+              </div>
             </div>
           </div>
         </div>
@@ -388,7 +366,7 @@
           <p class="timeline-era-summary">The company that invented the <span class="term" data-term="rocket-ebook">Rocket eBook</span> &mdash; one of the world's first dedicated e-readers, nearly a decade before the Kindle.</p>
           <div class="timeline-cards">
 
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="startup-founding-fundraising engineering-leadership digital-rights-management-drm public-key-cryptography complex-systems-architecture file-format-design technical-strategy c-c patents-intellectual-property standards-development xml-sgml windows java" data-skill-cat-slugs="leadership-strategy security-compliance architecture-systems standards-intellectual-property languages platforms-frameworks-tools">
               <div class="timeline-card-header">
                 <h4><span class="term" data-term="rocket-ebook">Rocket eBook</span> &amp; Platform</h4>
                 <span class="timeline-card-dates">1998 &ndash; 2001 (3 yrs)</span>
@@ -396,14 +374,29 @@
               <p class="timeline-card-role">Director of Software Development &rarr; Chief Technical Officer</p>
               <p>Led engineering for the Rocket eBook device software, secure content distribution system, and desktop software. Defined technical strategy and product roadmap. Built the development team and methodology. Promoted to CTO after successful product launch.</p>
               <p class="timeline-card-outcome">Launched the Rocket eBook in 1998 &mdash; a 22-ounce handheld holding ~55,000 pages. NuvoMedia acquired by Gemstar in 2000 for $200M, validating the e-book market.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="security-compliance">Security &amp; Compliance</span><div class="skill-badge-group-chips"><span class="skill-badge">Digital Rights Management (DRM)</span><span class="skill-badge">Public Key Cryptography</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="architecture-systems">Architecture &amp; Systems</span><div class="skill-badge-group-chips"><span class="skill-badge">Complex Systems Architecture</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Startup Founding &amp; Fundraising</span><span class="skill-badge">Engineering Leadership</span><span class="skill-badge">Technical Strategy</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="standards-intellectual-property">Standards &amp; Intellectual Property</span><div class="skill-badge-group-chips"><span class="skill-badge">File Format Design</span><span class="skill-badge">Patents &amp; Intellectual Property</span><span class="skill-badge">Standards Development</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">C / C++</span><span class="skill-badge">XML / SGML</span><span class="skill-badge">Java</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="platforms-frameworks-tools">Platforms, Frameworks &amp; Tools</span><div class="skill-badge-group-chips"><span class="skill-badge">Windows</span></div></div>
+              </div>
             </div>
 
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="standards-development xml-sgml cross-functional-team-leadership technical-strategy patents-intellectual-property engineering-leadership program-product-management c-c java sql object-databases-gemstone relational-databases windows" data-skill-cat-slugs="standards-intellectual-property languages leadership-strategy platforms-frameworks-tools">
               <div class="timeline-card-header">
                 <h4><span class="term" data-term="ebooknet">eBookNet.com</span> &amp; Standards</h4>
               </div>
               <p class="timeline-card-role">CTO</p>
               <p>Led cross-organization team of 12 who developed and launched <span class="term" data-term="ebooknet">eBookNet.com</span>, described at launch as the world's largest eBook portal. Co-authored drafts of the <span class="term" data-term="oeb-pub-structure">Open eBook Publication Structure</span> standard. Managed IP portfolio.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Cross-Functional Team Leadership</span><span class="skill-badge">Technical Strategy</span><span class="skill-badge">Engineering Leadership</span><span class="skill-badge">Program &amp; Product Management</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="standards-intellectual-property">Standards &amp; Intellectual Property</span><div class="skill-badge-group-chips"><span class="skill-badge">Standards Development</span><span class="skill-badge">Patents &amp; Intellectual Property</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">XML / SGML</span><span class="skill-badge">C / C++</span><span class="skill-badge">Java</span><span class="skill-badge">SQL</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="platforms-frameworks-tools">Platforms, Frameworks &amp; Tools</span><div class="skill-badge-group-chips"><span class="skill-badge">Relational Databases</span><span class="skill-badge">Windows</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="other">Other</span><div class="skill-badge-group-chips"><span class="skill-badge">Object Databases (GemStone)</span></div></div>
+              </div>
             </div>
 
           </div>
@@ -417,7 +410,7 @@
             <span class="timeline-era-dates">1995 &ndash; 1998 (3 yrs)</span>
           </div>
           <div class="timeline-cards">
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="startup-founding-fundraising engineering-leadership c-c xml-sgml complex-systems-architecture executive-communication technical-strategy program-product-management interoperability windows" data-skill-cat-slugs="leadership-strategy languages architecture-systems platforms-frameworks-tools">
               <div class="timeline-card-header">
                 <h4>Internet Publishing Tools</h4>
                 <span class="timeline-card-dates">1995 &ndash; 1998 (3 yrs)</span>
@@ -425,6 +418,12 @@
               <p class="timeline-card-role">Founder, President &amp; CEO</p>
               <p>Founded and led a web-tools startup building an <span class="term" data-term="object-oriented">object-oriented</span> web programming language with <span class="term" data-term="sgml">SGML</span> syntax (predating <span class="term" data-term="xml">XML</span>). Recruited executive team, secured multiple rounds of <span class="term" data-term="angel-investment">angel investment</span>, and wrote substantial portions of the ~100,000-line C++ codebase.</p>
               <p class="timeline-card-outcome">Grew to 10 employees in addition to consultants and attracted ~5,000 customers. Established reputation as an innovative technology entrepreneur.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="architecture-systems">Architecture &amp; Systems</span><div class="skill-badge-group-chips"><span class="skill-badge">Complex Systems Architecture</span><span class="skill-badge">Interoperability</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Startup Founding &amp; Fundraising</span><span class="skill-badge">Engineering Leadership</span><span class="skill-badge">Executive Communication</span><span class="skill-badge">Technical Strategy</span><span class="skill-badge">Program &amp; Product Management</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">C / C++</span><span class="skill-badge">XML / SGML</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="platforms-frameworks-tools">Platforms, Frameworks &amp; Tools</span><div class="skill-badge-group-chips"><span class="skill-badge">Windows</span></div></div>
+              </div>
             </div>
           </div>
         </div>
@@ -437,11 +436,16 @@
             <span class="timeline-era-dates">1994 &ndash; 1995 (1 yr)</span>
           </div>
           <div class="timeline-cards">
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="smalltalk complex-systems-architecture technical-strategy startup-founding-fundraising platform-engineering api-design interoperability" data-skill-cat-slugs="languages architecture-systems leadership-strategy">
               <div class="timeline-card-header">
                 <h4><span class="term" data-term="object-oriented">Object-Oriented</span> Technology Consulting</h4>
               </div>
               <p>Consulting in OO technology, primarily <span class="term" data-term="smalltalk">Smalltalk</span>. Clients included OOCL (international shipping) and Lockheed. Services included mentoring, <span class="term" data-term="design-patterns">design pattern</span> coaching, and hands-on implementation.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="architecture-systems">Architecture &amp; Systems</span><div class="skill-badge-group-chips"><span class="skill-badge">Complex Systems Architecture</span><span class="skill-badge">Platform Engineering</span><span class="skill-badge">API Design</span><span class="skill-badge">Interoperability</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Technical Strategy</span><span class="skill-badge">Startup Founding &amp; Fundraising</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">Smalltalk</span></div></div>
+              </div>
             </div>
           </div>
         </div>
@@ -454,13 +458,20 @@
             <span class="timeline-era-dates">1993 &ndash; 1994 (1 yr)</span>
           </div>
           <div class="timeline-cards">
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="smalltalk object-databases-gemstone complex-systems-architecture api-design entity-relationship-modeling technical-strategy" data-skill-cat-slugs="languages architecture-systems standards-intellectual-property leadership-strategy">
               <div class="timeline-card-header">
                 <h4><span class="term" data-term="derivatives-trading">Derivatives Trading</span> Systems</h4>
               </div>
               <p class="timeline-card-role">Member of Technical Staff &middot; Mountain View, CA</p>
               <img class="timeline-img" src="media/visualworks.png" alt="VisualWorks Smalltalk development environment" loading="lazy">
               <p>Architected and built the first versions of LongView's framework-based derivatives trading systems in <span class="term" data-term="visualworks">VisualWorks</span> Smalltalk. Built a direct-manipulation UI with drag-drop, templates, and folders. Designed persistence layer using <span class="term" data-term="gemstone">GemStone</span> object database.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="architecture-systems">Architecture &amp; Systems</span><div class="skill-badge-group-chips"><span class="skill-badge">Complex Systems Architecture</span><span class="skill-badge">API Design</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Technical Strategy</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="standards-intellectual-property">Standards &amp; Intellectual Property</span><div class="skill-badge-group-chips"><span class="skill-badge">Entity-Relationship Modeling</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">Smalltalk</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="other">Other</span><div class="skill-badge-group-chips"><span class="skill-badge">Object Databases (GemStone)</span></div></div>
+              </div>
             </div>
           </div>
         </div>
@@ -475,7 +486,7 @@
           <p class="timeline-era-summary">Six years spanning multiple architecture and leadership roles across CASE tools, standards, and corporate technology.</p>
           <div class="timeline-cards">
 
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="engineering-leadership smalltalk complex-systems-architecture platform-engineering entity-relationship-modeling relational-databases c-c sql api-design technical-strategy people-development-coaching" data-skill-cat-slugs="leadership-strategy languages architecture-systems standards-intellectual-property platforms-frameworks-tools">
               <div class="timeline-card-header">
                 <h4><span class="term" data-term="excelerator">Excelerator II</span> &amp; <span class="term" data-term="os2">OS/2</span> <span class="term" data-term="case">CASE</span> Tools</h4>
                 <span class="timeline-card-dates">1990 &ndash; 1993 (3 yrs)</span>
@@ -483,18 +494,32 @@
               <p class="timeline-card-role">Director of Development &amp; Chief Architect &middot; San Jose, CA</p>
               <img class="timeline-img timeline-img-small" src="media/os2warp-logo.png" alt="OS/2 Warp logo" loading="lazy">
               <p>Led development of Excelerator II, a large OS/2-based CASE tool, and its <span class="term" data-term="lan">LAN</span> repository. Managed a bi-coastal team of 12. Built a pioneering interface between relational databases and <span class="term" data-term="smalltalk">Smalltalk</span>'s world. Created an <span class="term" data-term="entity-relationship">ER data model</span> compiler producing production-grade relational schemas.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="architecture-systems">Architecture &amp; Systems</span><div class="skill-badge-group-chips"><span class="skill-badge">Complex Systems Architecture</span><span class="skill-badge">Platform Engineering</span><span class="skill-badge">API Design</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Engineering Leadership</span><span class="skill-badge">Technical Strategy</span><span class="skill-badge">People Development &amp; Coaching</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="standards-intellectual-property">Standards &amp; Intellectual Property</span><div class="skill-badge-group-chips"><span class="skill-badge">Entity-Relationship Modeling</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">Smalltalk</span><span class="skill-badge">C / C++</span><span class="skill-badge">SQL</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="platforms-frameworks-tools">Platforms, Frameworks &amp; Tools</span><div class="skill-badge-group-chips"><span class="skill-badge">Relational Databases</span></div></div>
+              </div>
             </div>
 
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="technical-strategy complex-systems-architecture interoperability cross-functional-team-leadership smalltalk distributed-systems sql object-databases-gemstone relational-databases" data-skill-cat-slugs="leadership-strategy architecture-systems languages platforms-frameworks-tools">
               <div class="timeline-card-header">
                 <h4>Corporate Technology &amp; M&amp;A</h4>
                 <span class="timeline-card-dates">1989 &ndash; 1990 (1 yr)</span>
               </div>
               <p class="timeline-card-role">Chief Architect, Corporate Technology &middot; Rockville, MD &amp; Santa Clara, CA</p>
               <p>Coordinated technology across INTERSOLV's four development centers. Led technical due diligence for successful acquisitions of Visual Software and Polytron Corp. Built the company's first internet-to-internal email gateway.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="architecture-systems">Architecture &amp; Systems</span><div class="skill-badge-group-chips"><span class="skill-badge">Complex Systems Architecture</span><span class="skill-badge">Interoperability</span><span class="skill-badge">Distributed Systems</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Technical Strategy</span><span class="skill-badge">Cross-Functional Team Leadership</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">Smalltalk</span><span class="skill-badge">SQL</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="platforms-frameworks-tools">Platforms, Frameworks &amp; Tools</span><div class="skill-badge-group-chips"><span class="skill-badge">Relational Databases</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="other">Other</span><div class="skill-badge-group-chips"><span class="skill-badge">Object Databases (GemStone)</span></div></div>
+              </div>
             </div>
 
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="standards-development entity-relationship-modeling protocol-design executive-communication cross-functional-team-leadership smalltalk" data-skill-cat-slugs="standards-intellectual-property leadership-strategy languages">
               <div class="timeline-card-header">
                 <h4><span class="term" data-term="cdif">CDIF</span> Standards Committee</h4>
                 <span class="timeline-card-dates">1988 &ndash; 1991 (3 yrs)</span>
@@ -502,15 +527,25 @@
               <p class="timeline-card-role">Chairman &middot; <span class="term" data-term="ansi">ANSI</span>/<span class="term" data-term="eia">EIA</span> Technical Committee</p>
               <img class="timeline-img" src="media/case-tool.png" alt="A CASE tool — the type of software the CDIF standard was designed to interconnect" loading="lazy">
               <p>Chaired the CASE Data Interchange Format standards committee with ~30 voting members and 500+ on its mailing list. Completed and published the first version of the standard, including a two-volume <span class="term" data-term="entity-relationship">entity-relationship</span> model with over 700 entities and relationships.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Executive Communication</span><span class="skill-badge">Cross-Functional Team Leadership</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="standards-intellectual-property">Standards &amp; Intellectual Property</span><div class="skill-badge-group-chips"><span class="skill-badge">Standards Development</span><span class="skill-badge">Entity-Relationship Modeling</span><span class="skill-badge">Protocol Design</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">Smalltalk</span></div></div>
+              </div>
             </div>
 
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="complex-systems-architecture smalltalk c-c protocol-design api-design" data-skill-cat-slugs="architecture-systems languages standards-intellectual-property">
               <div class="timeline-card-header">
                 <h4>PC Architecture &amp; CRTS</h4>
                 <span class="timeline-card-dates">1987 &ndash; 1989 (2 yrs)</span>
               </div>
               <p class="timeline-card-role">Chief Architect, PC Product Development &middot; Rockville, MD</p>
               <p>Responsible for all PC-related technology. Built <span class="term" data-term="entity-relationship">ER</span> diagramming tools in <span class="term" data-term="smalltalk">Smalltalk</span>. Conceived and implemented CRTS, a 100K+ line set of OS extensions and development tools for DOS. Proposed and built a 20-station <span class="term" data-term="lan">LAN</span> that eventually grew to span 7 states and 2 countries.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="architecture-systems">Architecture &amp; Systems</span><div class="skill-badge-group-chips"><span class="skill-badge">Complex Systems Architecture</span><span class="skill-badge">API Design</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="standards-intellectual-property">Standards &amp; Intellectual Property</span><div class="skill-badge-group-chips"><span class="skill-badge">Protocol Design</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">Smalltalk</span><span class="skill-badge">C / C++</span></div></div>
+              </div>
             </div>
 
           </div>
@@ -524,12 +559,17 @@
             <span class="timeline-era-dates">1986 &ndash; 1987 (1 yr)</span>
           </div>
           <div class="timeline-cards">
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="c-c technical-strategy z80-x86-assembly sql platform-engineering" data-skill-cat-slugs="languages leadership-strategy architecture-systems">
               <div class="timeline-card-header">
                 <h4>Multi-User Software R&amp;D</h4>
               </div>
               <p class="timeline-card-role">Member of Technical Staff &middot; S. Natick, MA</p>
               <p>Developed functional specifications and prototypes for multi-user software products. Led research into text management systems, text databases, and archival systems. Involved in due diligence for multiple acquisitions.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="architecture-systems">Architecture &amp; Systems</span><div class="skill-badge-group-chips"><span class="skill-badge">Platform Engineering</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Technical Strategy</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">C / C++</span><span class="skill-badge">Z80 &amp; x86 Assembly</span><span class="skill-badge">SQL</span></div></div>
+              </div>
             </div>
           </div>
         </div>
@@ -542,12 +582,16 @@
             <span class="timeline-era-dates">1984 &ndash; 1985 (1 yr)</span>
           </div>
           <div class="timeline-cards">
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="program-product-management z80-x86-assembly technical-strategy" data-skill-cat-slugs="leadership-strategy languages">
               <div class="timeline-card-header">
                 <h4>Word Processor OEM &amp; Porting</h4>
               </div>
               <p class="timeline-card-role">Project Manager &middot; E. Hartford, CT</p>
               <p>Managed the OEM/International group for Multimate's word-processing system. Ported the product to the Zenith Z-100 (for a US Air Force contract at the Pentagon) and the HP Portable Plus, making it run from <span class="term" data-term="rom-cartridges">ROM cartridges</span>. Contributed to architectural design for next-generation products.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Program &amp; Product Management</span><span class="skill-badge">Technical Strategy</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">Z80 &amp; x86 Assembly</span></div></div>
+              </div>
             </div>
           </div>
         </div>
@@ -560,13 +604,17 @@
             <span class="timeline-era-dates">1982 &ndash; 1983 (1 yr)</span>
           </div>
           <div class="timeline-cards">
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="z80-x86-assembly platform-engineering" data-skill-cat-slugs="languages architecture-systems">
               <div class="timeline-card-header">
                 <h4><span class="term" data-term="timex-sinclair">Timex/Sinclair 2000</span> Development</h4>
               </div>
               <p class="timeline-card-role">Member of Technical Team &middot; Middlebury, CT</p>
               <img class="timeline-img" src="media/timex-sinclair-1000.jpg" alt="A Timex Sinclair 1000 computer" loading="lazy">
               <p>Worked across hardware and software teams developing the Timex/Sinclair 2000. Designed a <span class="term" data-term="bank-switching">memory bank-switching</span> mechanism and a semi-custom chip to implement it. Authored the complete technical manual for third-party developers. Patented the bank switching memory system.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="architecture-systems">Architecture &amp; Systems</span><div class="skill-badge-group-chips"><span class="skill-badge">Platform Engineering</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">Z80 &amp; x86 Assembly</span></div></div>
+              </div>
             </div>
           </div>
         </div>
@@ -579,12 +627,16 @@
             <span class="timeline-era-dates">1981 &ndash; 1982 (1 yr)</span>
           </div>
           <div class="timeline-cards">
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="startup-founding-fundraising z80-x86-assembly" data-skill-cat-slugs="leadership-strategy languages">
               <div class="timeline-card-header">
                 <h4><span class="term" data-term="sinclair">Sinclair</span> Technical Services</h4>
               </div>
               <p class="timeline-card-role">Founder &amp; President &middot; Newton, MA</p>
               <p>Founded a technical services company for the Sinclair computing community. The only authorized Sinclair technical service center in the US. ~$50K revenue with ~40% pre-tax profit.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Startup Founding &amp; Fundraising</span></div></div>
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">Z80 &amp; x86 Assembly</span></div></div>
+              </div>
             </div>
           </div>
         </div>
@@ -597,13 +649,16 @@
             <span class="timeline-era-dates">1979 &ndash; 1981 (2 yrs)</span>
           </div>
           <div class="timeline-cards">
-            <div class="timeline-card">
+            <div class="timeline-card" data-skill-slugs="z80-x86-assembly" data-skill-cat-slugs="languages">
               <div class="timeline-card-header">
                 <h4><span class="term" data-term="zx80">ZX-80</span> Launch &amp; Support</h4>
               </div>
               <p class="timeline-card-role">Manager of Technical Services &middot; Boston, MA</p>
               <img class="timeline-img" src="media/sinclair-zx80.jpg" alt="The Sinclair ZX80 computer" loading="lazy">
               <p>One of the earliest employees at Sinclair's US operation, starting part-time before the ZX80 had even launched. Managed a team providing written support, telephone support, and machine repair services to ~300 customers per month.</p>
+              <div class="skill-badges" data-skills-generated="1">
+                <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">Z80 &amp; x86 Assembly</span></div></div>
+              </div>
             </div>
           </div>
         </div>
@@ -821,54 +876,80 @@
 
   <section id="skills" class="section section-alt">
     <div class="container">
-      <h2 class="section-title">Skills &amp; Technologies</h2>
-      <p class="section-subtitle">A career's worth of tools, languages, and platforms.</p>
+      <h2 class="section-title">Skills &amp; Expertise</h2>
+      <p class="section-subtitle">Where I lead today &mdash; and the toolkit behind it.</p>
 
       <div class="skills-columns">
         <div class="skill-group">
-          <h3>Languages</h3>
+          <h3>AI-Native Development</h3>
           <ul class="skill-list">
-            <li><span class="term" data-term="csharp">C#</span></li>
-            <li>C / C++</li>
-            <li><span class="term" data-term="smalltalk">Smalltalk</span></li>
-            <li>JavaScript / TypeScript</li>
-            <li>Java</li>
-            <li><span class="term" data-term="z80">Z80</span> &amp; <span class="term" data-term="x86">x86</span> Assembly</li>
+            <li>AI-Native Software Engineering</li>
+            <li>AI Harness Engineering</li>
+            <li>AI Agent Orchestration</li>
+            <li>LLM Application Architecture</li>
+            <li>Prompt Engineering</li>
+            <li>AI-Assisted Development Workflows</li>
           </ul>
         </div>
         <div class="skill-group">
-          <h3>Platforms &amp; Frameworks</h3>
+          <h3>Security &amp; Compliance</h3>
           <ul class="skill-list">
-            <li><span class="term" data-term="dotnet">.NET Framework</span></li>
-            <li><span class="term" data-term="aspnet">ASP.NET</span></li>
-            <li><span class="term" data-term="azure-devops">Azure DevOps</span></li>
-            <li>Windows / <span class="term" data-term="os2">OS/2</span> / DOS</li>
-            <li><span class="term" data-term="sharepoint">SharePoint</span></li>
-            <li>Unix / VMS</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Technologies</h3>
-          <ul class="skill-list">
-            <li><span class="term" data-term="xml">XML</span> / <span class="term" data-term="sgml">SGML</span></li>
-            <li><span class="term" data-term="public-key-crypto">Public Key Cryptography</span></li>
-            <li><span class="term" data-term="drm">Digital Rights Management</span></li>
-            <li>Relational Databases</li>
-            <li>Object Databases (<span class="term" data-term="gemstone">GemStone</span>)</li>
-            <li><span class="term" data-term="entity-relationship">Entity-Relationship Modeling</span></li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Leadership</h3>
-          <ul class="skill-list">
-            <li>Security Architecture &amp; <span class="term" data-term="sdl">SDL</span></li>
+            <li>Security Architecture</li>
+            <li>Secure Development Lifecycle (<span class="term" data-term="sdl">SDL</span>)</li>
             <li>Compliance Automation</li>
-            <li>Technical Architecture</li>
-            <li>Standards Development</li>
-            <li>Team Building &amp; Mentoring</li>
+            <li>DevSecOps</li>
+            <li>Static Code Analysis</li>
+            <li>Cloud Security</li>
+            <li>Threat Modeling</li>
+            <li><span class="term" data-term="drm">Digital Rights Management</span></li>
+            <li><span class="term" data-term="public-key-crypto">Public Key Cryptography</span></li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Architecture &amp; Systems</h3>
+          <ul class="skill-list">
+            <li>Complex Systems Architecture</li>
+            <li>Platform Engineering</li>
+            <li>Distributed Systems</li>
+            <li>API Design</li>
+            <li>Data Pipelines</li>
+            <li>Interoperability</li>
+            <li>Scalability</li>
+            <li>Continuous Integration</li>
+          </ul>
+        </div>
+        <div class="skill-group">
+          <h3>Leadership &amp; Strategy</h3>
+          <ul class="skill-list">
+            <li>Engineering Leadership <span class="skill-note">(5&ndash;50 person teams)</span></li>
+            <li>Executive Communication</li>
+            <li>Cross-Functional Team Leadership</li>
+            <li>Program &amp; Product Management</li>
+            <li>Technical Strategy</li>
+            <li>People Development &amp; Coaching</li>
             <li>Startup Founding &amp; Fundraising</li>
           </ul>
         </div>
+      </div>
+
+      <div class="skills-also">
+        <h3>Also worked with</h3>
+        <p class="skills-also-line"><span class="skills-also-label">Languages</span>
+          <span class="term" data-term="csharp">C#</span> &middot; C / C++ &middot;
+          TypeScript / JavaScript &middot; Java &middot; Python &middot;
+          <span class="term" data-term="smalltalk">Smalltalk</span> (VisualWorks) &middot;
+          <span class="term" data-term="z80">Z80</span> &amp; <span class="term" data-term="x86">x86</span> Assembly &middot;
+          SQL &middot; <span class="term" data-term="xml">XML</span> / <span class="term" data-term="sgml">SGML</span>
+        </p>
+        <p class="skills-also-line"><span class="skills-also-label">Platforms &amp; Tools</span>
+          <span class="term" data-term="dotnet">.NET Framework</span> / <span class="term" data-term="aspnet">ASP.NET</span> &middot;
+          Azure / <span class="term" data-term="azure-devops">Azure DevOps</span> &middot;
+          GitHub / <span class="term" data-term="codeql">CodeQL</span> &middot;
+          React &middot; Node.js &middot;
+          Windows (also <span class="term" data-term="os2">OS/2</span>, DOS, VMS, Unix) &middot;
+          Relational Databases &middot;
+          Object Databases (<span class="term" data-term="gemstone">GemStone</span>)
+        </p>
       </div>
     </div>
   </section>
@@ -1013,6 +1094,262 @@
   </aside>
 
   <script src="glossary.js?v=2"></script>
-  <script src="script.js?v=2"></script>
+  <script type="application/json" id="skills-taxonomy">
+{
+  "categories": [
+    {
+      "slug": "ai-native-development",
+      "name": "AI-Native Development",
+      "skills": [
+        {
+          "slug": "ai-native-software-engineering",
+          "name": "AI-Native Software Engineering"
+        },
+        {
+          "slug": "ai-harness-engineering",
+          "name": "AI Harness Engineering"
+        },
+        {
+          "slug": "ai-agent-orchestration-team-design",
+          "name": "AI Agent Orchestration & Team Design"
+        },
+        {
+          "slug": "llm-application-architecture",
+          "name": "LLM Application Architecture"
+        },
+        {
+          "slug": "prompt-engineering",
+          "name": "Prompt Engineering"
+        },
+        {
+          "slug": "ai-assisted-development-workflows",
+          "name": "AI-Assisted Development Workflows"
+        }
+      ]
+    },
+    {
+      "slug": "security-compliance",
+      "name": "Security & Compliance",
+      "skills": [
+        {
+          "slug": "security-architecture",
+          "name": "Security Architecture"
+        },
+        {
+          "slug": "secure-development-lifecycle-sdl",
+          "name": "Secure Development Lifecycle (SDL)"
+        },
+        {
+          "slug": "compliance-automation-continuous-compliance",
+          "name": "Compliance Automation & Continuous Compliance"
+        },
+        {
+          "slug": "devsecops",
+          "name": "DevSecOps"
+        },
+        {
+          "slug": "static-code-analysis",
+          "name": "Static Code Analysis"
+        },
+        {
+          "slug": "cloud-security",
+          "name": "Cloud Security"
+        },
+        {
+          "slug": "threat-modeling",
+          "name": "Threat Modeling"
+        },
+        {
+          "slug": "digital-rights-management-drm",
+          "name": "Digital Rights Management (DRM)"
+        },
+        {
+          "slug": "public-key-cryptography",
+          "name": "Public Key Cryptography"
+        }
+      ]
+    },
+    {
+      "slug": "architecture-systems",
+      "name": "Architecture & Systems",
+      "skills": [
+        {
+          "slug": "complex-systems-architecture",
+          "name": "Complex Systems Architecture"
+        },
+        {
+          "slug": "platform-engineering",
+          "name": "Platform Engineering"
+        },
+        {
+          "slug": "distributed-systems",
+          "name": "Distributed Systems"
+        },
+        {
+          "slug": "api-design",
+          "name": "API Design"
+        },
+        {
+          "slug": "data-pipelines",
+          "name": "Data Pipelines"
+        },
+        {
+          "slug": "interoperability",
+          "name": "Interoperability"
+        },
+        {
+          "slug": "scalability",
+          "name": "Scalability"
+        },
+        {
+          "slug": "continuous-integration",
+          "name": "Continuous Integration"
+        }
+      ]
+    },
+    {
+      "slug": "leadership-strategy",
+      "name": "Leadership & Strategy",
+      "skills": [
+        {
+          "slug": "engineering-leadership",
+          "name": "Engineering Leadership"
+        },
+        {
+          "slug": "executive-communication",
+          "name": "Executive Communication"
+        },
+        {
+          "slug": "cross-functional-team-leadership",
+          "name": "Cross-Functional Team Leadership"
+        },
+        {
+          "slug": "program-product-management",
+          "name": "Program & Product Management"
+        },
+        {
+          "slug": "technical-strategy",
+          "name": "Technical Strategy"
+        },
+        {
+          "slug": "people-development-coaching",
+          "name": "People Development & Coaching"
+        },
+        {
+          "slug": "startup-founding-fundraising",
+          "name": "Startup Founding & Fundraising"
+        }
+      ]
+    },
+    {
+      "slug": "standards-intellectual-property",
+      "name": "Standards & Intellectual Property",
+      "skills": [
+        {
+          "slug": "standards-development",
+          "name": "Standards Development"
+        },
+        {
+          "slug": "patents-intellectual-property",
+          "name": "Patents & Intellectual Property"
+        },
+        {
+          "slug": "protocol-design",
+          "name": "Protocol Design"
+        },
+        {
+          "slug": "file-format-design",
+          "name": "File Format Design"
+        },
+        {
+          "slug": "entity-relationship-modeling",
+          "name": "Entity-Relationship Modeling"
+        }
+      ]
+    },
+    {
+      "slug": "languages",
+      "name": "Languages",
+      "skills": [
+        {
+          "slug": "c-net",
+          "name": "C# / .NET"
+        },
+        {
+          "slug": "c-c",
+          "name": "C / C++"
+        },
+        {
+          "slug": "typescript-javascript",
+          "name": "TypeScript / JavaScript"
+        },
+        {
+          "slug": "java",
+          "name": "Java"
+        },
+        {
+          "slug": "python",
+          "name": "Python"
+        },
+        {
+          "slug": "smalltalk",
+          "name": "Smalltalk"
+        },
+        {
+          "slug": "z80-x86-assembly",
+          "name": "Z80 & x86 Assembly"
+        },
+        {
+          "slug": "sql",
+          "name": "SQL"
+        },
+        {
+          "slug": "xml-sgml",
+          "name": "XML / SGML"
+        }
+      ]
+    },
+    {
+      "slug": "platforms-frameworks-tools",
+      "name": "Platforms, Frameworks & Tools",
+      "skills": [
+        {
+          "slug": "net-framework-asp-net",
+          "name": ".NET Framework / ASP.NET"
+        },
+        {
+          "slug": "azure-azure-devops",
+          "name": "Azure / Azure DevOps"
+        },
+        {
+          "slug": "github-codeql",
+          "name": "GitHub / CodeQL"
+        },
+        {
+          "slug": "react",
+          "name": "React"
+        },
+        {
+          "slug": "node-js",
+          "name": "Node.js"
+        },
+        {
+          "slug": "windows",
+          "name": "Windows"
+        },
+        {
+          "slug": "relational-databases",
+          "name": "Relational Databases"
+        },
+        {
+          "slug": "object-databases",
+          "name": "Object Databases"
+        }
+      ]
+    }
+  ]
+}
+</script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>

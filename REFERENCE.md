@@ -20,12 +20,14 @@
 - **Title**: Manager of Technical Services
 - **Location**: Boston, MA
 - **Details**: One of the earliest employees at Sinclair's US operation. Started part-time before the ZX80 had even launched. Managed a team providing written support, telephone support, and machine repair services to ~300 customers per month.
+- **Skills**: Z80 & x86 Assembly
 
 ### Heuristics — 1981–1982
 - **Title**: Founder & President
 - **Location**: Newton, MA
 - **Details**: Founded a technical services company for the Sinclair computing community. The only authorized Sinclair technical service center in the US.
 - **Financials**: ~$50K revenue with ~40% pre-tax profit.
+- **Skills**: Startup Founding & Fundraising, Z80 & x86 Assembly
 
 ### Timex Computer Corp. — 1982–1983
 - **Title**: Member of Technical Team
@@ -33,6 +35,7 @@
 - **Project**: Timex/Sinclair 2000 Development
 - **Details**: Worked across hardware and software teams developing the Timex/Sinclair 2000. Designed a memory bank-switching mechanism and a semi-custom chip to implement it. Authored the complete technical manual for third-party developers.
 - **Patent**: Bank switching memory system.
+- **Skills**: Z80 & x86 Assembly, Platform Engineering
 
 ### Multimate International Corp. — 1984–1985
 - **Title**: Project Manager; Software Developer
@@ -40,12 +43,14 @@
 - **Project**: Word Processor OEM & Porting
 - **Details**: Managed the OEM/International group for Multimate's word-processing system. Ported the product to the Zenith Z-100 (for a US Air Force contract at the Pentagon) and the HP Portable Plus, making it run from ROM cartridges. Contributed to architectural design for next-generation products.
 - **Note**: David's existing LinkedIn profile lists this role as "Project Manager; Software Developer" — the hands-on software development component (beyond OEM/porting project management) was confirmed by David during a 2026 LinkedIn sync and is preserved here as source of truth.
+- **Skills**: Program & Product Management, Z80 & x86 Assembly, Technical Strategy
 
 ### Access Technology Inc. — 1986–1987
 - **Title**: Member of Technical Staff
 - **Location**: S. Natick, MA
 - **Project**: Multi-User Software R&D
 - **Details**: Developed functional specifications and prototypes for multi-user software products. Led research into text management systems, text databases, and archival systems. Involved in due diligence for multiple acquisitions.
+- **Skills**: C / C++, Technical Strategy, Z80 & x86 Assembly, SQL, Platform Engineering
 
 ### Applied Intelligence — 1985–1986
 - **Title**: Consultant and Staff Programmer
@@ -61,31 +66,37 @@
 - **Title**: Chief Architect, PC Product Development
 - **Location**: Rockville, MD
 - **Details**: Responsible for all PC-related technology. Built ER diagramming tools in Smalltalk. Conceived and implemented CRTS, a 100K+ line set of OS extensions and development tools for DOS. Proposed and built a 20-station LAN that eventually grew to span 7 states and 2 countries.
+- **Skills**: Complex Systems Architecture, Smalltalk, C / C++, Protocol Design, API Design
 
 #### CDIF Standards Committee (1988–1991)
 - **Title**: Chairman, ANSI/EIA Technical Committee
 - **Details**: Chaired the CASE Data Interchange Format standards committee with ~30 voting members and 500+ on its mailing list. Completed and published the first version of the standard, including a two-volume entity-relationship model with over 700 entities and relationships.
+- **Skills**: Standards Development, Entity-Relationship Modeling, Protocol Design, Executive Communication, Cross-Functional Team Leadership, Smalltalk
 
 #### Corporate Technology & M&A (1989–1990)
 - **Title**: Chief Architect, Corporate Technology
 - **Location**: Rockville, MD & Santa Clara, CA
 - **Details**: Coordinated technology across INTERSOLV's four development centers. Led technical due diligence for successful acquisitions of Visual Software and Polytron Corp. Built the company's first internet-to-internal email gateway.
+- **Skills**: Technical Strategy, Complex Systems Architecture, Interoperability, Cross-Functional Team Leadership, Smalltalk, Distributed Systems, SQL, Object Databases (GemStone), Relational Databases
 
 #### Excelerator II & OS/2 CASE Tools (1990–1993)
 - **Title**: Director of Development & Chief Architect
 - **Location**: San Jose, CA
 - **Details**: Led development of Excelerator II, a large OS/2-based CASE tool, and its LAN repository. Managed a bi-coastal team of 12. Built a pioneering interface between relational databases and Smalltalk's world. Created an ER data model compiler producing production-grade relational schemas.
+- **Skills**: Engineering Leadership, Smalltalk, Complex Systems Architecture, Platform Engineering, Entity-Relationship Modeling, Relational Databases, C / C++, SQL, API Design, Technical Strategy, People Development & Coaching
 
 ### LongView International — 1993–1994
 - **Title**: Member of Technical Staff
 - **Location**: Mountain View, CA
 - **Project**: Derivatives Trading Systems
 - **Details**: Architected and built the first versions of LongView's framework-based derivatives trading systems in VisualWorks Smalltalk. Built a direct-manipulation UI with drag-drop, templates, and folders. Designed persistence layer using GemStone object database.
+- **Skills**: Smalltalk, Object Databases (GemStone), Complex Systems Architecture, API Design, Entity-Relationship Modeling, Technical Strategy
 
 ### Independent Consultant — 1994–1995
 - **Focus**: Object-Oriented Technology Consulting, primarily Smalltalk
 - **Clients**: OOCL (international shipping) and Lockheed
 - **Services**: Mentoring, design pattern coaching, and hands-on implementation.
+- **Skills**: Smalltalk, Complex Systems Architecture, Technical Strategy, Startup Founding & Fundraising, Platform Engineering, API Design, Interoperability
 
 ### Pragmatica, Inc. — 1995–1998
 - **Title**: Founder, President & CEO
@@ -94,6 +105,7 @@
 - **Codebase**: ~100,000 lines of C++, substantial portions written by David personally.
 - **Scale**: Grew to 10 employees plus consultants; ~5,000 customers.
 - **Impact**: Established reputation as an innovative technology entrepreneur.
+- **Skills**: Startup Founding & Fundraising, Engineering Leadership, C / C++, XML / SGML, Complex Systems Architecture, Executive Communication, Technical Strategy, Program & Product Management, Interoperability, Windows
 
 ### NuvoMedia, Inc. — 1998–2001
 - **Initial Title**: Director of Software Development (co-founder)
@@ -102,16 +114,19 @@
 - **Details**: Led the creation of the Rocket eBook — one of the first dedicated e-book readers. Drove the launch of the company's secure e-publishing system (device software and desktop components). Defined technical strategy and product roadmap. Built the engineering team and methodology. Promoted to CTO after successful product launch.
 - **Product Specs**: 22-ounce handheld that could store ~55,000 pages. Launched 1998.
 - **Acquisition**: NuvoMedia acquired by Gemstar in 2000, deal valued at $187M.
+- **Skills**: Startup Founding & Fundraising, Engineering Leadership, Digital Rights Management (DRM), Public Key Cryptography, Complex Systems Architecture, File Format Design, Technical Strategy, C / C++, Patents & Intellectual Property, Standards Development, XML / SGML, Windows, Java
 
 #### eBookNet.com & Standards (at NuvoMedia)
 - **Title**: CTO
 - **Details**: Led cross-organization team of 12 who developed and launched eBookNet.com, described at launch as the world's largest eBook portal. Co-authored drafts of the Open eBook Publication Structure standard. Managed IP portfolio.
+- **Skills**: Standards Development, XML / SGML, Cross-Functional Team Leadership, Technical Strategy, Patents & Intellectual Property, Engineering Leadership, Program & Product Management, C / C++, Java, SQL, Object Databases (GemStone), Relational Databases, Windows
 
 ### Open eBook Forum (OEBF) — 2000–2003
 - **Title**: President & Board Member
 - **Concurrent with**: NuvoMedia then Microsoft
 - **Details**: Led a 100+ member international trade and standards organization. Facilitated collaboration among major tech companies and publishers to create the Open eBook Publication Structure — the XML-based standard for eBook content. Defined strategic plans, negotiated organizational partnerships, managed frameworks for electronic publishing and digital rights management.
 - **Impact**: Published the first open eBook format specifications, laying groundwork for EPUB — now the dominant open standard for eBooks worldwide. Gave David high visibility as a thought leader in digital publishing.
+- **Skills**: Standards Development, XML / SGML, File Format Design, Digital Rights Management (DRM), Executive Communication, Technical Strategy, Engineering Leadership
 
 ### Microsoft — Windows & Office Era — 1999–2004
 
@@ -120,6 +135,7 @@
 - **Details**: Applied startup e-book expertise to Microsoft's digital reading initiatives. Contributed to the architecture of Microsoft Reader and related DRM for e-books. Introduced innovative ideas from the e-book domain into Microsoft's platform.
 - **Side project**: Developed FlexWiki, a wiki engine in C#/.NET.
 - **FlexWiki impact**: Over 1,000 wikis hosted inside the company. Later released as open source.
+- **Skills**: C# / .NET, .NET Framework / ASP.NET, Digital Rights Management (DRM), Complex Systems Architecture, File Format Design, Platform Engineering, XML / SGML, Windows, Standards Development, Patents & Intellectual Property, Technical Strategy, Interoperability
 
 #### Lead Program Manager, Windows Digital Documents (2001–2004)
 - **Title**: Lead Program Manager, Windows division
@@ -127,6 +143,7 @@
 - **Details**: Led the cross-team effort to develop the "Metro" document format. Coordinated between Windows and Office teams. Architected and evangelized the format. Championed document standards bridging internal and external efforts. Built and led the team that shipped the Rights Management Add-on for IE.
 - **Patents**: 12+ patent applications filed as primary inventor, related to document formats and security.
 - **Impact**: XPS shipped as a core document format in Windows and Office 2007.
+- **Skills**: Standards Development, File Format Design, Patents & Intellectual Property, XML / SGML, Cross-Functional Team Leadership, Program & Product Management, Complex Systems Architecture, Digital Rights Management (DRM), API Design, Interoperability, Scalability, Windows, Technical Strategy, C / C++, C# / .NET, .NET Framework / ASP.NET
 
 ### Microsoft — Compliance & Security Leadership — 2004–2014
 
@@ -135,6 +152,7 @@
 - **Details**: Responsible for ensuring engineering teams complied with mandatory internal policies and external regulatory requirements — notably the DOJ antitrust consent decree mandates following Microsoft's 2001 settlement. Led development of compliance tooling: APIScan and CheckPoint (referred to as CheckPoint Express on the site) to verify API compliance. Established governance processes for tracking and enforcing engineering policies. Drove policy design and training across the company.
 - **Budget**: Program budget exceeding $10M/year.
 - **Impact**: Full compliance with DOJ consent decree — no violations. Compliance frameworks became part of standard engineering workflow. Consistently strong performance reviews.
+- **Skills**: Compliance Automation & Continuous Compliance, Engineering Leadership, Executive Communication, Program & Product Management, Technical Strategy, Platform Engineering, Distributed Systems, Complex Systems Architecture, Protocol Design, C# / .NET, Relational Databases, Windows, .NET Framework / ASP.NET
 
 #### Chief of Staff, Trustworthy Computing (2008–2014)
 - **Title**: Chief of Staff, TwC group
@@ -142,6 +160,7 @@
 - **Duration**: ~6 years
 - **Details**: Coordinated security initiatives and cross-team programs aimed at improving Microsoft's product security and privacy practices. Key advisor and operations lead for TwC leadership. Aligned efforts in Security Engineering, security standards, compliance, and privacy across divisions. Helped "pull together all the assurance work" under TwC into a cohesive strategy. Shifted focus from pure compliance checklists to proactive security assurance. Managed executive communications and drove follow-ups on security reviews. Played pivotal role in TwC's reorganization when it moved into CELA in 2014.
 - **Impact**: Influenced SDL and internal security governance. TwC delivered SDL requirements integration and incident response improvements. Scott Charney commended David's contributions. By 2014, TwC's functions were being woven into the new Cloud & AI Security organization.
+- **Skills**: Executive Communication, Cross-Functional Team Leadership, Technical Strategy, Program & Product Management, Security Architecture, Secure Development Lifecycle (SDL), Engineering Leadership, People Development & Coaching, Cloud Security, Threat Modeling, Public Key Cryptography, C# / .NET, .NET Framework / ASP.NET, Azure / Azure DevOps, Relational Databases, SQL
 
 ### Microsoft — Building the "Liquid" Platform — 2015–2025
 
@@ -150,6 +169,7 @@
 - **Project**: Liquid — Microsoft's internal platform for continuous security assurance and compliance
 - **Details**: Conceived and founded the Liquid effort around 2015. Assembled a Deep Engineering team. Automated the SDL and other compliance processes. Drove architecture and implementation of Liquid's services: automated policy scanners, code compliance pipelines, unified dashboard for security standards adherence.
 - **Note**: This is the same team/role/mission (leading Liquid Engineering) as the following "Digital Security and Resilience" entry — only the surrounding org name changed. Confirmed by David during the 2026 LinkedIn sync.
+- **Skills**: Security Architecture, Secure Development Lifecycle (SDL), Compliance Automation & Continuous Compliance, Platform Engineering, DevSecOps, Engineering Leadership, Complex Systems Architecture, C# / .NET, .NET Framework / ASP.NET, Azure / Azure DevOps, GitHub / CodeQL, Windows, Relational Databases, SQL, TypeScript / JavaScript, People Development & Coaching, Technical Strategy, Interoperability
 
 #### Senior Director Engineering, Digital Security and Resilience (Aug 2021 – Dec 2025)
 - **Title**: Senior Director Engineering, Digital Security and Resilience (DSR org)
@@ -158,6 +178,7 @@
 - **Details**: Integrated Liquid tooling with Azure DevOps across the company for real-time compliance checks (replacing yearly audits). Co-led incubation of CodeQL Central — a scalable code analysis service for security vulnerabilities. Established unified "Security Bugs S360 KPI" to track vulnerabilities across 1,200+ code repositories and ~18,000 services.
 - **Team**: 20+ person engineering team. In 2018, security leadership allocated 11 new FTE headcount to expand due to platform's success.
 - **Impact**: Liquid became core of Microsoft's Continuous SDL program. Automated compliance for 8,000+ services. Shifted from manual attestations to data-driven continuous monitoring. Manager wrote: "Liquid anchors the company-wide continuous SDL... shifting processes to automated coverage" and noted David's "incredible impact" on the security engineering ecosystem.
+- **Skills**: Security Architecture, DevSecOps, Static Code Analysis, Continuous Integration, Cloud Security, Compliance Automation & Continuous Compliance, Engineering Leadership, Platform Engineering, C# / .NET, .NET Framework / ASP.NET, SQL, Windows, Azure / Azure DevOps, GitHub / CodeQL, Secure Development Lifecycle (SDL)
 
 ### Microsoft — SIGMA, Individual Contributor — 2026–Present
 
@@ -167,6 +188,7 @@
 - **Transition**: Start of 2026, moved from people-management (Senior Director) to an individual-contributor architecture role. This is the one genuine *role* change in this era — everything before it was an org/team rename with David continuing in the same Senior Director management role. Confirmed by David during the 2026 LinkedIn sync (supersedes the earlier "2024–Present" / "late 2025" note below).
 - **Details**: Remains deeply involved with Liquid platform and broader Standards & Compliance tooling. Mentoring new engineering leads. Reviewing design plans for next-generation security compliance tools. Guiding modernization of Liquid's architecture (AI-driven enhancements, Azure DevOps pipeline integration).
 - **Impact**: CISO leadership praised David's legacy, noting his move to architect role "reflects [his] commitment to continuous growth and deep technical expertise."
+- **Skills**: AI-Native Software Engineering, AI Harness Engineering, Security Architecture, Complex Systems Architecture, Platform Engineering, People Development & Coaching, Technical Strategy, .NET Framework / ASP.NET, C# / .NET, TypeScript / JavaScript, SQL, Relational Databases, Windows, Node.js, React, Azure / Azure DevOps, Protocol Design, Interoperability, Engineering Leadership, Cross-Functional Team Leadership, Static Code Analysis, Cloud Security, Secure Development Lifecycle (SDL)
 
 ---
 
@@ -244,16 +266,111 @@
 
 ---
 
-## Technologies & Languages (David-confirmed)
+## Skills & Expertise
 
-- C#, C/C++, Smalltalk, JavaScript/TypeScript, Java, Z80 & x86 Assembly
-- .NET Framework, ASP.NET, Azure DevOps
-- Windows, OS/2, DOS, Unix/VMS
-- XML/SGML, Public Key Cryptography, DRM
-- Relational Databases, Object Databases (GemStone)
+> **Source of truth for skills** shown on `dornstein.io` (Skills section) and LinkedIn
+> (profile Skills panel + pinned skills). When syncing either surface, pull from here.
+> Categories below are ordered by strategic weight, not alphabetically.
+>
+> **Per-role skill assignments** live inline in each career entry above as a `**Skills**:` bullet.
+> Those must be drawn only from the taxonomy below. Parenthetical clarifications
+> (e.g. *(CodeQL)*, *(teams of 5–50)*) may be omitted in per-role lists for brevity.
+
+### Top 3 — Pinned / Featured
+
+These are the skills that should be surfaced first on **every** presentation surface
+(LinkedIn top-3 pinned skills, dornstein.io hero/skills lead-in, resume header):
+
+1. **AI-Native Software Engineering** — architecting and shipping production software with AI agents as first-class team members (see Indra platform)
+2. **Security & Compliance Architecture** — designing systems that make security automatic at enterprise scale (see Liquid, CodeQL Central)
+3. **Engineering Leadership** — leading engineering teams of 5 to 50 people from IC through org-level
+
+### AI-Native Development
+
+- AI-Native Software Engineering
+- AI Harness Engineering (agent scaffolding, tool integrations, evaluation loops)
+- AI Agent Orchestration & Team Design
+- LLM Application Architecture
+- Prompt Engineering
+- AI-Assisted Development Workflows
+
+### Security & Compliance
+
+- Security Architecture
+- Secure Development Lifecycle (SDL)
+- Compliance Automation & Continuous Compliance
+- DevSecOps
+- Static Code Analysis (CodeQL)
+- Cloud Security
+- Threat Modeling
+- Digital Rights Management (DRM)
+- Public Key Cryptography
+
+### Architecture & Systems
+
+- Complex Systems Architecture
+- Platform Engineering
+- Distributed Systems
+- API Design
+- Data Pipelines
+- Interoperability
+- Scalability
+- Continuous Integration (Azure DevOps, GitHub Actions)
+
+### Leadership & Strategy
+
+- Engineering Leadership (teams of 5–50)
+- Executive Communication
+- Cross-Functional Team Leadership
+- Program & Product Management
+- Technical Strategy
+- People Development & Coaching
+- Startup Founding & Fundraising
+
+### Standards & Intellectual Property
+
+- Standards Development (XPS, Open eBook, CDIF)
+- Patents & Intellectual Property (13+ granted/filed)
+- Protocol Design
+- File Format Design
 - Entity-Relationship Modeling
-- VisualWorks Smalltalk
-- SharePoint
+
+### Languages
+
+- C# / .NET
+- C / C++
+- TypeScript / JavaScript
+- Java
+- Python
+- Smalltalk (VisualWorks)
+- Z80 & x86 Assembly
+- SQL
+- XML / SGML
+
+### Platforms, Frameworks & Tools
+
+- .NET Framework / ASP.NET
+- Azure / Azure DevOps
+- GitHub / CodeQL
+- React
+- Node.js
+- Windows (historical: OS/2, DOS, VMS, Unix)
+- Relational Databases
+- Object Databases (GemStone — historical)
+
+---
+
+### Presentation Guidance
+
+**LinkedIn Skills panel:**
+- Pin the **Top 3** above as the featured skills.
+- Keep all items above active on LinkedIn.
+- Prune existing LinkedIn skills not represented here that dilute the story: *Data Center*, *Mobile Devices*, *IT Strategy*, *SharePoint*, *Scrum*, *E-commerce*, *Integration*, *Business Intelligence*, *Software Project Management* (subsumed by Program Management), *Enterprise Architecture* (subsumed by Complex Systems Architecture), *SaaS*.
+
+**dornstein.io `#skills` section:**
+- Mirror the first four categories (AI-Native Development, Security & Compliance, Architecture & Systems, Leadership & Strategy) as the primary display — these are the differentiators.
+- Show *Languages* and *Platforms, Frameworks & Tools* in a compact "Also worked with" style below the main groups. Keep the historical items (Smalltalk, Z80 Assembly, OS/2, VMS, GemStone) — they signal depth of experience.
+- *Standards & IP* content is already covered in the dedicated Patents & Standards section on the site; no need to duplicate here.
 
 ---
 
