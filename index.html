@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>David Ornstein</title>
-  <link rel="stylesheet" href="styles.css?v=6">
+  <link rel="stylesheet" href="styles.css?v=7">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
@@ -29,18 +29,58 @@
   </nav>
 
   <header id="hero">
-    <div class="hero-content">
-      <p class="hero-greeting">Hello, I'm</p>
-      <h1 class="hero-name">David Ornstein</h1>
-      <p class="hero-tagline">Software leader, architect, founder, and standards author with 40+ years building products and platforms people depend on.</p>
-      <div class="hero-cta">
-        <a href="#about" class="btn btn-primary">Learn More</a>
-        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+    <div class="hero-grid container">
+      <div class="hero-content">
+        <p class="hero-greeting">Hello, I'm</p>
+        <h1 class="hero-name">David Ornstein</h1>
+        <p class="hero-tagline">Software leader, architect, founder, and standards author with 40+ years building products and platforms people depend on.</p>
+        <div class="hero-cta">
+          <a href="#about" class="btn btn-primary">Learn More</a>
+          <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        </div>
       </div>
-    </div>
-    <div class="hero-scroll-hint">
-      <span>scroll</span>
-      <div class="scroll-line"></div>
+      <aside class="hero-testimonials" aria-label="What others say">
+        <p class="hero-testimonials-label"><span class="hero-testimonials-dot"></span>What Others Say</p>
+        <div class="hero-quote-stack" aria-live="polite">
+          <blockquote class="hero-quote is-active">
+            <p class="hero-quote-text">&ldquo;Your ability to seamlessly toggle between Strategy and Tactics, Vision and Execution, Architecture and Code is truly amazing.&rdquo;</p>
+            <footer class="hero-quote-footer">
+              <span class="hero-quote-author">L.S.</span>
+              <span class="hero-quote-role">Principal PM Manager</span>
+            </footer>
+          </blockquote>
+          <blockquote class="hero-quote">
+            <p class="hero-quote-text">&ldquo;A visionary AND pragmatic engineer in using data and automation to understand the security characteristics of our products AND the engineering processes that produce them.&rdquo;</p>
+            <footer class="hero-quote-footer">
+              <span class="hero-quote-author">J.B-W.</span>
+              <span class="hero-quote-role">Principal Security Assurance Manager</span>
+            </footer>
+          </blockquote>
+          <blockquote class="hero-quote">
+            <p class="hero-quote-text">&ldquo;You have created the exact security intelligence system the company needs at this exact moment for the new regulated world Microsoft is finding itself in.&rdquo;</p>
+            <footer class="hero-quote-footer">
+              <span class="hero-quote-author">S.C.</span>
+              <span class="hero-quote-role">Principal Security Engineering Manager</span>
+            </footer>
+          </blockquote>
+          <blockquote class="hero-quote">
+            <p class="hero-quote-text">&ldquo;You are a teacher and scientist at heart. I love the way you bring in System-based thinking to see the whole, not just the parts.&rdquo;</p>
+            <footer class="hero-quote-footer">
+              <span class="hero-quote-author">N.D.</span>
+              <span class="hero-quote-role">Director, Security Architecture</span>
+            </footer>
+          </blockquote>
+          <blockquote class="hero-quote">
+            <p class="hero-quote-text">&ldquo;I view you as having a unique set of knowledge and Microsoft is lucky to have you thinking deeply about this space.&rdquo;</p>
+            <footer class="hero-quote-footer">
+              <span class="hero-quote-author">M.E.</span>
+              <span class="hero-quote-role">Principal Assurance PM</span>
+            </footer>
+          </blockquote>
+        </div>
+        <div class="hero-quote-dots" role="tablist" aria-label="Featured quotes"></div>
+        <a href="#testimonials" class="hero-quote-more">See all endorsements <span aria-hidden="true">&rarr;</span></a>
+      </aside>
     </div>
   </header>
 
@@ -877,80 +917,19 @@
   <section id="skills" class="section section-alt">
     <div class="container">
       <h2 class="section-title">Skills &amp; Expertise</h2>
-      <p class="section-subtitle">Where I lead today &mdash; and the toolkit behind it.</p>
-
-      <div class="skills-columns">
-        <div class="skill-group">
-          <h3>AI-Native Development</h3>
-          <ul class="skill-list">
-            <li>AI-Native Software Engineering</li>
-            <li>AI Harness Engineering</li>
-            <li>AI Agent Orchestration</li>
-            <li>LLM Application Architecture</li>
-            <li>Prompt Engineering</li>
-            <li>AI-Assisted Development Workflows</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Security &amp; Compliance</h3>
-          <ul class="skill-list">
-            <li>Security Architecture</li>
-            <li>Secure Development Lifecycle (<span class="term" data-term="sdl">SDL</span>)</li>
-            <li>Compliance Automation</li>
-            <li>DevSecOps</li>
-            <li>Static Code Analysis</li>
-            <li>Cloud Security</li>
-            <li>Threat Modeling</li>
-            <li><span class="term" data-term="drm">Digital Rights Management</span></li>
-            <li><span class="term" data-term="public-key-crypto">Public Key Cryptography</span></li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Architecture &amp; Systems</h3>
-          <ul class="skill-list">
-            <li>Complex Systems Architecture</li>
-            <li>Platform Engineering</li>
-            <li>Distributed Systems</li>
-            <li>API Design</li>
-            <li>Data Pipelines</li>
-            <li>Interoperability</li>
-            <li>Scalability</li>
-            <li>Continuous Integration</li>
-          </ul>
-        </div>
-        <div class="skill-group">
-          <h3>Leadership &amp; Strategy</h3>
-          <ul class="skill-list">
-            <li>Engineering Leadership <span class="skill-note">(5&ndash;50 person teams)</span></li>
-            <li>Executive Communication</li>
-            <li>Cross-Functional Team Leadership</li>
-            <li>Program &amp; Product Management</li>
-            <li>Technical Strategy</li>
-            <li>People Development &amp; Coaching</li>
-            <li>Startup Founding &amp; Fundraising</li>
-          </ul>
-        </div>
+      <p class="section-subtitle">The taxonomy behind the work &mdash; also used to filter the timeline above.</p>
+      <!-- SKILLS-TAXONOMY-BODY:START -->
+      <!-- Regenerated from REFERENCE.md by inject-skill-badges.mjs -->
+      <div class="skill-badges" data-skills-generated="1">
+        <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="ai-native-development">AI-Native Development</span><div class="skill-badge-group-chips"><span class="skill-badge">AI-Native Software Engineering</span><span class="skill-badge">AI Harness Engineering</span></div></div>
+        <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="security-compliance">Security &amp; Compliance</span><div class="skill-badge-group-chips"><span class="skill-badge">Security Architecture</span><span class="skill-badge">Secure Development Lifecycle (SDL)</span><span class="skill-badge">Compliance Automation &amp; Continuous Compliance</span><span class="skill-badge">DevSecOps</span><span class="skill-badge">Static Code Analysis</span><span class="skill-badge">Cloud Security</span><span class="skill-badge">Threat Modeling</span><span class="skill-badge">Digital Rights Management (DRM)</span><span class="skill-badge">Public Key Cryptography</span></div></div>
+        <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="architecture-systems">Architecture &amp; Systems</span><div class="skill-badge-group-chips"><span class="skill-badge">Complex Systems Architecture</span><span class="skill-badge">Platform Engineering</span><span class="skill-badge">Distributed Systems</span><span class="skill-badge">API Design</span><span class="skill-badge">Interoperability</span><span class="skill-badge">Scalability</span><span class="skill-badge">Continuous Integration</span></div></div>
+        <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="leadership-strategy">Leadership &amp; Strategy</span><div class="skill-badge-group-chips"><span class="skill-badge">Engineering Leadership</span><span class="skill-badge">Executive Communication</span><span class="skill-badge">Cross-Functional Team Leadership</span><span class="skill-badge">Program &amp; Product Management</span><span class="skill-badge">Technical Strategy</span><span class="skill-badge">People Development &amp; Coaching</span><span class="skill-badge">Startup Founding &amp; Fundraising</span></div></div>
+        <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="standards-intellectual-property">Standards &amp; Intellectual Property</span><div class="skill-badge-group-chips"><span class="skill-badge">Standards Development</span><span class="skill-badge">Patents &amp; Intellectual Property</span><span class="skill-badge">Protocol Design</span><span class="skill-badge">File Format Design</span><span class="skill-badge">Entity-Relationship Modeling</span></div></div>
+        <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="languages">Languages</span><div class="skill-badge-group-chips"><span class="skill-badge">C# / .NET</span><span class="skill-badge">C / C++</span><span class="skill-badge">TypeScript / JavaScript</span><span class="skill-badge">Java</span><span class="skill-badge">Smalltalk</span><span class="skill-badge">Z80 &amp; x86 Assembly</span><span class="skill-badge">SQL</span><span class="skill-badge">XML / SGML</span></div></div>
+        <div class="skill-badge-group"><span class="skill-badge-label" data-cat-slug="platforms-frameworks-tools">Platforms, Frameworks &amp; Tools</span><div class="skill-badge-group-chips"><span class="skill-badge">.NET Framework / ASP.NET</span><span class="skill-badge">Azure / Azure DevOps</span><span class="skill-badge">GitHub / CodeQL</span><span class="skill-badge">React</span><span class="skill-badge">Node.js</span><span class="skill-badge">Windows</span><span class="skill-badge">Relational Databases</span></div></div>
       </div>
-
-      <div class="skills-also">
-        <h3>Also worked with</h3>
-        <p class="skills-also-line"><span class="skills-also-label">Languages</span>
-          <span class="term" data-term="csharp">C#</span> &middot; C / C++ &middot;
-          TypeScript / JavaScript &middot; Java &middot; Python &middot;
-          <span class="term" data-term="smalltalk">Smalltalk</span> (VisualWorks) &middot;
-          <span class="term" data-term="z80">Z80</span> &amp; <span class="term" data-term="x86">x86</span> Assembly &middot;
-          SQL &middot; <span class="term" data-term="xml">XML</span> / <span class="term" data-term="sgml">SGML</span>
-        </p>
-        <p class="skills-also-line"><span class="skills-also-label">Platforms &amp; Tools</span>
-          <span class="term" data-term="dotnet">.NET Framework</span> / <span class="term" data-term="aspnet">ASP.NET</span> &middot;
-          Azure / <span class="term" data-term="azure-devops">Azure DevOps</span> &middot;
-          GitHub / <span class="term" data-term="codeql">CodeQL</span> &middot;
-          React &middot; Node.js &middot;
-          Windows (also <span class="term" data-term="os2">OS/2</span>, DOS, VMS, Unix) &middot;
-          Relational Databases &middot;
-          Object Databases (<span class="term" data-term="gemstone">GemStone</span>)
-        </p>
-      </div>
+      <!-- SKILLS-TAXONOMY-BODY:END -->
     </div>
   </section>
 
@@ -1350,6 +1329,6 @@
   ]
 }
 </script>
-  <script src="script.js?v=4"></script>
+  <script src="script.js?v=7"></script>
 </body>
 </html>
