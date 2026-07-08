@@ -339,7 +339,7 @@
     var dotsContainer = document.querySelector('.hero-quote-dots');
     var idx = 0;
     var timer = null;
-    var ROTATE_MS = 7000;
+    var ROTATE_MS = 14000;
 
     var dots = [];
     if (dotsContainer) {
