@@ -209,16 +209,30 @@ ul {
   width: 100%;
 }
 
+.hero-testimonials-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
 .hero-testimonials-heading {
   font-family: var(--font-serif);
   font-size: 1.35rem;
   font-weight: 700;
   letter-spacing: -0.01em;
   color: var(--color-text);
-  margin: 0 0 18px;
+  margin: 0;
   padding-bottom: 12px;
   border-bottom: 2px solid var(--color-accent);
   display: inline-block;
+}
+
+.hero-quote-nav-group {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
 }
 
 .hero-quote-footer-row {
