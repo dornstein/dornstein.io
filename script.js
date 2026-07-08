@@ -370,6 +370,11 @@
     function stop() { if (timer) { clearInterval(timer); timer = null; } }
     function restart() { stop(); start(); }
 
+    var prevBtn = document.querySelector('.hero-quote-prev');
+    var nextBtn = document.querySelector('.hero-quote-next');
+    if (prevBtn) prevBtn.addEventListener('click', function () { goTo(idx - 1, true); });
+    if (nextBtn) nextBtn.addEventListener('click', function () { goTo(idx + 1, true); });
+
     start();
     stack.addEventListener('mouseenter', stop);
     stack.addEventListener('mouseleave', start);

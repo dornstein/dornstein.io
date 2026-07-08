@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>David Ornstein</title>
-  <link rel="stylesheet" href="styles.css?v=9">
+  <link rel="stylesheet" href="styles.css?v=10">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
@@ -45,7 +45,13 @@
           <!-- Populated at runtime from the #testimonials carousel -->
         </div>
         <div class="hero-quote-footer-row">
+          <button type="button" class="hero-quote-nav hero-quote-prev" aria-label="Previous quote">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
           <div class="hero-quote-dots" role="tablist" aria-label="Featured quotes"></div>
+          <button type="button" class="hero-quote-nav hero-quote-next" aria-label="Next quote">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
           <a href="#testimonials" class="hero-quote-more">See all &rarr;</a>
         </div>
       </aside>
@@ -1297,6 +1303,6 @@
   ]
 }
 </script>
-  <script src="script.js?v=9"></script>
+  <script src="script.js?v=10"></script>
 </body>
 </html>

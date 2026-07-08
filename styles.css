@@ -224,9 +224,47 @@ ul {
 .hero-quote-footer-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   margin-top: 16px;
+}
+
+.hero-quote-nav {
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid rgba(59, 89, 152, 0.2);
+  background: transparent;
+  border-radius: 50%;
+  color: var(--color-accent);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.hero-quote-nav:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: #fff;
+}
+
+.hero-quote-nav:active { transform: scale(0.94); }
+
+.hero-quote-nav svg { width: 14px; height: 14px; }
+
+.hero-quote-dots {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.hero-quote-more {
+  flex: 0 0 auto;
+  margin-left: auto;
 }
 
 .hero-quote-stack {
@@ -276,13 +314,6 @@ ul {
 .hero-quote-role {
   font-size: 0.78rem;
   color: var(--color-text-muted);
-}
-
-.hero-quote-dots {
-  display: flex;
-  gap: 4px;
-  flex-wrap: wrap;
-  max-width: 70%;
 }
 
 .hero-quote-dot {
