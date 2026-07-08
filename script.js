@@ -292,9 +292,48 @@
   // #filterCategoryChips and #filterSkillChips; nothing to do here.
 
   // --- Hero Featured Testimonial Rotator ---
+  // Populated dynamically from the #testimonials carousel so we rotate through
+  // every endorsement rather than a hand-picked subset.
   (function initHeroQuotes() {
     var stack = document.querySelector('.hero-quote-stack');
     if (!stack) return;
+    var sourceSlides = document.querySelectorAll('#testimonials .testimonial-slide');
+    if (!sourceSlides.length) return;
+
+    // Build a hero-quote for each source slide.
+    for (var s = 0; s < sourceSlides.length; s++) {
+      var slide = sourceSlides[s];
+      var text = slide.querySelector('.testimonial-text');
+      var author = slide.querySelector('.testimonial-author');
+      var role = slide.querySelector('.testimonial-role');
+      if (!text) continue;
+      var q = document.createElement('blockquote');
+      q.className = 'hero-quote' + (s === 0 ? ' is-active' : '');
+      var p = document.createElement('p');
+      p.className = 'hero-quote-text';
+      // Keep original punctuation; testimonial-text already omits quotes.
+      p.textContent = '\u201C' + text.textContent.trim() + '\u201D';
+      q.appendChild(p);
+      if (author || role) {
+        var f = document.createElement('footer');
+        f.className = 'hero-quote-footer';
+        if (author) {
+          var a = document.createElement('span');
+          a.className = 'hero-quote-author';
+          a.textContent = author.textContent;
+          f.appendChild(a);
+        }
+        if (role) {
+          var r = document.createElement('span');
+          r.className = 'hero-quote-role';
+          r.textContent = role.textContent;
+          f.appendChild(r);
+        }
+        q.appendChild(f);
+      }
+      stack.appendChild(q);
+    }
+
     var quotes = stack.querySelectorAll('.hero-quote');
     if (quotes.length <= 1) return;
     var dotsContainer = document.querySelector('.hero-quote-dots');
@@ -318,7 +357,7 @@
     }
 
     function goTo(n, userInitiated) {
-      idx = n % quotes.length;
+      idx = ((n % quotes.length) + quotes.length) % quotes.length;
       for (var i = 0; i < quotes.length; i++) {
         quotes[i].classList.toggle('is-active', i === idx);
         if (dots[i]) dots[i].classList.toggle('is-active', i === idx);
