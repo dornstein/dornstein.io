@@ -417,11 +417,74 @@ ul {
   border-radius: 16px;
   padding: 14px 20px;
   display: flex;
-  align-items: center;
-  gap: 14px;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 12px;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06), 0 1px 4px rgba(0, 0, 0, 0.03);
   transition: box-shadow 0.3s ease;
+}
+
+.filter-bar-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.filter-clear {
+  border: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-text-muted, #6a7a8a);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.filter-clear:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.filter-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px 14px;
+  align-items: start;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.filter-group-skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 3px;
+  padding-left: 2px;
+}
+
+.filter-chip-category {
+  align-self: flex-start;
+  padding: 2px 7px !important;
+  font-size: 0.62rem !important;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  border-width: 1px !important;
+}
+
+.filter-chip-skill {
+  padding: 1px 6px !important;
+  font-size: 0.65rem !important;
+  font-weight: 500;
+  border-width: 1px !important;
+  border-color: rgba(0, 0, 0, 0.08) !important;
+  letter-spacing: 0 !important;
 }
 
 .filter-bar-inner:hover {
@@ -506,49 +569,15 @@ ul {
   transform: translateY(-1px);
 }
 
-/* Per-chip tinted backgrounds */
-.filter-chip[data-filter="all"]        { background: linear-gradient(135deg, #f0f0f5 0%, #e8e8ef 100%); border-color: #d8d8e2; }
-.filter-chip[data-filter="leadership"] { background: linear-gradient(135deg, #fef3e2 0%, #fde8c8 100%); border-color: #f5d5a0; color: #9a6b20; }
-.filter-chip[data-filter="architecture"]{ background: linear-gradient(135deg, #e8f0fe 0%, #d4e4fc 100%); border-color: #b8cff0; color: #3b6bb5; }
-.filter-chip[data-filter="security"]   { background: linear-gradient(135deg, #e6f4ea 0%, #ceead6 100%); border-color: #a8d5b5; color: #2d6e3f; }
-.filter-chip[data-filter="engineering"]{ background: linear-gradient(135deg, #f3e8fd 0%, #e6d5fa 100%); border-color: #ceb8ef; color: #6b3fa0; }
-.filter-chip[data-filter="platform"]   { background: linear-gradient(135deg, #e0f2f7 0%, #c8e8f2 100%); border-color: #a0d4e4; color: #1a7a8f; }
-.filter-chip[data-filter="startup"]    { background: linear-gradient(135deg, #fff3e0 0%, #ffe8c8 100%); border-color: #ffd49a; color: #b5700a; }
-.filter-chip[data-filter="standards"]  { background: linear-gradient(135deg, #e8eef8 0%, #d6dfef 100%); border-color: #b8c6de; color: #3b5280; }
-.filter-chip[data-filter="publishing"] { background: linear-gradient(135deg, #fce4ec 0%, #f8d0da 100%); border-color: #e8a8b8; color: #a03050; }
-.filter-chip[data-filter="patents"]    { background: linear-gradient(135deg, #fff8e1 0%, #fff0c0 100%); border-color: #f0d870; color: #8a7015; }
-.filter-chip[data-filter="compliance"] { background: linear-gradient(135deg, #e0f2f1 0%, #c8e6e4 100%); border-color: #9ecfcc; color: #2a706b; }
-.filter-chip[data-filter="m-and-a"]    { background: linear-gradient(135deg, #fbe9e7 0%, #f5d0ca 100%); border-color: #dea898; color: #a04030; }
-.filter-chip[data-filter="ai"]         { background: linear-gradient(135deg, #e0f7fa 0%, #c8eef2 100%); border-color: #80cbc4; color: #00695c; }
-
-/* Active state overrides the tint with solid accent */
-.filter-chip.active[data-filter="all"]        { background: var(--color-accent); color: white; border-color: var(--color-accent); }
-.filter-chip.active[data-filter="leadership"] { background: linear-gradient(135deg, #c07820 0%, #a86510 100%); color: white; border-color: #a86510; box-shadow: 0 2px 10px rgba(168, 101, 16, 0.3); }
-.filter-chip.active[data-filter="architecture"]{ background: linear-gradient(135deg, #3b6bb5 0%, #2a5a9e 100%); color: white; border-color: #2a5a9e; box-shadow: 0 2px 10px rgba(42, 90, 158, 0.3); }
-.filter-chip.active[data-filter="security"]   { background: linear-gradient(135deg, #2d8e4f 0%, #1e7a3e 100%); color: white; border-color: #1e7a3e; box-shadow: 0 2px 10px rgba(30, 122, 62, 0.3); }
-.filter-chip.active[data-filter="engineering"]{ background: linear-gradient(135deg, #7b4fb8 0%, #6535a0 100%); color: white; border-color: #6535a0; box-shadow: 0 2px 10px rgba(101, 53, 160, 0.3); }
-.filter-chip.active[data-filter="platform"]   { background: linear-gradient(135deg, #1a8a9f 0%, #147080 100%); color: white; border-color: #147080; box-shadow: 0 2px 10px rgba(20, 112, 128, 0.3); }
-.filter-chip.active[data-filter="startup"]    { background: linear-gradient(135deg, #c57a0a 0%, #a86500 100%); color: white; border-color: #a86500; box-shadow: 0 2px 10px rgba(168, 101, 0, 0.3); }
-.filter-chip.active[data-filter="standards"]  { background: linear-gradient(135deg, #3b5290 0%, #2a4278 100%); color: white; border-color: #2a4278; box-shadow: 0 2px 10px rgba(42, 66, 120, 0.3); }
-.filter-chip.active[data-filter="publishing"] { background: linear-gradient(135deg, #b83860 0%, #a02850 100%); color: white; border-color: #a02850; box-shadow: 0 2px 10px rgba(160, 40, 80, 0.3); }
-.filter-chip.active[data-filter="patents"]    { background: linear-gradient(135deg, #9a8015 0%, #806a10 100%); color: white; border-color: #806a10; box-shadow: 0 2px 10px rgba(128, 106, 16, 0.3); }
-.filter-chip.active[data-filter="compliance"] { background: linear-gradient(135deg, #2a807b 0%, #1e6b66 100%); color: white; border-color: #1e6b66; box-shadow: 0 2px 10px rgba(30, 107, 102, 0.3); }
-.filter-chip.active[data-filter="m-and-a"]    { background: linear-gradient(135deg, #b04838 0%, #983828 100%); color: white; border-color: #983828; box-shadow: 0 2px 10px rgba(152, 56, 40, 0.3); }
-.filter-chip.active[data-filter="ai"]         { background: linear-gradient(135deg, #00897b 0%, #00695c 100%); color: white; border-color: #00695c; box-shadow: 0 2px 10px rgba(0, 105, 92, 0.3); }
-
-/* Hover for tinted chips keeps their color family */
-.filter-chip[data-filter="leadership"]:hover  { border-color: #c07820; }
-.filter-chip[data-filter="architecture"]:hover { border-color: #3b6bb5; }
-.filter-chip[data-filter="security"]:hover    { border-color: #2d8e4f; }
-.filter-chip[data-filter="engineering"]:hover { border-color: #7b4fb8; }
-.filter-chip[data-filter="platform"]:hover    { border-color: #1a8a9f; }
-.filter-chip[data-filter="startup"]:hover     { border-color: #c57a0a; }
-.filter-chip[data-filter="standards"]:hover   { border-color: #3b5290; }
-.filter-chip[data-filter="publishing"]:hover  { border-color: #b83860; }
-.filter-chip[data-filter="patents"]:hover     { border-color: #9a8015; }
-.filter-chip[data-filter="compliance"]:hover  { border-color: #2a807b; }
-.filter-chip[data-filter="m-and-a"]:hover     { border-color: #b04838; }
-.filter-chip[data-filter="ai"]:hover          { border-color: #00897b; }
+/* Per-chip tinted backgrounds — categories use a subtle taxonomy-colored tint. */
+.filter-chip[data-filter="all"]                            { background: linear-gradient(135deg, #f0f0f5 0%, #e8e8ef 100%); border-color: #d8d8e2; }
+.filter-chip[data-filter-slug="ai-native-development"]     { background: linear-gradient(135deg, #e0f7fa 0%, #c8eef2 100%); border-color: #80cbc4; color: #00695c; }
+.filter-chip[data-filter-slug="security-compliance"]       { background: linear-gradient(135deg, #e6f4ea 0%, #ceead6 100%); border-color: #a8d5b5; color: #2d6e3f; }
+.filter-chip[data-filter-slug="architecture-systems"]      { background: linear-gradient(135deg, #e8f0fe 0%, #d4e4fc 100%); border-color: #b8cff0; color: #3b6bb5; }
+.filter-chip[data-filter-slug="leadership-strategy"]       { background: linear-gradient(135deg, #fef3e2 0%, #fde8c8 100%); border-color: #f5d5a0; color: #9a6b20; }
+.filter-chip[data-filter-slug="standards-intellectual-property"] { background: linear-gradient(135deg, #e8eef8 0%, #d6dfef 100%); border-color: #b8c6de; color: #3b5280; }
+.filter-chip[data-filter-slug="languages"],
+.filter-chip[data-filter-slug="platforms-frameworks-tools"] { background: linear-gradient(135deg, #f2f0f5 0%, #e6e3ec 100%); border-color: #cfc9d8; color: #5a5170; }
 
 .filter-chip-icon {
   width: 14px;
@@ -713,6 +742,35 @@ ul {
   filter: blur(2px);
   overflow: hidden;
   border-color: transparent;
+}
+
+.timeline-card.card-filtered-out {
+  display: none;
+}
+
+.filter-summary-cat {
+  font-weight: 400;
+  color: var(--color-text-muted, #6a7a8a);
+  font-size: 0.9em;
+}
+
+.filter-summary-tag {
+  display: inline-block;
+  padding: 2px 8px;
+  margin: 0 2px;
+  border-radius: 8px;
+  background: rgba(59, 89, 152, 0.08);
+  border: 1px solid rgba(59, 89, 152, 0.18);
+  color: var(--color-accent, #3b5998);
+  font-size: 0.78em;
+  font-weight: 500;
+}
+.filter-summary-tag-cat {
+  background: rgba(59, 89, 152, 0.16);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-size: 0.72em;
 }
 
 .timeline-era.filtered-in {
@@ -928,6 +986,78 @@ ul {
   font-size: 0.84rem !important;
   color: var(--color-accent-dark) !important;
   font-weight: 500;
+}
+
+.skill-badges {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 8px 14px;
+  align-items: start;
+}
+
+.skill-badge-group {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.skill-badge-group-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2px 3px;
+  padding-left: 2px;
+}
+
+/* Category label styled as a filter-chip-category */
+.skill-badge-label {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 7px;
+  border: 1px solid var(--color-border);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+
+/* Category tints — match filter-chip category tints */
+.skill-badge-label[data-cat-slug="ai-native-development"]     { background: linear-gradient(135deg, #e0f7fa 0%, #c8eef2 100%); border-color: #80cbc4; color: #00695c; }
+.skill-badge-label[data-cat-slug="security-compliance"]       { background: linear-gradient(135deg, #e6f4ea 0%, #ceead6 100%); border-color: #a8d5b5; color: #2d6e3f; }
+.skill-badge-label[data-cat-slug="architecture-systems"]      { background: linear-gradient(135deg, #e8f0fe 0%, #d4e4fc 100%); border-color: #b8cff0; color: #3b6bb5; }
+.skill-badge-label[data-cat-slug="leadership-strategy"]       { background: linear-gradient(135deg, #fef3e2 0%, #fde8c8 100%); border-color: #f5d5a0; color: #9a6b20; }
+.skill-badge-label[data-cat-slug="standards-intellectual-property"] { background: linear-gradient(135deg, #e8eef8 0%, #d6dfef 100%); border-color: #b8c6de; color: #3b5280; }
+.skill-badge-label[data-cat-slug="languages"],
+.skill-badge-label[data-cat-slug="platforms-frameworks-tools"] { background: linear-gradient(135deg, #f2f0f5 0%, #e6e3ec 100%); border-color: #cfc9d8; color: #5a5170; }
+
+/* Skill chip styled as filter-chip-skill */
+.skill-badge {
+  display: inline-block;
+  padding: 1px 6px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 100px;
+  background: transparent;
+  color: var(--color-text-muted, #5a6a7a);
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 500;
+  white-space: nowrap;
+  letter-spacing: 0;
+}
+
+@media (max-width: 600px) {
+  .skill-badges {
+    grid-template-columns: 1fr;
+    gap: 6px 0;
+  }
 }
 
 .timeline-img {
@@ -1423,6 +1553,43 @@ ul {
 
 .skill-list li:last-child {
   border-bottom: none;
+}
+
+.skill-note {
+  color: var(--color-text-muted);
+  font-size: 0.82rem;
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.skills-also {
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.skills-also h3 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  margin-bottom: 14px;
+}
+
+.skills-also-line {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.7;
+  margin: 6px 0;
+}
+
+.skills-also-label {
+  display: inline-block;
+  min-width: 130px;
+  font-weight: 600;
+  color: var(--color-text);
+  margin-right: 8px;
 }
 
 /* --- Patents --- */
