@@ -291,6 +291,51 @@
   // Chip click handling is wired above via delegated listeners on
   // #filterCategoryChips and #filterSkillChips; nothing to do here.
 
+  // --- Hero Featured Testimonial Rotator ---
+  (function initHeroQuotes() {
+    var stack = document.querySelector('.hero-quote-stack');
+    if (!stack) return;
+    var quotes = stack.querySelectorAll('.hero-quote');
+    if (quotes.length <= 1) return;
+    var dotsContainer = document.querySelector('.hero-quote-dots');
+    var idx = 0;
+    var timer = null;
+    var ROTATE_MS = 7000;
+
+    var dots = [];
+    if (dotsContainer) {
+      for (var i = 0; i < quotes.length; i++) {
+        (function (n) {
+          var dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'hero-quote-dot' + (n === 0 ? ' is-active' : '');
+          dot.setAttribute('aria-label', 'Show quote ' + (n + 1));
+          dot.addEventListener('click', function () { goTo(n, true); });
+          dotsContainer.appendChild(dot);
+          dots.push(dot);
+        })(i);
+      }
+    }
+
+    function goTo(n, userInitiated) {
+      idx = n % quotes.length;
+      for (var i = 0; i < quotes.length; i++) {
+        quotes[i].classList.toggle('is-active', i === idx);
+        if (dots[i]) dots[i].classList.toggle('is-active', i === idx);
+      }
+      if (userInitiated) restart();
+    }
+
+    function advance() { goTo(idx + 1, false); }
+    function start() { timer = setInterval(advance, ROTATE_MS); }
+    function stop() { if (timer) { clearInterval(timer); timer = null; } }
+    function restart() { stop(); start(); }
+
+    start();
+    stack.addEventListener('mouseenter', stop);
+    stack.addEventListener('mouseleave', start);
+  })();
+
   // --- Testimonial Carousel ---
   (function initCarousel() {
     var track = document.querySelector('.carousel-track');
