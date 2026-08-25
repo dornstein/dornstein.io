@@ -76,15 +76,19 @@ basics:
   # the generic opener (0) and the "craft" closer (4). Selection + reorder only — every
   # sentence shown is verbatim from summary[]; no rewriting.
   resumeSummaryOrder: [3, 1, 2]
+  # Order is outcome-first, tenure LAST — a presentation insight that applies to
+  # every view a hiring audience sees (résumé AND portfolio), not just the résumé.
+  # Both views render these in array order, so this list is the single source of
+  # that ordering. (Values/labels unchanged; this is a reorder only.)
   stats:
-    - { slug: stat-years,     value: "40+",   label: "Professional Years", resume: true }
-    - { slug: stat-patents,   value: "12+",   label: "Patents", resume: true }
-    - { slug: stat-companies, value: "3",     label: "Companies Founded", resume: true }
     - { slug: stat-services,  value: "8K+",   label: "Services Secured", resume: true }
     - { slug: stat-exit,      value: "$200M", label: "Startup Exit", resume: true }
+    - { slug: stat-patents,   value: "12+",   label: "Patents", resume: true }
+    - { slug: stat-engineers, value: "50+",   label: "Engineers Led", resume: true }
+    - { slug: stat-companies, value: "3",     label: "Companies Founded", resume: true }
     - { slug: stat-budget,    value: "$250M", label: "Largest Budget Managed" }
     - { slug: stat-lines,     value: "150K+", label: "Lines Shipped (Past 60 Days)" }
-    - { slug: stat-engineers, value: "50+",   label: "Engineers Led", resume: true }
+    - { slug: stat-years,     value: "40+",   label: "Professional Years", resume: true }
 
 # ----------------------------------------------------------------------------
 # work[] — atomic career roles, newest first. THE core of the data.

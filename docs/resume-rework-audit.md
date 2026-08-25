@@ -82,3 +82,45 @@ deferred Indra rewrite). Two refinements they surfaced:
 
 The single highest-leverage remaining item (both agree): the **Indra rewrite** —
 skeleton for you to fill is in `docs/indra-bullets-draft.md`.
+
+---
+
+## Cross-view pass — presentation insights that aren't résumé-only
+
+You flagged that some of the résumé presentation insights apply to **any view a
+hiring audience sees** — recruiters and hiring managers may open the portfolio (or
+a future view), so "lead with outcomes, not the 40+-year tenure" is valid there too.
+I reviewed the portfolio for that class of issue. Same standing rule: reorder/select
+only; no prose invented or rewritten.
+
+**Changed (presentation/ordering only):**
+
+- **Stats block reordered at the source, so every view inherits it.** I moved the
+  ordering into `basics.stats[]` in `resume.yaml` itself (outcome-first, `40+
+  Professional Years` LAST) and made both renderers read that array order. The
+  portfolio "About" tiles now lead `8K+ Services Secured · $200M Startup Exit · 12+
+  Patents · 50+ Engineers Led · 3 Companies Founded · $250M Largest Budget · 150K+
+  Lines (Past 60 Days) · 40+ Professional Years`. The résumé strip (its 6 flagged
+  stats) reads the same order — so the two views can no longer drift, and the
+  résumé's separate hardcoded `STRIP_ORDER` array is gone (redundant now). Values
+  and labels unchanged; pure reorder.
+
+**Reviewed and already fine (no change needed):**
+
+- **Value props** already lead with `AI-Native Super-IC` → `Security at Scale` (present/outcome-forward).
+- **Career timeline** is newest-first, so it opens on Indra — not the 1979 roles.
+- **Skills** lead with the `AI-Native Development` category.
+
+**Flagged — prose, so I did NOT touch it (your call):**
+
+- **Hero tagline** (`basics.label`): *"Software leader, architect, founder, and
+  standards author with 40+ years building products and platforms people depend
+  on."* This is the one remaining spot where a view leads with the generic
+  title-stack + the "40+ years" age signal, and it's the largest text on the site.
+  Rewriting it to lead with the AI-native present would be a **prose change**, which
+  I won't fabricate. If you want it, I'll draft *candidates for your approval* (same
+  as the résumé headline offer). Left verbatim for now.
+- **"150K+ Lines Shipped (Past 60 Days)"** stays on the portfolio (you keep it there
+  deliberately — it's the AI-native throughput signal on your personal site). I only
+  demoted its *position*; it's no longer near the top. The résumé still omits it
+  entirely (the HM's #1 credibility risk), so the two views diverge here on purpose.
