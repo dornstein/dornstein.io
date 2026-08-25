@@ -1,0 +1,1942 @@
+# ============================================================================
+# resume.yaml — presentation-independent source of truth for dornstein.io
+# See docs/resume-schema.md for the schema specification.
+#
+# Facts live here exactly once. The interactive site, the linear résumé, and the
+# linkedin-sync skill each render their own VIEW of this data.
+#   - Prose (summary/highlights) is PLAIN TEXT; glossary links are the `terms:` list.
+#   - Glossary DEFINITIONS (glossary[].html) are the one deliberate HTML exception.
+#   - `display:` and top-level `timeline:` are site-only presentation.
+#   - startDate/endDate are true machine dates (YYYY-MM); display.dateLabel is the
+#     editorial string the site shows (they can differ).
+# ============================================================================
+
+meta:
+  schemaVersion: "1.0"
+  lastModified: "2026-08-25"
+  canonical: "https://dornstein.io"
+  sources:
+    - "REFERENCE.md (factual source of truth)"
+    - "index.html (timeline, stats, value props, interests)"
+    - "glossary.js (term definitions)"
+    - "patents.html (patents + OPC legacy)"
+
+# ----------------------------------------------------------------------------
+basics:
+  name: David Ornstein
+  label: >-
+    Software leader, architect, founder, and standards author with 40+ years
+    building products and platforms people depend on.
+  image: media/david-ornstein.webp
+  email: davidorn@live.com
+  url: https://dornstein.io
+  location:
+    city: Redmond
+    region: WA
+    countryCode: US
+  profiles: []   # public LinkedIn URL not published on the site; add when available
+  summary:
+    - >-
+      I've spent my career at the intersection of technology leadership and
+      hands-on engineering — building products, founding companies, shaping
+      standards, leading teams, and securing the software ecosystem at scale.
+    - >-
+      Across 25+ years at Microsoft, I've been an architect, a compliance
+      director, a Chief of Staff for Trustworthy Computing, and a platform
+      founder. I conceived and led Liquid, the internal platform that automated
+      security compliance for 8,000+ services company-wide. Before that, I
+      architected the "Metro" document format that became the foundation for
+      Office 2007 and XPS, built FlexWiki (1,000+ wikis inside Microsoft), and
+      led engineering compliance programs managing $10M+ annually under the DOJ
+      consent decree.
+    - >-
+      Before Microsoft, I founded a web-tools startup, helped invent the Rocket
+      eBook as CTO of NuvoMedia (acquired for $200M), and served as President of
+      the Open eBook Forum. I've been a chief architect, a standards chairman, a
+      startup CEO, and an individual contributor — sometimes in the same year.
+    - >-
+      Most recently I've been building Indra — an AI-first app platform inside
+      Microsoft's CISO organization that gives security engineers the building
+      blocks to turn their expertise into tools the whole organization can use. I
+      lead Indra as its sole human architect, working alongside a team of eight
+      specialized AI agents, each owning a distinct domain: engineering,
+      strategy, security review, storytelling, advocacy, and more. It's a new
+      model for software development — one architect, a crew of AI collaborators,
+      and the throughput of a full engineering org — and I'm building the proof
+      of it.
+    - >-
+      I care about building things well, about the craft of software, and about
+      helping the people around me grow.
+  summaryTerms: [trustworthy-computing, liquid, metro, flexwiki, consent-decree, rocket-ebook, nuvomedia, oebf, indra]
+  stats:
+    - { slug: stat-years,     value: "40+",   label: "Professional Years" }
+    - { slug: stat-patents,   value: "12+",   label: "Patents" }
+    - { slug: stat-companies, value: "3",     label: "Companies Founded" }
+    - { slug: stat-services,  value: "8K+",   label: "Services Secured" }
+    - { slug: stat-exit,      value: "$200M", label: "Startup Exit" }
+    - { slug: stat-budget,    value: "$250M", label: "Largest Budget Managed" }
+    - { slug: stat-lines,     value: "150K+", label: "Lines Shipped (Past 60 Days)" }
+    - { slug: stat-engineers, value: "50+",   label: "Engineers Led" }
+
+# ----------------------------------------------------------------------------
+# work[] — atomic career roles, newest first. THE core of the data.
+work:
+
+  - id: indra
+    organization: Microsoft
+    group: microsoft
+    position: Principal Security Architect
+    location: Redmond, WA
+    startDate: "2026-01"
+    endDate: present
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Conceived and built Indra, an AI-first app platform inside Microsoft's CISO
+      organization. Indra solves a fundamental problem: security knowledge across
+      dozens of CISO domains is fragmented across dashboards, Kusto queries, and
+      engineers' heads — inaccessible to leaders who need a cross-domain view, and
+      invisible to AI. Indra gives SIGMA engineers the building blocks to turn
+      their security expertise into tools the whole organization can use, and
+      gives deputy CISOs a unified view of posture across verticals. Lead Indra as
+      its sole human architect, working daily alongside a team of eight
+      specialized AI agents built as GitHub Copilot custom agents — each owning a
+      distinct domain: engineering lifecycle, strategy, security review,
+      narrative, builder advocacy, live demos, and editorial.
+    highlights:
+      - >-
+        Deployed across dev, pre-production, and production environments; Unified
+        Security Reporting dashboards ready for dCISO adoption.
+      - >-
+        Proving the AI-native super-IC model: one architect sustaining a full
+        platform ecosystem — architecture, code, documentation, strategy, and
+        operations — with the throughput of a full engineering org.
+    skills: [ai-native-software-engineering, ai-harness-engineering, security-architecture, static-code-analysis, cloud-security, secure-development-lifecycle-sdl, complex-systems-architecture, platform-engineering, interoperability, people-development-coaching, technical-strategy, engineering-leadership, cross-functional-team-leadership, protocol-design, c-net, typescript-javascript, sql, net-framework-asp-net, relational-databases, windows, node-js, react, azure-azure-devops]
+    terms: [indra, sigma]
+    display:
+      era: microsoft-security-compliance
+      cardTitle: Indra — AI-First Security App Platform
+      roleLine: Principal Security Architect & Project Lead · SIGMA (CISO)
+      dateLabel: "2025 – Present (1 yr)"
+      image: null
+
+  # Liquid spanned two Senior-Director org-periods (REFERENCE.md keeps them
+  # separate; so does LinkedIn). They are two atomic roles here — the finest
+  # truth. The SITE merges them into one "Liquid Compliance Platform" card via the
+  # generic display.card grouping below; résumé/LinkedIn render both roles.
+  - id: liquid-cst
+    organization: Microsoft
+    group: microsoft
+    position: Senior Director Engineering, Customer Security and Trust
+    location: Redmond, WA
+    startDate: "2016-04"
+    endDate: "2021-07"
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Conceived and founded Liquid — Microsoft's internal platform for continuous
+      security assurance — around 2015. Assembled a 20+ person Deep Engineering
+      team to automate the SDL and other compliance processes. Drove the
+      architecture and implementation of Liquid's services: automated policy
+      scanners, code compliance pipelines, and a unified dashboard for security
+      standards adherence.
+    highlights:
+      - Grew Liquid into the core of Microsoft's Continuous SDL program.
+    skills: [security-architecture, secure-development-lifecycle-sdl, compliance-automation-continuous-compliance, platform-engineering, devsecops, engineering-leadership, complex-systems-architecture, technical-strategy, people-development-coaching, interoperability, c-net, net-framework-asp-net, azure-azure-devops, github-codeql, windows, relational-databases, sql, typescript-javascript]
+    terms: [liquid, sdl]
+    display:
+      era: microsoft-security-compliance
+      card: liquid-platform
+      cardLead: true
+      cardTitle: Liquid Compliance Platform
+      roleLine: Principal Engineering Manager / Senior Director · Assurance Engineering
+      dateLabel: "2015 – 2025 (10 yrs)"
+      image: null
+      # Card-level body overrides (used because this card merges two roles):
+      summary: >-
+        Conceived and led Liquid, Microsoft's internal platform for continuous
+        security assurance. Assembled a 20+ person Deep Engineering team to
+        automate the SDL and compliance processes. Architected automated policy
+        scanners, code compliance pipelines, and a unified dashboard. Co-incubated
+        CodeQL Central for company-wide code analysis. Established the unified
+        Security Bugs S360 KPI tracking vulnerabilities across 1,200+ repos and
+        ~18,000 services. In parallel, drove the full Liquid team — PMs and
+        engineers alike — toward AI-accelerated development practices that became a
+        model for the broader organization.
+      highlights:
+        - Automated SDL compliance for 8,000+ services company-wide.
+        - >-
+          Transformed Microsoft's assurance from manual attestations to
+          data-driven continuous monitoring. Executive acclaim for "incredible
+          impact" on the security engineering ecosystem.
+
+  - id: liquid-dsr
+    organization: Microsoft
+    group: microsoft
+    position: Senior Director Engineering, Digital Security and Resilience
+    location: Redmond, WA
+    startDate: "2021-08"
+    endDate: "2025-12"
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Continued leading Liquid engineering as the surrounding org was renamed —
+      Digital Security & Resilience, then the CISO organization (2024), with the
+      team renamed Assurance Engineering (2024) and then SIGMA (2025); same team,
+      same leadership role throughout. Integrated Liquid tooling with Azure DevOps
+      across the company for real-time compliance checks, replacing yearly audits.
+      Co-led incubation of CodeQL Central, a scalable code analysis service.
+      Established the unified Security Bugs S360 KPI tracking vulnerabilities across
+      1,200+ code repositories and ~18,000 services.
+    highlights:
+      - Automated SDL compliance for 8,000+ services company-wide.
+      - >-
+        Shifted Microsoft from manual attestations to data-driven continuous
+        monitoring; manager cited "incredible impact" on the security engineering
+        ecosystem.
+    skills: [security-architecture, devsecops, static-code-analysis, continuous-integration, cloud-security, compliance-automation-continuous-compliance, engineering-leadership, platform-engineering, secure-development-lifecycle-sdl, c-net, net-framework-asp-net, sql, windows, azure-azure-devops, github-codeql]
+    terms: [liquid, codeql, sdl]
+    display:
+      era: microsoft-security-compliance
+      card: liquid-platform   # folds into the liquid-cst lead card on the site
+      image: null
+
+  - id: twc-chief-of-staff
+    organization: Microsoft
+    group: microsoft
+    position: Chief of Staff, Trustworthy Computing
+    location: Redmond, WA
+    startDate: "2008-01"
+    endDate: "2014-12"
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Coordinated security initiatives across Microsoft as right-hand to CVP Scott
+      Charney. Unified assurance programs spanning security reviews, SDL, and
+      privacy across divisions. Shifted focus from pure compliance checklists to
+      proactive security assurance. Managed executive communications and security
+      review follow-ups. Oversaw TwC's reorganization into CELA in 2014.
+    highlights:
+      - >-
+        Drove SDL requirements integration and incident response improvements.
+      - >-
+        Elevated Microsoft's overall security posture and helped evolve the
+        culture from compliance to secure-by-design.
+    skills: [security-architecture, secure-development-lifecycle-sdl, cloud-security, threat-modeling, public-key-cryptography, executive-communication, cross-functional-team-leadership, technical-strategy, program-product-management, engineering-leadership, people-development-coaching, c-net, sql, net-framework-asp-net, azure-azure-devops, relational-databases]
+    terms: [twc, sdl]
+    display:
+      era: microsoft-security-compliance
+      cardTitle: Security Strategy & Assurance
+      roleLine: Chief of Staff · Trustworthy Computing (TwC)
+      dateLabel: "2008 – 2014 (6 yrs)"
+      image: null
+
+  - id: compliance-engineering
+    organization: Microsoft
+    group: microsoft
+    position: Director, Compliance Engineering — Engineering Excellence
+    location: Redmond, WA
+    startDate: "2004-01"
+    endDate: "2010-12"   # REFERENCE: 2004–2010 (overlaps Chief of Staff); site label rounds to 2004–2008
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Ensured engineering teams complied with mandatory policies and DOJ antitrust
+      consent decree requirements. Developed APIscan and CheckPoint Express to
+      verify API compliance. Established company-wide governance processes for
+      policy design, tracking, enforcement, and training. Managed program budget
+      exceeding $10M annually.
+    highlights:
+      - Achieved full compliance with DOJ consent decree with no violations.
+      - >-
+        Compliance frameworks became standard engineering workflow across the
+        company.
+    skills: [compliance-automation-continuous-compliance, platform-engineering, distributed-systems, complex-systems-architecture, engineering-leadership, executive-communication, program-product-management, technical-strategy, protocol-design, c-net, relational-databases, windows, net-framework-asp-net]
+    terms: [consent-decree, apiscan, checkpoint-express]
+    display:
+      era: microsoft-security-compliance
+      cardTitle: Engineering Policy Compliance
+      roleLine: Director, Compliance Engineering · Engineering Excellence
+      dateLabel: "2004 – 2008 (4 yrs)"
+      image: null
+
+  - id: metro-xps
+    organization: Microsoft
+    group: microsoft
+    position: Lead Program Manager, Windows Digital Documents
+    location: Redmond, WA
+    startDate: "2001-01"
+    endDate: "2004-12"
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Led the cross-team initiative to develop the XML Paper Specification —
+      coordinating between Windows and Office teams. Architected and evangelized
+      the format, championed document standards bridging internal and external
+      efforts. Built and led the team that shipped the Rights Management Add-on
+      for IE. Filed 12+ patent applications as primary inventor.
+    highlights:
+      - Shipped XPS as a core document format in Windows and Office 2007.
+      - >-
+        Strengthened Microsoft's IP portfolio with 12+ granted patents for
+        document and security innovations.
+    skills: [standards-development, file-format-design, patents-intellectual-property, xml-sgml, cross-functional-team-leadership, program-product-management, complex-systems-architecture, digital-rights-management-drm, api-design, interoperability, scalability, windows, technical-strategy, c-net, net-framework-asp-net]
+    terms: [metro, drm]
+    display:
+      era: microsoft-windows-office
+      cardTitle: '"Metro" Document Format (XPS)'
+      roleLine: Lead Program Manager · Digital Documents, Windows
+      dateLabel: "2001 – 2004 (3 yrs)"
+      image: media/office2007ribbon.png
+
+  - id: ebooks-flexwiki
+    organization: Microsoft
+    group: microsoft
+    position: Architect, Emerging Technologies
+    location: Redmond, WA
+    startDate: "1999-01"
+    endDate: "2001-12"
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Applied startup e-book expertise to Microsoft's digital reading initiatives,
+      contributing to Microsoft Reader architecture and DRM for e-books. Built
+      FlexWiki, a wiki engine in C#/.NET that became one of the most widely used
+      internal collaboration tools.
+    highlights:
+      - >-
+        FlexWiki grew to 1,000+ instances inside Microsoft, fostering knowledge
+        sharing years before tools like Confluence. Later released as open source.
+    skills: [c-net, net-framework-asp-net, digital-rights-management-drm, complex-systems-architecture, file-format-design, platform-engineering, xml-sgml, windows, standards-development, patents-intellectual-property, technical-strategy, interoperability]
+    terms: [flexwiki, drm, csharp, dotnet]
+    display:
+      era: microsoft-windows-office
+      cardTitle: eBooks & FlexWiki
+      roleLine: Architect · Emerging Technologies
+      dateLabel: "1999 – 2001 (2 yrs)"
+      image: null
+
+  - id: oebf-president
+    organization: Open eBook Forum
+    group: open-ebook-forum
+    position: President & Board Member
+    location: null
+    startDate: "2000-01"
+    endDate: "2003-12"
+    employmentType: board
+    concurrent: true   # overlaps NuvoMedia then Microsoft
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Led a 100+ member international trade and standards organization. Facilitated
+      collaboration among major tech companies and publishers to create the Open
+      eBook Publication Structure — the XML-based standard for eBook content.
+      Defined strategic plans, negotiated organizational partnerships, and managed
+      frameworks for electronic publishing and digital rights management.
+    highlights:
+      - >-
+        Published the first open eBook format specifications, laying groundwork
+        for EPUB — now the dominant open standard for eBooks worldwide.
+    skills: [standards-development, xml-sgml, file-format-design, digital-rights-management-drm, executive-communication, technical-strategy, engineering-leadership]
+    terms: [oebf, oeb-pub-structure, drm]
+    display:
+      era: open-ebook-forum
+      cardTitle: Open eBook Standardization
+      roleLine: President & Board Member
+      dateLabel: "2000 – 2003 (3 yrs)"
+      image: null
+
+  - id: rocket-ebook
+    organization: NuvoMedia, Inc.
+    group: nuvomedia
+    position: Director of Software Development → Chief Technical Officer
+    location: Mountain View, CA
+    startDate: "1998-01"
+    endDate: "2001-12"
+    employmentType: full-time   # co-founder
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Led engineering for the Rocket eBook device software, secure content
+      distribution system, and desktop software. Defined technical strategy and
+      product roadmap. Built the development team and methodology. Promoted to CTO
+      after successful product launch.
+    highlights:
+      - >-
+        Launched the Rocket eBook in 1998 — a 22-ounce handheld holding ~55,000
+        pages.
+      - >-
+        NuvoMedia acquired by Gemstar in 2000 for $200M, validating the e-book
+        market.
+    skills: [startup-founding-fundraising, engineering-leadership, digital-rights-management-drm, public-key-cryptography, complex-systems-architecture, file-format-design, technical-strategy, c-c, patents-intellectual-property, standards-development, xml-sgml, windows, java]
+    terms: [rocket-ebook, nuvomedia]
+    display:
+      era: nuvomedia
+      cardTitle: Rocket eBook & Platform
+      roleLine: Director of Software Development → Chief Technical Officer
+      dateLabel: "1998 – 2001 (3 yrs)"
+      image: null
+
+  - id: ebooknet
+    organization: NuvoMedia, Inc.
+    group: nuvomedia
+    position: Chief Technical Officer
+    location: Mountain View, CA
+    startDate: "1999-01"
+    endDate: "2001-12"
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Led a cross-organization team of 12 who developed and launched eBookNet.com,
+      described at launch as the world's largest eBook portal. Co-authored drafts
+      of the Open eBook Publication Structure standard. Managed IP portfolio.
+    highlights: []
+    skills: [standards-development, xml-sgml, cross-functional-team-leadership, technical-strategy, patents-intellectual-property, engineering-leadership, program-product-management, c-c, java, sql, object-databases, relational-databases, windows]
+    terms: [ebooknet, oeb-pub-structure]
+    display:
+      era: nuvomedia
+      cardTitle: eBookNet.com & Standards
+      roleLine: CTO
+      dateLabel: null
+      image: null
+
+  - id: pragmatica
+    organization: Pragmatica, Inc.
+    group: pragmatica
+    position: Founder, President & CEO
+    location: null
+    startDate: "1995-01"
+    endDate: "1998-12"
+    employmentType: founder
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Founded and led a web-tools startup building an object-oriented web
+      programming language with SGML syntax (predating XML). Recruited executive
+      team, secured multiple rounds of angel investment, and wrote substantial
+      portions of the ~100,000-line C++ codebase.
+    highlights:
+      - >-
+        Grew to 10 employees in addition to consultants and attracted ~5,000
+        customers. Established reputation as an innovative technology entrepreneur.
+    skills: [startup-founding-fundraising, engineering-leadership, c-c, xml-sgml, complex-systems-architecture, executive-communication, technical-strategy, program-product-management, interoperability, windows]
+    terms: [pragmatica, object-oriented, sgml, xml, angel-investment]
+    display:
+      era: pragmatica
+      cardTitle: Internet Publishing Tools
+      roleLine: Founder, President & CEO
+      dateLabel: "1995 – 1998 (3 yrs)"
+      image: null
+
+  - id: oo-consulting
+    organization: Independent Consultant
+    group: independent
+    position: Object-Oriented Technology Consultant
+    location: null
+    startDate: "1994-01"
+    endDate: "1995-12"
+    employmentType: self-employed
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Consulting in OO technology, primarily Smalltalk. Clients included OOCL
+      (international shipping) and Lockheed. Services included mentoring, design
+      pattern coaching, and hands-on implementation.
+    highlights: []
+    skills: [smalltalk, complex-systems-architecture, technical-strategy, startup-founding-fundraising, platform-engineering, api-design, interoperability]
+    terms: [object-oriented, smalltalk, design-patterns]
+    display:
+      era: independent-consultant
+      cardTitle: Object-Oriented Technology Consulting
+      roleLine: null
+      dateLabel: "1994 – 1995 (1 yr)"
+      image: null
+
+  - id: longview
+    organization: LongView International
+    group: longview
+    position: Member of Technical Staff
+    location: Mountain View, CA
+    startDate: "1993-01"
+    endDate: "1994-12"
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Architected and built the first versions of LongView's framework-based
+      derivatives trading systems in VisualWorks Smalltalk. Built a
+      direct-manipulation UI with drag-drop, templates, and folders. Designed the
+      persistence layer using the GemStone object database.
+    highlights: []
+    skills: [smalltalk, object-databases, complex-systems-architecture, api-design, entity-relationship-modeling, technical-strategy]
+    terms: [derivatives-trading, visualworks, gemstone]
+    display:
+      era: longview
+      cardTitle: Derivatives Trading Systems
+      roleLine: Member of Technical Staff · Mountain View, CA
+      dateLabel: "1993 – 1994 (1 yr)"
+      image: media/visualworks.png
+
+  - id: intersolv-excelerator
+    organization: INTERSOLV / Sage Software
+    group: intersolv
+    position: Director of Development & Chief Architect
+    location: San Jose, CA
+    startDate: "1990-01"
+    endDate: "1993-12"
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Led development of Excelerator II, a large OS/2-based CASE tool, and its LAN
+      repository. Managed a bi-coastal team of 12. Built a pioneering interface
+      between relational databases and Smalltalk's world. Created an ER data model
+      compiler producing production-grade relational schemas.
+    highlights: []
+    skills: [engineering-leadership, smalltalk, complex-systems-architecture, platform-engineering, entity-relationship-modeling, relational-databases, c-c, sql, api-design, technical-strategy, people-development-coaching]
+    terms: [excelerator, os2, case, lan, smalltalk, entity-relationship]
+    display:
+      era: intersolv
+      cardTitle: Excelerator II & OS/2 CASE Tools
+      roleLine: Director of Development & Chief Architect · San Jose, CA
+      dateLabel: "1990 – 1993 (3 yrs)"
+      image: media/os2warp-logo.png
+
+  - id: intersolv-corptech
+    organization: INTERSOLV / Sage Software
+    group: intersolv
+    position: Chief Architect, Corporate Technology
+    location: Rockville, MD & Santa Clara, CA
+    startDate: "1989-01"
+    endDate: "1990-12"
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Coordinated technology across INTERSOLV's four development centers. Led
+      technical due diligence for successful acquisitions of Visual Software and
+      Polytron Corp. Built the company's first internet-to-internal email gateway.
+    highlights: []
+    skills: [technical-strategy, complex-systems-architecture, interoperability, cross-functional-team-leadership, smalltalk, distributed-systems, sql, object-databases, relational-databases]
+    terms: []
+    display:
+      era: intersolv
+      cardTitle: Corporate Technology & M&A
+      roleLine: Chief Architect, Corporate Technology · Rockville, MD & Santa Clara, CA
+      dateLabel: "1989 – 1990 (1 yr)"
+      image: null
+
+  - id: cdif
+    organization: INTERSOLV / Sage Software
+    group: intersolv
+    position: Chairman, ANSI/EIA Technical Committee (CDIF)
+    location: null
+    startDate: "1988-01"
+    endDate: "1991-12"
+    employmentType: full-time
+    concurrent: true
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Chaired the CASE Data Interchange Format standards committee with ~30 voting
+      members and 500+ on its mailing list. Completed and published the first
+      version of the standard, including a two-volume entity-relationship model
+      with over 700 entities and relationships.
+    highlights: []
+    skills: [standards-development, entity-relationship-modeling, protocol-design, executive-communication, cross-functional-team-leadership, smalltalk]
+    terms: [cdif, ansi, eia, entity-relationship]
+    display:
+      era: intersolv
+      cardTitle: CDIF Standards Committee
+      roleLine: Chairman · ANSI/EIA Technical Committee
+      dateLabel: "1988 – 1991 (3 yrs)"
+      image: media/case-tool.png
+
+  - id: intersolv-pc-crts
+    organization: INTERSOLV / Sage Software
+    group: intersolv
+    position: Chief Architect, PC Product Development
+    location: Rockville, MD
+    startDate: "1987-01"
+    endDate: "1989-12"
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Responsible for all PC-related technology. Built ER diagramming tools in
+      Smalltalk. Conceived and implemented CRTS, a 100K+ line set of OS extensions
+      and development tools for DOS. Proposed and built a 20-station LAN that
+      eventually grew to span 7 states and 2 countries.
+    highlights: []
+    skills: [complex-systems-architecture, smalltalk, c-c, protocol-design, api-design]
+    terms: [entity-relationship, smalltalk, lan]
+    display:
+      era: intersolv
+      cardTitle: PC Architecture & CRTS
+      roleLine: Chief Architect, PC Product Development · Rockville, MD
+      dateLabel: "1987 – 1989 (2 yrs)"
+      image: null
+
+  - id: access-technology
+    organization: Access Technology Inc.
+    group: access-technology
+    position: Member of Technical Staff
+    location: S. Natick, MA
+    startDate: "1986-01"
+    endDate: "1987-12"
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Developed functional specifications and prototypes for multi-user software
+      products. Led research into text management systems, text databases, and
+      archival systems. Involved in due diligence for multiple acquisitions.
+    highlights: []
+    skills: [c-c, technical-strategy, z80-x86-assembly, sql, platform-engineering]
+    terms: []
+    display:
+      era: access-technology
+      cardTitle: Multi-User Software R&D
+      roleLine: Member of Technical Staff · S. Natick, MA
+      dateLabel: "1986 – 1987 (1 yr)"
+      image: null
+
+  - id: multimate
+    organization: Multimate International Corp.
+    group: multimate
+    position: Project Manager; Software Developer
+    location: E. Hartford, CT
+    startDate: "1984-01"
+    endDate: "1985-12"
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Managed the OEM/International group for Multimate's word-processing system.
+      Ported the product to the Zenith Z-100 (for a US Air Force contract at the
+      Pentagon) and the HP Portable Plus, making it run from ROM cartridges.
+      Contributed to architectural design for next-generation products.
+    highlights: []
+    skills: [program-product-management, z80-x86-assembly, technical-strategy]
+    terms: [multimate, rom-cartridges]
+    display:
+      era: multimate
+      cardTitle: Word Processor OEM & Porting
+      roleLine: Project Manager · E. Hartford, CT
+      dateLabel: "1984 – 1985 (1 yr)"
+      image: null
+
+  - id: timex
+    organization: Timex Computer Corp.
+    group: timex
+    position: Member of Technical Team
+    location: Middlebury, CT
+    startDate: "1982-01"
+    endDate: "1983-12"
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Worked across hardware and software teams developing the Timex/Sinclair
+      2000. Designed a memory bank-switching mechanism and a semi-custom chip to
+      implement it. Authored the complete technical manual for third-party
+      developers. Patented the bank switching memory system.
+    highlights: []
+    skills: [z80-x86-assembly, platform-engineering]
+    terms: [timex-sinclair, bank-switching]
+    display:
+      era: timex
+      cardTitle: Timex/Sinclair 2000 Development
+      roleLine: Member of Technical Team · Middlebury, CT
+      dateLabel: "1982 – 1983 (1 yr)"
+      image: media/timex-sinclair-1000.jpg
+
+  - id: heuristics
+    organization: Heuristics
+    group: heuristics
+    position: Founder & President
+    location: Newton, MA
+    startDate: "1981-01"
+    endDate: "1982-12"
+    employmentType: founder
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Founded a technical services company for the Sinclair computing community.
+      The only authorized Sinclair technical service center in the US. ~$50K
+      revenue with ~40% pre-tax profit.
+    highlights: []
+    skills: [startup-founding-fundraising, z80-x86-assembly]
+    terms: [sinclair]
+    display:
+      era: heuristics
+      cardTitle: Sinclair Technical Services
+      roleLine: Founder & President · Newton, MA
+      dateLabel: "1981 – 1982 (1 yr)"
+      image: null
+
+  - id: sinclair
+    organization: Sinclair Research Ltd.
+    group: sinclair
+    position: Manager of Technical Services
+    location: Boston, MA
+    startDate: "1979-01"
+    endDate: "1981-12"
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      One of the earliest employees at Sinclair's US operation, starting part-time
+      before the ZX80 had even launched. Managed a team providing written support,
+      telephone support, and machine repair services to ~300 customers per month.
+    highlights: []
+    skills: [z80-x86-assembly]
+    terms: [sinclair, zx80]
+    display:
+      era: sinclair
+      cardTitle: ZX-80 Launch & Support
+      roleLine: Manager of Technical Services · Boston, MA
+      dateLabel: "1979 – 1981 (2 yrs)"
+      image: media/sinclair-zx80.jpg
+
+  # --- Roles the site omits; kept for résumé/LinkedIn fidelity (per REFERENCE.md) ---
+  - id: applied-intelligence
+    organization: Applied Intelligence
+    group: applied-intelligence
+    position: Consultant and Staff Programmer
+    location: null
+    startDate: "1985-01"
+    endDate: "1986-12"
+    employmentType: contract
+    concurrent: true
+    visibility: [resume, linkedin]
+    summary: >-
+      Consulting and staff programming role. Details not fully recalled; preserved
+      from LinkedIn as source of additional facts not otherwise documented.
+    highlights: []
+    skills: []
+    terms: []
+    display: null
+
+  - id: applied-systems-technologies
+    organization: Applied Systems Technologies
+    group: applied-systems-technologies
+    position: Consultant
+    location: null
+    startDate: "1985-01"
+    endDate: "1986-12"
+    employmentType: contract
+    concurrent: true
+    visibility: [resume, linkedin]
+    summary: >-
+      Consulting role. Details not fully recalled; preserved from LinkedIn as
+      source of additional facts not otherwise documented.
+    highlights: []
+    skills: []
+    terms: []
+    display: null
+
+# ----------------------------------------------------------------------------
+# timeline — SITE-ONLY presentation. Cards derive from work[].display.era.
+timeline:
+  subtitle: "From Sinclair to Microsoft — a journey through four decades of technology."
+  subtitleTerms: [sinclair]
+  eras:
+    - slug: microsoft-security-compliance
+      heading: Microsoft · Security & Compliance
+      dateLabel: "2004 – Present (22 yrs)"
+      summary: >-
+        Two decades leading security assurance, compliance engineering, and
+        platform development at the heart of Microsoft's security organization.
+      terms: []
+      order: 1
+      tags: [security, leadership, architecture, platform, engineering, compliance, ai]
+
+    - slug: microsoft-windows-office
+      heading: Microsoft · Windows & Office
+      dateLabel: "1999 – 2004 (5 yrs)"
+      summary: >-
+        Document technologies, digital publishing, and the cross-company format
+        initiative that shaped Office and Windows.
+      terms: []
+      order: 2
+      tags: [architecture, engineering, publishing, patents, standards]
+
+    - slug: open-ebook-forum
+      heading: Open eBook Forum
+      dateLabel: "2000 – 2003 (3 yrs)"
+      summary: null
+      terms: [oebf]
+      order: 3
+      tags: [leadership, standards, publishing]
+
+    - slug: nuvomedia
+      heading: NuvoMedia, Inc.
+      dateLabel: "1998 – 2001 (3 yrs)"
+      summary: >-
+        The company that invented the Rocket eBook — one of the world's first
+        dedicated e-readers, nearly a decade before the Kindle.
+      terms: [nuvomedia, rocket-ebook]
+      order: 4
+      tags: [startup, leadership, engineering, publishing, m-and-a]
+
+    - slug: pragmatica
+      heading: Pragmatica, Inc.
+      dateLabel: "1995 – 1998 (3 yrs)"
+      summary: null
+      terms: [pragmatica]
+      order: 5
+      tags: [startup, leadership, engineering]
+
+    - slug: independent-consultant
+      heading: Independent Consultant
+      dateLabel: "1994 – 1995 (1 yr)"
+      summary: null
+      terms: []
+      order: 6
+      tags: [engineering, architecture, startup]
+
+    - slug: longview
+      heading: LongView International
+      dateLabel: "1993 – 1994 (1 yr)"
+      summary: null
+      terms: []
+      order: 7
+      tags: [architecture, engineering]
+
+    - slug: intersolv
+      heading: INTERSOLV / Sage Software
+      dateLabel: "1987 – 1993 (6 yrs)"
+      summary: >-
+        Six years spanning multiple architecture and leadership roles across CASE
+        tools, standards, and corporate technology.
+      terms: []
+      order: 8
+      tags: [leadership, architecture, engineering, standards, m-and-a, patents]
+
+    - slug: access-technology
+      heading: Access Technology Inc.
+      dateLabel: "1986 – 1987 (1 yr)"
+      summary: null
+      terms: []
+      order: 9
+      tags: [engineering, m-and-a]
+
+    - slug: multimate
+      heading: Multimate International Corp.
+      dateLabel: "1984 – 1985 (1 yr)"
+      summary: null
+      terms: [multimate]
+      order: 10
+      tags: [leadership, engineering]
+
+    - slug: timex
+      heading: Timex Computer Corp.
+      dateLabel: "1982 – 1983 (1 yr)"
+      summary: null
+      terms: []
+      order: 11
+      tags: [engineering, patents]
+
+    - slug: heuristics
+      heading: Heuristics
+      dateLabel: "1981 – 1982 (1 yr)"
+      summary: null
+      terms: []
+      order: 12
+      tags: [startup, engineering]
+
+    - slug: sinclair
+      heading: Sinclair Research Ltd.
+      dateLabel: "1979 – 1981 (2 yrs)"
+      summary: null
+      terms: [sinclair]
+      order: 13
+      tags: [leadership, engineering]
+
+# ----------------------------------------------------------------------------
+# skills[] — taxonomy. Category array order = display order. pinned = Top-3.
+skills:
+  - slug: ai-native-development
+    name: AI-Native Development
+    keywords:
+      - { slug: ai-native-software-engineering, name: AI-Native Software Engineering, pinned: 1 }
+      - { slug: ai-harness-engineering, name: AI Harness Engineering }
+      - { slug: ai-agent-orchestration-team-design, name: AI Agent Orchestration & Team Design }
+      - { slug: llm-application-architecture, name: LLM Application Architecture }
+      - { slug: prompt-engineering, name: Prompt Engineering }
+      - { slug: ai-assisted-development-workflows, name: AI-Assisted Development Workflows }
+
+  - slug: security-compliance
+    name: Security & Compliance
+    keywords:
+      - { slug: security-architecture, name: Security Architecture, pinned: 2 }
+      - { slug: secure-development-lifecycle-sdl, name: Secure Development Lifecycle (SDL) }
+      - { slug: compliance-automation-continuous-compliance, name: Compliance Automation & Continuous Compliance }
+      - { slug: devsecops, name: DevSecOps }
+      - { slug: static-code-analysis, name: Static Code Analysis }
+      - { slug: cloud-security, name: Cloud Security }
+      - { slug: threat-modeling, name: Threat Modeling }
+      - { slug: digital-rights-management-drm, name: Digital Rights Management (DRM) }
+      - { slug: public-key-cryptography, name: Public Key Cryptography }
+
+  - slug: architecture-systems
+    name: Architecture & Systems
+    keywords:
+      - { slug: complex-systems-architecture, name: Complex Systems Architecture }
+      - { slug: platform-engineering, name: Platform Engineering }
+      - { slug: distributed-systems, name: Distributed Systems }
+      - { slug: api-design, name: API Design }
+      - { slug: data-pipelines, name: Data Pipelines }
+      - { slug: interoperability, name: Interoperability }
+      - { slug: scalability, name: Scalability }
+      - { slug: continuous-integration, name: Continuous Integration }
+
+  - slug: leadership-strategy
+    name: Leadership & Strategy
+    keywords:
+      - { slug: engineering-leadership, name: Engineering Leadership, pinned: 3 }
+      - { slug: executive-communication, name: Executive Communication }
+      - { slug: cross-functional-team-leadership, name: Cross-Functional Team Leadership }
+      - { slug: program-product-management, name: Program & Product Management }
+      - { slug: technical-strategy, name: Technical Strategy }
+      - { slug: people-development-coaching, name: People Development & Coaching }
+      - { slug: startup-founding-fundraising, name: Startup Founding & Fundraising }
+
+  - slug: standards-intellectual-property
+    name: Standards & Intellectual Property
+    keywords:
+      - { slug: standards-development, name: Standards Development }
+      - { slug: patents-intellectual-property, name: Patents & Intellectual Property }
+      - { slug: protocol-design, name: Protocol Design }
+      - { slug: file-format-design, name: File Format Design }
+      - { slug: entity-relationship-modeling, name: Entity-Relationship Modeling }
+
+  - slug: languages
+    name: Languages
+    keywords:
+      - { slug: c-net, name: C# / .NET }
+      - { slug: c-c, name: C / C++ }
+      - { slug: typescript-javascript, name: TypeScript / JavaScript }
+      - { slug: java, name: Java }
+      - { slug: python, name: Python }
+      - { slug: smalltalk, name: Smalltalk }
+      - { slug: z80-x86-assembly, name: Z80 & x86 Assembly }
+      - { slug: sql, name: SQL }
+      - { slug: xml-sgml, name: XML / SGML }
+
+  - slug: platforms-frameworks-tools
+    name: Platforms, Frameworks & Tools
+    keywords:
+      - { slug: net-framework-asp-net, name: .NET Framework / ASP.NET }
+      - { slug: azure-azure-devops, name: Azure / Azure DevOps }
+      - { slug: github-codeql, name: GitHub / CodeQL }
+      - { slug: react, name: React }
+      - { slug: node-js, name: Node.js }
+      - { slug: windows, name: Windows }
+      - { slug: relational-databases, name: Relational Databases }
+      - { slug: object-databases, name: Object Databases }
+
+# ----------------------------------------------------------------------------
+# references[] — testimonials (hero rotator source). Attribution as initials.
+references:
+  - reference: >-
+      You are highly effective at explaining why an approach may or may not work
+      with both a rigorous analytical framework and a story that helps people
+      ingest the knowledge and act upon it. You made our MYQ team much stronger. I
+      was really glad when Brad Smith picked up what you proposed and ran with it.
+    name: J.B.
+    role: GM, Associate General Counsel
+  - reference: >-
+      You have created the exact security intelligence system the company needs at
+      this exact moment for the new regulated world Microsoft is finding itself in.
+      As we continue to see more and more regulation hit our industry, the system
+      you have built is exactly what we need.
+    name: S.C.
+    role: Principal Security Engineering Manager
+  - reference: >-
+      I've been so grateful for your clarity, candor, and integrity. We've worked
+      on multiple issues with relatively high stakes, and I have routinely gotten
+      clear and helpful information from you in an unvarnished way. I can trust you
+      to analyze and describe tough problems without fear or favor.
+    name: M.D.
+    role: Senior Corporate Counsel
+  - reference: >-
+      I don't think it's overstating things to say that you have been a visionary
+      AND pragmatic engineer in using data and automation to understand the
+      security characteristics of our products AND the engineering processes that
+      produce them.
+    name: J.B-W.
+    role: Principal Security Assurance Manager
+  - reference: >-
+      You are an amazing leader with vision and a source of deep knowledge for all
+      teams at Microsoft who must govern via standards, and you have managed a very
+      tricky balancing act of technical leader, evangelist, teacher through reorgs
+      while maintaining strong focus on the business.
+    name: T.A.
+    role: GM, Privacy Operations
+  - reference: >-
+      Based on the flexible Liquid platform you envisioned, architected and built,
+      and through further rapid innovation, Microsoft was able to both measure
+      conformance with CyberEO requirements and produce supporting evidence in a
+      relatively short timeframe. This was possible only because of Liquid.
+    name: T.R.
+    role: Principal Security PM Manager
+  - reference: >-
+      Your ability to seamlessly toggle between Strategy and Tactics, Vision and
+      Execution, Architecture and Code is truly amazing. With your inspiring
+      leadership skills and superior communications skills, you are able to bring
+      the best out of the team.
+    name: L.S.
+    role: Principal PM Manager
+  - reference: >-
+      You are a teacher and scientist at heart. You are willing to share knowledge,
+      to explain issues or provide counter points of view in a very logical manner.
+      I love the way you bring in System-based thinking to see the whole, not just
+      the parts.
+    name: N.D.
+    role: Director, Security Architecture
+  - reference: >-
+      You are a great storyteller, incredibly intelligent, with a great ability to
+      connect the dots. You can elevate the conversation for an executive at the
+      same time you can be tactical with an IC or people at the dance floor.
+    name: J.P.
+    role: Partner Engineering Manager
+  - reference: >-
+      You are result and action-oriented. You often play a role of a "translator"
+      where you can switch between language and goals of one team and put those out
+      in a way the other side understands. This is one super-useful skill.
+    name: J.C.
+    role: Partner Group Software Engineering Manager
+  - reference: >-
+      David's team built an amazing SSDF Conformance Claim dashboard. Seeing David
+      demo this blew me away. David clearly has great technical vision and
+      leadership. The EO was an exercise in dealing with ambiguity, and David
+      offered new perspectives that got us on track.
+    name: A.D.
+    role: Principal Security Engineering Manager
+  - reference: >-
+      You have an exceptional ability to include people in critical conversations,
+      demonstrating a genuine appreciation for their opinions. Your ability to make
+      everyone feel valued and heard is a rare and admirable quality.
+    name: D.K.
+    role: Principal Software Engineer
+  - reference: >-
+      You think deeply about problems, from technical constraints to user impacts.
+      Your structured, in-depth thinking meant our solutions were robust and
+      well-thought-out. You create an environment where all ideas are welcomed,
+      fostering trust and openness.
+    name: V.K.B.
+    role: Principal Group Software Engineer
+  - reference: >-
+      David leaned in to show us how this was implemented in Liquid today and where
+      we had opportunities to keep us in control. David gave us exactly the
+      information we needed to feel like we were co-owners of the system, not
+      victims of the KPI.
+    name: M.S.
+    role: VP, Chief Security Architect
+  - reference: >-
+      Liquid is realizing scenarios that have been tried-and-failed many times
+      before. This is truly refreshing and will enable new company-wide behaviors
+      that just weren't possible before. We're well poised for significant impact.
+    name: R.Z.
+    role: Senior Security Assurance
+  - reference: >-
+      You are a great leader and a great developer. I am always surprised seeing
+      you wearing these two hats perfectly with amazing quality and impressive
+      results in both areas. You are a role model for me and for many other team
+      members.
+    name: R.J.
+    role: Senior Software Engineer
+  - reference: >-
+      How accessible you are, always available to help and listen. You are a
+      powerhouse when it comes to bringing ideas to features. It amazes me to see
+      how quickly you bring features to life in Liquid.
+    name: S.P.
+    role: Senior Software Engineer
+  - reference: >-
+      I view you as having a unique set of knowledge and Microsoft is lucky to have
+      you thinking deeply about this space.
+    name: M.E.
+    role: Principal Assurance PM
+  - reference: >-
+      You have a strong understanding of the data ecosystem here at MSFT, and that
+      understanding is further amplified by your incredible level of clarity,
+      especially in live settings. Your energy is always right for the setting.
+    name: E.M.
+    role: Principal Squad Leader
+  - reference: >-
+      You are a great collaborator and a role model for your team and your peers.
+      You demonstrate thoughtful prioritization and planning. Your understanding of
+      people and dynamics across the company makes you a valued part of our
+      cross-functional v-team.
+    name: M.S.
+    role: Partner Group PM Manager
+
+# ----------------------------------------------------------------------------
+# patents — feeds patents.html
+patents:
+  summary: >-
+    12+ patents as primary inventor at Microsoft, focused on document
+    technologies and formats. Additionally holds a patent for a bank switching
+    computer memory system (Timex Computer Corp.).
+  heroSubtitle: >-
+    12 US patents as primary inventor at Microsoft, all focused on document
+    packaging, formatting, and content management technologies.
+  story:
+    - >-
+      Between 2001 and 2004, I architected and drove the cross-company document
+      format initiative at Microsoft known internally as "Metro." The goal was to
+      create a universal, XML-based document format and packaging model that could
+      serve as a common foundation for Office, Windows, and the printing pipeline.
+    - >-
+      The core innovation was the Open Packaging Conventions (OPC): a ZIP-based
+      container format using XML to describe parts, relationships, and content
+      types. Rather than each application inventing its own file format from
+      scratch, OPC provided a standard, interoperable foundation — a "package"
+      that any application could use to store structured content.
+    - >-
+      The 12 patents below cover the key ideas: the packaging model itself,
+      relationships between parts, interleaving for streaming, content composition
+      via selectors and sequences, digital rights management, and the fixed-layout
+      "reach" format designed for high-fidelity printing.
+  listSubtitle: "All 12 US patents granted between 2007 and 2012. Assigned to Microsoft Corporation."
+  list:
+    - number: "US 7,213,035"
+      url: "https://patents.google.com/patent/US7213035B2"
+      title: System and method for providing multiple renditions of document content
+      filed: "2003-05-17"
+      granted: "2007-05-01"
+      description: >-
+        Methods for packaging multiple renditions — different representations of
+        the same content — within a single document container, enabling
+        format-appropriate viewing across devices.
+    - number: "US 7,383,278"
+      url: "https://patents.google.com/patent/US7383278B2"
+      title: Systems and methods for changing items in a computer file
+      filed: "2004-12-20"
+      granted: "2008-06-03"
+      description: >-
+        Techniques for modifying individual parts within a packaged document
+        without rewriting the entire file, preserving digital signatures and
+        enabling efficient incremental updates.
+    - number: "US 7,418,652"
+      url: "https://patents.google.com/patent/US7418652B2"
+      title: Method and apparatus for interleaving parts of a document
+      filed: "2004-04-30"
+      granted: "2008-08-26"
+      description: >-
+        Interleaving the byte streams of multiple parts within a package so that
+        referenced resources (images, fonts) arrive just-in-time during streaming
+        consumption rather than after all preceding parts.
+    - number: "US 7,451,156"
+      url: "https://patents.google.com/patent/US7451156B2"
+      title: Method and apparatus for maintaining relationships between parts in a package
+      filed: "2004-04-30"
+      granted: "2008-11-11"
+      description: >-
+        The relationship model: a content-independent, XML-based mechanism for
+        expressing directed connections between parts. Relationships are
+        discoverable without parsing part content and enable extensibility without
+        modifying target parts.
+    - number: "US 7,487,448"
+      url: "https://patents.google.com/patent/US7487448B2"
+      title: Document mark up methods and systems
+      filed: "2004-04-30"
+      granted: "2009-02-03"
+      description: >-
+        The comprehensive modular content framework and fixed-layout document
+        format, defining packages, parts, drivers, composition (selectors and
+        sequences), versioning, and the "reach" format for paginated documents.
+    - number: "US 7,512,878"
+      url: "https://patents.google.com/patent/US7512878B2"
+      title: Modular document format
+      filed: "2004-04-30"
+      granted: "2009-03-31"
+      description: >-
+        A format that uses a set of building blocks — parts, relationships,
+        content types, and physical mapping layers — for composing, packaging,
+        distributing, and rendering document-centered content across platforms.
+    - number: "US 7,523,221"
+      url: "https://patents.google.com/patent/US7523221B2"
+      title: Mechanism for applying transforms to multi-part files
+      filed: "2003-05-17"
+      granted: "2009-04-21"
+      description: >-
+        Methods for applying transforms (encryption, compression, digital
+        signatures) to individual parts or collections of parts within a
+        multi-part document package.
+    - number: "US 7,523,392"
+      url: "https://patents.google.com/patent/US7523392B2"
+      title: Method and system for mapping between components of a packaging model
+      filed: "2005-04-22"
+      granted: "2009-04-21"
+      description: >-
+        The "driver" abstraction: mapping the logical packaging model to diverse
+        physical storage formats (loose files, compound files, archives) and
+        communication protocols (HTTP, network) through a unified interface.
+    - number: "US 7,549,062"
+      url: "https://patents.google.com/patent/US7549062B2"
+      title: Organization-based content rights management
+      filed: "2003-06-27"
+      granted: "2009-06-16"
+      description: >-
+        Rights management integrated with the packaging model, allowing content
+        protection policies to be applied at the organization level and enforced
+        across document distribution channels.
+    - number: "US 7,549,118"
+      url: "https://patents.google.com/patent/US7549118B2"
+      title: Methods and systems for defining documents with selectable and/or sequenceable parts
+      filed: "2004-04-30"
+      granted: "2009-06-16"
+      description: >-
+        The composition model: selectors that choose between alternative
+        representations (by language, color, page size, or content type) and
+        sequences that assemble parts into ordered documents.
+    - number: "US 8,122,350"
+      url: "https://patents.google.com/patent/US8122350B2"
+      title: Packages that contain pre-paginated documents
+      filed: "2004-04-30"
+      granted: "2012-02-21"
+      description: >-
+        The "reach" fixed-layout format: packages containing pre-paginated
+        documents that render with full fidelity on any device without requiring
+        layout recalculation on the consuming end.
+    - number: "US 8,135,750"
+      url: "https://patents.google.com/patent/US8135750B2"
+      title: Efficiently describing relationships between resources
+      filed: "2005-04-22"
+      granted: "2012-03-13"
+      description: >-
+        Efficient representations for the relationship graph between resources in
+        a package, optimizing for both storage size and traversal speed across
+        large document structures.
+  legacy:
+    title: The Lasting Legacy of OPC
+    subtitle: "What became of the ZIP-based Open Packaging Conventions."
+    intro: >-
+      The Open Packaging Conventions we designed didn't just ship in Office and
+      Windows — they became an international standard (ISO/IEC 29500-2, ECMA-376
+      Part 2) and went on to become the invisible infrastructure underneath a
+      remarkable number of file formats across the industry.
+    sections:
+      - heading: Office & Productivity
+        body: >-
+          Most obviously, OPC is the container for all Office Open XML formats:
+          .docx, .xlsx, .pptx, and their macro-enabled variants. These became the
+          default formats in Office 2007 and have been an ISO standard since 2008.
+          They're now supported by LibreOffice, Google Docs, Apple iWork, and
+          dozens of other applications.
+      - heading: Windows & the Print Pipeline
+        body: >-
+          The fixed-layout "reach" format described in the patents became XPS (XML
+          Paper Specification), using .xps and later .oxps extensions. XPS serves
+          as the native print spool format in Windows Vista and later — meaning
+          every Windows print job since Vista flows through the packaging model we
+          invented. The XPS format was also standardized as ECMA-388.
+      - heading: Developer Tools & Package Managers
+        body: "The influence extends deeply into the developer ecosystem:"
+        items:
+          - "NuGet packages (.nupkg) — the standard .NET package manager uses OPC as its container format"
+          - "Visual Studio extensions (.vsix) — every VS extension is an OPC package"
+          - "System.IO.Packaging — the OPC API has been part of the .NET Framework since version 3.0 and is available in .NET Core"
+      - heading: Windows Store & Modern Apps
+        body: >-
+          Windows Store app packages (.appx, .appxbundle, .msix) are OPC packages.
+          Every Universal Windows Platform app, every modern Windows application
+          distributed through the Microsoft Store, and every MSIX installer uses
+          the packaging model defined in these patents.
+      - heading: Beyond Microsoft
+        body: "OPC adoption has spread far beyond Microsoft's own products:"
+        items:
+          - "3MF (.3mf) — the 3D Manufacturing Format used by major 3D printing software and hardware, backed by the 3MF Consortium (Microsoft, HP, Autodesk, Stratasys, and others)"
+          - "Power BI (.pbix) — Power BI Desktop files"
+          - "Visio 2013+ (.vsdx) — Visio adopted the OPC format"
+          - "AutoCAD Design Web Format (.dwfx)"
+          - "MATLAB Simulink (.slx) — MathWorks adopted OPC for Simulink models"
+          - "Azure Cloud Service packages (.cspkg)"
+          - "AutomationML (.amlx) — the Industry 4.0 data exchange format"
+          - "Asset Administration Shell (.aasx) — another Industry 4.0 standard for digital twins"
+          - "Microsoft App-V (.appv) — application virtualization packages"
+          - "EPUB uses a conceptually similar ZIP-based structure, though not directly OPC (the eBook world I came from and the document format world I moved into were converging on the same ideas)"
+      - heading: Windows Native Support
+        body: >-
+          OPC isn't just supported through .NET — Windows 7 and later include a
+          native COM-based Packaging API for working with OPC packages directly,
+          making it a first-class citizen of the Windows platform.
+    summary:
+      - >-
+        What started as a document format initiative in a small team became the
+        packaging layer for an entire ecosystem. The core ideas — ZIP containers,
+        XML-described parts and relationships, content-type discovery, and
+        physical-to-logical mapping — proved general enough to serve use cases we
+        never imagined, from 3D printing to industrial automation to package
+        management.
+      - >-
+        It's the kind of outcome you hope for when designing infrastructure: you
+        get the abstractions right, and the system takes on a life of its own.
+
+# ----------------------------------------------------------------------------
+# standards[] — standards led / co-authored (Patents & Standards section)
+standards:
+  - name: Open eBook Publication Structure
+    role: Co-author of first drafts; major participant in working group
+    terms: [oeb-pub-structure]
+  - name: CDIF (CASE Data Interchange Format)
+    role: Chairman of ANSI/EIA committee; published first version of standard
+    terms: [cdif, case, ansi, eia]
+  - name: Metro / Open XML
+    role: Architect of document format adopted in Office 2007 and Windows
+    terms: [metro]
+
+# ----------------------------------------------------------------------------
+# valueProps[] — "What I Bring" cards. icon = key mapped to inline SVG in template.
+valueProps:
+  - icon: network
+    title: AI-Native Super-IC
+    body: >-
+      I've proven that one experienced architect, working natively with a crew of
+      specialized AI agents, can sustain a platform-scale software project. Indra —
+      my current project inside Microsoft's CISO org — is architected, coded,
+      documented, and shipped by me alongside eight AI teammates, each owning a
+      distinct role. This isn't AI-assisted productivity. It's a new engineering
+      model.
+    terms: [indra]
+  - icon: shield-check
+    title: Security at Scale
+    body: >-
+      Two decades building the systems that keep Microsoft's 8,000+ services
+      secure. I've done compliance from both sides — engineering the tools and
+      setting the policy. I know how to make security a product accelerator, not a
+      bottleneck.
+    terms: []
+  - icon: terminal
+    title: Architect Who Codes
+    body: >-
+      I don't just draw boxes on whiteboards. From 100K-line C++ codebases to a
+      150K-line TypeScript platform I built with AI, I've written, shipped, and
+      maintained real systems at every scale. I still write and review code daily —
+      architecture grounded in implementation always wins.
+    terms: []
+  - icon: users
+    title: Team Builder
+    body: >-
+      I've built engineering teams from zero — at startups, at standards bodies,
+      and inside Microsoft's CISO organization. I hire well, mentor intentionally,
+      and create environments where engineers want to do their best work.
+    terms: []
+  - icon: layers
+    title: Platform Thinker
+    body: >-
+      The Indra app platform, the Liquid compliance platform, platform-level
+      document APIs and services on Windows, the Rocket eBook ecosystem, the CASE
+      tool framework — I build systems that other teams build on. I understand what
+      it takes to ship reliable, extensible infrastructure that thousands of
+      engineers depend on daily.
+    terms: [indra]
+  - icon: rocket
+    title: Startup to Enterprise
+    body: >-
+      Founded three companies. CTO through a $200M acquisition. Built a platform
+      serving all of Microsoft. I've operated at every scale and know how to match
+      the engineering approach to the stage — from scrappy MVP to enterprise-grade
+      system.
+    terms: []
+  - icon: document
+    title: Standards & IP
+    body: >-
+      12+ patents. Chaired ANSI standards committees. Led the Open eBook Forum.
+      When the work needs to cross organizational boundaries through standards,
+      specifications, and patents, I know how to drive consensus and ship.
+    terms: []
+
+valuePropsCta: >-
+  If you need someone who has built a compliance platform covering 8,000 services,
+  led a $200M-exit startup's engineering org, and can still review a pull request —
+  that's the intersection I live in.
+
+# ----------------------------------------------------------------------------
+# interests[] — "Beyond Work"
+interests:
+  - { icon: music,   title: Music,   body: "Piano and guitar player.", image: null, terms: [] }
+  - icon: clock
+    title: Cooking
+    body: "Gourmet cooking, including molecular gastronomy."
+    image: media/spherification.jpg
+    terms: [molecular-gastronomy]
+  - { icon: book,   title: Reading, body: "Lifelong reader (and eBook pioneer, naturally).", image: null, terms: [] }
+  - { icon: globe,  title: Travel,  body: "International travel enthusiast.", image: null, terms: [] }
+  - { icon: activity, title: Science, body: "Fascinated by emerging infectious diseases.", image: null, terms: [] }
+interestsNote: "More personal content coming soon — stay tuned."
+
+# ----------------------------------------------------------------------------
+# contact — "Let's Connect" section
+contact:
+  subtitle: "Open to conversations about the right opportunity."
+  modes:
+    - icon: workflow
+      title: Engineering Leadership
+      body: "VP/Director-level roles building and scaling security, platform, or compliance engineering teams"
+    - icon: shield
+      title: Architecture & Advisory
+      body: "Principal/Staff Architect roles, fractional CTO, or consulting on security architecture and compliance platforms"
+    - icon: layers
+      title: Standards & Strategy
+      body: "Technical strategy, standards development, or IP portfolio guidance for emerging technology initiatives"
+  actionHeading: Get in Touch
+  actionBody: "I'm always happy to connect with people who build interesting things."
+  resumeNote: "Resume available on request"
+
+# ----------------------------------------------------------------------------
+# glossary[] — flyout term definitions. html bodies are HTML (deliberate exception).
+glossary:
+  - slug: stat-years
+    title: 40+ Professional Years in Software
+    category: stat
+    image: null
+    links: []
+    html: |
+      <p>I wrote my first commercial software in 1979 as one of Sinclair Research’s earliest US employees, before the ZX80 had even launched in the US. What followed is a career that has tracked — and often anticipated — every major platform shift: from 8-bit microcomputers and assembly language through the PC era, object-oriented programming (Smalltalk from the late ‘80s), the web, XML-based document formats, enterprise security, and now AI-native development.</p><p>The 40+ counts paid professional years writing software, leading teams, or founding companies. It spans hardware (bank-switching chip design, ROM porting), firmware (Rocket eBook device software), enterprise software (CASE tools, compliance platforms), consumer products, and modern cloud platforms (Liquid, Indra). Each domain taught a different kind of engineering thinking — and those lessons compound.</p>
+
+  - slug: stat-patents
+    title: 12+ Patents
+    category: stat
+    image: null
+    links:
+      - { label: "View all patents", url: "patents.html" }
+    html: |
+      <p>The 12+ patents were filed as primary inventor during my work on the Metro/XPS document format at Microsoft (2001–2004). They cover document formats, digital rights management, and security architecture — areas where novel mechanisms were needed to make the cross-team initiative work. These aren’t defensive filings; they reflect inventions that shipped in Office 2007, Windows, and Microsoft’s Rights Management infrastructure.</p><p>I also hold an earlier patent from Timex Computer Corp. (1982–1983) for a memory bank-switching system for the Timex/Sinclair 2000 — a hardware mechanism to extend the Z80’s severely limited address space. That patent predates the Microsoft work by two decades and sits in a completely different domain, but the pattern is the same: when the existing solution is insufficient, invent a better one.</p>
+
+  - slug: stat-companies
+    title: 3 Companies Founded
+    category: stat
+    image: null
+    links: []
+    html: |
+      <p><strong>Heuristics</strong> (1981–1982) was a technical services company for the Sinclair computing community — the only authorized Sinclair service center in the US. Small but profitable, run while I was still a college student.</p><p><strong>Pragmatica</strong> (1995–1998) was a web-tools startup I founded and led as CEO. We built an object-oriented web programming language with SGML syntax (predating XML), grew to 10 employees plus consultants, and attracted ~5,000 customers before I wound it down to join NuvoMedia.</p><p><strong>NuvoMedia</strong> (1998–2001), where I joined as Director of Software Development and was promoted to CTO, invented the Rocket eBook — one of the world’s first dedicated e-readers, nearly a decade before the Kindle. Acquired by Gemstar in 2000 for $200M.</p>
+
+  - slug: stat-services
+    title: 8,000+ Services Secured
+    category: stat
+    image: null
+    links: []
+    html: |
+      <p>This figure refers to the Microsoft services brought under continuous, automated SDL compliance by the Liquid platform I conceived and led from 2015 to 2025. Before Liquid, security compliance was largely a manual, periodic process: engineering teams self-attested to a checklist, auditors spot-checked, and the overall picture was delayed and incomplete.</p><p>Liquid replaced that model with continuous monitoring: automated policy scanners, code analysis pipelines, and a unified dashboard showing real-time compliance status. The scale — 8,000+ services, 1,200+ repos, ~18,000 services tracked via the Security Bugs S360 KPI — made the shift from attestation to automation not just valuable but necessary. No manual process could track that many moving parts with the fidelity the company needed.</p>
+
+  - slug: stat-exit
+    title: $200M Startup Exit
+    category: stat
+    image: null
+    links: []
+    html: |
+      <p>NuvoMedia, Inc. was acquired by Gemstar International in March 2000 for approximately $200M. The company had invented the Rocket eBook in 1998 — a 22-ounce handheld device that could store roughly 55,000 pages of text, with a backlit screen and DRM-protected content distribution. As CTO, I led the engineering organization through the technical due diligence process, integration planning, and post-close transition.</p><p>The Rocket eBook launched nearly a decade before Amazon’s Kindle (2007), and the architecture we built — secure content distribution, device-based DRM, publisher partnerships — anticipated the e-reader market’s eventual mainstream success. The $200M exit validated that early vision, though the timing (just before the dot-com bust) also illustrated how much market readiness matters alongside technical merit.</p>
+
+  - slug: stat-budget
+    title: $250M Largest Budget Managed
+    category: stat
+    image: null
+    links: []
+    html: |
+      <p>The largest budget I’ve overseen combines the compliance engineering program at Microsoft (over $10M annually in direct operating costs) with the broader security assurance and strategic programs I coordinated as Chief of Staff to the CVP of Trustworthy Computing — a role that touched hundreds of millions in security investment across the company.</p><p>At that scale, budget management is less about tracking spending and more about allocating organizational attention: which programs get investment, which get wound down, which get scaled, and how to make the ROI case to executives. Security compliance programs are unusual because the “return” is measured in risks that don’t materialize — a fundamentally different calculus than typical product investment.</p>
+
+  - slug: stat-lines
+    title: 150K+ Lines Shipped in 60 Days
+    category: stat
+    image: null
+    links: []
+    html: |
+      <p>The Indra platform is a ~150K-line TypeScript codebase — React frontend, Node.js backend, Azure infrastructure-as-code — built almost entirely by me working with a team of eight AI agents. The “past 60 days” figure reflects the pace in the most recent sprint cycle: designing and shipping new platform features, building apps on the platform, writing documentation, and maintaining CI/CD pipelines.</p><p>For context: 150,000 lines of production TypeScript in 60 days averages over 2,500 lines per working day. That is not typing speed. It is AI-accelerated development with an experienced architect directing every piece of it, reviewing every output, and maintaining architectural coherence across the whole system. This is what the AI-native super-IC model makes possible — and Indra is the live proof.</p>
+
+  - slug: stat-engineers
+    title: 50+ Engineers Led
+    category: stat
+    image: null
+    links: []
+    html: |
+      <p>At Microsoft’s Assurance Engineering, I built and led a 20+ person Deep Engineering team responsible for the Liquid compliance platform — software engineers, program managers, and data engineers working across SDL automation and security tooling. As CTO of NuvoMedia, I led a cross-functional engineering organization through the full product lifecycle of the Rocket eBook. At INTERSOLV, I managed a bi-coastal team of 12 as Director of Development for the Excelerator II CASE tool.</p><p>As Chief of Staff to the CVP of Trustworthy Computing at Microsoft, I coordinated security initiatives across engineering teams spanning multiple divisions — an indirect leadership role whose impact extended well beyond direct headcount. The 50+ figure reflects both direct and matrix leadership across these roles.</p>
+
+  - slug: indra
+    title: Indra
+    category: project
+    image: null
+    links:
+      - { label: "Visit Indra", url: "https://indra.microsoft.com" }
+    html: |
+      <p>An AI-first app platform inside Microsoft’s CISO organization, conceived and led by David Ornstein as its sole human architect. Indra gives SIGMA security engineers building blocks to turn their expertise — Kusto queries, compliance workflows, operational know-how — into tools the whole organization can use, and gives deputy CISOs a unified view of security posture across domains.</p><p>The platform solves a fundamental fragmentation problem: security knowledge across CISO’s dozens of domains is scattered across dashboards, scripts, and individual engineers’ heads — inaccessible to leaders who need a cross-domain view and invisible to AI. Indra provides unified security reporting dashboards, a natural-language AI agent over security data, Kusto query integration, Power BI embedding, an app hosting ecosystem, and a full CI/CD pipeline.</p><p>What makes Indra distinctive is its development model: David leads a team of eight specialized AI agents — each a GitHub Copilot custom agent with a distinct role (engineer, strategist, security sentinel, narrator, advocate, presenter, editor) — and together they sustain a platform-scale project with the throughput of a full engineering org. It is a working proof of the AI-native super-IC concept.</p>
+
+  - slug: liquid
+    title: Liquid Platform
+    category: project
+    image: null
+    links:
+      - { label: "What is Liquid? (Microsoft internal)", url: "https://liquid.microsoft.com/Web/Docs/all/WhatIsLiquid.md" }
+    html: |
+      <p>Microsoft’s internal platform for continuous security assurance and compliance, conceived and led by David starting around 2015. Liquid automated the Security Development Lifecycle (SDL) and other compliance processes that had previously relied on manual attestations and yearly audits.</p><p>The platform includes automated policy scanners, code compliance pipelines, and a unified dashboard for security standards adherence, integrated with Azure DevOps across the company. Liquid became the core of Microsoft’s Continuous SDL program, providing automated coverage for over 8,000 services company-wide and enabling real-time compliance checks.</p><p>David’s manager described Liquid’s impact: “Liquid anchors the company-wide continuous SDL… shifting processes to automated coverage,” acknowledging David’s “incredible impact” on Microsoft’s security engineering ecosystem.</p>
+
+  - slug: sigma
+    title: SIGMA (Standards, Insights, Governance, Monitoring & Assurance)
+    category: org
+    image: null
+    links: []
+    html: |
+      <p>A team within Microsoft’s CISO (Chief Information Security Officer) organization responsible for security standards, compliance monitoring, and assurance across the company. SIGMA integrates the work formerly spread across multiple security governance teams into a unified function.</p><p>David’s Liquid platform and Assurance Engineering efforts were fully integrated into SIGMA by 2021–2023, with David continuing as the team’s leader and technical evangelist. He transitioned to Principal Security Architect within SIGMA in late 2025.</p>
+
+  - slug: sdl
+    title: Security Development Lifecycle (SDL)
+    category: concept
+    image: null
+    links:
+      - { label: "SDL on Wikipedia", url: "https://en.wikipedia.org/wiki/Security_Development_Lifecycle" }
+    html: |
+      <p>A software development process created by Microsoft that integrates security practices into every phase of the development lifecycle — from requirements and design through implementation, testing, and release. First formalized by Microsoft in 2004, the SDL became mandatory for all Microsoft products.</p><p>The SDL includes practices like threat modeling, static code analysis, fuzz testing, and security reviews. David’s Liquid platform automated many SDL requirements, shifting the company from periodic manual audits to continuous, data-driven compliance monitoring across 8,000+ services.</p>
+
+  - slug: twc
+    title: Trustworthy Computing (TwC)
+    category: org
+    image: null
+    links: []
+    html: |
+      <p>A central security strategy group at Microsoft, led by Senior VP Scott Charney, focused on improving the trustworthiness of Microsoft’s products and services. TwC coordinated security engineering, security standards, compliance, and privacy programs across the company.</p><p>David served as Chief of Staff for TwC from 2008 to 2014, coordinating cross-team security initiatives and helping shift Microsoft’s approach from compliance checklists to proactive security assurance. In 2014, TwC’s functions were reorganized into Microsoft’s legal and corporate affairs domain (CELA), a transition David helped manage.</p>
+
+  - slug: codeql
+    title: CodeQL Central
+    category: project
+    image: null
+    links:
+      - { label: "CodeQL on GitHub", url: "https://codeql.github.com/" }
+    html: |
+      <p>A scalable code analysis service for detecting security vulnerabilities, co-incubated by David’s team at Microsoft. CodeQL uses a query language to treat code as data, enabling sophisticated pattern matching to find bugs, vulnerabilities, and code quality issues across large codebases.</p><p>David’s team helped establish CodeQL Central as a company-wide service, making advanced static analysis available to engineering teams across Microsoft’s thousands of repositories.</p>
+
+  - slug: azure-devops
+    title: Azure DevOps
+    category: tech
+    image: null
+    links:
+      - { label: "Azure DevOps", url: "https://azure.microsoft.com/en-us/products/devops/" }
+    html: |
+      <p>Microsoft’s cloud-based platform for software development collaboration, providing version control, CI/CD pipelines, project tracking, and artifact management. Under David’s leadership, the Liquid platform was integrated with Azure DevOps across the company, enabling engineering teams to get real-time compliance checks as part of their standard development workflow.</p>
+
+  - slug: metro
+    title: Metro Document Format
+    category: project
+    image: media/office2007ribbon.png
+    imageAlt: "Office 2007 Ribbon interface — built on the Metro/Open XML format David architected"
+    links:
+      - { label: "Office Open XML on Wikipedia", url: "https://en.wikipedia.org/wiki/Office_Open_XML" }
+      - { label: "Open XML Paper Specification", url: "https://en.wikipedia.org/wiki/Open_XML_Paper_Specification" }
+    html: |
+      <p>The internal code name for a document format initiative David architected at Microsoft that unified how documents were represented in XML. It became two major shipping formats: the Office Open XML file formats (used in Office 2007 and later for .docx, .xlsx, and .pptx files) and the XML Paper Specification (XPS), Windows’ answer to PDF.</p><p>The format was notable for being ZIP-based, fully XML, and designed for both editing and fixed-layout scenarios. It was one of the largest cross-company technical efforts at Microsoft during the early 2000s.</p>
+
+  - slug: flexwiki
+    title: FlexWiki
+    category: project
+    image: null
+    links:
+      - { label: "FlexWiki on Wikipedia", url: "https://en.wikipedia.org/wiki/FlexWiki" }
+    html: |
+      <p>A wiki engine David built while at Microsoft, written in C#/.NET. It grew organically to become one of the most widely-used internal collaboration tools at the company, with over 1,000 wiki instances hosted on the internal network at <code>http://wiki</code>.</p><p>FlexWiki was later released as an open-source project and became an influential early example of enterprise wiki software. It demonstrated the power of lightweight, self-service knowledge management years before tools like Confluence became dominant.</p>
+
+  - slug: rocket-ebook
+    title: Rocket eBook
+    category: project
+    image: null
+    links:
+      - { label: "Rocket eBook on Wikipedia", url: "https://en.wikipedia.org/wiki/Rocket_eBook" }
+    html: |
+      <p>One of the world’s first dedicated e-reader devices, created by NuvoMedia and launched in 1998. It featured a backlit touchscreen, could hold about ten books, and sold for around $499. The device included a secure content distribution system and supported annotations and bookmarks.</p><p>The Rocket eBook preceded Amazon’s Kindle by nearly a decade and is considered a pioneering milestone in the history of digital reading. It proved the concept of a dedicated reading device, even though the market wouldn’t fully mature for another ten years.</p>
+
+  - slug: nuvomedia
+    title: NuvoMedia, Inc.
+    category: org
+    image: null
+    links:
+      - { label: "Rocket eBook on Wikipedia", url: "https://en.wikipedia.org/wiki/Rocket_eBook" }
+    html: |
+      <p>A Silicon Valley startup founded in 1997 that created the Rocket eBook, one of the first dedicated electronic book reading devices. The company built both the hardware device and the software ecosystem around it, including secure content distribution, desktop synchronization software, and the eBookNet.com portal.</p><p>NuvoMedia was acquired by Gemstar-TV Guide International in 2000. The company’s work laid important groundwork for the entire eBook industry that would later explode with the Kindle and iPad.</p>
+
+  - slug: oebf
+    title: Open eBook Forum (OeBF)
+    category: org
+    image: media/epub-logo.svg
+    imageAlt: "EPUB logo — the standard that evolved from the Open eBook Forum’s work"
+    links:
+      - { label: "IDPF on Wikipedia", url: "https://en.wikipedia.org/wiki/International_Digital_Publishing_Forum" }
+      - { label: "EPUB format", url: "https://en.wikipedia.org/wiki/EPUB" }
+    html: |
+      <p>An international, non-profit trade and standards organization with over 100 members, dedicated to promoting a thriving eBook market. Founded in 1999, the Forum created the Open eBook Publication Structure standard, which defined how eBook content should be structured.</p><p>This standard evolved through several iterations and ultimately became EPUB — now the dominant open format for eBooks, supported by virtually every e-reader except Amazon’s Kindle. The organization later became the International Digital Publishing Forum (IDPF), which merged into the W3C in 2017.</p>
+
+  - slug: case
+    title: CASE (Computer Aided Software Engineering)
+    category: concept
+    image: media/case-tool.png
+    imageAlt: "A CASE tool showing UML diagrams — the type of software the CDIF standard interconnected"
+    links:
+      - { label: "CASE on Wikipedia", url: "https://en.wikipedia.org/wiki/Computer-aided_software_engineering" }
+    html: |
+      <p>A category of software tools popular in the late 1980s and early 1990s that aimed to automate and systematize the software development process. CASE tools provided graphical editors for designing databases, data flows, entity-relationship models, and object models, and could often generate code from these designs.</p><p>The CASE movement was a precursor to modern IDE features, UML tools, and low-code platforms. While the specific term fell out of fashion, the ideas behind CASE — visual modeling, code generation, and structured development methodologies — remain central to software engineering.</p>
+
+  - slug: cdif
+    title: CDIF (CASE Data Interchange Format)
+    category: concept
+    image: media/case-tool.png
+    imageAlt: "A CASE tool — CDIF standardized data interchange between tools like this"
+    links:
+      - { label: "CDIF on Wikipedia", url: "https://en.wikipedia.org/wiki/CASE_Data_Interchange_Format" }
+    html: |
+      <p>An ANSI/EIA standard (EIA-927) that defined a common format for exchanging data between different CASE tools. The challenge was that in the late 1980s, organizations often used multiple CASE tools, but each stored its models in proprietary formats — making it impossible to share work between tools.</p><p>The CDIF standard included a comprehensive entity-relationship data model of software engineering processes with over 700 entities and relationships, published as a two-volume specification. David chaired this committee, which had approximately 30 voting members from major CASE industry companies and a 500+ person mailing list.</p>
+
+  - slug: smalltalk
+    title: Smalltalk
+    category: tech
+    image: media/smalltalk-76.png
+    imageAlt: "Smalltalk-76 running on a Xerox Alto — the environment where OOP was born"
+    links:
+      - { label: "Smalltalk on Wikipedia", url: "https://en.wikipedia.org/wiki/Smalltalk" }
+    html: |
+      <p>A pioneering object-oriented programming language created at Xerox PARC in the 1970s by Alan Kay, Dan Ingalls, and Adele Goldberg. Smalltalk introduced or popularized many concepts that are now fundamental to software development: message-passing objects, the Model-View-Controller (MVC) pattern, integrated development environments (IDEs), and live coding with immediate feedback.</p><p>Its influence is enormous — Java, Ruby, Python, Objective-C, and Swift all owe significant design debts to Smalltalk. In the late 1980s and 1990s, Smalltalk was the language of choice for cutting-edge commercial software development, especially in finance and CASE tools.</p>
+
+  - slug: gemstone
+    title: GemStone
+    category: tech
+    image: media/gemstone.png
+    imageAlt: "GemStone/S object database logo"
+    links:
+      - { label: "GemStone on Wikipedia", url: "https://en.wikipedia.org/wiki/GemStone/S" }
+    html: |
+      <p>An object database management system that allows Smalltalk (and later other language) objects to be stored, queried, and retrieved directly without the “impedance mismatch” of mapping objects to relational database tables.</p><p>GemStone was notable for supporting transparent persistence — objects could be saved and retrieved without explicit serialization code. At LongView International, David used GemStone to build the persistence layer for their derivatives trading system, a natural fit given the complex object models that financial software requires.</p>
+
+  - slug: os2
+    title: OS/2
+    category: tech
+    image: media/os2warp-logo.png
+    imageAlt: "OS/2 Warp Version 3 logo"
+    links:
+      - { label: "OS/2 on Wikipedia", url: "https://en.wikipedia.org/wiki/OS/2" }
+    html: |
+      <p>An operating system co-developed by IBM and Microsoft in the late 1980s, intended as the successor to DOS. OS/2 featured preemptive multitasking, virtual memory, and a graphical user interface called Presentation Manager. For a time, it was considered the future of PC operating systems.</p><p>Though technically sophisticated, it lost the market battle to Windows 3.x and later Windows 95, primarily due to Microsoft’s pivot away from the partnership. OS/2 found a lasting niche in banking (many ATMs ran OS/2 well into the 2000s) and enterprise environments that valued its stability.</p>
+
+  - slug: sgml
+    title: SGML (Standard Generalized Markup Language)
+    category: tech
+    image: null
+    links:
+      - { label: "SGML on Wikipedia", url: "https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language" }
+    html: |
+      <p>An international standard (ISO 8879, published 1986) for defining markup languages. SGML is the parent metalanguage from which both HTML and XML descend. It provided a rigorous framework for describing document structures using tags and schemas.</p><p>SGML was widely used in large-scale publishing, government documentation (especially the U.S. Department of Defense), and the aerospace industry. Its power came with complexity, which eventually led to the creation of XML — a simpler, more web-friendly subset — in 1998. Pragmatica’s programming language used SGML syntax before XML even existed.</p>
+
+  - slug: xml
+    title: XML (Extensible Markup Language)
+    category: tech
+    image: null
+    links:
+      - { label: "XML on Wikipedia", url: "https://en.wikipedia.org/wiki/XML" }
+    html: |
+      <p>A simplified subset of SGML that became one of the foundational technologies of the modern web. Published as a W3C recommendation in 1998, XML provides a flexible, human-readable format for structured data that is both machine-parsable and self-describing.</p><p>XML is used in web services (SOAP, REST), configuration files, document formats (including Office Open XML and EPUB), data interchange, and countless other applications. It remains ubiquitous even as JSON has become the preferred format for many web APIs.</p>
+
+  - slug: drm
+    title: Digital Rights Management (DRM)
+    category: concept
+    image: null
+    links:
+      - { label: "DRM on Wikipedia", url: "https://en.wikipedia.org/wiki/Digital_rights_management" }
+    html: |
+      <p>Technologies that control how digital content — books, music, video, software — can be accessed, copied, and distributed after purchase. DRM systems typically use encryption and licensing servers to enforce restrictions set by content publishers.</p><p>The eBook industry was an early and prominent arena for DRM development and debate. At NuvoMedia and the Open eBook Forum, David worked on both the technical implementation of DRM for the Rocket eBook’s secure distribution system and the broader frameworks and ontology for digital rights management in electronic publishing.</p>
+
+  - slug: ansi
+    title: ANSI (American National Standards Institute)
+    category: org
+    image: null
+    links:
+      - { label: "ANSI on Wikipedia", url: "https://en.wikipedia.org/wiki/American_National_Standards_Institute" }
+    html: |
+      <p>The primary organization that coordinates voluntary consensus standards development in the United States. Founded in 1918, ANSI oversees the creation of norms and guidelines across virtually all industries and represents U.S. interests in international standards bodies like ISO and IEC.</p><p>ANSI doesn’t write standards itself but accredits standards-developing organizations and ensures their processes follow principles of openness, balance, consensus, and due process. The CDIF committee David chaired operated under ANSI/EIA rules.</p>
+
+  - slug: eia
+    title: EIA (Electronic Industries Alliance)
+    category: org
+    image: null
+    links:
+      - { label: "EIA on Wikipedia", url: "https://en.wikipedia.org/wiki/Electronic_Industries_Alliance" }
+    html: |
+      <p>A trade organization that developed technical standards for the electronics industry. Active from 1924 to 2011, the EIA created widely-used standards including the RS-232 serial communication standard, the 19-inch server rack specification, and the color codes for electronic resistors.</p><p>The CDIF standards committee operated under the EIA’s standards-development umbrella, giving it the formal ANSI/EIA designation that ensured the process met national standards for openness and consensus.</p>
+
+  - slug: lan
+    title: LAN (Local Area Network)
+    category: concept
+    image: null
+    links:
+      - { label: "LAN on Wikipedia", url: "https://en.wikipedia.org/wiki/Local_area_network" }
+    html: |
+      <p>A computer network that connects devices within a limited area like a building or campus. Today, LANs are invisible infrastructure that we take for granted, but in the 1980s, building one was a significant technical undertaking requiring specialized knowledge of cabling, protocols, and network operating systems.</p><p>David describes proposing and building a 20-station LAN at Sage Software that eventually grew to span 7 states and 2 countries — a trajectory that mirrors the industry’s evolution from local networking to wide-area and eventually internet connectivity.</p>
+
+  - slug: visualworks
+    title: VisualWorks
+    category: tech
+    image: media/visualworks.png
+    imageAlt: "VisualWorks Smalltalk development environment"
+    links:
+      - { label: "VisualWorks on Wikipedia", url: "https://en.wikipedia.org/wiki/VisualWorks" }
+    html: |
+      <p>A commercial Smalltalk development environment originally created at Xerox PARC as part of the Smalltalk-80 system. It was commercialized by ParcPlace Systems and later acquired by Cincom, becoming one of the premier Smalltalk environments for enterprise software development.</p><p>VisualWorks was known for its mature class libraries, cross-platform GUI framework, and sophisticated development tools including a browser, debugger, and refactoring support. At LongView International, it was the platform of choice for building their derivatives trading systems.</p>
+
+  - slug: entity-relationship
+    title: Entity-Relationship Modeling
+    category: concept
+    image: media/er-diagram.png
+    imageAlt: "An entity-relationship diagram showing entities, attributes, and relationships"
+    links:
+      - { label: "ER Model on Wikipedia", url: "https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model" }
+    html: |
+      <p>A data modeling technique invented by Peter Chen in 1976, used to describe the structure of data in terms of entities (things), attributes (properties of things), and relationships between entities. ER models are typically represented as diagrams and are fundamental to relational database design.</p><p>David has deep experience with ER modeling: he built ER diagramming tools in Smalltalk, created an ER model compiler that could generate production-grade relational database schemas, and the CDIF standard he chaired included a 700+ entity ER model of software engineering processes.</p>
+
+  - slug: object-oriented
+    title: Object-Oriented Programming (OOP)
+    category: concept
+    image: null
+    links:
+      - { label: "OOP on Wikipedia", url: "https://en.wikipedia.org/wiki/Object-oriented_programming" }
+    html: |
+      <p>A programming paradigm that organizes software around “objects” — bundles of data and the methods that operate on that data — rather than around functions and logic. Key concepts include encapsulation, inheritance, polymorphism, and message passing.</p><p>OOP became the dominant programming paradigm in the 1990s and underpins most modern languages including Java, C#, Python, and Swift. David was an early adopter and evangelist, working extensively with Smalltalk (the language that pioneered OOP) and later mentoring organizations in object-oriented design using design patterns.</p>
+
+  - slug: design-patterns
+    title: Design Patterns
+    category: concept
+    image: null
+    links:
+      - { label: "Software Design Patterns", url: "https://en.wikipedia.org/wiki/Software_design_pattern" }
+      - { label: "Design Patterns (book)", url: "https://en.wikipedia.org/wiki/Design_Patterns" }
+    html: |
+      <p>Reusable solutions to commonly occurring problems in software design, popularized by the influential 1994 book <em>Design Patterns: Elements of Reusable Object-Oriented Software</em> by Gamma, Helm, Johnson, and Vlissides (known as the “Gang of Four”).</p><p>Patterns like Observer, Factory, Strategy, and Model-View-Controller provide a shared vocabulary for developers and proven architectural approaches. David was an early adopter and evangelist for design patterns in software development, using pattern-based mentoring to help organizations improve their object-oriented practices.</p>
+
+  - slug: derivatives-trading
+    title: Derivatives Trading
+    category: concept
+    image: null
+    links:
+      - { label: "Derivatives on Wikipedia", url: "https://en.wikipedia.org/wiki/Derivative_(finance)" }
+    html: |
+      <p>The buying and selling of financial contracts (derivatives) whose value is derived from underlying assets like stocks, bonds, currencies, or commodities. Common derivatives include options, futures, swaps, and complex structured products.</p><p>Building trading systems for derivatives is one of the most technically demanding areas of software engineering, requiring complex mathematical models, real-time data processing, and extreme reliability. The framework-based approach David helped build at LongView International used Smalltalk to model the inherently object-oriented nature of financial instruments.</p>
+
+  - slug: trustworthy-computing
+    title: Trustworthy Computing
+    category: concept
+    image: null
+    links:
+      - { label: "Trustworthy Computing on Wikipedia", url: "https://en.wikipedia.org/wiki/Trustworthy_computing" }
+    html: |
+      <p>Trustworthy Computing (TwC) was the Microsoft-wide initiative launched by Bill Gates in his famous January 2002 memo, which declared security the company’s highest priority. TwC became a formal organization within the company responsible for driving security, privacy, and reliability practices across every product group.</p><p>David served as Chief of Staff to the Corporate Vice President of Trustworthy Computing, where he operated at the intersection of executive strategy, cross-team coordination, and technical execution — helping drive security transformation across Microsoft’s engineering culture during a critical period in the company’s history.</p>
+
+  - slug: consent-decree
+    title: Consent Decree (Microsoft)
+    category: concept
+    image: null
+    links:
+      - { label: "US v. Microsoft on Wikipedia", url: "https://en.wikipedia.org/wiki/United_States_v._Microsoft_Corp." }
+    html: |
+      <p>The 2001 settlement of <em>United States v. Microsoft Corporation</em>, one of the most significant antitrust cases in technology history. After being found to have illegally maintained its monopoly in PC operating systems, Microsoft agreed to a set of remedies overseen by a Technical Committee.</p><p>The decree required Microsoft to share its APIs with third-party companies, document its protocols, and establish compliance monitoring. David led the engineering compliance programs that implemented Microsoft’s technical obligations under this decree, including tools like APIscan for verifying API accessibility.</p>
+
+  - slug: checkpoint-express
+    title: CheckPoint Express
+    category: project
+    image: null
+    links: []
+    html: |
+      <p>An internal Microsoft engineering compliance tool that was part of the mandatory policy enforcement system. It tracked and verified that software development teams followed Microsoft’s required engineering policies covering security, privacy, accessibility, legal compliance, and other requirements throughout the software development lifecycle.</p><p>As Director of Compliance Engineering, David oversaw CheckPoint Express as part of a broader compliance program with a budget exceeding $10M annually.</p>
+
+  - slug: apiscan
+    title: APIscan
+    category: project
+    image: null
+    links: []
+    html: |
+      <p>A compliance analysis tool David managed at Microsoft as part of the Consent Decree middleware compliance program. APIscan analyzed Microsoft’s software to verify proper API documentation and accessibility as required by the terms of the antitrust settlement.</p><p>The tool was part of a broader regulatory engagement effort ensuring that Microsoft’s products met the technical obligations imposed by the court, particularly around making interfaces available to third-party software developers.</p>
+
+  - slug: sinclair
+    title: Sinclair Research
+    category: org
+    image: media/sinclair-zx80.jpg
+    imageAlt: "The Sinclair ZX80 — one of the first affordable home computers"
+    links:
+      - { label: "Sinclair Research on Wikipedia", url: "https://en.wikipedia.org/wiki/Sinclair_Research" }
+      - { label: "ZX Spectrum on Wikipedia", url: "https://en.wikipedia.org/wiki/ZX_Spectrum" }
+    html: |
+      <p>A British consumer electronics company founded by Sir Clive Sinclair that produced some of the earliest affordable home computers, including the ZX80 (1980), ZX81 (1981), and ZX Spectrum (1982). These machines brought personal computing to millions of people at price points under $200.</p><p>Sinclair played a pivotal role in the personal computing revolution, especially in the UK and Europe, spawning an entire generation of programmers. David was one of the earliest employees at Sinclair’s US operation (Sinclair Research Ltd. in Boston), starting part-time in 1979 before the ZX80 had even launched.</p>
+
+  - slug: zx80
+    title: Sinclair ZX-80
+    category: tech
+    image: media/zx80.jpg
+    imageAlt: "The Sinclair ZX-80 home computer"
+    links:
+      - { label: "ZX80 on Wikipedia", url: "https://en.wikipedia.org/wiki/ZX80" }
+    html: |
+      <p>One of the first affordable home computers, manufactured by Sinclair Research and launched in 1980 at a price of £99.95 in the UK ($199.95 in the US). It featured a Zilog Z80 processor running at 3.25 MHz, 1KB of RAM, and output to a standard television set.</p><p>Despite its limitations — the display would flicker during computation and the membrane keyboard was famously difficult to use — the ZX80 introduced hundreds of thousands of people to computing and kickstarted the home computer revolution. David managed technical support for ZX-80 users at Sinclair’s US office.</p>
+
+  - slug: timex-sinclair
+    title: Timex/Sinclair 2000
+    category: tech
+    image: media/timex-sinclair-1000-top.jpg
+    imageAlt: "The Timex Sinclair 1000 — the US version of the Sinclair ZX81"
+    links:
+      - { label: "Timex Sinclair on Wikipedia", url: "https://en.wikipedia.org/wiki/Timex_Sinclair" }
+    html: |
+      <p>A home computer developed by Timex Computer Corporation as a successor to the Timex/Sinclair 1000 (the US version of the Sinclair ZX81). Timex had partnered with Sinclair Research to manufacture and sell Sinclair’s computers in the US market.</p><p>David worked on the TS2000’s hardware and software design at Timex Computer Corp., including inventing a memory bank-switching mechanism and designing a semi-custom chip to implement it. He also authored the complete third-party developer technical manual. Timex Computer Corp. folded in late 1983 amid the home computer market shakeout.</p>
+
+  - slug: bank-switching
+    title: Bank Switching
+    category: concept
+    image: null
+    links:
+      - { label: "Bank switching on Wikipedia", url: "https://en.wikipedia.org/wiki/Bank_switching" }
+    html: |
+      <p>A technique for expanding the usable memory of early computers beyond their native addressing limits. Processors like the Z80 could only directly address 64KB of memory, but by rapidly swapping different “banks” of memory chips into the processor’s address space, systems could access much more.</p><p>David invented a bank switching mechanism for the Timex/Sinclair 2000 and designed a semi-custom chip to implement it. He was awarded a patent for this invention — his first patent, and one that addressed a fundamental hardware constraint of the era.</p>
+
+  - slug: multimate
+    title: MultiMate
+    category: org
+    image: null
+    imageAlt: "MultiMate word processor running on an IBM PC"
+    links:
+      - { label: "MultiMate on Wikipedia", url: "https://en.wikipedia.org/wiki/MultiMate" }
+    html: |
+      <p>A popular word processing program for IBM PCs in the 1980s that emulated the keyboard interface of Wang dedicated word processors. This was a shrewd design choice — secretaries and office workers already trained on Wang systems could switch to a PC without relearning their workflow.</p><p>MultiMate was one of the leading word processors of its era, before being overtaken by WordPerfect and later Microsoft Word. The company was acquired by Ashton-Tate in December 1985. David managed the OEM/International group, porting the product to platforms including the Zenith Z-100 for a US Air Force contract.</p>
+
+  - slug: pragmatica
+    title: Pragmatica, Inc.
+    category: org
+    image: null
+    links: []
+    html: |
+      <p>A startup David founded in 1995 that developed advanced Internet publishing tools. Its core product was an object-oriented web programming language with SGML syntax — a concept that predated XML (which wouldn’t be published until 1998).</p><p>David developed the business plan, recruited the executive team, secured multiple rounds of angel investment, and wrote substantial portions of the ~100,000-line C++ codebase. The company grew to 10 employees, several consultants, and over 5,000 users before David left to join NuvoMedia in 1998.</p>
+
+  - slug: ebooknet
+    title: eBookNet.com
+    category: project
+    image: null
+    links: []
+    html: |
+      <p>Described at its launch as the world’s largest eBook portal, eBookNet.com was developed by a cross-organization team of 12 people that David led at NuvoMedia. The site served as a central hub for discovering, purchasing, and downloading electronic books.</p><p>David designed both the user interface and the architecture for the site. In the late 1990s, building a large-scale content portal like this was a significant undertaking, and eBookNet.com represented one of the earliest attempts to create a comprehensive marketplace for digital books.</p>
+
+  - slug: oeb-pub-structure
+    title: Open eBook Publication Structure
+    category: concept
+    image: media/epub-logo.svg
+    imageAlt: "EPUB logo — the Open eBook Publication Structure evolved into the EPUB standard"
+    links:
+      - { label: "EPUB on Wikipedia", url: "https://en.wikipedia.org/wiki/EPUB" }
+      - { label: "OEBPS", url: "https://en.wikipedia.org/wiki/Open_eBook" }
+    html: |
+      <p>A standard defining how electronic book content should be structured and formatted, first drafted by David and others at NuvoMedia. It specified an XML-based format for representing eBook content, including text, images, metadata, and navigation.</p><p>This standard evolved through the Open eBook Forum into the OEBPS (Open eBook Publication Structure) format and ultimately became EPUB — now the dominant open standard for eBooks, used by Apple Books, Google Play Books, Kobo, and virtually every e-reader except Amazon’s Kindle.</p>
+
+  - slug: public-key-crypto
+    title: Public Key Cryptography
+    category: concept
+    image: null
+    links:
+      - { label: "Public-key cryptography", url: "https://en.wikipedia.org/wiki/Public-key_cryptography" }
+    html: |
+      <p>A cryptographic system that uses pairs of mathematically related keys: a public key (shared freely) and a private key (kept secret). Data encrypted with one key can only be decrypted with the other, enabling secure communication between parties who have never met.</p><p>Public key cryptography enables digital signatures, secure key exchange, and forms the backbone of internet security (HTTPS/TLS). It was central to the DRM and secure distribution systems David worked on in the eBook space, where content needed to be encrypted for authorized readers only.</p>
+
+  - slug: molecular-gastronomy
+    title: Molecular Gastronomy
+    category: concept
+    image: media/spherification.jpg
+    imageAlt: "Spherification — a signature molecular gastronomy technique"
+    links:
+      - { label: "Molecular gastronomy", url: "https://en.wikipedia.org/wiki/Molecular_gastronomy" }
+    html: |
+      <p>A subdiscipline of food science that explores the physical and chemical transformations that occur during cooking. Coined by Hungarian physicist Nicholas Kurti and French chemist Hervé This in 1988, it bridges the gap between kitchen tradition and laboratory science.</p><p>Techniques include spherification (creating caviar-like spheres from liquids using sodium alginate), sous vide (precision temperature-controlled cooking), foams, gels, and the use of hydrocolloids and emulsifiers to achieve novel textures and presentations. Chefs like Ferran Adrià (elBulli) and Heston Blumenthal (The Fat Duck) popularized these techniques in fine dining.</p>
+
+  - slug: angel-investment
+    title: Angel Investment
+    category: concept
+    image: null
+    links:
+      - { label: "Angel investor on Wikipedia", url: "https://en.wikipedia.org/wiki/Angel_investor" }
+    html: |
+      <p>Early-stage funding provided by individual investors (called “angel investors”) to startups, typically in exchange for equity. Angel investment fills the gap between personal savings / friends-and-family money and larger venture capital rounds.</p><p>Angels typically invest their own money (as opposed to institutional funds), often bring industry expertise and connections, and are willing to take on more risk than traditional investors. David secured multiple rounds of angel investment to fund Pragmatica, growing the company to 10 employees and over 5,000 users.</p>
+
+  - slug: excelerator
+    title: Excelerator II
+    category: project
+    image: null
+    links: []
+    html: |
+      <p>A CASE (Computer Aided Software Engineering) tool developed by INTERSOLV (formerly Sage Software) for the OS/2 operating system. Excelerator II provided graphical tools for software design, data modeling, and code generation, along with a LAN-hosted repository for storing and sharing design artifacts.</p><p>David served as both Director of Development and Chief Architect for Excelerator II, managing a bi-coastal team of 12 people while also doing significant design and coding work himself. The product was part of INTERSOLV’s larger suite of software development tools.</p>
+
+  - slug: rom-cartridges
+    title: ROM Cartridges
+    category: concept
+    image: null
+    links:
+      - { label: "ROM cartridge on Wikipedia", url: "https://en.wikipedia.org/wiki/ROM_cartridge" }
+    html: |
+      <p>Read-Only Memory modules that contain software stored permanently on a chip, requiring no disk drive or other storage device. In the early personal computing era, ROM cartridges provided a way to distribute software that loaded instantly and couldn’t be accidentally erased.</p><p>At MultiMate, David ported the word processor to run from ROM cartridges on the HP Portable Plus — a significant technical challenge that required making a large program work with dynamically-located data segments while running from read-only storage, without disrupting the system’s overall architecture.</p>
+
+  - slug: csharp
+    title: C# (C Sharp)
+    category: tech
+    image: null
+    links:
+      - { label: "C# on Wikipedia", url: "https://en.wikipedia.org/wiki/C_Sharp_(programming_language)" }
+    html: |
+      <p>A modern, object-oriented programming language developed by Microsoft, first released in 2000 as part of the .NET initiative. Designed by Anders Hejlsberg (who also created Turbo Pascal and Delphi), C# drew heavily from C++, Java, and Smalltalk.</p><p>C# has become one of the most popular programming languages in the world, used for everything from Windows desktop applications and web services to game development (via Unity) and mobile apps (via Xamarin/MAUI). David used C# extensively at Microsoft, including to build FlexWiki.</p>
+
+  - slug: z80
+    title: Zilog Z80
+    category: tech
+    image: media/z80-chip.jpg
+    imageAlt: "A Zilog Z80 microprocessor chip"
+    links:
+      - { label: "Z80 on Wikipedia", url: "https://en.wikipedia.org/wiki/Zilog_Z80" }
+    html: |
+      <p>An 8-bit microprocessor designed by Zilog and released in 1976. It became one of the most widely used CPUs in computing history, powering machines like the Sinclair ZX80/ZX81/ZX Spectrum, TRS-80, MSX computers, and the original Game Boy.</p><p>The Z80 was software-compatible with the Intel 8080 but added many improvements, including a simpler power supply, more registers, and additional instructions. David worked extensively with Z80 hardware and software at Sinclair Research, Heuristics, and Timex Computer Corp.</p>
+
+  - slug: x86
+    title: x86 Architecture
+    category: tech
+    image: null
+    links:
+      - { label: "x86 on Wikipedia", url: "https://en.wikipedia.org/wiki/X86" }
+    html: |
+      <p>A family of instruction set architectures based on the Intel 8086 processor (1978) that became the dominant standard for personal computers. The lineage runs from 8086 → 80286 → 80386 → 80486 → Pentium and continues through today’s Intel and AMD processors.</p><p>David worked extensively with x86 assembly language and protected-mode programming on 286 and 386 processors, building low-level system tools like CRTS (over 100,000 lines of C and x86 assembler) at Sage Software, as well as DOS Dynamic Link Libraries and mixed-language integration.</p>
+
+  - slug: dotnet
+    title: .NET Framework
+    category: tech
+    image: null
+    links:
+      - { label: ".NET Framework on Wikipedia", url: "https://en.wikipedia.org/wiki/.NET_Framework" }
+    html: |
+      <p>A software framework developed by Microsoft, first released in 2002, providing a managed runtime environment (the CLR), a large class library, and support for multiple programming languages including C#, VB.NET, and F#. It became the primary platform for building Windows applications, web services, and enterprise software.</p><p>.NET has since evolved into the cross-platform, open-source .NET (formerly .NET Core), which runs on Windows, macOS, and Linux. David used the .NET Framework extensively at Microsoft, most notably to build FlexWiki in C#.</p>
+
+  - slug: aspnet
+    title: ASP.NET
+    category: tech
+    image: null
+    links:
+      - { label: "ASP.NET on Wikipedia", url: "https://en.wikipedia.org/wiki/ASP.NET" }
+    html: |
+      <p>Microsoft’s server-side web application framework built on the .NET platform. It enables developers to build dynamic websites, web applications, and web APIs. Introduced in 2002 as a successor to Active Server Pages (classic ASP), it represented a major leap in web development productivity.</p><p>ASP.NET went through several major evolutions: Web Forms (component-based, event-driven), MVC (model-view-controller pattern), Web API (RESTful services), and the modern cross-platform ASP.NET Core. It remains one of the most popular frameworks for building server-side web applications.</p>
+
+  - slug: sharepoint
+    title: SharePoint
+    category: tech
+    image: null
+    links:
+      - { label: "SharePoint on Wikipedia", url: "https://en.wikipedia.org/wiki/SharePoint" }
+    html: |
+      <p>A web-based collaboration platform developed by Microsoft, used for document management, intranet portals, content management, and team collaboration. First released in 2001, it quickly became one of Microsoft’s fastest-growing enterprise products.</p><p>SharePoint provides features like document libraries with version control, team sites, search, workflows, and integration with Office applications. It’s now a core part of the Microsoft 365 ecosystem, with both on-premises and cloud-hosted (SharePoint Online) versions used by hundreds of thousands of organizations worldwide.</p>
+
+# ----------------------------------------------------------------------------
+# organizations[] — reference table (what each org is). Optional to render.
+organizations:
+  - { name: Sinclair Research Ltd., what: "UK computer company; David worked at US operation" }
+  - { name: Heuristics, what: "David's Sinclair technical services company" }
+  - { name: Timex Computer Corp., what: "US partner of Sinclair; made Timex/Sinclair computers" }
+  - { name: Multimate International Corp., what: "Word processing software company" }
+  - { name: Access Technology Inc., what: "Software company; later acquired by DCA" }
+  - { name: INTERSOLV / Sage Software, what: "CASE tool and software company; later merged with Micro Focus" }
+  - { name: Visual Software, what: "Acquired by INTERSOLV (David led tech due diligence)" }
+  - { name: Polytron Corp., what: "Acquired by INTERSOLV (David led tech due diligence)" }
+  - { name: LongView International, what: "Derivatives trading systems company" }
+  - { name: Pragmatica, Inc., what: "David's internet publishing tools startup" }
+  - { name: NuvoMedia, Inc., what: "David co-founded; made the Rocket eBook" }
+  - { name: Gemstar, what: "Acquired NuvoMedia in 2000 for $187M" }
+  - { name: Open eBook Forum (OEBF), what: "International e-book standards organization" }
+  - { name: Microsoft, what: "David's employer 1999–present" }
+  - { name: Trustworthy Computing (TwC), what: "Microsoft's central security strategy org" }
+  - { name: SIGMA, what: "Standards, Insights, Governance, Monitoring & Assurance — org under CISO" }
+  - { name: CELA, what: "Microsoft's Corporate, External and Legal Affairs" }
+
+# ----------------------------------------------------------------------------
+# people[] — named people referenced in prose
+people:
+  - name: Scott Charney
+    context: "Senior VP / CVP, Trustworthy Computing. David's principal as Chief of Staff."
