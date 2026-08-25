@@ -341,12 +341,20 @@
     var contactParts = [b.email, (b.url || '').replace(/^https?:\/\//, ''), loc].filter(Boolean).map(esc);
     var contact = contactParts.join(' &nbsp;&middot;&nbsp; ') + (profileLinks ? ' &nbsp;&middot;&nbsp; ' + profileLinks : '');
 
-    // Metrics strip — featured stats only (basics.stats[].resume === true).
-    var strip = (b.stats || []).filter(function (s) { return s.resume; })
-      .map(function (s) {
-        return '<div class="linear-stat"><span class="linear-stat-val">' + esc(s.value) + '</span>' +
-          '<span class="linear-stat-label">' + esc(s.label) + '</span></div>';
-      }).join('');
+    // Metrics strip — featured stats (basics.stats[].resume === true), ordered to
+    // lead with outcomes rather than the "40+ years" age signal (both reviewers
+    // flagged leading with tenure). Any featured stat not listed sorts to the end.
+    var STRIP_ORDER = ['stat-services', 'stat-exit', 'stat-patents', 'stat-engineers', 'stat-companies', 'stat-years'];
+    var stripStats = (b.stats || []).filter(function (s) { return s.resume; }).slice()
+      .sort(function (a, x) {
+        var ia = STRIP_ORDER.indexOf(a.slug); if (ia < 0) ia = 99;
+        var ix = STRIP_ORDER.indexOf(x.slug); if (ix < 0) ix = 99;
+        return ia - ix;
+      });
+    var strip = stripStats.map(function (s) {
+      return '<div class="linear-stat"><span class="linear-stat-val">' + esc(s.value) + '</span>' +
+        '<span class="linear-stat-label">' + esc(s.label) + '</span></div>';
+    }).join('');
     var metrics = strip ? '<div class="linear-metrics">' + strip + '</div>' : '';
 
     // Summary — reordered/selected paragraphs (verbatim). resumeSummaryOrder is

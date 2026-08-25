@@ -60,3 +60,25 @@ call in your voice. I left them for you rather than risk inventing:
 - No facts changed. No portfolio changes. No LinkedIn-sync data changed (omitted
   roles keep `linkedin` visibility). `#3` from the review (security→AI-safety
   bridge; a public verifiable artifact) is intentionally left for the next pass.
+
+---
+
+## Follow-up pass (after the reviewers re-validated)
+
+Both reviewers confirmed **#2 landed** and **#1's lead landed** (evidence half is the
+deferred Indra rewrite). Two refinements they surfaced:
+
+- **Metrics strip reordered** so it leads with outcomes, not tenure — now
+  `8K+ Services Secured · $200M Exit · 12+ Patents · 50+ Engineers Led ·
+  3 Companies Founded · 40+ Professional Years` (age moved last). Pure ordering,
+  no new data. *(Note: the strip is still all-legacy until a real AI-native number
+  from Indra can join it — see `docs/indra-bullets-draft.md`.)*
+- **"Demote 1–2 older roles to `brief`" — NOT applied, on purpose.** The candidates
+  (Architect, Emerging Technologies 1999–2001; OEBF President 2000–2003) post-date
+  the "Earlier career (1979–1998)" block, so demoting them there would mislabel
+  recent roles as pre-1998 — a subtle inaccuracy. Options for you: (a) leave them
+  full (current), (b) rename the collapsed block to "Additional experience" (drops
+  the chronology claim) and demote them, or (c) add a third "compact" tier. Your call.
+
+The single highest-leverage remaining item (both agree): the **Indra rewrite** —
+skeleton for you to fill is in `docs/indra-bullets-draft.md`.
