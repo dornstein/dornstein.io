@@ -120,43 +120,85 @@ work:
       dateLabel: "2025 – Present (1 yr)"
       image: null
 
-  - id: liquid
+  # Liquid spanned two Senior-Director org-periods (REFERENCE.md keeps them
+  # separate; so does LinkedIn). They are two atomic roles here — the finest
+  # truth. The SITE merges them into one "Liquid Compliance Platform" card via the
+  # generic display.card grouping below; résumé/LinkedIn render both roles.
+  - id: liquid-cst
     organization: Microsoft
     group: microsoft
-    position: Senior Director Engineering — Liquid / Assurance Engineering
+    position: Senior Director Engineering, Customer Security and Trust
     location: Redmond, WA
     startDate: "2016-04"
-    endDate: "2025-12"
+    endDate: "2021-07"
     employmentType: full-time
     visibility: [site, resume, linkedin]
-    # Site shows Liquid as ONE card (2015–2025); LinkedIn/REFERENCE split it into
-    # two Senior-Director positions as the org was renamed. See schema "merges".
-    linkedinPositions:
-      - { position: "Senior Director Engineering, Customer Security and Trust", startDate: "2016-04", endDate: "2021-07" }
-      - { position: "Senior Director Engineering, Digital Security and Resilience", startDate: "2021-08", endDate: "2025-12", note: "Org renamed to CISO (2024); team renamed Assurance Engineering (2024) then SIGMA (2025) — same team, same role." }
     summary: >-
-      Conceived and led Liquid, Microsoft's internal platform for continuous
-      security assurance. Assembled a 20+ person Deep Engineering team to automate
-      the SDL and compliance processes. Architected automated policy scanners,
-      code compliance pipelines, and a unified dashboard. Co-incubated CodeQL
-      Central for company-wide code analysis. Established the unified Security Bugs
-      S360 KPI tracking vulnerabilities across 1,200+ repos and ~18,000 services.
-      In parallel, drove the full Liquid team — PMs and engineers alike — toward
-      AI-accelerated development practices that became a model for the broader
-      organization.
+      Conceived and founded Liquid — Microsoft's internal platform for continuous
+      security assurance — around 2015. Assembled a 20+ person Deep Engineering
+      team to automate the SDL and other compliance processes. Drove the
+      architecture and implementation of Liquid's services: automated policy
+      scanners, code compliance pipelines, and a unified dashboard for security
+      standards adherence.
     highlights:
-      - Automated SDL compliance for 8,000+ services company-wide.
-      - >-
-        Transformed Microsoft's assurance from manual attestations to data-driven
-        continuous monitoring. Executive acclaim for "incredible impact" on the
-        security engineering ecosystem.
-    skills: [security-architecture, secure-development-lifecycle-sdl, compliance-automation-continuous-compliance, devsecops, static-code-analysis, continuous-integration, cloud-security, platform-engineering, complex-systems-architecture, engineering-leadership, people-development-coaching, technical-strategy, interoperability, c-net, net-framework-asp-net, sql, typescript-javascript, azure-azure-devops, github-codeql, windows, relational-databases]
-    terms: [liquid, sdl, codeql]
+      - Grew Liquid into the core of Microsoft's Continuous SDL program.
+    skills: [security-architecture, secure-development-lifecycle-sdl, compliance-automation-continuous-compliance, platform-engineering, devsecops, engineering-leadership, complex-systems-architecture, technical-strategy, people-development-coaching, interoperability, c-net, net-framework-asp-net, azure-azure-devops, github-codeql, windows, relational-databases, sql, typescript-javascript]
+    terms: [liquid, sdl]
     display:
       era: microsoft-security-compliance
+      card: liquid-platform
+      cardLead: true
       cardTitle: Liquid Compliance Platform
       roleLine: Principal Engineering Manager / Senior Director · Assurance Engineering
       dateLabel: "2015 – 2025 (10 yrs)"
+      image: null
+      # Card-level body overrides (used because this card merges two roles):
+      summary: >-
+        Conceived and led Liquid, Microsoft's internal platform for continuous
+        security assurance. Assembled a 20+ person Deep Engineering team to
+        automate the SDL and compliance processes. Architected automated policy
+        scanners, code compliance pipelines, and a unified dashboard. Co-incubated
+        CodeQL Central for company-wide code analysis. Established the unified
+        Security Bugs S360 KPI tracking vulnerabilities across 1,200+ repos and
+        ~18,000 services. In parallel, drove the full Liquid team — PMs and
+        engineers alike — toward AI-accelerated development practices that became a
+        model for the broader organization.
+      highlights:
+        - Automated SDL compliance for 8,000+ services company-wide.
+        - >-
+          Transformed Microsoft's assurance from manual attestations to
+          data-driven continuous monitoring. Executive acclaim for "incredible
+          impact" on the security engineering ecosystem.
+
+  - id: liquid-dsr
+    organization: Microsoft
+    group: microsoft
+    position: Senior Director Engineering, Digital Security and Resilience
+    location: Redmond, WA
+    startDate: "2021-08"
+    endDate: "2025-12"
+    employmentType: full-time
+    visibility: [site, resume, linkedin]
+    summary: >-
+      Continued leading Liquid engineering as the surrounding org was renamed —
+      Digital Security & Resilience, then the CISO organization (2024), with the
+      team renamed Assurance Engineering (2024) and then SIGMA (2025); same team,
+      same leadership role throughout. Integrated Liquid tooling with Azure DevOps
+      across the company for real-time compliance checks, replacing yearly audits.
+      Co-led incubation of CodeQL Central, a scalable code analysis service.
+      Established the unified Security Bugs S360 KPI tracking vulnerabilities across
+      1,200+ code repositories and ~18,000 services.
+    highlights:
+      - Automated SDL compliance for 8,000+ services company-wide.
+      - >-
+        Shifted Microsoft from manual attestations to data-driven continuous
+        monitoring; manager cited "incredible impact" on the security engineering
+        ecosystem.
+    skills: [security-architecture, devsecops, static-code-analysis, continuous-integration, cloud-security, compliance-automation-continuous-compliance, engineering-leadership, platform-engineering, secure-development-lifecycle-sdl, c-net, net-framework-asp-net, sql, windows, azure-azure-devops, github-codeql]
+    terms: [liquid, codeql, sdl]
+    display:
+      era: microsoft-security-compliance
+      card: liquid-platform   # folds into the liquid-cst lead card on the site
       image: null
 
   - id: twc-chief-of-staff

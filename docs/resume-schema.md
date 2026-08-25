@@ -132,17 +132,20 @@ The heart of the schema. **One entry per real role.** Ordered newest-first.
 | `employmentType` | string | `full-time` \| `self-employed` \| `founder` \| … (LinkedIn field) |
 | `concurrent` | bool | optional; true for overlapping roles (e.g. OEBF) |
 | `visibility` | string[] | any of `site`, `resume`, `linkedin` |
-| `linkedinPositions` | object[] | optional. Finer split when LinkedIn wants more granularity than the site card shows (see [merges](#the-one-real-tension-merges)). Each: `{ position, startDate, endDate, note? }` |
 
 ### `work[].display` (site-only presentation; drop for JSON Resume)
 
 | Field | Type | Notes |
 |---|---|---|
 | `era` | string | which `timeline.eras[].slug` this card groups under |
+| `card` | string \| null | optional card-grouping key. Multiple roles sharing a `card` **collapse into one visual card** on the site (see [merges](#merging-roles-into-one-card)). Omit for a 1:1 role→card |
+| `cardLead` | bool | on a merged `card`, marks the one entry whose `display` supplies the card's heading/label/body. Ignored when `card` is unset |
 | `cardTitle` | string \| null | site card `<h4>` — often a *project* name (e.g. "Rocket eBook & Platform"), distinct from `position`. Null → use `position` |
 | `roleLine` | string \| null | the site's exact role line (may fold in org sub-unit) |
 | `dateLabel` | string | human display string (e.g. `"2015 – 2025 (10 yrs)"`). **Authored, not computed** — the "22 yrs" figures are editorial and shouldn't drift yearly |
 | `image` | string \| null | `media/…` illustration for the card |
+| `summary` | string | optional. Card-level body override, used when a card **merges** several roles and the single card needs its own combined prose. Non-merged cards omit it and use the role's `summary` |
+| `highlights` | string[] | optional. Card-level outcome override, same rationale as `display.summary` |
 
 > **Machine dates vs. display dates.** `startDate`/`endDate` are the true,
 > sortable, LinkedIn-precision dates. `display.dateLabel` is the editorial string
@@ -265,21 +268,32 @@ LinkedIn skill's company matching. Optional to render.
 
 ---
 
-## The one real tension: merges
+## Merging roles into one card
 
-The site is a **curated view** and occasionally coarser than LinkedIn wants. The
-only genuine case today: the **Liquid** era. The site shows it as *one* card
-(2015–2025); LinkedIn (and `REFERENCE.md`) split it into two Senior-Director
-positions as the surrounding org was renamed (Customer Security & Trust →
-Digital Security & Resilience).
+The site is a **curated view** and occasionally *coarser* than the résumé/LinkedIn
+want. The only case today: **Liquid**. The site shows it as *one* card (2015–2025);
+`REFERENCE.md` (and LinkedIn) keep it as **two** Senior-Director roles, because the
+surrounding org was renamed mid-stream (Customer Security & Trust → Digital
+Security & Resilience).
 
-This is handled **without duplicating the role**: the single `work` entry carries
-the site-faithful dates/prose, and an optional `linkedinPositions[]` list gives the
-LinkedIn-sync skill the finer split. The site ignores it; LinkedIn uses it.
+The core data holds the **finer** truth — two atomic `work` entries (`liquid-cst`,
+`liquid-dsr`), each with its own accurate dates and prose. Nothing about them names
+a specific consumer. The site's single card is then a **presentation** fact,
+expressed entirely inside the quarantined `display` block:
+
+- both entries set `display.card: liquid-platform` — same key → one visual card;
+- the lead entry sets `display.cardLead: true` and supplies the card's merged
+  `cardTitle` / `roleLine` / `dateLabel` / `summary` / `highlights`;
+- the résumé and LinkedIn ignore `display` entirely and simply render both roles.
+
+The rule generalizes: **coarsening is a view's job** (any view can merge N entries),
+so the core always stores the finest grain and never a pre-merged blob. This is the
+inverse of an earlier draft that stored a merged role plus a consumer-specific
+un-merge hint — that leaked a presentation concern (LinkedIn) into the core.
 
 Roles the site omits entirely (e.g. *Applied Intelligence*, *Applied Systems
 Technologies* — thin LinkedIn-only entries) are present with
-`visibility: [resume, linkedin]` (or `[linkedin]`) and no `display.era`.
+`visibility: [resume, linkedin]` (or `[linkedin]`) and `display: null`.
 
 ## Term auto-linking
 
@@ -301,14 +315,24 @@ Drop these and the remainder validates as JSON Resume:
   slugs (JSON Resume expects free-text keywords — trivially derivable from the
   taxonomy).
 
-## Open questions for review
+## Decisions log
 
-1. **Term auto-linking fidelity** — is first-occurrence wrapping acceptable, or do
-   you want to preserve today's exact hand-placed spans (which would mean allowing
-   limited inline markup in `summary`)?
-2. **Glossary category taxonomy** — the `stat|project|org|person|tech|concept`
-   buckets are my proposal; adjust freely.
-3. **`valueProps`/`interests` icons** — kept as opaque `icon` keys with the SVGs
-   staying in the HTML template. OK, or do you want the SVG paths in the data?
-4. **Patents in JSON-Resume export** — leave as a custom `patents` section, or also
-   mirror into `publications` for interop?
+- **Term auto-linking** — first-occurrence wrapping is accepted; prose stays plain
+  text. *(resolved)*
+- **`linkedinPositions` removed** — no consumer-named fields in the core. The
+  Liquid case is now two atomic roles merged by the site via `display.card`. See
+  [Merging roles into one card](#merging-roles-into-one-card). *(resolved)*
+- **`valueProps`/`interests` icons** — icons are decoration, so the SVG markup
+  stays in the HTML template and the data carries only an opaque semantic `icon`
+  key. Same principle as removing `linkedinPositions`: presentation stays out of
+  the core. *(resolved)*
+- **Patents / JSON-Resume** — keep the custom `patents[]` as the single source
+  (patents.html needs its rich fields). A `publications[]` projection would only be
+  generated *if* we ever feed third-party JSON-Resume tooling; deferred until
+  there's a real consumer. Strict JSON-Resume compliance is a nice-to-have, not a
+  requirement — our own consumers read these fields directly. *(resolved)*
+
+## Still open
+
+1. **Glossary category taxonomy** — the `stat|project|org|person|tech|concept`
+   buckets are a proposal; you'll judge them against the rendered site.
