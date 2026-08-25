@@ -309,6 +309,121 @@
     main.appendChild(box);
   }
 
+  // ---- views + router ------------------------------------------------------
+  // Every view is a renderer over the same window.RESUME data, mounted into
+  // #view-root. The active view is chosen from ?view=; switching is a normal
+  // navigation (the switcher links carry ?view=<key>), so each load is a clean
+  // mount with no cross-view listener leaks. Add a view here and it appears in
+  // the switcher automatically.
+
+  function linearDates(w) {
+    var s = (w.startDate || '').slice(0, 4);
+    var e = (w.endDate == null || w.endDate === 'present') ? 'Present' : (w.endDate || '').slice(0, 4);
+    return s ? (s + ' – ' + e) : '';
+  }
+
+  function buildLinear(d) {
+    var b = d.basics;
+    var loc = b.location ? [b.location.city, b.location.region].filter(Boolean).join(', ') : '';
+    var contact = [b.email, (b.url || '').replace(/^https?:\/\//, ''), loc]
+      .filter(Boolean).map(esc).join(' &nbsp;&middot;&nbsp; ');
+    var summary = (b.summary || []).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
+
+    var roles = d.work
+      .filter(function (w) { return (w.visibility || []).indexOf('resume') >= 0; })
+      .slice().sort(function (a, b) { return (b.startDate || '').localeCompare(a.startDate || ''); });
+    var exp = roles.map(function (w) {
+      var highs = (w.highlights || []).length
+        ? '<ul>' + w.highlights.map(function (h) { return '<li>' + esc(h) + '</li>'; }).join('') + '</ul>' : '';
+      var org = esc(w.organization) + (w.location ? ' &middot; <span class="linear-role-loc">' + esc(w.location) + '</span>' : '');
+      return '<div class="linear-role">' +
+        '<div class="linear-role-head"><span class="linear-role-title">' + esc(w.position) + '</span>' +
+        '<span class="linear-role-dates">' + esc(linearDates(w)) + '</span></div>' +
+        '<div class="linear-role-org">' + org + '</div>' +
+        (w.summary ? '<p>' + esc(w.summary) + '</p>' : '') + highs + '</div>';
+    }).join('');
+
+    var skills = d.skills.map(function (c) {
+      return '<p class="linear-skillrow"><span class="linear-skillcat">' + esc(c.name) + ':</span> ' +
+        c.keywords.map(function (k) { return esc(k.name); }).join(' · ') + '</p>';
+    }).join('');
+
+    var standards = (d.standards || []).map(function (s) {
+      return '<li><strong>' + esc(s.name) + '</strong> — ' + esc(s.role) + '</li>';
+    }).join('');
+
+    return '<div class="linear">' +
+      '<div class="linear-topbar">' +
+        '<a class="linear-home" href="?view=portfolio">← Portfolio</a>' +
+        '<div class="view-switcher" data-switcher></div>' +
+        '<button type="button" class="btn btn-primary linear-print" data-print>Print / Save PDF</button>' +
+      '</div>' +
+      '<article class="linear-doc">' +
+        '<header class="linear-head">' +
+          '<h1>' + esc(b.name) + '</h1>' +
+          (b.label ? '<p class="linear-tagline">' + esc(b.label) + '</p>' : '') +
+          '<p class="linear-contact">' + contact + '</p>' +
+        '</header>' +
+        '<section class="linear-section"><h2>Summary</h2>' + summary + '</section>' +
+        '<section class="linear-section"><h2>Experience</h2>' + exp + '</section>' +
+        '<section class="linear-section"><h2>Skills</h2>' + skills + '</section>' +
+        '<section class="linear-section"><h2>Patents &amp; Standards</h2>' +
+          '<p>' + esc((d.patents && d.patents.summary) || '') + '</p>' +
+          (standards ? '<ul>' + standards + '</ul>' : '') +
+        '</section>' +
+      '</article>' +
+    '</div>';
+  }
+
+  var VIEWS = {
+    portfolio: {
+      label: 'Portfolio',
+      render: function (d, root) {
+        var tmpl = document.getElementById('tmpl-portfolio');
+        root.appendChild(tmpl.content.cloneNode(true));
+        renderHero(d); renderAbout(d); renderValue(d); renderTimeline(d);
+        renderSkills(d); renderPatentsSummary(d); renderInterests(d);
+        renderTestimonials(d); renderContact(d);
+      },
+      init: function () { if (window.initBehaviors) window.initBehaviors(); }
+    },
+    linear: {
+      label: 'Résumé',
+      render: function (d, root) { root.innerHTML = buildLinear(d); },
+      init: function (d, root) {
+        var btn = root.querySelector('[data-print]');
+        if (btn) btn.addEventListener('click', function () { window.print(); });
+      }
+    }
+  };
+  var DEFAULT_VIEW = 'portfolio';
+
+  function currentViewKey() {
+    try {
+      var p = new URLSearchParams(location.search).get('view');
+      if (p && VIEWS[p]) return p;
+    } catch (e) { /* ignore */ }
+    return DEFAULT_VIEW;
+  }
+
+  function fillSwitchers(active) {
+    var tabs = Object.keys(VIEWS).map(function (k) {
+      return '<a class="view-tab' + (k === active ? ' is-active' : '') + '" href="?view=' + k + '"' +
+        (k === active ? ' aria-current="page"' : '') + '>' + esc(VIEWS[k].label) + '</a>';
+    }).join('');
+    document.querySelectorAll('[data-switcher]').forEach(function (el) { el.innerHTML = tabs; });
+  }
+
+  function mountView(d) {
+    var root = document.getElementById('view-root');
+    var key = currentViewKey();
+    root.innerHTML = '';
+    document.body.setAttribute('data-view', key);
+    VIEWS[key].render(d, root);
+    fillSwitchers(key);
+    if (VIEWS[key].init) VIEWS[key].init(d, root);
+  }
+
   function boot() {
     if (typeof jsyaml === 'undefined') { fail('YAML parser failed to load.'); return; }
     fetch('resume.yaml', { cache: 'no-cache' })
@@ -316,14 +431,9 @@
       .then(function (txt) {
         var d = jsyaml.load(txt);
         window.RESUME = d;
-        if (present('careerTimeline')) {
-          renderHero(d); renderAbout(d); renderValue(d); renderTimeline(d);
-          renderSkills(d); renderPatentsSummary(d); renderInterests(d);
-          renderTestimonials(d); renderContact(d);
-        }
-        if (present('patentList')) renderPatentsPage(d);
+        if (present('view-root')) mountView(d);
+        else if (present('patentList')) renderPatentsPage(d);
         if (window.initGlossary) window.initGlossary(d.glossary);
-        if (window.initBehaviors) window.initBehaviors();
       })
       .catch(function (e) { fail(String(e && e.message || e)); });
   }

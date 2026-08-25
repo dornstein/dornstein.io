@@ -4,12 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>David Ornstein</title>
-  <link rel="stylesheet" href="styles.css?v=12">
+  <link rel="stylesheet" href="styles.css?v=13">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+  <!-- Views render into here; the router (app.js) picks one from ?view= -->
+  <div id="view-root"></div>
+
+  <!-- ===================== PORTFOLIO VIEW (template) ===================== -->
+  <template id="tmpl-portfolio">
   <nav id="nav">
     <div class="nav-inner">
       <a href="#" class="nav-logo">DO</a>
@@ -24,6 +29,7 @@
         <li><a href="#patents">Patents</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
+      <div class="view-switcher" data-switcher></div>
     </div>
   </nav>
 
@@ -213,6 +219,8 @@
       <p>&copy; David Ornstein</p>
     </div>
   </footer>
+  </template>
+  <!-- =================== END PORTFOLIO VIEW (template) =================== -->
 
   <!-- Glossary flyout -->
   <div id="glossary-overlay" class="glossary-overlay"></div>
@@ -228,8 +236,8 @@
   </aside>
 
   <script src="vendor/js-yaml.min.js"></script>
-  <script src="glossary.js?v=3"></script>
-  <script src="script.js?v=11"></script>
-  <script src="app.js?v=1"></script>
+  <script src="glossary.js?v=4"></script>
+  <script src="script.js?v=12"></script>
+  <script src="app.js?v=2"></script>
 </body>
 </html>
