@@ -322,17 +322,51 @@
     return s ? (s + ' – ' + e) : '';
   }
 
+  function startYear(w) { return (w.startDate || '').slice(0, 4); }
+  function endYear(w) { return (w.endDate == null || w.endDate === 'present') ? 'Present' : (w.endDate || '').slice(0, 4); }
+  function spanYears(list) {
+    var starts = list.map(startYear).filter(Boolean).sort();
+    var ends = list.map(endYear);
+    var lo = starts[0] || '';
+    var hi = ends.indexOf('Present') >= 0 ? 'Present' : ends.filter(Boolean).sort().slice(-1)[0] || '';
+    return lo && hi ? (lo + '–' + hi) : (lo || hi);
+  }
+  function uniq(a) { var s = {}, o = []; a.forEach(function (x) { if (x && !s[x]) { s[x] = 1; o.push(x); } }); return o; }
+
   function buildLinear(d) {
     var b = d.basics;
     var loc = b.location ? [b.location.city, b.location.region].filter(Boolean).join(', ') : '';
-    var contact = [b.email, (b.url || '').replace(/^https?:\/\//, ''), loc]
-      .filter(Boolean).map(esc).join(' &nbsp;&middot;&nbsp; ');
-    var summary = (b.summary || []).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
+    var profileLinks = (b.profiles || []).filter(function (p) { return p.url; })
+      .map(function (p) { return '<a href="' + esc(p.url) + '">' + esc(p.network) + '</a>'; }).join(' &middot; ');
+    var contactParts = [b.email, (b.url || '').replace(/^https?:\/\//, ''), loc].filter(Boolean).map(esc);
+    var contact = contactParts.join(' &nbsp;&middot;&nbsp; ') + (profileLinks ? ' &nbsp;&middot;&nbsp; ' + profileLinks : '');
 
-    var roles = d.work
-      .filter(function (w) { return (w.visibility || []).indexOf('resume') >= 0; })
+    // Metrics strip — featured stats only (basics.stats[].resume === true).
+    var strip = (b.stats || []).filter(function (s) { return s.resume; })
+      .map(function (s) {
+        return '<div class="linear-stat"><span class="linear-stat-val">' + esc(s.value) + '</span>' +
+          '<span class="linear-stat-label">' + esc(s.label) + '</span></div>';
+      }).join('');
+    var metrics = strip ? '<div class="linear-metrics">' + strip + '</div>' : '';
+
+    // Summary — reordered/selected paragraphs (verbatim). resumeSummaryOrder is
+    // indices into basics.summary[]; falls back to the full summary.
+    var order = b.resumeSummaryOrder;
+    var paras = (order && order.length)
+      ? order.map(function (i) { return b.summary[i]; }).filter(Boolean)
+      : (b.summary || []);
+    var summary = paras.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
+
+    // Experience — résumé-visible roles, tiered: full = detailed, brief = collapsed
+    // into an "Earlier career" block, omit = dropped entirely.
+    var resumeRoles = d.work
+      .filter(function (w) { return (w.visibility || []).indexOf('resume') >= 0 && w.resume !== 'omit'; })
       .slice().sort(function (a, b) { return (b.startDate || '').localeCompare(a.startDate || ''); });
-    var exp = roles.map(function (w) {
+
+    var full = resumeRoles.filter(function (w) { return w.resume !== 'brief'; });
+    var brief = resumeRoles.filter(function (w) { return w.resume === 'brief'; });
+
+    var exp = full.map(function (w) {
       var highs = (w.highlights || []).length
         ? '<ul>' + w.highlights.map(function (h) { return '<li>' + esc(h) + '</li>'; }).join('') + '</ul>' : '';
       var org = esc(w.organization) + (w.location ? ' &middot; <span class="linear-role-loc">' + esc(w.location) + '</span>' : '');
@@ -342,6 +376,32 @@
         '<div class="linear-role-org">' + org + '</div>' +
         (w.summary ? '<p>' + esc(w.summary) + '</p>' : '') + highs + '</div>';
     }).join('');
+
+    // Earlier career — brief roles grouped by employer, one line each (derived
+    // from data: organization, year span, and the actual titles held).
+    var earlier = '';
+    if (brief.length) {
+      var byGroup = {}, groupOrder = [];
+      brief.forEach(function (w) {
+        var g = w.group || w.id;
+        if (!byGroup[g]) { byGroup[g] = { org: w.organization, roles: [] }; groupOrder.push(g); }
+        byGroup[g].roles.push(w);
+      });
+      groupOrder.sort(function (a, x) {
+        var ma = byGroup[a].roles.map(startYear).sort().slice(-1)[0] || '';
+        var mx = byGroup[x].roles.map(startYear).sort().slice(-1)[0] || '';
+        return mx.localeCompare(ma);
+      });
+      var rows = groupOrder.map(function (g) {
+        var grp = byGroup[g];
+        var positions = uniq(grp.roles.map(function (r) { return r.position; })).join('; ');
+        return '<div class="linear-earlier-row"><div class="linear-earlier-head">' +
+          '<span class="linear-earlier-org">' + esc(grp.org) + '</span>' +
+          '<span class="linear-role-dates">' + esc(spanYears(grp.roles)) + '</span></div>' +
+          '<div class="linear-earlier-pos">' + esc(positions) + '</div></div>';
+      }).join('');
+      earlier = '<h3 class="linear-subhead">Earlier career (' + esc(spanYears(brief)) + ')</h3>' + rows;
+    }
 
     var skills = d.skills.map(function (c) {
       return '<p class="linear-skillrow"><span class="linear-skillcat">' + esc(c.name) + ':</span> ' +
@@ -363,9 +423,10 @@
           '<h1>' + esc(b.name) + '</h1>' +
           (b.label ? '<p class="linear-tagline">' + esc(b.label) + '</p>' : '') +
           '<p class="linear-contact">' + contact + '</p>' +
+          metrics +
         '</header>' +
         '<section class="linear-section"><h2>Summary</h2>' + summary + '</section>' +
-        '<section class="linear-section"><h2>Experience</h2>' + exp + '</section>' +
+        '<section class="linear-section"><h2>Experience</h2>' + exp + earlier + '</section>' +
         '<section class="linear-section"><h2>Skills</h2>' + skills + '</section>' +
         '<section class="linear-section"><h2>Patents &amp; Standards</h2>' +
           '<p>' + esc((d.patents && d.patents.summary) || '') + '</p>' +

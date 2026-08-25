@@ -34,7 +34,10 @@ basics:
     city: Redmond
     region: WA
     countryCode: US
-  profiles: []   # public LinkedIn URL not published on the site; add when available
+  profiles:
+    - { network: GitHub, url: "https://github.com/dornstein" }
+    # TODO(David): add your public LinkedIn URL — both the recruiter and hiring-manager
+    # reviews flagged its absence as a screen-level miss. Not inventing a URL here.
   summary:
     - >-
       I've spent my career at the intersection of technology leadership and
@@ -68,21 +71,27 @@ basics:
       I care about building things well, about the craft of software, and about
       helping the people around me grow.
   summaryTerms: [trustworthy-computing, liquid, metro, flexwiki, consent-decree, rocket-ebook, nuvomedia, oebf, indra]
+  # Résumé view uses these summary paragraphs in this order (indices into summary[]):
+  # lead with Indra (3), then Microsoft (1), then pre-Microsoft founder/CTO (2). Drops
+  # the generic opener (0) and the "craft" closer (4). Selection + reorder only — every
+  # sentence shown is verbatim from summary[]; no rewriting.
+  resumeSummaryOrder: [3, 1, 2]
   stats:
-    - { slug: stat-years,     value: "40+",   label: "Professional Years" }
-    - { slug: stat-patents,   value: "12+",   label: "Patents" }
-    - { slug: stat-companies, value: "3",     label: "Companies Founded" }
-    - { slug: stat-services,  value: "8K+",   label: "Services Secured" }
-    - { slug: stat-exit,      value: "$200M", label: "Startup Exit" }
+    - { slug: stat-years,     value: "40+",   label: "Professional Years", resume: true }
+    - { slug: stat-patents,   value: "12+",   label: "Patents", resume: true }
+    - { slug: stat-companies, value: "3",     label: "Companies Founded", resume: true }
+    - { slug: stat-services,  value: "8K+",   label: "Services Secured", resume: true }
+    - { slug: stat-exit,      value: "$200M", label: "Startup Exit", resume: true }
     - { slug: stat-budget,    value: "$250M", label: "Largest Budget Managed" }
     - { slug: stat-lines,     value: "150K+", label: "Lines Shipped (Past 60 Days)" }
-    - { slug: stat-engineers, value: "50+",   label: "Engineers Led" }
+    - { slug: stat-engineers, value: "50+",   label: "Engineers Led", resume: true }
 
 # ----------------------------------------------------------------------------
 # work[] — atomic career roles, newest first. THE core of the data.
 work:
 
   - id: indra
+    resume: full
     organization: Microsoft
     group: microsoft
     position: Principal Security Architect
@@ -125,6 +134,7 @@ work:
   # truth. The SITE merges them into one "Liquid Compliance Platform" card via the
   # generic display.card grouping below; résumé/LinkedIn render both roles.
   - id: liquid-cst
+    resume: full
     organization: Microsoft
     group: microsoft
     position: Senior Director Engineering, Customer Security and Trust
@@ -171,6 +181,7 @@ work:
           impact" on the security engineering ecosystem.
 
   - id: liquid-dsr
+    resume: full
     organization: Microsoft
     group: microsoft
     position: Senior Director Engineering, Digital Security and Resilience
@@ -202,6 +213,7 @@ work:
       image: null
 
   - id: twc-chief-of-staff
+    resume: full
     organization: Microsoft
     group: microsoft
     position: Chief of Staff, Trustworthy Computing
@@ -232,6 +244,7 @@ work:
       image: null
 
   - id: compliance-engineering
+    resume: full
     organization: Microsoft
     group: microsoft
     position: Director, Compliance Engineering — Engineering Excellence
@@ -261,6 +274,7 @@ work:
       image: null
 
   - id: metro-xps
+    resume: full
     organization: Microsoft
     group: microsoft
     position: Lead Program Manager, Windows Digital Documents
@@ -290,6 +304,7 @@ work:
       image: media/office2007ribbon.png
 
   - id: ebooks-flexwiki
+    resume: full
     organization: Microsoft
     group: microsoft
     position: Architect, Emerging Technologies
@@ -317,6 +332,7 @@ work:
       image: null
 
   - id: oebf-president
+    resume: full
     organization: Open eBook Forum
     group: open-ebook-forum
     position: President & Board Member
@@ -346,6 +362,7 @@ work:
       image: null
 
   - id: rocket-ebook
+    resume: full
     organization: NuvoMedia, Inc.
     group: nuvomedia
     position: Director of Software Development → Chief Technical Officer
@@ -376,6 +393,7 @@ work:
       image: null
 
   - id: ebooknet
+    resume: omit   # NuvoMedia sub-role; subsumed by the rocket-ebook (CTO) entry on the résumé
     organization: NuvoMedia, Inc.
     group: nuvomedia
     position: Chief Technical Officer
@@ -399,6 +417,7 @@ work:
       image: null
 
   - id: pragmatica
+    resume: brief
     organization: Pragmatica, Inc.
     group: pragmatica
     position: Founder, President & CEO
@@ -426,6 +445,7 @@ work:
       image: null
 
   - id: oo-consulting
+    resume: brief
     organization: Independent Consultant
     group: independent
     position: Object-Oriented Technology Consultant
@@ -449,6 +469,7 @@ work:
       image: null
 
   - id: longview
+    resume: brief
     organization: LongView International
     group: longview
     position: Member of Technical Staff
@@ -473,6 +494,7 @@ work:
       image: media/visualworks.png
 
   - id: intersolv-excelerator
+    resume: brief
     organization: INTERSOLV / Sage Software
     group: intersolv
     position: Director of Development & Chief Architect
@@ -497,6 +519,7 @@ work:
       image: media/os2warp-logo.png
 
   - id: intersolv-corptech
+    resume: brief
     organization: INTERSOLV / Sage Software
     group: intersolv
     position: Chief Architect, Corporate Technology
@@ -520,6 +543,7 @@ work:
       image: null
 
   - id: cdif
+    resume: brief
     organization: INTERSOLV / Sage Software
     group: intersolv
     position: Chairman, ANSI/EIA Technical Committee (CDIF)
@@ -545,6 +569,7 @@ work:
       image: media/case-tool.png
 
   - id: intersolv-pc-crts
+    resume: brief
     organization: INTERSOLV / Sage Software
     group: intersolv
     position: Chief Architect, PC Product Development
@@ -569,6 +594,7 @@ work:
       image: null
 
   - id: access-technology
+    resume: brief
     organization: Access Technology Inc.
     group: access-technology
     position: Member of Technical Staff
@@ -592,6 +618,7 @@ work:
       image: null
 
   - id: multimate
+    resume: brief
     organization: Multimate International Corp.
     group: multimate
     position: Project Manager; Software Developer
@@ -616,6 +643,7 @@ work:
       image: null
 
   - id: timex
+    resume: brief
     organization: Timex Computer Corp.
     group: timex
     position: Member of Technical Team
@@ -640,6 +668,7 @@ work:
       image: media/timex-sinclair-1000.jpg
 
   - id: heuristics
+    resume: brief
     organization: Heuristics
     group: heuristics
     position: Founder & President
@@ -663,6 +692,7 @@ work:
       image: null
 
   - id: sinclair
+    resume: brief
     organization: Sinclair Research Ltd.
     group: sinclair
     position: Manager of Technical Services
@@ -687,6 +717,7 @@ work:
 
   # --- Roles the site omits; kept for résumé/LinkedIn fidelity (per REFERENCE.md) ---
   - id: applied-intelligence
+    resume: omit
     organization: Applied Intelligence
     group: applied-intelligence
     position: Consultant and Staff Programmer
@@ -705,6 +736,7 @@ work:
     display: null
 
   - id: applied-systems-technologies
+    resume: omit
     organization: Applied Systems Technologies
     group: applied-systems-technologies
     position: Consultant
