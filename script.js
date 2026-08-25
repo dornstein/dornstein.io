@@ -2,7 +2,10 @@
 // David Ornstein — Portfolio Site Scripts
 // ============================================
 
-(function () {
+// Exposed as window.initBehaviors and invoked by app.js AFTER the page content
+// has been rendered from resume.yaml, so every element these handlers query
+// already exists in the DOM.
+window.initBehaviors = function () {
   'use strict';
 
   // --- Nav scroll effect ---
@@ -85,11 +88,13 @@
   var groupsEl = document.getElementById('filterGroups');
   var clearBtn = document.getElementById('filterClearBtn');
 
-  // Load taxonomy from embedded JSON.
+  // Taxonomy comes from resume.yaml (window.RESUME.skills), mapped to the shape
+  // this filter expects: { categories: [{ slug, name, skills: [{slug,name}] }] }.
   var taxonomy = { categories: [] };
-  var taxonomyEl = document.getElementById('skills-taxonomy');
-  if (taxonomyEl) {
-    try { taxonomy = JSON.parse(taxonomyEl.textContent); } catch (e) { /* ignore */ }
+  if (window.RESUME && window.RESUME.skills) {
+    taxonomy.categories = window.RESUME.skills.map(function (c) {
+      return { slug: c.slug, name: c.name, skills: c.keywords };
+    });
   }
 
   var categoryBySlug = {};
@@ -488,4 +493,4 @@
     startAutoplay();
   })();
 
-})();
+};

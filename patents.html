@@ -30,212 +30,31 @@
     <div class="container">
       <a href="index.html" class="back-link">&larr; Back to Home</a>
       <h1 class="page-hero-title">Patents</h1>
-      <p class="page-hero-subtitle">12 US patents as primary inventor at Microsoft, all focused on document packaging, formatting, and content management technologies.</p>
+      <p class="page-hero-subtitle" id="patentHeroSubtitle"><!-- patents.heroSubtitle --></p>
     </div>
   </header>
 
   <section class="section">
     <div class="container">
       <h2 class="section-title">The Story</h2>
-      <div class="patent-story">
-        <p>Between 2001 and 2004, I architected and drove the cross-company document format initiative at Microsoft known internally as &ldquo;Metro.&rdquo; The goal was to create a universal, XML-based document format and packaging model that could serve as a common foundation for Office, Windows, and the printing pipeline.</p>
-        <p>The core innovation was the <strong>Open Packaging Conventions (OPC)</strong>: a ZIP-based container format using XML to describe parts, relationships, and content types. Rather than each application inventing its own file format from scratch, OPC provided a standard, interoperable foundation &mdash; a &ldquo;package&rdquo; that any application could use to store structured content.</p>
-        <p>The 12 patents below cover the key ideas: the packaging model itself, relationships between parts, interleaving for streaming, content composition via selectors and sequences, digital rights management, and the fixed-layout &ldquo;reach&rdquo; format designed for high-fidelity printing.</p>
-      </div>
+      <div class="patent-story" id="patentStory"><!-- patents.story --></div>
     </div>
   </section>
 
   <section class="section section-alt">
     <div class="container">
       <h2 class="section-title">The Patents</h2>
-      <p class="section-subtitle">All 12 US patents granted between 2007 and 2012. Assigned to Microsoft Corporation.</p>
-
-      <div class="patent-list">
-
-        <div class="patent-entry">
-          <div class="patent-number-col">
-            <a href="https://patents.google.com/patent/US7213035B2" target="_blank" rel="noopener">US 7,213,035</a>
-          </div>
-          <div class="patent-detail-col">
-            <h3>System and method for providing multiple renditions of document content</h3>
-            <div class="patent-meta">Filed May 17, 2003 &middot; Granted May 1, 2007</div>
-            <p>Methods for packaging multiple renditions &mdash; different representations of the same content &mdash; within a single document container, enabling format-appropriate viewing across devices.</p>
-          </div>
-        </div>
-
-        <div class="patent-entry">
-          <div class="patent-number-col">
-            <a href="https://patents.google.com/patent/US7383278B2" target="_blank" rel="noopener">US 7,383,278</a>
-          </div>
-          <div class="patent-detail-col">
-            <h3>Systems and methods for changing items in a computer file</h3>
-            <div class="patent-meta">Filed Dec 20, 2004 &middot; Granted Jun 3, 2008</div>
-            <p>Techniques for modifying individual parts within a packaged document without rewriting the entire file, preserving digital signatures and enabling efficient incremental updates.</p>
-          </div>
-        </div>
-
-        <div class="patent-entry">
-          <div class="patent-number-col">
-            <a href="https://patents.google.com/patent/US7418652B2" target="_blank" rel="noopener">US 7,418,652</a>
-          </div>
-          <div class="patent-detail-col">
-            <h3>Method and apparatus for interleaving parts of a document</h3>
-            <div class="patent-meta">Filed Apr 30, 2004 &middot; Granted Aug 26, 2008</div>
-            <p>Interleaving the byte streams of multiple parts within a package so that referenced resources (images, fonts) arrive just-in-time during streaming consumption rather than after all preceding parts.</p>
-          </div>
-        </div>
-
-        <div class="patent-entry">
-          <div class="patent-number-col">
-            <a href="https://patents.google.com/patent/US7451156B2" target="_blank" rel="noopener">US 7,451,156</a>
-          </div>
-          <div class="patent-detail-col">
-            <h3>Method and apparatus for maintaining relationships between parts in a package</h3>
-            <div class="patent-meta">Filed Apr 30, 2004 &middot; Granted Nov 11, 2008</div>
-            <p>The relationship model: a content-independent, XML-based mechanism for expressing directed connections between parts. Relationships are discoverable without parsing part content and enable extensibility without modifying target parts.</p>
-          </div>
-        </div>
-
-        <div class="patent-entry">
-          <div class="patent-number-col">
-            <a href="https://patents.google.com/patent/US7487448B2" target="_blank" rel="noopener">US 7,487,448</a>
-          </div>
-          <div class="patent-detail-col">
-            <h3>Document mark up methods and systems</h3>
-            <div class="patent-meta">Filed Apr 30, 2004 &middot; Granted Feb 3, 2009</div>
-            <p>The comprehensive modular content framework and fixed-layout document format, defining packages, parts, drivers, composition (selectors and sequences), versioning, and the &ldquo;reach&rdquo; format for paginated documents.</p>
-          </div>
-        </div>
-
-        <div class="patent-entry">
-          <div class="patent-number-col">
-            <a href="https://patents.google.com/patent/US7512878B2" target="_blank" rel="noopener">US 7,512,878</a>
-          </div>
-          <div class="patent-detail-col">
-            <h3>Modular document format</h3>
-            <div class="patent-meta">Filed Apr 30, 2004 &middot; Granted Mar 31, 2009</div>
-            <p>A format that uses a set of building blocks &mdash; parts, relationships, content types, and physical mapping layers &mdash; for composing, packaging, distributing, and rendering document-centered content across platforms.</p>
-          </div>
-        </div>
-
-        <div class="patent-entry">
-          <div class="patent-number-col">
-            <a href="https://patents.google.com/patent/US7523221B2" target="_blank" rel="noopener">US 7,523,221</a>
-          </div>
-          <div class="patent-detail-col">
-            <h3>Mechanism for applying transforms to multi-part files</h3>
-            <div class="patent-meta">Filed May 17, 2003 &middot; Granted Apr 21, 2009</div>
-            <p>Methods for applying transforms (encryption, compression, digital signatures) to individual parts or collections of parts within a multi-part document package.</p>
-          </div>
-        </div>
-
-        <div class="patent-entry">
-          <div class="patent-number-col">
-            <a href="https://patents.google.com/patent/US7523392B2" target="_blank" rel="noopener">US 7,523,392</a>
-          </div>
-          <div class="patent-detail-col">
-            <h3>Method and system for mapping between components of a packaging model</h3>
-            <div class="patent-meta">Filed Apr 22, 2005 &middot; Granted Apr 21, 2009</div>
-            <p>The &ldquo;driver&rdquo; abstraction: mapping the logical packaging model to diverse physical storage formats (loose files, compound files, archives) and communication protocols (HTTP, network) through a unified interface.</p>
-          </div>
-        </div>
-
-        <div class="patent-entry">
-          <div class="patent-number-col">
-            <a href="https://patents.google.com/patent/US7549062B2" target="_blank" rel="noopener">US 7,549,062</a>
-          </div>
-          <div class="patent-detail-col">
-            <h3>Organization-based content rights management</h3>
-            <div class="patent-meta">Filed Jun 27, 2003 &middot; Granted Jun 16, 2009</div>
-            <p>Rights management integrated with the packaging model, allowing content protection policies to be applied at the organization level and enforced across document distribution channels.</p>
-          </div>
-        </div>
-
-        <div class="patent-entry">
-          <div class="patent-number-col">
-            <a href="https://patents.google.com/patent/US7549118B2" target="_blank" rel="noopener">US 7,549,118</a>
-          </div>
-          <div class="patent-detail-col">
-            <h3>Methods and systems for defining documents with selectable and/or sequenceable parts</h3>
-            <div class="patent-meta">Filed Apr 30, 2004 &middot; Granted Jun 16, 2009</div>
-            <p>The composition model: selectors that choose between alternative representations (by language, color, page size, or content type) and sequences that assemble parts into ordered documents.</p>
-          </div>
-        </div>
-
-        <div class="patent-entry">
-          <div class="patent-number-col">
-            <a href="https://patents.google.com/patent/US8122350B2" target="_blank" rel="noopener">US 8,122,350</a>
-          </div>
-          <div class="patent-detail-col">
-            <h3>Packages that contain pre-paginated documents</h3>
-            <div class="patent-meta">Filed Apr 30, 2004 &middot; Granted Feb 21, 2012</div>
-            <p>The &ldquo;reach&rdquo; fixed-layout format: packages containing pre-paginated documents that render with full fidelity on any device without requiring layout recalculation on the consuming end.</p>
-          </div>
-        </div>
-
-        <div class="patent-entry">
-          <div class="patent-number-col">
-            <a href="https://patents.google.com/patent/US8135750B2" target="_blank" rel="noopener">US 8,135,750</a>
-          </div>
-          <div class="patent-detail-col">
-            <h3>Efficiently describing relationships between resources</h3>
-            <div class="patent-meta">Filed Apr 22, 2005 &middot; Granted Mar 13, 2012</div>
-            <p>Efficient representations for the relationship graph between resources in a package, optimizing for both storage size and traversal speed across large document structures.</p>
-          </div>
-        </div>
-
-      </div>
+      <p class="section-subtitle" id="patentListSubtitle"><!-- patents.listSubtitle --></p>
+      <div class="patent-list" id="patentList"><!-- patents.list --></div>
     </div>
   </section>
 
   <section class="section">
     <div class="container">
-      <h2 class="section-title">The Lasting Legacy of OPC</h2>
-      <p class="section-subtitle">What became of the ZIP-based Open Packaging Conventions.</p>
-
-      <div class="patent-story">
-        <p>The Open Packaging Conventions we designed didn't just ship in Office and Windows &mdash; they became an international standard (ISO/IEC 29500-2, ECMA-376 Part 2) and went on to become the invisible infrastructure underneath a remarkable number of file formats across the industry.</p>
-
-        <h3 class="legacy-heading">Office &amp; Productivity</h3>
-        <p>Most obviously, OPC is the container for all <strong>Office Open XML</strong> formats: <code>.docx</code>, <code>.xlsx</code>, <code>.pptx</code>, and their macro-enabled variants. These became the default formats in Office 2007 and have been an ISO standard since 2008. They're now supported by LibreOffice, Google Docs, Apple iWork, and dozens of other applications.</p>
-
-        <h3 class="legacy-heading">Windows &amp; the Print Pipeline</h3>
-        <p>The fixed-layout &ldquo;reach&rdquo; format described in the patents became <strong>XPS (XML Paper Specification)</strong>, using <code>.xps</code> and later <code>.oxps</code> extensions. XPS serves as the native print spool format in Windows Vista and later &mdash; meaning every Windows print job since Vista flows through the packaging model we invented. The XPS format was also standardized as ECMA-388.</p>
-
-        <h3 class="legacy-heading">Developer Tools &amp; Package Managers</h3>
-        <p>The influence extends deeply into the developer ecosystem:</p>
-        <ul class="legacy-list">
-          <li><strong>NuGet packages</strong> (<code>.nupkg</code>) &mdash; the standard .NET package manager uses OPC as its container format</li>
-          <li><strong>Visual Studio extensions</strong> (<code>.vsix</code>) &mdash; every VS extension is an OPC package</li>
-          <li><strong>System.IO.Packaging</strong> &mdash; the OPC API has been part of the .NET Framework since version 3.0 and is available in .NET Core</li>
-        </ul>
-
-        <h3 class="legacy-heading">Windows Store &amp; Modern Apps</h3>
-        <p><strong>Windows Store app packages</strong> (<code>.appx</code>, <code>.appxbundle</code>, <code>.msix</code>) are OPC packages. Every Universal Windows Platform app, every modern Windows application distributed through the Microsoft Store, and every MSIX installer uses the packaging model defined in these patents.</p>
-
-        <h3 class="legacy-heading">Beyond Microsoft</h3>
-        <p>OPC adoption has spread far beyond Microsoft's own products:</p>
-        <ul class="legacy-list">
-          <li><strong>3MF</strong> (<code>.3mf</code>) &mdash; the 3D Manufacturing Format used by major 3D printing software and hardware, backed by the 3MF Consortium (Microsoft, HP, Autodesk, Stratasys, and others)</li>
-          <li><strong>Power BI</strong> (<code>.pbix</code>) &mdash; Power BI Desktop files</li>
-          <li><strong>Visio 2013+</strong> (<code>.vsdx</code>) &mdash; Visio adopted the OPC format</li>
-          <li><strong>AutoCAD Design Web Format</strong> (<code>.dwfx</code>)</li>
-          <li><strong>MATLAB Simulink</strong> (<code>.slx</code>) &mdash; MathWorks adopted OPC for Simulink models</li>
-          <li><strong>Azure Cloud Service packages</strong> (<code>.cspkg</code>)</li>
-          <li><strong>AutomationML</strong> (<code>.amlx</code>) &mdash; the Industry 4.0 data exchange format</li>
-          <li><strong>Asset Administration Shell</strong> (<code>.aasx</code>) &mdash; another Industry 4.0 standard for digital twins</li>
-          <li><strong>Microsoft App-V</strong> (<code>.appv</code>) &mdash; application virtualization packages</li>
-          <li><strong>EPUB</strong> uses a conceptually similar ZIP-based structure, though not directly OPC (the eBook world I came from and the document format world I moved into were converging on the same ideas)</li>
-        </ul>
-
-        <h3 class="legacy-heading">Windows Native Support</h3>
-        <p>OPC isn't just supported through .NET &mdash; Windows 7 and later include a native COM-based <strong>Packaging API</strong> for working with OPC packages directly, making it a first-class citizen of the Windows platform.</p>
-      </div>
-
-      <div class="legacy-summary">
-        <p>What started as a document format initiative in a small team became the packaging layer for an entire ecosystem. The core ideas &mdash; ZIP containers, XML-described parts and relationships, content-type discovery, and physical-to-logical mapping &mdash; proved general enough to serve use cases we never imagined, from 3D printing to industrial automation to package management.</p>
-        <p>It's the kind of outcome you hope for when designing infrastructure: you get the abstractions right, and the system takes on a life of its own.</p>
-      </div>
+      <h2 class="section-title" id="legacyTitle"><!-- patents.legacy.title --></h2>
+      <p class="section-subtitle" id="legacySubtitle"><!-- patents.legacy.subtitle --></p>
+      <div class="patent-story" id="legacyStory"><!-- patents.legacy.intro + sections --></div>
+      <div class="legacy-summary" id="legacySummary"><!-- patents.legacy.summary --></div>
     </div>
   </section>
 
@@ -245,6 +64,7 @@
     </div>
   </footer>
 
-  <script src="script.js?v=2"></script>
+  <script src="vendor/js-yaml.min.js"></script>
+  <script src="app.js?v=1"></script>
 </body>
 </html>
