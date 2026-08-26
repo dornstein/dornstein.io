@@ -124,4 +124,39 @@ Liquid MAU. NOT OK: Indra user/MAU numbers.
 Lead with #1 or #2 (most tangible). ⚠️ At assembly, confirm the exact "under the user's own
 identity" phrasing for #1; #3's pass-through permissions is confirmed. Frame as before→after
 where natural ("a cross-domain posture view that used to mean N manual dashboards").
-**D — super-IC model as proof:** _[pending]_
+**D — super-IC model as proof:** HUMBLE CHOICES (David's instruction). Drop the "super-IC"
+label entirely — demonstrate the model, don't brand it. BANNED phrasing: "throughput of a
+full engineering org," "work of a full team," lines-per-day, "super-IC." Keep "sole human
+architect" (literally accurate). State the model only by implication — one human + a
+disciplined agent system + a real platform real teams build on — and let the facts carry it.
+
+---
+
+## ASSEMBLED — proposed Indra rewrite (for David's approval; NOT yet in resume.yaml)
+
+**Summary:** keep the current summary verbatim (it's factual and already humble — the hype
+was only in the highlights). No change proposed.
+
+**Highlights (replace both current highlights):**
+
+1. *(discipline / rigor)* "Direct eight specialized AI agents — engineering, security review,
+   strategy, and more, built as GitHub Copilot custom agents — through a real engineering
+   discipline: every change clears human review, a security-review agent, CI tests and static
+   analysis, and version-controlled prompts and specs before it merges."
+2. *(scope, model by implication)* "Sole human architect of a ~340,000-line (non-test),
+   95%-TypeScript monorepo — 10 packages, ~69 apps, a 90+-component design system, and ~735
+   automated test files — with state, plans, and specs managed in-repo and legible to people,
+   not just agents."
+3. *(adoption)* "In production with real teams building on it: beyond the platform's own apps,
+   ~10–15 engineers across 5–6 teams have shipped apps on Indra, and CISO leaders use its
+   Unified Security Reporting dashboards across dozens of security domains."
+4. *(capabilities)* "Shipped natural-language querying that turns plain-English questions into
+   Kusto queries over security data, a cross-domain posture view that replaces manual
+   dashboard-by-dashboard reporting, permission-aware Power BI embedding, and an app-hosting
+   runtime with CI/CD so security engineers ship internal tools without standing up infra."
+
+Every clause traces to a captured answer above; no estimates. Open micro-confirm: #4 NL→Kusto
+"under the user's own identity" phrasing (left out for now to be safe).
+
+**Separate bonus (NOT Indra):** Liquid 10K+ MAU sustained for years → strong candidate to add
+to the Liquid role / as a proven-scale stat. Handle as its own small change.
