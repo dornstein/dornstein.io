@@ -24,17 +24,22 @@ meta:
 # ----------------------------------------------------------------------------
 basics:
   name: David Ornstein
-  # Portfolio hero tagline. NOTE: unlike the rest of the résumé data, this line is
-  # newly-authored positioning prose (David-approved 2026-08, candidate "1A"), not a
-  # verbatim carry-over from the old site copy. Leads with the AI-native present
-  # rather than the "40+ years" tenure signal. See docs/resume-rework-audit.md.
+  # Positioning prose in three VIEW-NEUTRAL tiers, distinguished by length, not by view:
+  #   label    — short tagline
+  #   headline — one-glance positioning statement
+  #   summary  — full narrative (below)
+  # No tier is owned by a view; each view renders whichever tier fits its format
+  # (the portfolio hero uses `label`; the linear résumé uses `headline`). All are
+  # equally available to any current or future view.
+  # NOTE: `label` and `headline` are newly-authored, David-approved positioning prose
+  # (2026-08, candidates "1A"/"2A") — the only non-verbatim copy in the rework. Both
+  # lead with the AI-native present rather than the "40+ years" tenure signal.
+  # See docs/resume-rework-audit.md.
   label: >-
     Software architect and engineering leader building AI-native platforms —
     most recently Indra, a security platform I run as its sole human architect
     alongside a team of AI agents.
-  # Résumé header line (overrides `label` in the linear view only). Also newly-authored,
-  # David-approved (candidate "2A"). Gives a screener the shape in one glance.
-  resumeHeadline: >-
+  headline: >-
     Principal architect and engineering leader. I've founded companies, shaped
     industry standards, and secured software at Microsoft scale — and I now build
     AI-native platforms as a single architect working with a team of AI agents.

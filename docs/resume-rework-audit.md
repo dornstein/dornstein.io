@@ -141,12 +141,17 @@ only; no prose invented or rewritten.
   as its sole human architect alongside a team of AI agents."* Leads with the AI-native
   present; drops the "40+ years" opener. Facts used: Indra, sole human architect, AI-agent
   team — all already in your data.
-- **Résumé header line** (`basics.resumeHeadline`, new field; overrides `label` in the
-  linear view only) — approved candidate **2A**: *"Principal architect and engineering
-  leader. I've founded companies, shaped industry standards, and secured software at
-  Microsoft scale — and I now build AI-native platforms as a single architect working
-  with a team of AI agents."* Gives a screener the shape in one glance. Facts used:
-  founder (3 companies), standards author, Microsoft security work, Indra — all in data.
+- **Positioning statement** (`basics.headline`, new field) — approved candidate **2A**:
+  *"Principal architect and engineering leader. I've founded companies, shaped industry
+  standards, and secured software at Microsoft scale — and I now build AI-native
+  platforms as a single architect working with a team of AI agents."* Gives a screener
+  the shape in one glance. Facts used: founder (3 companies), standards author, Microsoft
+  security work, Indra — all in data.
+  - **View-independence note:** an earlier draft named this field `resumeHeadline`, which
+    baked a view name into the schema — a violation of the "core data is view-neutral"
+    principle. Renamed to `basics.headline`, one of three length-based positioning tiers
+    (`label` → `headline` → `summary`). No tier is owned by a view; each view renders the
+    tier that fits (portfolio hero = `label`, linear résumé = `headline`).
 - **Director → Principal Architect framing** — *pending your confirmation of the revised
   wording* (continuity, not a "return"; you were ~30% hands-on before, deliberate move to
   full-time architecture with Indra). Not yet wired in.
