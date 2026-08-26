@@ -434,8 +434,10 @@
         (w.summary ? '<p>' + linkRefs(esc(w.summary), w.terms, refSeen, refUrl) + '</p>' : '') + highs + '</div>';
     }).join('');
 
-    // Earlier career — brief roles grouped by employer, one line each (derived
-    // from data: organization, year span, and the actual titles held).
+    // Additional experience — brief roles grouped by employer, one line each
+    // (derived from data: organization, year span, and the actual titles held).
+    // Heading carries no overall date range: brief roles can post-date 1998, and
+    // each row still shows its own accurate span.
     var earlier = '';
     if (brief.length) {
       var byGroup = {}, groupOrder = [];
@@ -457,7 +459,7 @@
           '<span class="linear-role-dates">' + esc(spanYears(grp.roles)) + '</span></div>' +
           '<div class="linear-earlier-pos">' + esc(positions) + '</div></div>';
       }).join('');
-      earlier = '<h3 class="linear-subhead">Earlier career (' + esc(spanYears(brief)) + ')</h3>' + rows;
+      earlier = '<h3 class="linear-subhead">Additional experience</h3>' + rows;
     }
 
     var skills = d.skills.map(function (c) {

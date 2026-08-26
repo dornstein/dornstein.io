@@ -73,12 +73,14 @@ deferred Indra rewrite). Two refinements they surfaced:
   3 Companies Founded · 40+ Professional Years` (age moved last). Pure ordering,
   no new data. *(Note: the strip is still all-legacy until a real AI-native number
   from Indra can join it — see `docs/indra-bullets-draft.md`.)*
-- **"Demote 1–2 older roles to `brief`" — NOT applied, on purpose.** The candidates
-  (Architect, Emerging Technologies 1999–2001; OEBF President 2000–2003) post-date
-  the "Earlier career (1979–1998)" block, so demoting them there would mislabel
-  recent roles as pre-1998 — a subtle inaccuracy. Options for you: (a) leave them
-  full (current), (b) rename the collapsed block to "Additional experience" (drops
-  the chronology claim) and demote them, or (c) add a third "compact" tier. Your call.
+- **"Demote 1–2 older roles to `brief`" — DONE via option (b) (David chose).** Demoted
+  `ebooks-flexwiki` (Architect, Emerging Technologies, 1999–2001) and `oebf-president`
+  (OEBF President, 2000–2003) to `resume: brief`, and renamed the collapsed block from
+  "Earlier career (1979–1998)" to **"Additional experience"** (heading now carries no
+  overall date range, since brief roles can post-date 1998; each row still shows its own
+  accurate span). Full résumé roles: 9 → 7. The two demoted roles' key facts survive in
+  the summary (FlexWiki and Open eBook Forum are named there), so nothing is lost — only
+  the detailed cards collapse to one compact line each.
 
 The single highest-leverage remaining item (both agree): the **Indra rewrite** —
 skeleton for you to fill is in `docs/indra-bullets-draft.md`.
