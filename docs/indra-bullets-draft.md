@@ -55,8 +55,26 @@
 ---
 
 ## Two facts I also need from you (I won't guess these)
-1. **Indra start date.** The data currently says the *role* began `2026-01` but the
-   portfolio label reads `"2025 – Present"`. Which is right for the résumé — did the
-   Indra work / your Principal Architect role start in 2025 or 2026?
-2. **LinkedIn URL.** Add your public profile and I'll put it on the contact line
-   next to GitHub.
+1. ~~**Indra start date.**~~ **RESOLVED: 2026.** Role `startDate: 2026-01`; label now "2026 – Present".
+2. ~~**LinkedIn URL.**~~ **RESOLVED:** https://www.linkedin.com/in/dornstein/ — live on both views.
+
+---
+
+## Answers captured (serial walkthrough, 2026-08) — raw, before drafting into prose
+
+> David's own words, verbatim-ish, as source facts. Bullets get assembled from these
+> only after all 7 items are collected. No estimates.
+
+**A1 — coordination mechanism:** Agents store and manage state in the project repo.
+Plans and specs are artifacts that are also exposed to humans (dual-purpose — legible
+governance, not a black box). Work is often manually invoked, but there's also genuine
+cross-agent coordination — e.g., a "chief of staff" agent runs recurring meetings with
+the agent team, and a systematic ROB (rhythm of business) drives recurring activities
+across the team.
+
+**A2 — correctness gates:** _[pending]_
+**B1 — evaluation approach:** _[pending]_
+**B2 — codebase scope:** _[pending]_
+**C1 — adoption numbers:** _[pending]_
+**C2 — a concrete capability shipped:** _[pending]_
+**D — super-IC model as proof:** _[pending]_
