@@ -86,7 +86,23 @@ half of the bullets rests on the REAL A2 engineering gates (human review, securi
 agent, CI tests/linters/static-analysis, prompt/spec versioning, PR branch-protection) and
 on architectural coherence — not on AI evaluation. Frame AI as one strategic capability of a
 broader app platform, and if evals are mentioned at all, say "manual today" (no rounding up).
-**B2 — codebase scope:** _[pending]_
+**B2 — codebase scope:** REAL CENSUS (Indra Codebase Census, as of 2026-08-26, commit
+d87aff51a38d):
+- Physical source LOC 508,081 · nonblank 461,128 · **non-test source LOC 342,906** ·
+  test LOC 118,222 across 735 test files.
+- **95.6% TypeScript/TSX.** 10 workspace packages (monorepo).
+- 69 apps (65 with client code, 32 with backends); 97 public UI component modules
+  (93 gallery-registered) = a real design system; 1,056 markdown docs.
+- Largest apps by non-test runtime LOC: Design System 18,248 · Unified Security
+  Reporting 15,120 · Engage 11,339.
+- LOC = tracked TS/TSX/JS/CSS/Bicep/scripting, excludes deps & build output.
+=> **Scope figure to use (rounded DOWN, defensible):** "~340K non-test lines of
+TypeScript" or "a ~340K-line, 10-package TypeScript monorepo of ~69 apps." NEVER as
+lines-per-day. The 735 test files / ~118K test LOC give the A2 "CI tests" gate real
+substance. NOTE: this supersedes the old portfolio stat "150K+ Lines (Past 60 Days)" —
+consider swapping that stat for a scope-framed number later (separate decision).
+(Open Q for C1: are the 69 apps platform/sample apps, or apps built by SIGMA engineers?
+that determines the adoption story.)
 **C1 — adoption numbers:** _[pending]_
 **C2 — a concrete capability shipped:** _[pending]_
 **D — super-IC model as proof:** _[pending]_
