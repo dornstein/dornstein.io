@@ -1679,6 +1679,37 @@ ul {
   height: 18px;
 }
 
+.contact-profiles {
+  display: inline-flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.contact-profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.25s;
+}
+
+.contact-profile-link:hover {
+  transform: translateY(-2px);
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.contact-profile-link svg {
+  width: 18px;
+  height: 18px;
+}
+
 .contact-resume {
   display: flex;
   align-items: center;

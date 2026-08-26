@@ -36,8 +36,7 @@ basics:
     countryCode: US
   profiles:
     - { network: GitHub, url: "https://github.com/dornstein" }
-    # TODO(David): add your public LinkedIn URL — both the recruiter and hiring-manager
-    # reviews flagged its absence as a screen-level miss. Not inventing a URL here.
+    - { network: LinkedIn, url: "https://www.linkedin.com/in/dornstein/" }
   summary:
     - >-
       I've spent my career at the intersection of technology leadership and
