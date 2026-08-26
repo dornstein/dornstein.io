@@ -79,7 +79,13 @@ agent reviews every change; (3) CI checks — tests, linters, static analysis, b
 (4) prompt/spec versioning — agent prompts and specs are version-controlled and reviewed,
 so behavior is reproducible; (5) branch-protection / PR-based flow — nothing lands without
 passing the gates.
-**B1 — evaluation approach:** _[pending]_
+**B1 — evaluation approach:** HONEST STATE: the AI features are strategic and present
+but NOT the primary thing Indra is; they are still tested relatively informally/manually.
+**No automated evals / eval suite today.** => Do NOT manufacture an eval story. The rigor
+half of the bullets rests on the REAL A2 engineering gates (human review, security-sentinel
+agent, CI tests/linters/static-analysis, prompt/spec versioning, PR branch-protection) and
+on architectural coherence — not on AI evaluation. Frame AI as one strategic capability of a
+broader app platform, and if evals are mentioned at all, say "manual today" (no rounding up).
 **B2 — codebase scope:** _[pending]_
 **C1 — adoption numbers:** _[pending]_
 **C2 — a concrete capability shipped:** _[pending]_
