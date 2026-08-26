@@ -1151,6 +1151,16 @@ ul {
   margin-bottom: 8px;
 }
 
+/* Framing note (work[].context) — a short, italic aside distinct from the body. */
+.timeline-card-note {
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  border-left: 2px solid var(--color-accent);
+  padding-left: 12px;
+  margin-bottom: 10px;
+}
+
 .timeline-card p:last-child {
   color: var(--color-text-muted);
   font-size: 0.88rem;
@@ -1675,6 +1685,37 @@ ul {
 }
 
 .contact-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.contact-profiles {
+  display: inline-flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.contact-profile-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 24px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.25s;
+}
+
+.contact-profile-link:hover {
+  transform: translateY(-2px);
+  border-color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.contact-profile-link svg {
   width: 18px;
   height: 18px;
 }
@@ -2595,6 +2636,17 @@ footer p {
 .linear-role-dates { color: var(--color-text-muted); font-size: .82rem; white-space: nowrap; }
 .linear-role-org { color: var(--color-accent-dark); font-size: .9rem; font-weight: 500; margin-bottom: 4px; }
 .linear-role-loc { color: var(--color-text-muted); font-weight: 400; }
+.linear-role-note { font-style: italic; color: var(--color-text-muted); margin: 4px 0 6px; }
+/* Résumé reference links — clean by default (dark text, light underline), so a
+   printed/PDF résumé stays uncluttered but every link is still clickable. */
+.linear-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  text-decoration-color: #b9c0cc;
+}
+.linear-link:hover { text-decoration-color: var(--color-accent); color: var(--color-accent-dark); }
 .linear-role ul { margin: 6px 0 0; padding-left: 20px; }
 .linear-role li { font-size: .9rem; margin-bottom: 3px; }
 .linear-skillrow { font-size: .9rem; margin: 0 0 6px; }
@@ -2609,3 +2661,19 @@ footer p {
   .linear a { color: inherit; text-decoration: none; }
   @page { margin: 1.6cm; }
 }
+
+/* --- Résumé rework: metrics strip + collapsed "Earlier career" block --- */
+.linear-metrics { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px 28px;
+  margin: 16px 0 0; padding-top: 16px; border-top: 1px solid var(--color-border); }
+.linear-stat { display: flex; flex-direction: column; align-items: center; min-width: 76px; }
+.linear-stat-val { font-family: var(--font-serif); font-size: 1.4rem; font-weight: 700;
+  color: var(--color-accent); line-height: 1.1; }
+.linear-stat-label { font-size: .68rem; text-transform: uppercase; letter-spacing: .04em;
+  color: var(--color-text-muted); margin-top: 2px; text-align: center; }
+.linear-subhead { font-family: var(--font-sans); font-size: .9rem; font-weight: 700;
+  color: var(--color-text); margin: 18px 0 10px; }
+.linear-earlier-row { margin-bottom: 9px; }
+.linear-earlier-head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.linear-earlier-org { font-weight: 600; font-size: .92rem; }
+.linear-earlier-pos { color: var(--color-text-muted); font-size: .86rem; margin-top: 1px; }
+@media print { .linear-earlier-row, .linear-subhead { page-break-inside: avoid; } }

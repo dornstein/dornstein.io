@@ -24,9 +24,25 @@ meta:
 # ----------------------------------------------------------------------------
 basics:
   name: David Ornstein
+  # Positioning prose in three VIEW-NEUTRAL tiers, distinguished by length, not by view:
+  #   label    — short tagline
+  #   headline — one-glance positioning statement
+  #   summary  — full narrative (below)
+  # No tier is owned by a view; each view renders whichever tier fits its format
+  # (the portfolio hero uses `label`; the linear résumé uses `headline`). All are
+  # equally available to any current or future view.
+  # NOTE: `label` and `headline` are newly-authored, David-approved positioning prose
+  # (2026-08, candidates "1A"/"2A") — the only non-verbatim copy in the rework. Both
+  # lead with the AI-native present rather than the "40+ years" tenure signal.
+  # See docs/resume-rework-audit.md.
   label: >-
-    Software leader, architect, founder, and standards author with 40+ years
-    building products and platforms people depend on.
+    Software architect and engineering leader building AI-native platforms —
+    most recently Indra, a security platform I run as its sole human architect
+    alongside a team of AI agents.
+  headline: >-
+    Principal architect and engineering leader. I've founded companies, shaped
+    industry standards, and secured software at Microsoft scale — and I now build
+    AI-native platforms as a single architect working with a team of AI agents.
   image: media/david-ornstein.webp
   email: davidorn@live.com
   url: https://dornstein.io
@@ -34,7 +50,9 @@ basics:
     city: Redmond
     region: WA
     countryCode: US
-  profiles: []   # public LinkedIn URL not published on the site; add when available
+  profiles:
+    - { network: GitHub, url: "https://github.com/dornstein" }
+    - { network: LinkedIn, url: "https://www.linkedin.com/in/dornstein/" }
   summary:
     - >-
       I've spent my career at the intersection of technology leadership and
@@ -61,28 +79,38 @@ basics:
       lead Indra as its sole human architect, working alongside a team of eight
       specialized AI agents, each owning a distinct domain: engineering,
       strategy, security review, storytelling, advocacy, and more. It's a new
-      model for software development — one architect, a crew of AI collaborators,
-      and the throughput of a full engineering org — and I'm building the proof
-      of it.
+      model for software development — one architect and a crew of AI
+      collaborators, held together by real engineering discipline — and I'm
+      building the proof of it.
     - >-
       I care about building things well, about the craft of software, and about
       helping the people around me grow.
   summaryTerms: [trustworthy-computing, liquid, metro, flexwiki, consent-decree, rocket-ebook, nuvomedia, oebf, indra]
+  # Résumé view uses these summary paragraphs in this order (indices into summary[]):
+  # lead with Indra (3), then Microsoft (1), then pre-Microsoft founder/CTO (2). Drops
+  # the generic opener (0) and the "craft" closer (4). Selection + reorder only — every
+  # sentence shown is verbatim from summary[]; no rewriting.
+  resumeSummaryOrder: [3, 1, 2]
+  # Order is outcome-first, tenure LAST — a presentation insight that applies to
+  # every view a hiring audience sees (résumé AND portfolio), not just the résumé.
+  # Both views render these in array order, so this list is the single source of
+  # that ordering. (Values/labels unchanged; this is a reorder only.)
   stats:
-    - { slug: stat-years,     value: "40+",   label: "Professional Years" }
-    - { slug: stat-patents,   value: "12+",   label: "Patents" }
-    - { slug: stat-companies, value: "3",     label: "Companies Founded" }
-    - { slug: stat-services,  value: "8K+",   label: "Services Secured" }
-    - { slug: stat-exit,      value: "$200M", label: "Startup Exit" }
+    - { slug: stat-services,  value: "8K+",   label: "Services Secured", resume: true }
+    - { slug: stat-exit,      value: "$200M", label: "Startup Exit", resume: true }
+    - { slug: stat-patents,   value: "12+",   label: "Patents", resume: true }
+    - { slug: stat-engineers, value: "50+",   label: "Engineers Led", resume: true }
+    - { slug: stat-companies, value: "3",     label: "Companies Founded", resume: true }
     - { slug: stat-budget,    value: "$250M", label: "Largest Budget Managed" }
-    - { slug: stat-lines,     value: "150K+", label: "Lines Shipped (Past 60 Days)" }
-    - { slug: stat-engineers, value: "50+",   label: "Engineers Led" }
+    - { slug: stat-lines,     value: "340K+", label: "Lines of TypeScript" }
+    - { slug: stat-years,     value: "40+",   label: "Professional Years", resume: true }
 
 # ----------------------------------------------------------------------------
 # work[] — atomic career roles, newest first. THE core of the data.
 work:
 
   - id: indra
+    resume: full
     organization: Microsoft
     group: microsoft
     position: Principal Security Architect
@@ -91,6 +119,14 @@ work:
     endDate: present
     employmentType: full-time
     visibility: [site, resume, linkedin]
+    # Short framing note for this role (view-neutral; any view may render it).
+    # Newly-authored, David-approved prose (2026-08, candidate "3-B"): frames the
+    # Senior Director -> Principal Architect move as a deliberate shift in degree
+    # (hands-on part -> whole), not a return from absence. See resume-rework-audit.md.
+    context: >-
+      I've stayed close to the code and architecture throughout my career,
+      including my Senior Director years; moving to principal architect for Indra
+      was a deliberate choice to make hands-on system-building the whole job.
     summary: >-
       Conceived and built Indra, an AI-first app platform inside Microsoft's CISO
       organization. Indra solves a fundamental problem: security knowledge across
@@ -100,24 +136,38 @@ work:
       their security expertise into tools the whole organization can use, and
       gives deputy CISOs a unified view of posture across verticals. Lead Indra as
       its sole human architect, working daily alongside a team of eight
-      specialized AI agents built as GitHub Copilot custom agents — each owning a
-      distinct domain: engineering lifecycle, strategy, security review,
-      narrative, builder advocacy, live demos, and editorial.
+      specialized AI agents built as GitHub Copilot custom agents, each owning a
+      distinct domain.
     highlights:
       - >-
-        Deployed across dev, pre-production, and production environments; Unified
-        Security Reporting dashboards ready for dCISO adoption.
+        Direct eight specialized AI agents — engineering, security review,
+        strategy, and more, built as GitHub Copilot custom agents — through a real
+        engineering discipline: every change clears human review, a security-review
+        agent, CI tests and static analysis, and version-controlled prompts and
+        specs before it merges.
       - >-
-        Proving the AI-native super-IC model: one architect sustaining a full
-        platform ecosystem — architecture, code, documentation, strategy, and
-        operations — with the throughput of a full engineering org.
+        Sole human architect of a ~340,000-line (non-test), 95%-TypeScript
+        monorepo — 10 packages, ~69 apps, a 90+-component design system, and ~735
+        automated test files — with state, plans, and specs managed in-repo and
+        legible to people, not just agents.
+      - >-
+        In production with real teams building on it: beyond the platform's own
+        apps, ~10–15 engineers across 5–6 teams have shipped apps on Indra, and
+        CISO leaders use its Unified Security Reporting dashboards across dozens of
+        security domains.
+      - >-
+        Shipped natural-language querying that turns plain-English questions into
+        Kusto queries over security data, a cross-domain posture view that replaces
+        manual dashboard-by-dashboard reporting, permission-aware Power BI
+        embedding, and an app-hosting runtime with CI/CD so security engineers ship
+        internal tools without standing up infrastructure.
     skills: [ai-native-software-engineering, ai-harness-engineering, security-architecture, static-code-analysis, cloud-security, secure-development-lifecycle-sdl, complex-systems-architecture, platform-engineering, interoperability, people-development-coaching, technical-strategy, engineering-leadership, cross-functional-team-leadership, protocol-design, c-net, typescript-javascript, sql, net-framework-asp-net, relational-databases, windows, node-js, react, azure-azure-devops]
     terms: [indra, sigma]
     display:
       era: microsoft-security-compliance
       cardTitle: Indra — AI-First Security App Platform
       roleLine: Principal Security Architect & Project Lead · SIGMA (CISO)
-      dateLabel: "2025 – Present (1 yr)"
+      dateLabel: "2026 – Present"
       image: null
 
   # Liquid spanned two Senior-Director org-periods (REFERENCE.md keeps them
@@ -125,6 +175,7 @@ work:
   # truth. The SITE merges them into one "Liquid Compliance Platform" card via the
   # generic display.card grouping below; résumé/LinkedIn render both roles.
   - id: liquid-cst
+    resume: full
     organization: Microsoft
     group: microsoft
     position: Senior Director Engineering, Customer Security and Trust
@@ -142,6 +193,7 @@ work:
       standards adherence.
     highlights:
       - Grew Liquid into the core of Microsoft's Continuous SDL program.
+      - Sustained 10,000+ monthly active users for years.
     skills: [security-architecture, secure-development-lifecycle-sdl, compliance-automation-continuous-compliance, platform-engineering, devsecops, engineering-leadership, complex-systems-architecture, technical-strategy, people-development-coaching, interoperability, c-net, net-framework-asp-net, azure-azure-devops, github-codeql, windows, relational-databases, sql, typescript-javascript]
     terms: [liquid, sdl]
     display:
@@ -165,12 +217,14 @@ work:
         model for the broader organization.
       highlights:
         - Automated SDL compliance for 8,000+ services company-wide.
+        - Sustained 10,000+ monthly active users for years.
         - >-
           Transformed Microsoft's assurance from manual attestations to
           data-driven continuous monitoring. Executive acclaim for "incredible
           impact" on the security engineering ecosystem.
 
   - id: liquid-dsr
+    resume: full
     organization: Microsoft
     group: microsoft
     position: Senior Director Engineering, Digital Security and Resilience
@@ -202,6 +256,7 @@ work:
       image: null
 
   - id: twc-chief-of-staff
+    resume: full
     organization: Microsoft
     group: microsoft
     position: Chief of Staff, Trustworthy Computing
@@ -232,6 +287,7 @@ work:
       image: null
 
   - id: compliance-engineering
+    resume: full
     organization: Microsoft
     group: microsoft
     position: Director, Compliance Engineering — Engineering Excellence
@@ -261,6 +317,7 @@ work:
       image: null
 
   - id: metro-xps
+    resume: full
     organization: Microsoft
     group: microsoft
     position: Lead Program Manager, Windows Digital Documents
@@ -290,6 +347,7 @@ work:
       image: media/office2007ribbon.png
 
   - id: ebooks-flexwiki
+    resume: full
     organization: Microsoft
     group: microsoft
     position: Architect, Emerging Technologies
@@ -317,6 +375,7 @@ work:
       image: null
 
   - id: oebf-president
+    resume: full
     organization: Open eBook Forum
     group: open-ebook-forum
     position: President & Board Member
@@ -346,6 +405,7 @@ work:
       image: null
 
   - id: rocket-ebook
+    resume: full
     organization: NuvoMedia, Inc.
     group: nuvomedia
     position: Director of Software Development → Chief Technical Officer
@@ -376,6 +436,7 @@ work:
       image: null
 
   - id: ebooknet
+    resume: omit   # NuvoMedia sub-role; subsumed by the rocket-ebook (CTO) entry on the résumé
     organization: NuvoMedia, Inc.
     group: nuvomedia
     position: Chief Technical Officer
@@ -399,6 +460,7 @@ work:
       image: null
 
   - id: pragmatica
+    resume: brief
     organization: Pragmatica, Inc.
     group: pragmatica
     position: Founder, President & CEO
@@ -426,6 +488,7 @@ work:
       image: null
 
   - id: oo-consulting
+    resume: brief
     organization: Independent Consultant
     group: independent
     position: Object-Oriented Technology Consultant
@@ -449,6 +512,7 @@ work:
       image: null
 
   - id: longview
+    resume: brief
     organization: LongView International
     group: longview
     position: Member of Technical Staff
@@ -473,6 +537,7 @@ work:
       image: media/visualworks.png
 
   - id: intersolv-excelerator
+    resume: brief
     organization: INTERSOLV / Sage Software
     group: intersolv
     position: Director of Development & Chief Architect
@@ -497,6 +562,7 @@ work:
       image: media/os2warp-logo.png
 
   - id: intersolv-corptech
+    resume: brief
     organization: INTERSOLV / Sage Software
     group: intersolv
     position: Chief Architect, Corporate Technology
@@ -520,6 +586,7 @@ work:
       image: null
 
   - id: cdif
+    resume: brief
     organization: INTERSOLV / Sage Software
     group: intersolv
     position: Chairman, ANSI/EIA Technical Committee (CDIF)
@@ -545,6 +612,7 @@ work:
       image: media/case-tool.png
 
   - id: intersolv-pc-crts
+    resume: brief
     organization: INTERSOLV / Sage Software
     group: intersolv
     position: Chief Architect, PC Product Development
@@ -569,6 +637,7 @@ work:
       image: null
 
   - id: access-technology
+    resume: brief
     organization: Access Technology Inc.
     group: access-technology
     position: Member of Technical Staff
@@ -592,6 +661,7 @@ work:
       image: null
 
   - id: multimate
+    resume: brief
     organization: Multimate International Corp.
     group: multimate
     position: Project Manager; Software Developer
@@ -616,6 +686,7 @@ work:
       image: null
 
   - id: timex
+    resume: brief
     organization: Timex Computer Corp.
     group: timex
     position: Member of Technical Team
@@ -640,6 +711,7 @@ work:
       image: media/timex-sinclair-1000.jpg
 
   - id: heuristics
+    resume: brief
     organization: Heuristics
     group: heuristics
     position: Founder & President
@@ -663,6 +735,7 @@ work:
       image: null
 
   - id: sinclair
+    resume: brief
     organization: Sinclair Research Ltd.
     group: sinclair
     position: Manager of Technical Services
@@ -687,6 +760,7 @@ work:
 
   # --- Roles the site omits; kept for résumé/LinkedIn fidelity (per REFERENCE.md) ---
   - id: applied-intelligence
+    resume: omit
     organization: Applied Intelligence
     group: applied-intelligence
     position: Consultant and Staff Programmer
@@ -705,6 +779,7 @@ work:
     display: null
 
   - id: applied-systems-technologies
+    resume: omit
     organization: Applied Systems Technologies
     group: applied-systems-technologies
     position: Consultant
@@ -1279,14 +1354,15 @@ standards:
 # valueProps[] — "What I Bring" cards. icon = key mapped to inline SVG in template.
 valueProps:
   - icon: network
-    title: AI-Native Super-IC
+    title: AI-Native Engineering
     body: >-
-      I've proven that one experienced architect, working natively with a crew of
-      specialized AI agents, can sustain a platform-scale software project. Indra —
-      my current project inside Microsoft's CISO org — is architected, coded,
-      documented, and shipped by me alongside eight AI teammates, each owning a
-      distinct role. This isn't AI-assisted productivity. It's a new engineering
-      model.
+      I build platform-scale software as one experienced architect working
+      natively with a crew of specialized AI agents. Indra — my current project
+      inside Microsoft's CISO org — is architected, coded, documented, and shipped
+      this way: eight AI teammates, each owning a distinct role, held together by
+      real engineering discipline — human review, security review, CI, and
+      version-controlled prompts. It's a new engineering model, not just
+      AI-assisted productivity.
     terms: [indra]
   - icon: shield-check
     title: Security at Scale
@@ -1300,7 +1376,7 @@ valueProps:
     title: Architect Who Codes
     body: >-
       I don't just draw boxes on whiteboards. From 100K-line C++ codebases to a
-      150K-line TypeScript platform I built with AI, I've written, shipped, and
+      ~340K-line TypeScript platform I built with AI, I've written, shipped, and
       maintained real systems at every scale. I still write and review code daily —
       architecture grounded in implementation always wins.
     terms: []
@@ -1426,12 +1502,12 @@ glossary:
       <p>The largest budget I’ve overseen combines the compliance engineering program at Microsoft (over $10M annually in direct operating costs) with the broader security assurance and strategic programs I coordinated as Chief of Staff to the CVP of Trustworthy Computing — a role that touched hundreds of millions in security investment across the company.</p><p>At that scale, budget management is less about tracking spending and more about allocating organizational attention: which programs get investment, which get wound down, which get scaled, and how to make the ROI case to executives. Security compliance programs are unusual because the “return” is measured in risks that don’t materialize — a fundamentally different calculus than typical product investment.</p>
 
   - slug: stat-lines
-    title: 150K+ Lines Shipped in 60 Days
+    title: 340K+ Lines of Production TypeScript
     category: stat
     image: null
     links: []
     html: |
-      <p>The Indra platform is a ~150K-line TypeScript codebase — React frontend, Node.js backend, Azure infrastructure-as-code — built almost entirely by me working with a team of eight AI agents. The “past 60 days” figure reflects the pace in the most recent sprint cycle: designing and shipping new platform features, building apps on the platform, writing documentation, and maintaining CI/CD pipelines.</p><p>For context: 150,000 lines of production TypeScript in 60 days averages over 2,500 lines per working day. That is not typing speed. It is AI-accelerated development with an experienced architect directing every piece of it, reviewing every output, and maintaining architectural coherence across the whole system. This is what the AI-native super-IC model makes possible — and Indra is the live proof.</p>
+      <p>The Indra platform is a ~340,000-line (non-test) TypeScript codebase — a 10-package monorepo of roughly 69 apps, a 90+-component design system, and ~735 automated test files — architected and maintained by David as its sole human architect, working with a team of eight specialized AI agents.</p><p>The number is scope, not speed: the real work is keeping a codebase this size architecturally coherent and reliable. Every change clears human review, a security-review agent, CI tests and static analysis, and version-controlled prompts and specs before it merges.</p>
 
   - slug: stat-engineers
     title: 50+ Engineers Led
@@ -1446,16 +1522,16 @@ glossary:
     category: project
     image: null
     links:
-      - { label: "Visit Indra", url: "https://indra.microsoft.com" }
+      - { label: "Visit Indra", url: "https://indra.microsoft.com", internal: true }
     html: |
-      <p>An AI-first app platform inside Microsoft’s CISO organization, conceived and led by David Ornstein as its sole human architect. Indra gives SIGMA security engineers building blocks to turn their expertise — Kusto queries, compliance workflows, operational know-how — into tools the whole organization can use, and gives deputy CISOs a unified view of security posture across domains.</p><p>The platform solves a fundamental fragmentation problem: security knowledge across CISO’s dozens of domains is scattered across dashboards, scripts, and individual engineers’ heads — inaccessible to leaders who need a cross-domain view and invisible to AI. Indra provides unified security reporting dashboards, a natural-language AI agent over security data, Kusto query integration, Power BI embedding, an app hosting ecosystem, and a full CI/CD pipeline.</p><p>What makes Indra distinctive is its development model: David leads a team of eight specialized AI agents — each a GitHub Copilot custom agent with a distinct role (engineer, strategist, security sentinel, narrator, advocate, presenter, editor) — and together they sustain a platform-scale project with the throughput of a full engineering org. It is a working proof of the AI-native super-IC concept.</p>
+      <p>An AI-first app platform inside Microsoft’s CISO organization, conceived and led by David Ornstein as its sole human architect. Indra gives SIGMA security engineers building blocks to turn their expertise — Kusto queries, compliance workflows, operational know-how — into tools the whole organization can use, and gives deputy CISOs a unified view of security posture across domains.</p><p>The platform solves a fundamental fragmentation problem: security knowledge across CISO’s dozens of domains is scattered across dashboards, scripts, and individual engineers’ heads — inaccessible to leaders who need a cross-domain view and invisible to AI. Indra provides unified security reporting dashboards, a natural-language AI agent over security data, Kusto query integration, Power BI embedding, an app hosting ecosystem, and a full CI/CD pipeline.</p><p>What makes Indra distinctive is its development model: David leads a team of eight specialized AI agents — each a GitHub Copilot custom agent with a distinct role (engineer, strategist, security sentinel, narrator, advocate, presenter, editor). Every change clears human review, a security-review agent, CI, and version-controlled prompts before it merges — one architect sustaining a platform that real teams build on.</p>
 
   - slug: liquid
     title: Liquid Platform
     category: project
     image: null
     links:
-      - { label: "What is Liquid? (Microsoft internal)", url: "https://liquid.microsoft.com/Web/Docs/all/WhatIsLiquid.md" }
+      - { label: "What is Liquid? (Microsoft internal)", url: "https://liquid.microsoft.com/Web/Docs/all/WhatIsLiquid.md", internal: true }
     html: |
       <p>Microsoft’s internal platform for continuous security assurance and compliance, conceived and led by David starting around 2015. Liquid automated the Security Development Lifecycle (SDL) and other compliance processes that had previously relied on manual attestations and yearly audits.</p><p>The platform includes automated policy scanners, code compliance pipelines, and a unified dashboard for security standards adherence, integrated with Azure DevOps across the company. Liquid became the core of Microsoft’s Continuous SDL program, providing automated coverage for over 8,000 services company-wide and enabling real-time compliance checks.</p><p>David’s manager described Liquid’s impact: “Liquid anchors the company-wide continuous SDL… shifting processes to automated coverage,” acknowledging David’s “incredible impact” on Microsoft’s security engineering ecosystem.</p>
 

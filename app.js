@@ -50,6 +50,7 @@
   var TERM_ALIASES = {
     indra: ['Indra'], sigma: ['SIGMA'], liquid: ['Liquid'], sdl: ['SDL'],
     codeql: ['CodeQL Central', 'CodeQL'], twc: ['Trustworthy Computing', 'TwC'],
+    'trustworthy-computing': ['Trustworthy Computing'],
     metro: ['Metro'], drm: ['digital rights management', 'Rights Management', 'DRM'],
     flexwiki: ['FlexWiki'], csharp: ['C#'], dotnet: ['.NET'],
     oebf: ['Open eBook Forum'], 'oeb-pub-structure': ['Open eBook Publication Structure'],
@@ -94,6 +95,34 @@
   }
   // plain text -> escaped + term-linked HTML
   function prose(text, terms, seen) { return linkTerms(esc(text), terms, seen); }
+
+  // Résumé variant: wrap the first occurrence of each term in a real <a> to its
+  // PUBLIC glossary reference URL (urlBySlug), instead of a glossary-popup span.
+  // Same term data as the portfolio; the linear view just renders it as links so
+  // a printed/PDF résumé stays useful. Terms with no public URL stay plain text.
+  function linkRefs(escaped, terms, seen, urlBySlug) {
+    if (!terms || !terms.length || !urlBySlug) return escaped;
+    seen = seen || new Set();
+    terms.forEach(function (slug) {
+      if (seen.has(slug)) return;
+      var url = urlBySlug[slug];
+      if (!url) return;
+      var aliases = TERM_ALIASES[slug] || [slug];
+      for (var i = 0; i < aliases.length; i++) {
+        var phrase = esc(aliases[i]);
+        var re = new RegExp('(^|[^\\w>])(' + reEscape(phrase) + ')(?![\\w])');
+        if (re.test(escaped)) {
+          var safe = esc(url);
+          escaped = escaped.replace(re, function (m, pre, hit) {
+            return pre + '<a class="linear-link" href="' + safe + '" target="_blank" rel="noopener">' + hit + '</a>';
+          });
+          seen.add(slug);
+          break;
+        }
+      }
+    });
+    return escaped;
+  }
 
   function setHTML(id, html) { var e = document.getElementById(id); if (e) e.innerHTML = html; }
   function present(id) { return !!document.getElementById(id); }
@@ -210,6 +239,7 @@
     h += '</div>';
     if (disp.roleLine) h += '<p class="timeline-card-role">' + linkTerms(esc(disp.roleLine), terms, seen) + '</p>';
     if (disp.image) h += '<img class="timeline-img" src="' + esc(disp.image) + '" alt="' + esc(title) + '" loading="lazy">';
+    if (lead.context) h += '<p class="timeline-card-note">' + linkTerms(esc(lead.context), terms, seen) + '</p>';
     if (body) h += '<p>' + linkTerms(esc(body), terms, seen) + '</p>';
     if (highs && highs.length) {
       h += '<p class="timeline-card-outcome">' +
@@ -257,12 +287,27 @@
     }).join('\n'));
   }
 
+  // Brand marks for profile links (fill-based logos, not the stroke icon set).
+  var BRAND_ICONS = {
+    github: '<path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>',
+    linkedin: '<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>'
+  };
+  function brandSvg(key) {
+    return '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">' + (BRAND_ICONS[key] || '') + '</svg>';
+  }
+
   function renderContact(d) {
     var c = d.contact;
     setHTML('contactModes', c.modes.map(function (m) {
       return '<li>' + svg(m.icon, false) + '<div><strong>' + esc(m.title) + '</strong>' +
         '<span>' + esc(m.body) + '</span></div></li>';
     }).join('\n'));
+    var profiles = (d.basics.profiles || []).filter(function (p) { return p.url; }).map(function (p) {
+      var key = (p.network || '').toLowerCase();
+      return '<a href="' + esc(p.url) + '" class="contact-profile-link" target="_blank" rel="noopener">' +
+        (BRAND_ICONS[key] ? brandSvg(key) : '') + '<span>' + esc(p.network) + '</span></a>';
+    }).join('');
+    setHTML('contactProfiles', profiles);
   }
 
   // ---- patents.html --------------------------------------------------------
@@ -322,26 +367,98 @@
     return s ? (s + ' – ' + e) : '';
   }
 
+  function startYear(w) { return (w.startDate || '').slice(0, 4); }
+  function endYear(w) { return (w.endDate == null || w.endDate === 'present') ? 'Present' : (w.endDate || '').slice(0, 4); }
+  function spanYears(list) {
+    var starts = list.map(startYear).filter(Boolean).sort();
+    var ends = list.map(endYear);
+    var lo = starts[0] || '';
+    var hi = ends.indexOf('Present') >= 0 ? 'Present' : ends.filter(Boolean).sort().slice(-1)[0] || '';
+    return lo && hi ? (lo + '–' + hi) : (lo || hi);
+  }
+  function uniq(a) { var s = {}, o = []; a.forEach(function (x) { if (x && !s[x]) { s[x] = 1; o.push(x); } }); return o; }
+
   function buildLinear(d) {
     var b = d.basics;
+    // Map each glossary slug -> its first PUBLIC reference URL (skip internal:true
+    // links, e.g. *.microsoft.com — a recruiter can't open those). The résumé
+    // links tagged terms to these; the portfolio renders the same terms as popups.
+    var refUrl = {};
+    (d.glossary || []).forEach(function (g) {
+      var link = (g.links || []).filter(function (l) { return l && l.url && !l.internal; })[0];
+      if (link) refUrl[g.slug] = link.url;
+    });
+    var refSeen = new Set(); // dedupe: each term links at most once across the résumé
     var loc = b.location ? [b.location.city, b.location.region].filter(Boolean).join(', ') : '';
-    var contact = [b.email, (b.url || '').replace(/^https?:\/\//, ''), loc]
-      .filter(Boolean).map(esc).join(' &nbsp;&middot;&nbsp; ');
-    var summary = (b.summary || []).map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
+    var profileLinks = (b.profiles || []).filter(function (p) { return p.url; })
+      .map(function (p) { return '<a href="' + esc(p.url) + '">' + esc(p.network) + '</a>'; }).join(' &middot; ');
+    var contactParts = [b.email, (b.url || '').replace(/^https?:\/\//, ''), loc].filter(Boolean).map(esc);
+    var contact = contactParts.join(' &nbsp;&middot;&nbsp; ') + (profileLinks ? ' &nbsp;&middot;&nbsp; ' + profileLinks : '');
 
-    var roles = d.work
-      .filter(function (w) { return (w.visibility || []).indexOf('resume') >= 0; })
+    // Metrics strip — featured stats (basics.stats[].resume === true), in the
+    // canonical array order from resume.yaml, which is deliberately outcome-first
+    // and tenure-last (the "40+ years" age signal comes last in every view).
+    var stripStats = (b.stats || []).filter(function (s) { return s.resume; });
+    var strip = stripStats.map(function (s) {
+      return '<div class="linear-stat"><span class="linear-stat-val">' + esc(s.value) + '</span>' +
+        '<span class="linear-stat-label">' + esc(s.label) + '</span></div>';
+    }).join('');
+    var metrics = strip ? '<div class="linear-metrics">' + strip + '</div>' : '';
+
+    // Summary — reordered/selected paragraphs (verbatim). resumeSummaryOrder is
+    // indices into basics.summary[]; falls back to the full summary.
+    var order = b.resumeSummaryOrder;
+    var paras = (order && order.length)
+      ? order.map(function (i) { return b.summary[i]; }).filter(Boolean)
+      : (b.summary || []);
+    var summary = paras.map(function (p) { return '<p>' + linkRefs(esc(p), b.summaryTerms, refSeen, refUrl) + '</p>'; }).join('');
+
+    // Experience — résumé-visible roles, tiered: full = detailed, brief = collapsed
+    // into an "Earlier career" block, omit = dropped entirely.
+    var resumeRoles = d.work
+      .filter(function (w) { return (w.visibility || []).indexOf('resume') >= 0 && w.resume !== 'omit'; })
       .slice().sort(function (a, b) { return (b.startDate || '').localeCompare(a.startDate || ''); });
-    var exp = roles.map(function (w) {
+
+    var full = resumeRoles.filter(function (w) { return w.resume !== 'brief'; });
+    var brief = resumeRoles.filter(function (w) { return w.resume === 'brief'; });
+
+    var exp = full.map(function (w) {
       var highs = (w.highlights || []).length
-        ? '<ul>' + w.highlights.map(function (h) { return '<li>' + esc(h) + '</li>'; }).join('') + '</ul>' : '';
+        ? '<ul>' + w.highlights.map(function (h) { return '<li>' + linkRefs(esc(h), w.terms, refSeen, refUrl) + '</li>'; }).join('') + '</ul>' : '';
       var org = esc(w.organization) + (w.location ? ' &middot; <span class="linear-role-loc">' + esc(w.location) + '</span>' : '');
       return '<div class="linear-role">' +
         '<div class="linear-role-head"><span class="linear-role-title">' + esc(w.position) + '</span>' +
         '<span class="linear-role-dates">' + esc(linearDates(w)) + '</span></div>' +
         '<div class="linear-role-org">' + org + '</div>' +
-        (w.summary ? '<p>' + esc(w.summary) + '</p>' : '') + highs + '</div>';
+        (w.context ? '<p class="linear-role-note">' + esc(w.context) + '</p>' : '') +
+        (w.summary ? '<p>' + linkRefs(esc(w.summary), w.terms, refSeen, refUrl) + '</p>' : '') + highs + '</div>';
     }).join('');
+
+    // Earlier career — brief roles grouped by employer, one line each (derived
+    // from data: organization, year span, and the actual titles held).
+    var earlier = '';
+    if (brief.length) {
+      var byGroup = {}, groupOrder = [];
+      brief.forEach(function (w) {
+        var g = w.group || w.id;
+        if (!byGroup[g]) { byGroup[g] = { org: w.organization, roles: [] }; groupOrder.push(g); }
+        byGroup[g].roles.push(w);
+      });
+      groupOrder.sort(function (a, x) {
+        var ma = byGroup[a].roles.map(startYear).sort().slice(-1)[0] || '';
+        var mx = byGroup[x].roles.map(startYear).sort().slice(-1)[0] || '';
+        return mx.localeCompare(ma);
+      });
+      var rows = groupOrder.map(function (g) {
+        var grp = byGroup[g];
+        var positions = uniq(grp.roles.map(function (r) { return r.position; })).join('; ');
+        return '<div class="linear-earlier-row"><div class="linear-earlier-head">' +
+          '<span class="linear-earlier-org">' + esc(grp.org) + '</span>' +
+          '<span class="linear-role-dates">' + esc(spanYears(grp.roles)) + '</span></div>' +
+          '<div class="linear-earlier-pos">' + esc(positions) + '</div></div>';
+      }).join('');
+      earlier = '<h3 class="linear-subhead">Earlier career (' + esc(spanYears(brief)) + ')</h3>' + rows;
+    }
 
     var skills = d.skills.map(function (c) {
       return '<p class="linear-skillrow"><span class="linear-skillcat">' + esc(c.name) + ':</span> ' +
@@ -361,11 +478,12 @@
       '<article class="linear-doc">' +
         '<header class="linear-head">' +
           '<h1>' + esc(b.name) + '</h1>' +
-          (b.label ? '<p class="linear-tagline">' + esc(b.label) + '</p>' : '') +
+          ((b.headline || b.label) ? '<p class="linear-tagline">' + esc(b.headline || b.label) + '</p>' : '') +
           '<p class="linear-contact">' + contact + '</p>' +
+          metrics +
         '</header>' +
         '<section class="linear-section"><h2>Summary</h2>' + summary + '</section>' +
-        '<section class="linear-section"><h2>Experience</h2>' + exp + '</section>' +
+        '<section class="linear-section"><h2>Experience</h2>' + exp + earlier + '</section>' +
         '<section class="linear-section"><h2>Skills</h2>' + skills + '</section>' +
         '<section class="linear-section"><h2>Patents &amp; Standards</h2>' +
           '<p>' + esc((d.patents && d.patents.summary) || '') + '</p>' +
