@@ -152,6 +152,13 @@ only; no prose invented or rewritten.
     principle. Renamed to `basics.headline`, one of three length-based positioning tiers
     (`label` → `headline` → `summary`). No tier is owned by a view; each view renders the
     tier that fits (portfolio hero = `label`, linear résumé = `headline`).
-- **Director → Principal Architect framing** — *pending your confirmation of the revised
-  wording* (continuity, not a "return"; you were ~30% hands-on before, deliberate move to
-  full-time architecture with Indra). Not yet wired in.
+- **Director → Principal Architect framing** (`work[id: indra].context`, new view-neutral
+  field) — approved candidate **3-B**: *"I've stayed close to the code and architecture
+  throughout my career, including my Senior Director years; moving to principal architect
+  for Indra was a deliberate choice to make hands-on system-building the whole job."*
+  Frames the move as a deliberate shift in *degree* (hands-on part → whole), not a return
+  from absence (you were already ~30% hands-on as a Senior Director). Rendered as a short
+  italic framing note on the Indra role in **both** views; the descriptive summary is left
+  untouched. Facts used: your Senior Director roles + the current Principal Architect role
+  — all in data; the "deliberate choice" / "stayed close" characterization is yours,
+  confirmed by you.

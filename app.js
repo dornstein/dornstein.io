@@ -210,6 +210,7 @@
     h += '</div>';
     if (disp.roleLine) h += '<p class="timeline-card-role">' + linkTerms(esc(disp.roleLine), terms, seen) + '</p>';
     if (disp.image) h += '<img class="timeline-img" src="' + esc(disp.image) + '" alt="' + esc(title) + '" loading="lazy">';
+    if (lead.context) h += '<p class="timeline-card-note">' + linkTerms(esc(lead.context), terms, seen) + '</p>';
     if (body) h += '<p>' + linkTerms(esc(body), terms, seen) + '</p>';
     if (highs && highs.length) {
       h += '<p class="timeline-card-outcome">' +
@@ -391,6 +392,7 @@
         '<div class="linear-role-head"><span class="linear-role-title">' + esc(w.position) + '</span>' +
         '<span class="linear-role-dates">' + esc(linearDates(w)) + '</span></div>' +
         '<div class="linear-role-org">' + org + '</div>' +
+        (w.context ? '<p class="linear-role-note">' + esc(w.context) + '</p>' : '') +
         (w.summary ? '<p>' + esc(w.summary) + '</p>' : '') + highs + '</div>';
     }).join('');
 

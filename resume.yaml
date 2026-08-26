@@ -119,6 +119,14 @@ work:
     endDate: present
     employmentType: full-time
     visibility: [site, resume, linkedin]
+    # Short framing note for this role (view-neutral; any view may render it).
+    # Newly-authored, David-approved prose (2026-08, candidate "3-B"): frames the
+    # Senior Director -> Principal Architect move as a deliberate shift in degree
+    # (hands-on part -> whole), not a return from absence. See resume-rework-audit.md.
+    context: >-
+      I've stayed close to the code and architecture throughout my career,
+      including my Senior Director years; moving to principal architect for Indra
+      was a deliberate choice to make hands-on system-building the whole job.
     summary: >-
       Conceived and built Indra, an AI-first app platform inside Microsoft's CISO
       organization. Indra solves a fundamental problem: security knowledge across
