@@ -72,7 +72,13 @@ cross-agent coordination — e.g., a "chief of staff" agent runs recurring meeti
 the agent team, and a systematic ROB (rhythm of business) drives recurring activities
 across the team.
 
-**A2 — correctness gates:** _[pending]_
+**A2 — correctness gates:** ALL FIVE are real in Indra: (1) human review gate — David
+reviews/approves every change before merge; (2) a dedicated security-review / "sentinel"
+agent reviews every change; (3) CI checks — tests, linters, static analysis, build gates
+(⚠️ confirm whether the static-analysis tool is CodeQL specifically before naming it);
+(4) prompt/spec versioning — agent prompts and specs are version-controlled and reviewed,
+so behavior is reproducible; (5) branch-protection / PR-based flow — nothing lands without
+passing the gates.
 **B1 — evaluation approach:** _[pending]_
 **B2 — codebase scope:** _[pending]_
 **C1 — adoption numbers:** _[pending]_
