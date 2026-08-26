@@ -347,7 +347,7 @@ work:
       image: media/office2007ribbon.png
 
   - id: ebooks-flexwiki
-    resume: full
+    resume: brief
     organization: Microsoft
     group: microsoft
     position: Architect, Emerging Technologies
@@ -375,7 +375,7 @@ work:
       image: null
 
   - id: oebf-president
-    resume: full
+    resume: brief
     organization: Open eBook Forum
     group: open-ebook-forum
     position: President & Board Member
