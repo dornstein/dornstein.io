@@ -50,6 +50,7 @@
   var TERM_ALIASES = {
     indra: ['Indra'], sigma: ['SIGMA'], liquid: ['Liquid'], sdl: ['SDL'],
     codeql: ['CodeQL Central', 'CodeQL'], twc: ['Trustworthy Computing', 'TwC'],
+    'trustworthy-computing': ['Trustworthy Computing'],
     metro: ['Metro'], drm: ['digital rights management', 'Rights Management', 'DRM'],
     flexwiki: ['FlexWiki'], csharp: ['C#'], dotnet: ['.NET'],
     oebf: ['Open eBook Forum'], 'oeb-pub-structure': ['Open eBook Publication Structure'],
