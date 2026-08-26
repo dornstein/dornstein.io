@@ -95,6 +95,34 @@
   // plain text -> escaped + term-linked HTML
   function prose(text, terms, seen) { return linkTerms(esc(text), terms, seen); }
 
+  // Résumé variant: wrap the first occurrence of each term in a real <a> to its
+  // PUBLIC glossary reference URL (urlBySlug), instead of a glossary-popup span.
+  // Same term data as the portfolio; the linear view just renders it as links so
+  // a printed/PDF résumé stays useful. Terms with no public URL stay plain text.
+  function linkRefs(escaped, terms, seen, urlBySlug) {
+    if (!terms || !terms.length || !urlBySlug) return escaped;
+    seen = seen || new Set();
+    terms.forEach(function (slug) {
+      if (seen.has(slug)) return;
+      var url = urlBySlug[slug];
+      if (!url) return;
+      var aliases = TERM_ALIASES[slug] || [slug];
+      for (var i = 0; i < aliases.length; i++) {
+        var phrase = esc(aliases[i]);
+        var re = new RegExp('(^|[^\\w>])(' + reEscape(phrase) + ')(?![\\w])');
+        if (re.test(escaped)) {
+          var safe = esc(url);
+          escaped = escaped.replace(re, function (m, pre, hit) {
+            return pre + '<a class="linear-link" href="' + safe + '" target="_blank" rel="noopener">' + hit + '</a>';
+          });
+          seen.add(slug);
+          break;
+        }
+      }
+    });
+    return escaped;
+  }
+
   function setHTML(id, html) { var e = document.getElementById(id); if (e) e.innerHTML = html; }
   function present(id) { return !!document.getElementById(id); }
 
@@ -351,6 +379,15 @@
 
   function buildLinear(d) {
     var b = d.basics;
+    // Map each glossary slug -> its first PUBLIC reference URL (skip internal:true
+    // links, e.g. *.microsoft.com — a recruiter can't open those). The résumé
+    // links tagged terms to these; the portfolio renders the same terms as popups.
+    var refUrl = {};
+    (d.glossary || []).forEach(function (g) {
+      var link = (g.links || []).filter(function (l) { return l && l.url && !l.internal; })[0];
+      if (link) refUrl[g.slug] = link.url;
+    });
+    var refSeen = new Set(); // dedupe: each term links at most once across the résumé
     var loc = b.location ? [b.location.city, b.location.region].filter(Boolean).join(', ') : '';
     var profileLinks = (b.profiles || []).filter(function (p) { return p.url; })
       .map(function (p) { return '<a href="' + esc(p.url) + '">' + esc(p.network) + '</a>'; }).join(' &middot; ');
@@ -373,7 +410,7 @@
     var paras = (order && order.length)
       ? order.map(function (i) { return b.summary[i]; }).filter(Boolean)
       : (b.summary || []);
-    var summary = paras.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join('');
+    var summary = paras.map(function (p) { return '<p>' + linkRefs(esc(p), b.summaryTerms, refSeen, refUrl) + '</p>'; }).join('');
 
     // Experience — résumé-visible roles, tiered: full = detailed, brief = collapsed
     // into an "Earlier career" block, omit = dropped entirely.
@@ -386,14 +423,14 @@
 
     var exp = full.map(function (w) {
       var highs = (w.highlights || []).length
-        ? '<ul>' + w.highlights.map(function (h) { return '<li>' + esc(h) + '</li>'; }).join('') + '</ul>' : '';
+        ? '<ul>' + w.highlights.map(function (h) { return '<li>' + linkRefs(esc(h), w.terms, refSeen, refUrl) + '</li>'; }).join('') + '</ul>' : '';
       var org = esc(w.organization) + (w.location ? ' &middot; <span class="linear-role-loc">' + esc(w.location) + '</span>' : '');
       return '<div class="linear-role">' +
         '<div class="linear-role-head"><span class="linear-role-title">' + esc(w.position) + '</span>' +
         '<span class="linear-role-dates">' + esc(linearDates(w)) + '</span></div>' +
         '<div class="linear-role-org">' + org + '</div>' +
         (w.context ? '<p class="linear-role-note">' + esc(w.context) + '</p>' : '') +
-        (w.summary ? '<p>' + esc(w.summary) + '</p>' : '') + highs + '</div>';
+        (w.summary ? '<p>' + linkRefs(esc(w.summary), w.terms, refSeen, refUrl) + '</p>' : '') + highs + '</div>';
     }).join('');
 
     // Earlier career — brief roles grouped by employer, one line each (derived

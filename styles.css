@@ -2637,6 +2637,16 @@ footer p {
 .linear-role-org { color: var(--color-accent-dark); font-size: .9rem; font-weight: 500; margin-bottom: 4px; }
 .linear-role-loc { color: var(--color-text-muted); font-weight: 400; }
 .linear-role-note { font-style: italic; color: var(--color-text-muted); margin: 4px 0 6px; }
+/* Résumé reference links — clean by default (dark text, light underline), so a
+   printed/PDF résumé stays uncluttered but every link is still clickable. */
+.linear-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  text-decoration-color: #b9c0cc;
+}
+.linear-link:hover { text-decoration-color: var(--color-accent); color: var(--color-accent-dark); }
 .linear-role ul { margin: 6px 0 0; padding-left: 20px; }
 .linear-role li { font-size: .9rem; margin-bottom: 3px; }
 .linear-skillrow { font-size: .9rem; margin: 0 0 6px; }

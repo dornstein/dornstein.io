@@ -85,6 +85,23 @@ skeleton for you to fill is in `docs/indra-bullets-draft.md`.
 
 ---
 
+## Résumé reference links (view-independent, no new content)
+
+The linear résumé now hyperlinks proper nouns (Metro/OOXML, FlexWiki, SDL, CodeQL,
+Rocket eBook, NuvoMedia, Open eBook Forum/EPUB, DRM, C#, .NET, DOJ consent decree, …)
+to their **public** reference pages. **No résumé-specific link data was added** — this
+renders the *same* `terms:` arrays + `glossary[].links` the portfolio already uses:
+
+- Portfolio renders a tagged term as a glossary-popup trigger (`.term` span).
+- Résumé renders the same term as a real `<a>` to its glossary entry's first **public**
+  link — new `linkRefs()` in `app.js`, deduped so each term links once. Print/PDF-friendly.
+- **Internal links are skipped.** Added `internal: true` to the two `*.microsoft.com`
+  glossary links (`indra`, `liquid`) — a fact about the link (not publicly reachable),
+  view-neutral, so no view treats them as references. A recruiter never gets a dead link.
+- Add a term to any block's `terms:` array and it enriches BOTH views at once.
+
+---
+
 ## Cross-view pass — presentation insights that aren't résumé-only
 
 You flagged that some of the résumé presentation insights apply to **any view a

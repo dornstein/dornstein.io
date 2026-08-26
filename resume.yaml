@@ -1522,7 +1522,7 @@ glossary:
     category: project
     image: null
     links:
-      - { label: "Visit Indra", url: "https://indra.microsoft.com" }
+      - { label: "Visit Indra", url: "https://indra.microsoft.com", internal: true }
     html: |
       <p>An AI-first app platform inside Microsoft’s CISO organization, conceived and led by David Ornstein as its sole human architect. Indra gives SIGMA security engineers building blocks to turn their expertise — Kusto queries, compliance workflows, operational know-how — into tools the whole organization can use, and gives deputy CISOs a unified view of security posture across domains.</p><p>The platform solves a fundamental fragmentation problem: security knowledge across CISO’s dozens of domains is scattered across dashboards, scripts, and individual engineers’ heads — inaccessible to leaders who need a cross-domain view and invisible to AI. Indra provides unified security reporting dashboards, a natural-language AI agent over security data, Kusto query integration, Power BI embedding, an app hosting ecosystem, and a full CI/CD pipeline.</p><p>What makes Indra distinctive is its development model: David leads a team of eight specialized AI agents — each a GitHub Copilot custom agent with a distinct role (engineer, strategist, security sentinel, narrator, advocate, presenter, editor). Every change clears human review, a security-review agent, CI, and version-controlled prompts before it merges — one architect sustaining a platform that real teams build on.</p>
 
@@ -1531,7 +1531,7 @@ glossary:
     category: project
     image: null
     links:
-      - { label: "What is Liquid? (Microsoft internal)", url: "https://liquid.microsoft.com/Web/Docs/all/WhatIsLiquid.md" }
+      - { label: "What is Liquid? (Microsoft internal)", url: "https://liquid.microsoft.com/Web/Docs/all/WhatIsLiquid.md", internal: true }
     html: |
       <p>Microsoft’s internal platform for continuous security assurance and compliance, conceived and led by David starting around 2015. Liquid automated the Security Development Lifecycle (SDL) and other compliance processes that had previously relied on manual attestations and yearly audits.</p><p>The platform includes automated policy scanners, code compliance pipelines, and a unified dashboard for security standards adherence, integrated with Azure DevOps across the company. Liquid became the core of Microsoft’s Continuous SDL program, providing automated coverage for over 8,000 services company-wide and enabling real-time compliance checks.</p><p>David’s manager described Liquid’s impact: “Liquid anchors the company-wide continuous SDL… shifting processes to automated coverage,” acknowledging David’s “incredible impact” on Microsoft’s security engineering ecosystem.</p>
 
