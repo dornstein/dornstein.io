@@ -113,5 +113,15 @@ also a candidate to strengthen the Liquid role/stat later). So: Indra = producti
 with real teams building on it (early), architecture/rigor proof; Liquid = proven-scale
 proof. OK-to-state (David volunteered): team/engineer counts, domain count, dCISO usage,
 Liquid MAU. NOT OK: Indra user/MAU numbers.
-**C2 — a concrete capability shipped:** _[pending]_
+**C2 — concrete capabilities shipped (ALL live, used by Indra builders):**
+1. Natural-language querying over security data → generates & runs **Kusto** queries.
+2. **Unified Security Reporting** dashboards = a cross-domain security-posture view (replaces
+   pulling from many separate dashboards/queries by hand).
+3. **Power BI embedding with pass-through permissions** (permission-aware — a security-audience
+   credibility signal).
+4. An **app-hosting runtime + CI/CD** so a security engineer ships an internal app without
+   standing up their own infra.
+Lead with #1 or #2 (most tangible). ⚠️ At assembly, confirm the exact "under the user's own
+identity" phrasing for #1; #3's pass-through permissions is confirmed. Frame as before→after
+where natural ("a cross-domain posture view that used to mean N manual dashboards").
 **D — super-IC model as proof:** _[pending]_
