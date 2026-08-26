@@ -91,10 +91,11 @@ basics:
   # the generic opener (0) and the "craft" closer (4). Selection + reorder only — every
   # sentence shown is verbatim from summary[]; no rewriting.
   resumeSummaryOrder: [3, 1, 2]
-  # Order is outcome-first, tenure LAST — a presentation insight that applies to
-  # every view a hiring audience sees (résumé AND portfolio), not just the résumé.
-  # Both views render these in array order, so this list is the single source of
-  # that ordering. (Values/labels unchanged; this is a reorder only.)
+  # Outcome-first ordering — a presentation insight that applies to every view a
+  # hiring audience sees (résumé AND portfolio). Both views render these in array
+  # order, so this list is the single source of that ordering. The tenure tile
+  # ("40+ Professional Years") was dropped per David — depth still shows via the
+  # career timeline back to 1979, just not as a headline number.
   stats:
     - { slug: stat-services,  value: "8K+",   label: "Services Secured", resume: true }
     - { slug: stat-exit,      value: "$200M", label: "Startup Exit", resume: true }
@@ -103,7 +104,6 @@ basics:
     - { slug: stat-companies, value: "3",     label: "Companies Founded", resume: true }
     - { slug: stat-budget,    value: "$250M", label: "Largest Budget Managed" }
     - { slug: stat-domains,   value: "Dozens", label: "Security Domains" }
-    - { slug: stat-years,     value: "40+",   label: "Professional Years", resume: true }
 
 # ----------------------------------------------------------------------------
 # work[] — atomic career roles, newest first. THE core of the data.
