@@ -134,8 +134,11 @@ disciplined agent system + a real platform real teams build on — and let the f
 
 ## ASSEMBLED — proposed Indra rewrite (for David's approval; NOT yet in resume.yaml)
 
-**Summary:** keep the current summary verbatim (it's factual and already humble — the hype
-was only in the highlights). No change proposed.
+**Summary:** keep verbatim EXCEPT trim the redundant agent-domain enumeration from the last
+sentence (David-approved), since highlight #1 already lists the agent domains. Change: end the
+final sentence at "...each owning a distinct domain." (drop ": engineering lifecycle, strategy,
+security review, narrative, builder advocacy, live demos, and editorial"). Everything before is
+unchanged.
 
 **Highlights (replace both current highlights):**
 
