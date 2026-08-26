@@ -103,6 +103,15 @@ substance. NOTE: this supersedes the old portfolio stat "150K+ Lines (Past 60 Da
 consider swapping that stat for a scope-framed number later (separate decision).
 (Open Q for C1: are the 69 apps platform/sample apps, or apps built by SIGMA engineers?
 that determines the adoption story.)
-**C1 — adoption numbers:** _[pending]_
+**C1 — adoption:** Of the 69 apps, ~40 are samples + platform management/operations apps
+(built by David/the platform); the **remaining ~29 are built by real users — 5–6 teams,
+10–15 engineers across them.** CISO leaders (incl. dCISOs) use the Unified Security
+Reporting dashboards. **Dozens of security domains / verticals.**
+⚠️ **Do NOT expose Indra user counts** (proprietary + early). For "can build systems that
+scale" proof, use LIQUID instead: **10K+ MAU sustained for many years** (new datapoint —
+also a candidate to strengthen the Liquid role/stat later). So: Indra = production platform
+with real teams building on it (early), architecture/rigor proof; Liquid = proven-scale
+proof. OK-to-state (David volunteered): team/engineer counts, domain count, dCISO usage,
+Liquid MAU. NOT OK: Indra user/MAU numbers.
 **C2 — a concrete capability shipped:** _[pending]_
 **D — super-IC model as proof:** _[pending]_
