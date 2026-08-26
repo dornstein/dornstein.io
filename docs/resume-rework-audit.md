@@ -152,6 +152,17 @@ only; no prose invented or rewritten.
     principle. Renamed to `basics.headline`, one of three length-based positioning tiers
     (`label` → `headline` → `summary`). No tier is owned by a view; each view renders the
     tier that fits (portfolio hero = `label`, linear résumé = `headline`).
+- **Indra role rewrite** (`work[id: indra]` summary + highlights) — David-approved after a
+  7-item fact-gathering walkthrough (captured in `docs/indra-bullets-draft.md`). Summary
+  trimmed (dropped the redundant agent-domain enumeration); both hype highlights ("Proving
+  the AI-native super-IC model… throughput of a full engineering org" and the generic
+  "deployed across dev/preprod/prod") **replaced** by four fact-sourced highlights on
+  discipline (5 real merge gates), scope (~340K non-test LOC census), adoption (real teams
+  building), and shipped capabilities. Humble framing: no "super-IC" label, no throughput
+  claim, scale stated as scope only. Every clause traces to a captured answer; no estimates.
+- **Liquid 10K+ MAU** (`work[id: liquid-cst]` highlights + card override) — added David-
+  supplied stat "Sustained 10,000+ monthly active users for years." to both the résumé and
+  portfolio-card highlight lists. Proven-scale proof point.
 - **Director → Principal Architect framing** (`work[id: indra].context`, new view-neutral
   field) — approved candidate **3-B**: *"I've stayed close to the code and architecture
   throughout my career, including my Senior Director years; moving to principal architect

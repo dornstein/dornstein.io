@@ -136,17 +136,31 @@ work:
       their security expertise into tools the whole organization can use, and
       gives deputy CISOs a unified view of posture across verticals. Lead Indra as
       its sole human architect, working daily alongside a team of eight
-      specialized AI agents built as GitHub Copilot custom agents — each owning a
-      distinct domain: engineering lifecycle, strategy, security review,
-      narrative, builder advocacy, live demos, and editorial.
+      specialized AI agents built as GitHub Copilot custom agents, each owning a
+      distinct domain.
     highlights:
       - >-
-        Deployed across dev, pre-production, and production environments; Unified
-        Security Reporting dashboards ready for dCISO adoption.
+        Direct eight specialized AI agents — engineering, security review,
+        strategy, and more, built as GitHub Copilot custom agents — through a real
+        engineering discipline: every change clears human review, a security-review
+        agent, CI tests and static analysis, and version-controlled prompts and
+        specs before it merges.
       - >-
-        Proving the AI-native super-IC model: one architect sustaining a full
-        platform ecosystem — architecture, code, documentation, strategy, and
-        operations — with the throughput of a full engineering org.
+        Sole human architect of a ~340,000-line (non-test), 95%-TypeScript
+        monorepo — 10 packages, ~69 apps, a 90+-component design system, and ~735
+        automated test files — with state, plans, and specs managed in-repo and
+        legible to people, not just agents.
+      - >-
+        In production with real teams building on it: beyond the platform's own
+        apps, ~10–15 engineers across 5–6 teams have shipped apps on Indra, and
+        CISO leaders use its Unified Security Reporting dashboards across dozens of
+        security domains.
+      - >-
+        Shipped natural-language querying that turns plain-English questions into
+        Kusto queries over security data, a cross-domain posture view that replaces
+        manual dashboard-by-dashboard reporting, permission-aware Power BI
+        embedding, and an app-hosting runtime with CI/CD so security engineers ship
+        internal tools without standing up infrastructure.
     skills: [ai-native-software-engineering, ai-harness-engineering, security-architecture, static-code-analysis, cloud-security, secure-development-lifecycle-sdl, complex-systems-architecture, platform-engineering, interoperability, people-development-coaching, technical-strategy, engineering-leadership, cross-functional-team-leadership, protocol-design, c-net, typescript-javascript, sql, net-framework-asp-net, relational-databases, windows, node-js, react, azure-azure-devops]
     terms: [indra, sigma]
     display:
@@ -179,6 +193,7 @@ work:
       standards adherence.
     highlights:
       - Grew Liquid into the core of Microsoft's Continuous SDL program.
+      - Sustained 10,000+ monthly active users for years.
     skills: [security-architecture, secure-development-lifecycle-sdl, compliance-automation-continuous-compliance, platform-engineering, devsecops, engineering-leadership, complex-systems-architecture, technical-strategy, people-development-coaching, interoperability, c-net, net-framework-asp-net, azure-azure-devops, github-codeql, windows, relational-databases, sql, typescript-javascript]
     terms: [liquid, sdl]
     display:
@@ -202,6 +217,7 @@ work:
         model for the broader organization.
       highlights:
         - Automated SDL compliance for 8,000+ services company-wide.
+        - Sustained 10,000+ monthly active users for years.
         - >-
           Transformed Microsoft's assurance from manual attestations to
           data-driven continuous monitoring. Executive acclaim for "incredible
