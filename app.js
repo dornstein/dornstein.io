@@ -438,7 +438,7 @@
       '<article class="linear-doc">' +
         '<header class="linear-head">' +
           '<h1>' + esc(b.name) + '</h1>' +
-          (b.label ? '<p class="linear-tagline">' + esc(b.label) + '</p>' : '') +
+          ((b.resumeHeadline || b.label) ? '<p class="linear-tagline">' + esc(b.resumeHeadline || b.label) + '</p>' : '') +
           '<p class="linear-contact">' + contact + '</p>' +
           metrics +
         '</header>' +

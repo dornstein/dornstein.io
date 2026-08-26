@@ -24,9 +24,20 @@ meta:
 # ----------------------------------------------------------------------------
 basics:
   name: David Ornstein
+  # Portfolio hero tagline. NOTE: unlike the rest of the résumé data, this line is
+  # newly-authored positioning prose (David-approved 2026-08, candidate "1A"), not a
+  # verbatim carry-over from the old site copy. Leads with the AI-native present
+  # rather than the "40+ years" tenure signal. See docs/resume-rework-audit.md.
   label: >-
-    Software leader, architect, founder, and standards author with 40+ years
-    building products and platforms people depend on.
+    Software architect and engineering leader building AI-native platforms —
+    most recently Indra, a security platform I run as its sole human architect
+    alongside a team of AI agents.
+  # Résumé header line (overrides `label` in the linear view only). Also newly-authored,
+  # David-approved (candidate "2A"). Gives a screener the shape in one glance.
+  resumeHeadline: >-
+    Principal architect and engineering leader. I've founded companies, shaped
+    industry standards, and secured software at Microsoft scale — and I now build
+    AI-native platforms as a single architect working with a team of AI agents.
   image: media/david-ornstein.webp
   email: davidorn@live.com
   url: https://dornstein.io

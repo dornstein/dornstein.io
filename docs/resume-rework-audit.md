@@ -124,3 +124,29 @@ only; no prose invented or rewritten.
   deliberately — it's the AI-native throughput signal on your personal site). I only
   demoted its *position*; it's no longer near the top. The résumé still omits it
   entirely (the HM's #1 credibility risk), so the two views diverge here on purpose.
+
+---
+
+## Newly-authored prose — David-approved (2026-08)
+
+> ⚠️ **These are the ONLY places in this whole rework where the visible text is not a
+> verbatim carry-over from your prior copy.** They are new positioning sentences I
+> drafted as *candidates*, and you approved specific ones. Recording them here so the
+> "no slop / track every substantive change" rule is honored — audit the exact wording.
+
+- **Portfolio hero tagline** (`basics.label`) — replaced *"Software leader, architect,
+  founder, and standards author with 40+ years building products and platforms people
+  depend on."* with approved candidate **1A**: *"Software architect and engineering
+  leader building AI-native platforms — most recently Indra, a security platform I run
+  as its sole human architect alongside a team of AI agents."* Leads with the AI-native
+  present; drops the "40+ years" opener. Facts used: Indra, sole human architect, AI-agent
+  team — all already in your data.
+- **Résumé header line** (`basics.resumeHeadline`, new field; overrides `label` in the
+  linear view only) — approved candidate **2A**: *"Principal architect and engineering
+  leader. I've founded companies, shaped industry standards, and secured software at
+  Microsoft scale — and I now build AI-native platforms as a single architect working
+  with a team of AI agents."* Gives a screener the shape in one glance. Facts used:
+  founder (3 companies), standards author, Microsoft security work, Indra — all in data.
+- **Director → Principal Architect framing** — *pending your confirmation of the revised
+  wording* (continuity, not a "return"; you were ~30% hands-on before, deliberate move to
+  full-time architecture with Indra). Not yet wired in.
