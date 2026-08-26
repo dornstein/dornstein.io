@@ -261,7 +261,7 @@ work:
     group: microsoft
     position: Chief of Staff, Trustworthy Computing
     location: Redmond, WA
-    startDate: "2008-01"
+    startDate: "2009-01"
     endDate: "2014-12"
     employmentType: full-time
     visibility: [site, resume, linkedin]
@@ -283,7 +283,7 @@ work:
       era: microsoft-security-compliance
       cardTitle: Security Strategy & Assurance
       roleLine: Chief of Staff · Trustworthy Computing (TwC)
-      dateLabel: "2008 – 2014 (6 yrs)"
+      dateLabel: "2009 – 2014 (5 yrs)"
       image: null
 
   - id: compliance-engineering
@@ -293,7 +293,7 @@ work:
     position: Director, Compliance Engineering — Engineering Excellence
     location: Redmond, WA
     startDate: "2004-01"
-    endDate: "2010-12"   # REFERENCE: 2004–2010 (overlaps Chief of Staff); site label rounds to 2004–2008
+    endDate: "2009-01"   # Director role ended when the Chief of Staff role began in 2009
     employmentType: full-time
     visibility: [site, resume, linkedin]
     summary: >-
@@ -313,7 +313,7 @@ work:
       era: microsoft-security-compliance
       cardTitle: Engineering Policy Compliance
       roleLine: Director, Compliance Engineering · Engineering Excellence
-      dateLabel: "2004 – 2008 (4 yrs)"
+      dateLabel: "2004 – 2009 (5 yrs)"
       image: null
 
   - id: metro-xps
