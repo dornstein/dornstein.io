@@ -163,6 +163,20 @@ only; no prose invented or rewritten.
 - **Liquid 10K+ MAU** (`work[id: liquid-cst]` highlights + card override) — added David-
   supplied stat "Sustained 10,000+ monthly active users for years." to both the résumé and
   portfolio-card highlight lists. Proven-scale proof point.
+- **Residual-hype cleanup (consistency pass).** After the humble Indra rewrite, four other
+  spots still carried the pre-humble framing (throughput / "super-IC" / "150K lines in 60
+  days" / "2,500 lines per day"). All reconciled to match the decision (David-approved):
+  1. `basics.summary[3]` — dropped "…the throughput of a full engineering org"; now "one
+     architect and a crew of AI collaborators, held together by real engineering discipline."
+  2. `valueProps` — retitled "AI-Native Super-IC" → **"AI-Native Engineering"**; softened
+     "I've proven…" → "I build…"; added the concrete discipline (review/security/CI/prompts).
+  3. `stat-lines` — **replaced** the "150K+ Lines (Past 60 Days)" tile (HM's #1 credibility
+     risk; census supersedes it) with **"340K+ Lines of TypeScript"**, and rewrote the popup
+     to census-based scope (no lines-per-day, no super-IC). *(Decision: "replace w/ scope stat.")*
+  4. `glossary[indra]` — dropped "throughput of a full engineering org / working proof of the
+     AI-native super-IC concept"; replaced with the real merge-gate discipline.
+  Also updated the stale "150K-line" number in the "Architect Who Codes" value prop → "~340K".
+  Verified: `grep` for 150K/2,500/super-IC/throughput now returns nothing across all files.
 - **Director → Principal Architect framing** (`work[id: indra].context`, new view-neutral
   field) — approved candidate **3-B**: *"I've stayed close to the code and architecture
   throughout my career, including my Senior Director years; moving to principal architect

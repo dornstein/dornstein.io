@@ -79,9 +79,9 @@ basics:
       lead Indra as its sole human architect, working alongside a team of eight
       specialized AI agents, each owning a distinct domain: engineering,
       strategy, security review, storytelling, advocacy, and more. It's a new
-      model for software development — one architect, a crew of AI collaborators,
-      and the throughput of a full engineering org — and I'm building the proof
-      of it.
+      model for software development — one architect and a crew of AI
+      collaborators, held together by real engineering discipline — and I'm
+      building the proof of it.
     - >-
       I care about building things well, about the craft of software, and about
       helping the people around me grow.
@@ -102,7 +102,7 @@ basics:
     - { slug: stat-engineers, value: "50+",   label: "Engineers Led", resume: true }
     - { slug: stat-companies, value: "3",     label: "Companies Founded", resume: true }
     - { slug: stat-budget,    value: "$250M", label: "Largest Budget Managed" }
-    - { slug: stat-lines,     value: "150K+", label: "Lines Shipped (Past 60 Days)" }
+    - { slug: stat-lines,     value: "340K+", label: "Lines of TypeScript" }
     - { slug: stat-years,     value: "40+",   label: "Professional Years", resume: true }
 
 # ----------------------------------------------------------------------------
@@ -1354,14 +1354,15 @@ standards:
 # valueProps[] — "What I Bring" cards. icon = key mapped to inline SVG in template.
 valueProps:
   - icon: network
-    title: AI-Native Super-IC
+    title: AI-Native Engineering
     body: >-
-      I've proven that one experienced architect, working natively with a crew of
-      specialized AI agents, can sustain a platform-scale software project. Indra —
-      my current project inside Microsoft's CISO org — is architected, coded,
-      documented, and shipped by me alongside eight AI teammates, each owning a
-      distinct role. This isn't AI-assisted productivity. It's a new engineering
-      model.
+      I build platform-scale software as one experienced architect working
+      natively with a crew of specialized AI agents. Indra — my current project
+      inside Microsoft's CISO org — is architected, coded, documented, and shipped
+      this way: eight AI teammates, each owning a distinct role, held together by
+      real engineering discipline — human review, security review, CI, and
+      version-controlled prompts. It's a new engineering model, not just
+      AI-assisted productivity.
     terms: [indra]
   - icon: shield-check
     title: Security at Scale
@@ -1375,7 +1376,7 @@ valueProps:
     title: Architect Who Codes
     body: >-
       I don't just draw boxes on whiteboards. From 100K-line C++ codebases to a
-      150K-line TypeScript platform I built with AI, I've written, shipped, and
+      ~340K-line TypeScript platform I built with AI, I've written, shipped, and
       maintained real systems at every scale. I still write and review code daily —
       architecture grounded in implementation always wins.
     terms: []
@@ -1501,12 +1502,12 @@ glossary:
       <p>The largest budget I’ve overseen combines the compliance engineering program at Microsoft (over $10M annually in direct operating costs) with the broader security assurance and strategic programs I coordinated as Chief of Staff to the CVP of Trustworthy Computing — a role that touched hundreds of millions in security investment across the company.</p><p>At that scale, budget management is less about tracking spending and more about allocating organizational attention: which programs get investment, which get wound down, which get scaled, and how to make the ROI case to executives. Security compliance programs are unusual because the “return” is measured in risks that don’t materialize — a fundamentally different calculus than typical product investment.</p>
 
   - slug: stat-lines
-    title: 150K+ Lines Shipped in 60 Days
+    title: 340K+ Lines of Production TypeScript
     category: stat
     image: null
     links: []
     html: |
-      <p>The Indra platform is a ~150K-line TypeScript codebase — React frontend, Node.js backend, Azure infrastructure-as-code — built almost entirely by me working with a team of eight AI agents. The “past 60 days” figure reflects the pace in the most recent sprint cycle: designing and shipping new platform features, building apps on the platform, writing documentation, and maintaining CI/CD pipelines.</p><p>For context: 150,000 lines of production TypeScript in 60 days averages over 2,500 lines per working day. That is not typing speed. It is AI-accelerated development with an experienced architect directing every piece of it, reviewing every output, and maintaining architectural coherence across the whole system. This is what the AI-native super-IC model makes possible — and Indra is the live proof.</p>
+      <p>The Indra platform is a ~340,000-line (non-test) TypeScript codebase — a 10-package monorepo of roughly 69 apps, a 90+-component design system, and ~735 automated test files — architected and maintained by David as its sole human architect, working with a team of eight specialized AI agents.</p><p>The number is scope, not speed: the real work is keeping a codebase this size architecturally coherent and reliable. Every change clears human review, a security-review agent, CI tests and static analysis, and version-controlled prompts and specs before it merges.</p>
 
   - slug: stat-engineers
     title: 50+ Engineers Led
@@ -1523,7 +1524,7 @@ glossary:
     links:
       - { label: "Visit Indra", url: "https://indra.microsoft.com" }
     html: |
-      <p>An AI-first app platform inside Microsoft’s CISO organization, conceived and led by David Ornstein as its sole human architect. Indra gives SIGMA security engineers building blocks to turn their expertise — Kusto queries, compliance workflows, operational know-how — into tools the whole organization can use, and gives deputy CISOs a unified view of security posture across domains.</p><p>The platform solves a fundamental fragmentation problem: security knowledge across CISO’s dozens of domains is scattered across dashboards, scripts, and individual engineers’ heads — inaccessible to leaders who need a cross-domain view and invisible to AI. Indra provides unified security reporting dashboards, a natural-language AI agent over security data, Kusto query integration, Power BI embedding, an app hosting ecosystem, and a full CI/CD pipeline.</p><p>What makes Indra distinctive is its development model: David leads a team of eight specialized AI agents — each a GitHub Copilot custom agent with a distinct role (engineer, strategist, security sentinel, narrator, advocate, presenter, editor) — and together they sustain a platform-scale project with the throughput of a full engineering org. It is a working proof of the AI-native super-IC concept.</p>
+      <p>An AI-first app platform inside Microsoft’s CISO organization, conceived and led by David Ornstein as its sole human architect. Indra gives SIGMA security engineers building blocks to turn their expertise — Kusto queries, compliance workflows, operational know-how — into tools the whole organization can use, and gives deputy CISOs a unified view of security posture across domains.</p><p>The platform solves a fundamental fragmentation problem: security knowledge across CISO’s dozens of domains is scattered across dashboards, scripts, and individual engineers’ heads — inaccessible to leaders who need a cross-domain view and invisible to AI. Indra provides unified security reporting dashboards, a natural-language AI agent over security data, Kusto query integration, Power BI embedding, an app hosting ecosystem, and a full CI/CD pipeline.</p><p>What makes Indra distinctive is its development model: David leads a team of eight specialized AI agents — each a GitHub Copilot custom agent with a distinct role (engineer, strategist, security sentinel, narrator, advocate, presenter, editor). Every change clears human review, a security-review agent, CI, and version-controlled prompts before it merges — one architect sustaining a platform that real teams build on.</p>
 
   - slug: liquid
     title: Liquid Platform
