@@ -1,190 +1,168 @@
 ---
 name: linkedin-sync
-description: Interactively sync a LinkedIn profile's Experience section from a structured source of truth (REFERENCE.md or resume.json) using a browser-automation MCP. Drives an attached logged-in browser to diff, propose edits, and apply them one at a time with user confirmation. Use when the user asks to "sync LinkedIn", "update LinkedIn from my site/reference", "check LinkedIn drift", or similar. v1 scope: Experience section only.
+description: Idempotently sync a LinkedIn profile from resume.yaml (the single source of truth) using a browser-automation MCP. Fully replaces LinkedIn's Headline, About, Experience, and Skills to match the YAML, and is safe to re-run whenever the YAML changes (a run against an already-synced profile makes zero writes). Use when the user asks to "sync LinkedIn", "update LinkedIn from resume.yaml", "push my resume to LinkedIn", or "get LinkedIn up to date".
 ---
 
-# LinkedIn Sync (Experience)
+# LinkedIn Sync (from resume.yaml)
 
-Human-in-the-loop workflow to bring a LinkedIn profile's **Experience** section into agreement with an authored source of truth. You (the agent) drive an already-logged-in browser via an MCP server; the user watches, confirms each write, and can abort at any time.
+Bring a LinkedIn profile fully into agreement with `resume.yaml`. **The YAML is the single source of truth; LinkedIn is a pure follower.** The user does not edit LinkedIn by hand, so this skill may **add, update, AND delete** LinkedIn content to match the YAML. It is designed to be **idempotent**: run it any time the YAML changes; a run against an already-synced profile detects that everything matches and makes **zero writes**.
 
-## Non-goals for v1
+## Modes
 
-- **Do NOT** touch Education, Skills, About, Projects, Publications, Patents, Recommendations, or Featured. Only Experience.
-- **Do NOT** delete or reorder existing LinkedIn positions the user hasn't explicitly approved for change.
-- **Do NOT** post anything to the feed.
-- **Do NOT** attempt to run unattended, on a schedule, or without the user actively watching the browser.
+- **dry-run** (read-only): read the *complete* current LinkedIn state, diff it against the YAML-derived desired state, and report exactly what WOULD change (add / update / delete, field by field). Makes no writes. Use it to preview a sync and to **verify idempotency** (a healthy synced profile yields an empty diff).
+- **apply** (default): perform the diff's writes, verifying each via the DOM.
 
-## Absolute rules
+Always run **dry-run first** when the YAML has changed materially, or to confirm a no-op. The user picks the mode; if unspecified, default to a dry-run and show the diff before applying.
 
-1. **Every write requires explicit user confirmation immediately before it happens.** No batching writes behind a single "approve all". A batched *plan* is fine; each individual click that mutates LinkedIn is not.
-2. **Never invent facts.** Every value written to LinkedIn must come verbatim (or be a clearly-labeled summarization) from the source of truth. If the source is silent, ask — never guess dates, titles, or descriptions.
-3. **Log every mutation** to the session DB `linkedin_sync_log` table (schema below) before clicking Save. This is the audit trail and undo aid.
-4. **Respect LinkedIn.** No bulk scraping, no parallel sessions, no headless mass edits. Human-paced, one profile, one edit at a time.
-5. If any step fails (element not found, unexpected modal, 2FA prompt, session expired) — **pause and ask the user**. Do not retry blindly or navigate away.
+## Sections synced (and their YAML source)
+
+| LinkedIn field | YAML source | Transform |
+|---|---|---|
+| **Headline** | `basics.headline` | trim to ≤ 220 chars (LinkedIn cap), minimally, preserving meaning |
+| **About** | `basics.summary` (array) | join paragraphs with a blank line; ≤ 2 600 chars |
+| **Experience** | `work[]` where `visibility` contains `linkedin` | see **Canonical record** |
+| **Skills (list)** | `skills[].keywords[]` | map each to LinkedIn's canonical vocabulary (see skill map) |
+| **Top skills (order)** | `skills[].keywords[].pinned` (1,2,3…) | reorder those to the top |
+
+**Out of scope — never touched:** per-experience skill tags, Education, Licenses & Certifications, Recommendations, Featured, Projects, Publications, Patents, profile photo, contact info.
+
+## Core principles (read before every run)
+
+1. **YAML is authoritative; full replacement.** Never merge a fact from LinkedIn into the plan. If a role/skill left the YAML, the skill removes it from LinkedIn.
+2. **Idempotent = diff, then write only differences.** For each item compute the *already-transformed* desired value (trimmed headline, mapped skill name, formatted description) and compare to the current LinkedIn value. Equal → do nothing.
+3. **Read the COMPLETE current state first.** LinkedIn lazy-loads / virtualizes long lists (Experience, Skills). You MUST scroll to load **every** entry before diffing. **An incomplete read is the #1 cause of DUPLICATES** — an unseen existing role gets re-added. (This happened; see below.)
+4. **Verify with JS (the DOM), not screenshots.** Screenshots lag behind the DOM (form values render stale) and require the Browser pane to be *visible*; `javascript_tool` eval reflects true state and works even when the pane is hidden. Reserve screenshots for drag-and-drop and layout checks.
+5. **Order of operations: Experience → Headline → About → Skills.** Headline comes *after* Experience because **adding a position silently overwrites the profile headline** on LinkedIn (a real quirk observed in production) — so set the headline *after* any Experience writes.
+6. **Log every mutation** to an audit trail, and never invent a value — everything written comes from the YAML.
 
 ## Preflight
 
-Before doing anything else, run these checks in order. Stop with a clear message if any fail.
+1. **Browser MCP** exposing an accessibility/DOM snapshot **and JS eval** (e.g. the built-in Browser pane: `navigate` / `read_page` / `computer` / `javascript_tool`, or `@playwright/mcp`). If none is attached, stop and tell the user to attach one.
+2. **Source of truth**: `resume.yaml` at the repo root (preferred). Fallbacks in order: `resume.json`, then `REFERENCE.md`, then ask. Never fall through silently — state which source was used. Parse:
+   - `basics.headline`, `basics.summary`
+   - `work[]` (keep only items whose `visibility` includes `linkedin`)
+   - `skills[]` (categories → `keywords[]`, each `{slug, name, pinned?}`)
+3. **Audit log**: append-only JSONL file (or a DB table if the host provides one), one row per mutation: `{ts, section, action, key, field, old, new, status, notes}`.
+4. **Attach to the logged-in browser**: navigate to `https://www.linkedin.com/in/me/`. If a login/join form appears, **STOP** and ask the user to log in manually in the pane, then resume. Never handle credentials.
+5. Announce the **mode** and the **source** before doing anything.
 
-### 1. Browser MCP available
+---
 
-Look for browser-automation tools in the current toolset. Acceptable providers:
+## Canonical record — Experience
 
-| Preferred | Server | Typical tool names |
-|-----------|--------|-------------------|
-| ✅ Best   | `@playwright/mcp` | `browser_navigate`, `browser_snapshot`, `browser_click`, `browser_type`, `browser_press_key`, `browser_wait_for` |
-| OK        | `chrome-devtools-mcp` | `navigate_page`, `take_snapshot`, `click`, `fill`, `evaluate_script` |
-
-If none are available, stop and tell the user how to add Playwright MCP to the Copilot app's MCP settings:
-
-```json
-{
-  "playwright": {
-    "type": "local",
-    "command": ["npx", "-y", "@playwright/mcp@latest", "--browser=chrome"]
-  }
-}
-```
-
-Recommend Playwright MCP because its snapshot-based accessibility tree is more robust against LinkedIn's frequent DOM churn than CSS selectors.
-
-### 2. Source of truth located
-
-Search in this order:
-1. `resume.json` in the current repo root (JSON Resume schema — preferred if present).
-2. `REFERENCE.md` in the current repo root (structured markdown — parse the `## Career Timeline` section).
-3. Ask the user for a path.
-
-Parse into a canonical in-memory shape (see **Canonical record** below). Show the user a one-line-per-role summary and ask them to confirm it looks right before proceeding.
-
-### 3. Session DB tables
-
-Create the audit + progress tables if they don't exist:
-
-```sql
-CREATE TABLE IF NOT EXISTS linkedin_sync_log (
-  id INTEGER PRIMARY KEY AUTOINCREMENT,
-  ts TEXT DEFAULT CURRENT_TIMESTAMP,
-  action TEXT NOT NULL,           -- 'add_position' | 'update_position' | 'skip' | 'note'
-  company TEXT,
-  title TEXT,
-  start_date TEXT,
-  end_date TEXT,
-  field TEXT,                     -- for updates: which field changed
-  old_value TEXT,
-  new_value TEXT,
-  status TEXT,                    -- 'planned' | 'confirmed' | 'applied' | 'failed' | 'aborted'
-  notes TEXT
-);
-
-CREATE TABLE IF NOT EXISTS linkedin_sync_state (
-  key TEXT PRIMARY KEY,
-  value TEXT
-);
-```
-
-### 4. Attach to logged-in browser
-
-Navigate to `https://www.linkedin.com/in/me/`. Take a snapshot. If the page shows a login form, stop and tell the user to log in manually in the browser window the MCP opened, then re-invoke the skill. Never handle credentials.
-
-## Canonical record
-
-Every role — from either source or from LinkedIn — normalizes to this shape:
+Each in-scope `work[]` item maps to:
 
 ```
-{
-  company: string,                 // "Microsoft", "INTERSOLV / Sage Software"
-  employmentGroupKey: string,      // slug for grouping sub-positions (e.g. "microsoft")
-  title: string,                   // "Principal Security Architect"
-  location: string | null,         // "Redmond, WA" or null
-  startDate: "YYYY-MM",            // month precision; use "-01" for month-only sources
-  endDate: "YYYY-MM" | "present",
-  description: string,             // ≤ 2000 chars for LinkedIn; multi-paragraph OK
-  highlights: string[]             // optional bullet-ready list
-}
+company        = organization
+title          = position
+location       = location           # single geo. If YAML lists two cities, use the primary and note it.
+startDate      = startDate          # "YYYY-MM"
+endDate        = endDate            # "YYYY-MM" | "present"
+employmentType = employmentType     # map to a LinkedIn type (table below)
+description    = summary
+                 + ""               # blank line
+                 + "• " + each highlight on its own line   # only if highlights present
 ```
 
-Notes for REFERENCE.md parsing:
-- Each `###` heading under `## Career Timeline` = one role. Nested `####` = sub-role at the same employer.
-- Date ranges like `1987–1993` parse as `startDate: 1987-01, endDate: 1993-12`. Ask the user for month precision only if they want to tighten it.
-- Group by employer for LinkedIn: INTERSOLV's four sub-roles must go under a single "INTERSOLV / Sage Software" company entry; same for Microsoft's multiple eras.
+Employment-type map (LinkedIn's fixed set): `full-time`→**Full-time**, `part-time`→**Part-time**, `contract`→**Contract**, `self-employed`/`founder`→**Self-employed** (LinkedIn has no "Founder"), `board`→**leave unset** (no LinkedIn equivalent). Ignore `display:` and card-level overrides (site-only).
+
+**Grouped employers:** several sub-roles at one employer (e.g. multiple Microsoft roles, multiple INTERSOLV roles) each remain their **own** Position under the shared **Company card**. Match and write per role; never merge them into one entry. LinkedIn groups them automatically when the Company name matches.
+
+---
 
 ## Diff algorithm
 
-After reading LinkedIn's current Experience via `browser_snapshot`, produce four buckets:
+Read the **complete** current state (see principle 3), then compute a per-section diff. In **dry-run**, print the diff and stop. In **apply**, execute it.
 
-- **missing** — role in source, not on LinkedIn (matched by `(company, title, startDate)` tuple, case-insensitive, ±1 month tolerance on dates).
-- **outdated** — role matched but one or more of `title / dates / location / description` differs. Report field-by-field.
-- **extra** — role on LinkedIn, not in source. **Never propose deletion.** Just list them and ask the user whether to (a) leave alone, (b) add to REFERENCE.md, or (c) manually remove later.
-- **ordering** — LinkedIn auto-orders by date; ignore unless obviously wrong.
+**Experience** — match a YAML role to a LinkedIn role by `(company, title, startDate)` (case-insensitive, ±1 month on dates); fall back to `(company, startDate)` when only the title changed.
+- **missing** (in YAML, not on LinkedIn) → **ADD**.
+- **outdated** (matched but a field differs) → **UPDATE** only the differing fields.
+- **extra** (on LinkedIn, not in YAML) → **DELETE** (YAML is sole truth). Always surface these in dry-run; in apply, delete after logging.
+- Duplicates (two LinkedIn entries for the same role, e.g. from an earlier bad run) → keep the one matching YAML exactly; delete the other.
 
-Present the diff as a table, then ask the user which buckets and which specific items to work through this session. Default to just **missing** if they say "go".
+### Field equality (idempotency tolerances) — critical
 
-## Interactive edit loop
+To stay a true no-op on re-runs, compare fields **tolerantly**, so states that are equivalent-in-effect don't churn:
+- **Dates:** equal if the **years** match AND (months match **OR** the YAML month is a year-boundary placeholder — `-01` start / `-12` end). Rationale: for old roles the YAML months are placeholders and LinkedIn displays year-only anyway; don't rewrite a role just to flip an unshown month. Only treat a date as *outdated* when a **year** differs (or a real, non-placeholder month differs).
+- **Employment type:** when the YAML type has **no exact LinkedIn equivalent** (`founder`, `board`), set it on ADD but **do not diff/churn** it on UPDATE. Otherwise compare normally.
+- **Location:** compare case-insensitively and treat well-known equivalents as equal ("Redmond, WA" ≡ "Redmond, Washington, United States", "Greater Seattle Area" is *not* equal to a specific city). Only flag a real change.
+- **Company name:** don't rewrite a linked company just because the YAML string differs cosmetically (e.g. "Intersolv" vs "INTERSOLV / Sage Software") — changing it can break the company-page link. Match on the company, don't churn the label.
+- **Description:** compare on normalized text (collapse runs of whitespace; treat `•`/`–` bullet markers and single vs. double blank lines as equal). Rewrite only on a real content change.
+- **Skills:** an **unmapped** YAML keyword (no canonical in `references/linkedin-skill-map.md`) is **excluded**, not perpetually re-attempted. Compare by canonical name.
 
-For each approved item, follow this loop. Do not skip steps.
+**Headline / About** — normalized string compare (trim, collapse whitespace, treat `'`≡`'` and `-`≡`—` as rendered) of current vs. transformed-desired; write only if different.
 
-```
-1. RE-SNAPSHOT the profile edit surface (state may have drifted between edits).
-2. SHOW the user the exact record to be written, formatted as it will appear:
-     "About to ADD a position:
-        Microsoft — Principal Security Architect
-        Redmond, WA · Full-time
-        2024-01 – Present
-        Description (1 847 chars):
-          <first 240 chars>…"
-3. WAIT for explicit confirmation ("yes" / "y" / "go"). Anything else = skip.
-4. LOG the planned mutation with status='planned'.
-5. NAVIGATE to the right edit modal (see UI recipes below).
-6. FILL fields one at a time, snapshotting between fills to confirm each field committed.
-7. CLICK Save. Wait for the modal to close.
-8. RE-SNAPSHOT and verify the new/updated entry is present.
-9. UPDATE the log row to status='applied'. If verification fails, mark 'failed' and STOP.
-10. Ask "next?" before proceeding.
-```
+**Skills** — desired set = YAML keywords mapped to canonical names (see skill map). Current set = every skill on the profile (scroll to load all). ADD desired-not-present; DELETE present-not-desired; then set Top-skills order from `pinned`.
 
-Persist current position in `linkedin_sync_state (key='cursor')` so the loop is resumable if interrupted.
+---
 
-## LinkedIn UI recipes (Experience only)
+## UI recipes (verify each session — LinkedIn's DOM changes)
 
-**These change frequently.** Always navigate by accessibility role/name via snapshots, never by CSS class. If the UI has moved, stop and tell the user — do not guess.
+Navigate by accessibility role/name and stable text, never CSS classes. Prefer `javascript_tool` for reading and for clicking buttons/options (`el.click()` fires React handlers reliably); use coordinate clicks only with a fresh screenshot cached, and only when a JS click won't do.
 
-See `references/linkedin-ui-notes.md` for current known-good navigation paths, common pitfalls, and field constraints. Consult it before the first edit of a session.
+### Reading the full Experience list
+Go to `/in/me/details/experience/`. **Scroll to the very bottom with real scroll events** (the list virtualizes — programmatic `window.scrollTo` alone often won't load older entries; the pane must be visible for rendering). Collect every role's edit-form id via `a[href*="/edit/forms/"]` plus its title/company/dates/description. Confirm you reached the footer ("LinkedIn Corporation ©") so you know the list is fully loaded.
 
-Rough shape (verify each session):
+### Edit an existing position
+Open `https://www.linkedin.com/in/me/details/experience/edit/forms/{id}/`. Fields: Role title, Organization, Location, Employment type (`<select>`), "I currently work here" (checkbox), Start/End month+year (`<select>`s), Description (a **contenteditable div**, not a textarea).
+- **Dates / title / type**: set via the form-input mechanism, then **verify the underlying `<select>.value` / `input.value` via JS** — the styled UI renders the change a beat late, so trust the DOM value, not a screenshot.
+- **Description** (contenteditable): to preserve paragraph + bullet line breaks, focus the field, select-all, delete, then **type** the summary, press Enter twice, type each `• ` bullet on its own line (Enter between). Setting `.value`/innerHTML collapses newlines — type real keystrokes. Verify via `document.querySelector('[contenteditable="true"]').innerText`.
+- Save (bottom-right). Confirm the modal closed via JS (`!document.querySelector('[role="dialog"]')`).
 
-- **Add position:** profile → "Add profile section" → "Add position" → fill Title, Employment type, Company (autocomplete — pick the exact company from the dropdown, never free-text), Location, Start date, End date (or check "I am currently working in this role"), Description → Save.
-- **Edit position:** profile → Experience section → pencil icon next to the role → edit fields → Save.
-- **Group sub-positions:** when adding a second title at the same company, LinkedIn should auto-group them under one company card. If it doesn't, that's a v2 problem — flag and skip.
+### Add a position
+Experience section → **+** → "Add role". **"I currently work here" defaults CHECKED — uncheck it** for any past role (that reveals End month/year). Company field is an autocomplete: pick the matching company from the dropdown to link its page/logo and to group sub-roles; for **defunct companies with no page** (pre-~1990), free-text is fine (no logo — expected). Fill type, dates, description, Save.
 
-## Description formatting
+### Headline
+`/in/me/edit/intro/` → **Headline** field. Replace with the trimmed `basics.headline` (≤220). **Set this AFTER any Experience adds** (adding a position overwrites the headline). Save; verify via the top-card text.
 
-LinkedIn's description field:
-- Hard cap: 2 000 characters (verify current limit in `references/linkedin-ui-notes.md`).
-- Plain text with newlines. No markdown. Bullets render as literal characters — use `•` or `–` if desired.
-- Smart quotes and em-dashes render fine; normalize any weird whitespace.
-- If a source description exceeds the cap, propose a truncation to the user (never silently truncate). Show them the diff before applying.
+### About
+Profile → About → pencil. Replace the contenteditable with `basics.summary` paragraphs (type with blank lines between). ≤2 600 chars. Save; verify via `main` innerText.
 
-## Special cases you WILL hit with David's data
+### Skills — the fiddliest surface (read carefully)
+LinkedIn skills come from a **fixed canonical vocabulary** via a typeahead — most YAML names won't exist verbatim, so map each to its closest canonical (maintain the mapping for stability — see `references/linkedin-skill-map.md`).
 
-1. **Nested employers.** INTERSOLV has 4 sub-roles; Microsoft has 5+ across ~25 years. Each sub-role is its own LinkedIn Position under the same Company card. Do NOT create separate top-level company entries.
-2. **Concurrent roles.** Open eBook Forum (2000–2003) overlaps NuvoMedia and Microsoft. LinkedIn supports this; just add each with its own date range.
-3. **Very old roles (pre-1990).** LinkedIn accepts them but the company autocomplete often can't find defunct companies (Sinclair Research, Heuristics, Multimate). Fall back to free-text company name and warn the user that no logo/verification will attach.
-4. **Founder / CEO titles at own companies** (Heuristics, Pragmatica). Employment type = "Self-employed" or "Founder". Confirm with user which they prefer per role.
-5. **Patents mentioned in descriptions** — leave them as prose in the description. Patents section is out of scope for v1.
+**Read current skills:** `/in/me/details/skills/`, pane **visible** (the list won't render while the pane is hidden), scroll to load all; collect `a[aria-label^="Edit "][aria-label$=" skill"]` labels.
+
+**Add a skill (corruption-proof loop):**
+1. Click **Add a skill** (or "Add more skills"); if a "Discard changes" dialog appears, click **No thanks**.
+2. **Clear the field with the React-safe setter before typing** — the modal *retains the previous skill's text*, and typing onto it creates a merged/corrupt skill (observed: a real "ScalabilityContinuous Integration" garbage entry). Clear via:
+   `const set=Object.getOwnPropertyDescriptor(HTMLInputElement.prototype,'value').set; set.call(input,''); input.dispatchEvent(new Event('input',{bubbles:true}));`
+3. Focus the field (a real click is more reliable than `.focus()`), **type the name once**, wait for the dropdown.
+4. **Verify `input.value` equals exactly what you typed** (abort if not — do not proceed on a polluted field). Pick the option whose text exactly matches your target canonical (else the top suggestion). **Guard:** reject any option text that looks merged (a lowercase→uppercase transition outside parentheses). Click it, click **Save**, dismiss the "added" screen.
+5. Re-read and confirm the new skill's name is clean.
+**Delete a skill:** Edit `{skill}` → **Delete skill** → confirm **Delete**.
+**Cap:** LinkedIn limits the list (historically 50; may be higher). If an add is blocked, stop adding and report which didn't fit.
+**Top skills (pinning):** ⋯ (Skills section) → **Reorder** → drag the `pinned` skills to the top in `pinned` order. Drag-and-drop across a long virtualized list is unreliable to automate; attempt it, and if it won't cooperate, **surface it for the user** (a 20-second manual drag) rather than thrashing.
+
+---
+
+## Idempotency & verification
+
+A correct run leaves the profile such that an immediate **dry-run reports an empty diff**. To keep runs stable:
+- Map every field deterministically (same YAML → same LinkedIn value every time), including the headline trim and the skill-name mapping (persist the skill map).
+- Compare *transformed* desired values against current (don't compare raw YAML to LinkedIn).
+- After an `apply` run, immediately run a **dry-run** and confirm the diff is empty (allowing for documented, deliberately-excluded fields). Report the result as the idempotency check.
+
+Known deliberate exclusions that must NOT show up as diffs (either sync them or exclude them consistently): per-experience skill tags; Education/etc. (out of scope); the exact Top-skills drag order if the user maintains it.
+
+---
+
+## Known gotchas (hard-won)
+
+- **Duplicates from partial reads** — always scroll Experience/Skills to the footer before diffing.
+- **Headline overwrite** — set headline after Experience.
+- **Stale screenshots** — verify writes via the DOM.
+- **Skills field retains prior text** — React-clear before each type.
+- **Pane must be visible** for screenshots and for the Skills list to render; JS works regardless.
+- **Contenteditable collapses set values** — type keystrokes for multi-line descriptions/About.
 
 ## Final report
 
-After the loop ends (user says "done" or the queue empties), output:
+Emit: per-section counts (added / updated / deleted / unchanged), the audit log for the run, any skill-map approximations used, anything deferred to the user (e.g. Top-skills drag), and the **idempotency-check result** (dry-run diff after apply — ideally empty).
 
-- Counts: proposed / applied / skipped / failed.
-- The full `linkedin_sync_log` table for this session.
-- A short list of things the user should do manually (e.g., "extra LinkedIn entries you may want to remove", "Patents section not synced — deferred to v2").
-- Suggest re-running the diff after LinkedIn indexes the changes (~1 min) to confirm parity.
+## When to STOP and ask
 
-## When to STOP and hand back to the user
-
-- Any unexpected modal, banner, or interstitial (2FA, "verify it's you", quiz, phone-number capture).
-- A snapshot that doesn't contain the expected control after two attempts.
-- Any behavior that would require guessing a factual value not present in the source.
-- User types anything other than an explicit confirmation.
+- Login / 2FA / "verify it's you" interstitials.
+- A source value missing where the YAML is silent (never guess).
+- An expected control absent after two attempts, or any unexpected modal.
+- A destructive delete count that looks wrong (e.g. the read found far fewer LinkedIn roles than expected — likely an incomplete load, not real "extras").
