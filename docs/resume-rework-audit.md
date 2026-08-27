@@ -104,6 +104,32 @@ renders the *same* `terms:` arrays + `glossary[].links` the portfolio already us
 
 ---
 
+## Post-launch review pass (recruiter + hiring-manager re-scan of the live site)
+
+Re-ran both specialist reviews on the shipped content. Both independently named the same
+top gaps. Actions taken (all data/presentation; no fabrication):
+
+- **Date correctness (David-confirmed).** Chief of Staff actually started 2009 (not 2008)
+  and the Compliance Engineering role ended then. Corrected machine dates + labels so both
+  views read Compliance **2004–2009** and Chief of Staff **2009–2014**, sequential — fixing
+  a cross-view inconsistency (résumé had shown raw 2004–2010 vs the portfolio's rounded
+  2004–2008) that a reviewer flagged as looking like padding.
+- **Group A (mechanical polish):**
+  - Replaced the **"340K+ Lines of TypeScript"** stat tile (LOC-as-headline = volume-brag)
+    with **"Dozens · Security Domains"** (adoption). Slug `stat-lines` → `stat-domains`;
+    340K kept as supporting scope in the popup + résumé bullet.
+  - Trimmed **"sole human architect"** from 6 uses → 2 (hero + Indra role summary).
+  - Dropped the **"40+ Professional Years"** tile from both views (David's call) — depth
+    still shows via the timeline back to 1979, not as a headline number.
+
+**Still open (both reviewers' highest-leverage items, not yet done):**
+- **Group B (prose, to be drafted for approval):** a security→AI-safety thesis line, and
+  expanding the security-review agent into its own concrete bullet.
+- **Group C (only David can do):** one public, clickable artifact (agent-harness write-up,
+  sanitized PR trail, or sample repo) — the single biggest remaining gap for a top-lab bar.
+
+---
+
 ## Cross-view pass — presentation insights that aren't résumé-only
 
 You flagged that some of the résumé presentation insights apply to **any view a

@@ -76,7 +76,7 @@ basics:
       Most recently I've been building Indra — an AI-first app platform inside
       Microsoft's CISO organization that gives security engineers the building
       blocks to turn their expertise into tools the whole organization can use. I
-      lead Indra as its sole human architect, working alongside a team of eight
+      lead Indra, working alongside a team of eight
       specialized AI agents, each owning a distinct domain: engineering,
       strategy, security review, storytelling, advocacy, and more. It's a new
       model for software development — one architect and a crew of AI
@@ -91,10 +91,11 @@ basics:
   # the generic opener (0) and the "craft" closer (4). Selection + reorder only — every
   # sentence shown is verbatim from summary[]; no rewriting.
   resumeSummaryOrder: [3, 1, 2]
-  # Order is outcome-first, tenure LAST — a presentation insight that applies to
-  # every view a hiring audience sees (résumé AND portfolio), not just the résumé.
-  # Both views render these in array order, so this list is the single source of
-  # that ordering. (Values/labels unchanged; this is a reorder only.)
+  # Outcome-first ordering — a presentation insight that applies to every view a
+  # hiring audience sees (résumé AND portfolio). Both views render these in array
+  # order, so this list is the single source of that ordering. The tenure tile
+  # ("40+ Professional Years") was dropped per David — depth still shows via the
+  # career timeline back to 1979, just not as a headline number.
   stats:
     - { slug: stat-services,  value: "8K+",   label: "Services Secured", resume: true }
     - { slug: stat-exit,      value: "$200M", label: "Startup Exit", resume: true }
@@ -102,8 +103,7 @@ basics:
     - { slug: stat-engineers, value: "50+",   label: "Engineers Led", resume: true }
     - { slug: stat-companies, value: "3",     label: "Companies Founded", resume: true }
     - { slug: stat-budget,    value: "$250M", label: "Largest Budget Managed" }
-    - { slug: stat-lines,     value: "340K+", label: "Lines of TypeScript" }
-    - { slug: stat-years,     value: "40+",   label: "Professional Years", resume: true }
+    - { slug: stat-domains,   value: "Dozens", label: "Security Domains" }
 
 # ----------------------------------------------------------------------------
 # work[] — atomic career roles, newest first. THE core of the data.
@@ -146,7 +146,7 @@ work:
         agent, CI tests and static analysis, and version-controlled prompts and
         specs before it merges.
       - >-
-        Sole human architect of a ~340,000-line (non-test), 95%-TypeScript
+        Architect of a ~340,000-line (non-test), 95%-TypeScript
         monorepo — 10 packages, ~69 apps, a 90+-component design system, and ~735
         automated test files — with state, plans, and specs managed in-repo and
         legible to people, not just agents.
@@ -261,7 +261,7 @@ work:
     group: microsoft
     position: Chief of Staff, Trustworthy Computing
     location: Redmond, WA
-    startDate: "2008-01"
+    startDate: "2009-01"
     endDate: "2014-12"
     employmentType: full-time
     visibility: [site, resume, linkedin]
@@ -283,7 +283,7 @@ work:
       era: microsoft-security-compliance
       cardTitle: Security Strategy & Assurance
       roleLine: Chief of Staff · Trustworthy Computing (TwC)
-      dateLabel: "2008 – 2014 (6 yrs)"
+      dateLabel: "2009 – 2014 (5 yrs)"
       image: null
 
   - id: compliance-engineering
@@ -293,7 +293,7 @@ work:
     position: Director, Compliance Engineering — Engineering Excellence
     location: Redmond, WA
     startDate: "2004-01"
-    endDate: "2010-12"   # REFERENCE: 2004–2010 (overlaps Chief of Staff); site label rounds to 2004–2008
+    endDate: "2009-01"   # Director role ended when the Chief of Staff role began in 2009
     employmentType: full-time
     visibility: [site, resume, linkedin]
     summary: >-
@@ -313,7 +313,7 @@ work:
       era: microsoft-security-compliance
       cardTitle: Engineering Policy Compliance
       roleLine: Director, Compliance Engineering · Engineering Excellence
-      dateLabel: "2004 – 2008 (4 yrs)"
+      dateLabel: "2004 – 2009 (5 yrs)"
       image: null
 
   - id: metro-xps
@@ -1501,13 +1501,13 @@ glossary:
     html: |
       <p>The largest budget I’ve overseen combines the compliance engineering program at Microsoft (over $10M annually in direct operating costs) with the broader security assurance and strategic programs I coordinated as Chief of Staff to the CVP of Trustworthy Computing — a role that touched hundreds of millions in security investment across the company.</p><p>At that scale, budget management is less about tracking spending and more about allocating organizational attention: which programs get investment, which get wound down, which get scaled, and how to make the ROI case to executives. Security compliance programs are unusual because the “return” is measured in risks that don’t materialize — a fundamentally different calculus than typical product investment.</p>
 
-  - slug: stat-lines
-    title: 340K+ Lines of Production TypeScript
+  - slug: stat-domains
+    title: Dozens of Security Domains, Unified
     category: stat
     image: null
     links: []
     html: |
-      <p>The Indra platform is a ~340,000-line (non-test) TypeScript codebase — a 10-package monorepo of roughly 69 apps, a 90+-component design system, and ~735 automated test files — architected and maintained by David as its sole human architect, working with a team of eight specialized AI agents.</p><p>The number is scope, not speed: the real work is keeping a codebase this size architecturally coherent and reliable. Every change clears human review, a security-review agent, CI tests and static analysis, and version-controlled prompts and specs before it merges.</p>
+      <p>Indra's Unified Security Reporting brings together security posture across dozens of CISO security domains — verticals whose signals previously lived in separate dashboards, Kusto queries, and individual engineers' heads. CISO leaders use it for a cross-domain view that didn't exist before.</p><p>Behind it sits a ~340,000-line (non-test) TypeScript platform — a 10-package monorepo of roughly 69 apps and a 90+-component design system — that David architects and maintains with a team of eight specialized AI agents, under a review-, security-, and CI-gated pipeline.</p>
 
   - slug: stat-engineers
     title: 50+ Engineers Led
@@ -1524,7 +1524,7 @@ glossary:
     links:
       - { label: "Visit Indra", url: "https://indra.microsoft.com", internal: true }
     html: |
-      <p>An AI-first app platform inside Microsoft’s CISO organization, conceived and led by David Ornstein as its sole human architect. Indra gives SIGMA security engineers building blocks to turn their expertise — Kusto queries, compliance workflows, operational know-how — into tools the whole organization can use, and gives deputy CISOs a unified view of security posture across domains.</p><p>The platform solves a fundamental fragmentation problem: security knowledge across CISO’s dozens of domains is scattered across dashboards, scripts, and individual engineers’ heads — inaccessible to leaders who need a cross-domain view and invisible to AI. Indra provides unified security reporting dashboards, a natural-language AI agent over security data, Kusto query integration, Power BI embedding, an app hosting ecosystem, and a full CI/CD pipeline.</p><p>What makes Indra distinctive is its development model: David leads a team of eight specialized AI agents — each a GitHub Copilot custom agent with a distinct role (engineer, strategist, security sentinel, narrator, advocate, presenter, editor). Every change clears human review, a security-review agent, CI, and version-controlled prompts before it merges — one architect sustaining a platform that real teams build on.</p>
+      <p>An AI-first app platform inside Microsoft’s CISO organization, conceived and led by David Ornstein as its architect, working with a team of AI agents. Indra gives SIGMA security engineers building blocks to turn their expertise — Kusto queries, compliance workflows, operational know-how — into tools the whole organization can use, and gives deputy CISOs a unified view of security posture across domains.</p><p>The platform solves a fundamental fragmentation problem: security knowledge across CISO’s dozens of domains is scattered across dashboards, scripts, and individual engineers’ heads — inaccessible to leaders who need a cross-domain view and invisible to AI. Indra provides unified security reporting dashboards, a natural-language AI agent over security data, Kusto query integration, Power BI embedding, an app hosting ecosystem, and a full CI/CD pipeline.</p><p>What makes Indra distinctive is its development model: David leads a team of eight specialized AI agents — each a GitHub Copilot custom agent with a distinct role (engineer, strategist, security sentinel, narrator, advocate, presenter, editor). Every change clears human review, a security-review agent, CI, and version-controlled prompts before it merges — one architect sustaining a platform that real teams build on.</p>
 
   - slug: liquid
     title: Liquid Platform
