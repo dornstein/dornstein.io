@@ -122,11 +122,13 @@ top gaps. Actions taken (all data/presentation; no fabrication):
   - Dropped the **"40+ Professional Years"** tile from both views (David's call) — depth
     still shows via the timeline back to 1979, not as a headline number.
 
-**Still open (both reviewers' highest-leverage items, not yet done):**
-- **Group B (prose, to be drafted for approval):** a security→AI-safety thesis line, and
-  expanding the security-review agent into its own concrete bullet.
-- **Group C (only David can do):** one public, clickable artifact (agent-harness write-up,
-  sanitized PR trail, or sample repo) — the single biggest remaining gap for a top-lab bar.
+**Group B — SKIPPED (David's call: "gilding the lily").** The two prose items (a
+security→AI-safety thesis line; expanding the security-review agent into its own bullet)
+were deliberately not done — judged marginal polish on an already-solid profile.
+
+**Group C (only David can do, still the biggest lever):** one public, clickable artifact
+(agent-harness write-up, sanitized PR trail, or sample repo). Left for David whenever he
+wants to invest; Claude can help draft the write-up from the Indra-walkthrough facts.
 
 ---
 
