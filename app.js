@@ -391,8 +391,10 @@
     var refSeen = new Set(); // dedupe: each term links at most once across the résumé
     var loc = b.location ? [b.location.city, b.location.region].filter(Boolean).join(', ') : '';
     var profileLinks = (b.profiles || []).filter(function (p) { return p.url; })
-      .map(function (p) { return '<a href="' + esc(p.url) + '">' + esc(p.network) + '</a>'; }).join(' &middot; ');
-    var contactParts = [b.email, (b.url || '').replace(/^https?:\/\//, ''), loc].filter(Boolean).map(esc);
+      .map(function (p) { return '<a class="linear-link" href="' + esc(p.url) + '" target="_blank" rel="noopener">' + esc(p.network) + '</a>'; }).join(' &middot; ');
+    var emailHtml = b.email ? '<a class="linear-link" href="mailto:' + esc(b.email) + '">' + esc(b.email) + '</a>' : '';
+    var urlHtml = b.url ? '<a class="linear-link" href="' + esc(b.url) + '" target="_blank" rel="noopener">' + esc(b.url.replace(/^https?:\/\//, '')) + '</a>' : '';
+    var contactParts = [emailHtml, urlHtml, esc(loc)].filter(Boolean);
     var contact = contactParts.join(' &nbsp;&middot;&nbsp; ') + (profileLinks ? ' &nbsp;&middot;&nbsp; ' + profileLinks : '');
 
     // Metrics strip — featured stats (basics.stats[].resume === true), in the
